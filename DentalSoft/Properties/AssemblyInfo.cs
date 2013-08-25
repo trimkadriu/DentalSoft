@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("DentalSoft")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Aplikacioni eshte ndertuar si projekt i fakultetit te Shkencave Kompjuterike ne Universitetin per Biznes dhe Teknologji, ne lenden Lab Kursi ne Programim. Aplikacioni sherben per menaxhimin e puneve ne ordinancat stomatologjike.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Autor: Trim Kadriu")]
 [assembly: AssemblyProduct("DentalSoft")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]

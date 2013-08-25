@@ -67,6 +67,7 @@
             // 
             // logoPictureBox
             // 
+            this.logoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logoPictureBox.Image = global::DentalSoft.Properties.Resources.Logo_Vertical;
             this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
@@ -122,7 +123,7 @@
             this.labelCompanyName.Name = "labelCompanyName";
             this.labelCompanyName.Size = new System.Drawing.Size(271, 17);
             this.labelCompanyName.TabIndex = 22;
-            this.labelCompanyName.Text = "Trim Kadriu";
+            this.labelCompanyName.Text = "Autor: Trim Kadriu";
             this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBoxDescription
@@ -133,11 +134,10 @@
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.ReadOnly = true;
-            this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxDescription.Size = new System.Drawing.Size(271, 126);
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
-            this.textBoxDescription.Text = resources.GetString("textBoxDescription.Text");
             // 
             // okButton
             // 
@@ -148,12 +148,14 @@
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 24;
             this.okButton.Text = "&OK";
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // frmAbout
             // 
             this.AcceptButton = this.okButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.okButton;
             this.ClientSize = new System.Drawing.Size(435, 283);
             this.Controls.Add(this.tableLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

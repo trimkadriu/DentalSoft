@@ -1,0 +1,1 @@
+C:\DentalSoft\DentalSoft.BusinessLayers\BusinessLayers\obj\Debug\BusinessLayers.csprojResolveAssemblyReference.cache
