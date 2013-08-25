@@ -1,1 +1,10 @@
 C:\DentalSoft\DentalSoft\bin\Debug\DentalSoft.exe.config
+C:\DentalSoft\DentalSoft\bin\Debug\DentalSoft.exe
+C:\DentalSoft\DentalSoft\bin\Debug\DentalSoft.pdb
+C:\DentalSoft\DentalSoft\obj\Debug\DentalSoft.csprojResolveAssemblyReference.cache
+C:\DentalSoft\DentalSoft\obj\Debug\DentalSoft.frmLogin.resources
+C:\DentalSoft\DentalSoft\obj\Debug\DentalSoft.Properties.Resources.resources
+C:\DentalSoft\DentalSoft\obj\Debug\DentalSoft.csproj.GenerateResource.Cache
+C:\DentalSoft\DentalSoft\obj\Debug\DentalSoft.exe
+C:\DentalSoft\DentalSoft\obj\Debug\DentalSoft.pdb
+C:\DentalSoft\DentalSoft\obj\Debug\DentalSoft.frmAbout.resources
