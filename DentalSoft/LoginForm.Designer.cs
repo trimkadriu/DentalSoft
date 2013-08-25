@@ -82,6 +82,7 @@
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Kyqu";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnClose
             // 
@@ -92,7 +93,7 @@
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Mbylle";
             this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.button2_Click);
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // pctHeader
             // 

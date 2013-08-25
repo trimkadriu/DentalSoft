@@ -8,3 +8,4 @@ C:\DentalSoft\DentalSoft\obj\Debug\DentalSoft.csproj.GenerateResource.Cache
 C:\DentalSoft\DentalSoft\obj\Debug\DentalSoft.exe
 C:\DentalSoft\DentalSoft\obj\Debug\DentalSoft.pdb
 C:\DentalSoft\DentalSoft\obj\Debug\DentalSoft.frmAbout.resources
+C:\DentalSoft\DentalSoft\obj\Debug\DentalSoft.frmMain.resources
