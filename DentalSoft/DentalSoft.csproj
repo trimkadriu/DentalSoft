@@ -73,6 +73,12 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DentistsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DentistsForm.Designer.cs">
+      <DependentUpon>DentistsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DentistsForm.resx">
+      <DependentUpon>DentistsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

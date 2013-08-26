@@ -33,6 +33,16 @@
             this.miFillimi = new System.Windows.Forms.ToolStripMenuItem();
             this.shkyquToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miDalje = new System.Windows.Forms.ToolStripMenuItem();
+            this.dentistetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menaxhoDentistetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listoDentistetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.takimetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menaxhoTakimetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listoTakimetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.raportetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gjeneroDiagnozeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listoDiagnozatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statistikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miNdihma = new System.Windows.Forms.ToolStripMenuItem();
             this.miRrethDentalSoft = new System.Windows.Forms.ToolStripMenuItem();
             this.lblFullName = new System.Windows.Forms.Label();
@@ -42,28 +52,20 @@
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btnProfili = new System.Windows.Forms.Button();
             this.dgvNextAppointments = new System.Windows.Forms.DataGridView();
-            this.dentistetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menaxhoDentistetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.takimetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menaxhoTakimetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.raportetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gjeneroDiagnozeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listoDiagnozatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statistikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listoTakimetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listoDentistetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnListoTakimet = new System.Windows.Forms.Button();
             this.btnShtoTakim = new System.Windows.Forms.Button();
             this.btnListoDentistet = new System.Windows.Forms.Button();
             this.btnShtoDentist = new System.Windows.Forms.Button();
             this.dgvDentistet = new System.Windows.Forms.DataGridView();
             this.grbTeDhenaPerSot = new System.Windows.Forms.GroupBox();
-            this.lblGjithsejTakime = new System.Windows.Forms.Label();
-            this.lblGjithsejDiagnozat = new System.Windows.Forms.Label();
+            this.lblSotPagesat = new System.Windows.Forms.Label();
+            this.lblSotDiagnozat = new System.Windows.Forms.Label();
+            this.lblSotTakimet = new System.Windows.Forms.Label();
             this.lblFitimi = new System.Windows.Forms.Label();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lnshDivider = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lblGjithsejDiagnozat = new System.Windows.Forms.Label();
+            this.lblGjithsejTakime = new System.Windows.Forms.Label();
             this.pctHeader = new System.Windows.Forms.PictureBox();
+            this.lblVerticalDivider = new System.Windows.Forms.Label();
             this.menuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctUserProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNextAppointments)).BeginInit();
@@ -98,7 +100,7 @@
             // shkyquToolStripMenuItem
             // 
             this.shkyquToolStripMenuItem.Name = "shkyquToolStripMenuItem";
-            this.shkyquToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.shkyquToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.shkyquToolStripMenuItem.Text = "&Shkyqu";
             this.shkyquToolStripMenuItem.Click += new System.EventHandler(this.shkyquToolStripMenuItem_Click);
             // 
@@ -106,9 +108,79 @@
             // 
             this.miDalje.Name = "miDalje";
             this.miDalje.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.miDalje.Size = new System.Drawing.Size(152, 22);
+            this.miDalje.Size = new System.Drawing.Size(142, 22);
             this.miDalje.Text = "&Dalje";
             this.miDalje.Click += new System.EventHandler(this.miDalje_Click);
+            // 
+            // dentistetToolStripMenuItem
+            // 
+            this.dentistetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menaxhoDentistetToolStripMenuItem,
+            this.listoDentistetToolStripMenuItem});
+            this.dentistetToolStripMenuItem.Name = "dentistetToolStripMenuItem";
+            this.dentistetToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.dentistetToolStripMenuItem.Text = "Dentistet";
+            // 
+            // menaxhoDentistetToolStripMenuItem
+            // 
+            this.menaxhoDentistetToolStripMenuItem.Name = "menaxhoDentistetToolStripMenuItem";
+            this.menaxhoDentistetToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.menaxhoDentistetToolStripMenuItem.Text = "Shto nje dentist";
+            // 
+            // listoDentistetToolStripMenuItem
+            // 
+            this.listoDentistetToolStripMenuItem.Name = "listoDentistetToolStripMenuItem";
+            this.listoDentistetToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.listoDentistetToolStripMenuItem.Text = "Listo dentistet";
+            // 
+            // takimetToolStripMenuItem
+            // 
+            this.takimetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menaxhoTakimetToolStripMenuItem,
+            this.listoTakimetToolStripMenuItem});
+            this.takimetToolStripMenuItem.Name = "takimetToolStripMenuItem";
+            this.takimetToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.takimetToolStripMenuItem.Text = "Takimet";
+            // 
+            // menaxhoTakimetToolStripMenuItem
+            // 
+            this.menaxhoTakimetToolStripMenuItem.Name = "menaxhoTakimetToolStripMenuItem";
+            this.menaxhoTakimetToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.menaxhoTakimetToolStripMenuItem.Text = "Shto nje takim";
+            // 
+            // listoTakimetToolStripMenuItem
+            // 
+            this.listoTakimetToolStripMenuItem.Name = "listoTakimetToolStripMenuItem";
+            this.listoTakimetToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.listoTakimetToolStripMenuItem.Text = "Listo takimet";
+            // 
+            // raportetToolStripMenuItem
+            // 
+            this.raportetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gjeneroDiagnozeToolStripMenuItem,
+            this.listoDiagnozatToolStripMenuItem,
+            this.statistikaToolStripMenuItem});
+            this.raportetToolStripMenuItem.Name = "raportetToolStripMenuItem";
+            this.raportetToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.raportetToolStripMenuItem.Text = "Raportet";
+            // 
+            // gjeneroDiagnozeToolStripMenuItem
+            // 
+            this.gjeneroDiagnozeToolStripMenuItem.Name = "gjeneroDiagnozeToolStripMenuItem";
+            this.gjeneroDiagnozeToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.gjeneroDiagnozeToolStripMenuItem.Text = "Gjenero diagnoze";
+            // 
+            // listoDiagnozatToolStripMenuItem
+            // 
+            this.listoDiagnozatToolStripMenuItem.Name = "listoDiagnozatToolStripMenuItem";
+            this.listoDiagnozatToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.listoDiagnozatToolStripMenuItem.Text = "Listo diagnozat";
+            // 
+            // statistikaToolStripMenuItem
+            // 
+            this.statistikaToolStripMenuItem.Name = "statistikaToolStripMenuItem";
+            this.statistikaToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.statistikaToolStripMenuItem.Text = "Statistika";
             // 
             // miNdihma
             // 
@@ -190,76 +262,6 @@
             this.dgvNextAppointments.Size = new System.Drawing.Size(239, 180);
             this.dgvNextAppointments.TabIndex = 16;
             // 
-            // dentistetToolStripMenuItem
-            // 
-            this.dentistetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menaxhoDentistetToolStripMenuItem,
-            this.listoDentistetToolStripMenuItem});
-            this.dentistetToolStripMenuItem.Name = "dentistetToolStripMenuItem";
-            this.dentistetToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.dentistetToolStripMenuItem.Text = "Dentistet";
-            // 
-            // menaxhoDentistetToolStripMenuItem
-            // 
-            this.menaxhoDentistetToolStripMenuItem.Name = "menaxhoDentistetToolStripMenuItem";
-            this.menaxhoDentistetToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.menaxhoDentistetToolStripMenuItem.Text = "Shto nje dentist";
-            // 
-            // takimetToolStripMenuItem
-            // 
-            this.takimetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menaxhoTakimetToolStripMenuItem,
-            this.listoTakimetToolStripMenuItem});
-            this.takimetToolStripMenuItem.Name = "takimetToolStripMenuItem";
-            this.takimetToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
-            this.takimetToolStripMenuItem.Text = "Takimet";
-            // 
-            // menaxhoTakimetToolStripMenuItem
-            // 
-            this.menaxhoTakimetToolStripMenuItem.Name = "menaxhoTakimetToolStripMenuItem";
-            this.menaxhoTakimetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.menaxhoTakimetToolStripMenuItem.Text = "Shto nje takim";
-            // 
-            // raportetToolStripMenuItem
-            // 
-            this.raportetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gjeneroDiagnozeToolStripMenuItem,
-            this.listoDiagnozatToolStripMenuItem,
-            this.statistikaToolStripMenuItem});
-            this.raportetToolStripMenuItem.Name = "raportetToolStripMenuItem";
-            this.raportetToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.raportetToolStripMenuItem.Text = "Raportet";
-            // 
-            // gjeneroDiagnozeToolStripMenuItem
-            // 
-            this.gjeneroDiagnozeToolStripMenuItem.Name = "gjeneroDiagnozeToolStripMenuItem";
-            this.gjeneroDiagnozeToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.gjeneroDiagnozeToolStripMenuItem.Text = "Gjenero diagnoze";
-            // 
-            // listoDiagnozatToolStripMenuItem
-            // 
-            this.listoDiagnozatToolStripMenuItem.Name = "listoDiagnozatToolStripMenuItem";
-            this.listoDiagnozatToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.listoDiagnozatToolStripMenuItem.Text = "Listo diagnozat";
-            // 
-            // statistikaToolStripMenuItem
-            // 
-            this.statistikaToolStripMenuItem.Name = "statistikaToolStripMenuItem";
-            this.statistikaToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.statistikaToolStripMenuItem.Text = "Statistika";
-            // 
-            // listoTakimetToolStripMenuItem
-            // 
-            this.listoTakimetToolStripMenuItem.Name = "listoTakimetToolStripMenuItem";
-            this.listoTakimetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.listoTakimetToolStripMenuItem.Text = "Listo takimet";
-            // 
-            // listoDentistetToolStripMenuItem
-            // 
-            this.listoDentistetToolStripMenuItem.Name = "listoDentistetToolStripMenuItem";
-            this.listoDentistetToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.listoDentistetToolStripMenuItem.Text = "Listo dentistet";
-            // 
             // btnListoTakimet
             // 
             this.btnListoTakimet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -310,6 +312,9 @@
             // 
             // grbTeDhenaPerSot
             // 
+            this.grbTeDhenaPerSot.Controls.Add(this.lblSotPagesat);
+            this.grbTeDhenaPerSot.Controls.Add(this.lblSotDiagnozat);
+            this.grbTeDhenaPerSot.Controls.Add(this.lblSotTakimet);
             this.grbTeDhenaPerSot.Controls.Add(this.lblFitimi);
             this.grbTeDhenaPerSot.Controls.Add(this.lblGjithsejDiagnozat);
             this.grbTeDhenaPerSot.Controls.Add(this.lblGjithsejTakime);
@@ -320,23 +325,32 @@
             this.grbTeDhenaPerSot.TabStop = false;
             this.grbTeDhenaPerSot.Text = "Te dhena per sot";
             // 
-            // lblGjithsejTakime
+            // lblSotPagesat
             // 
-            this.lblGjithsejTakime.AutoSize = true;
-            this.lblGjithsejTakime.Location = new System.Drawing.Point(9, 22);
-            this.lblGjithsejTakime.Name = "lblGjithsejTakime";
-            this.lblGjithsejTakime.Size = new System.Drawing.Size(78, 13);
-            this.lblGjithsejTakime.TabIndex = 0;
-            this.lblGjithsejTakime.Text = "Gjithsej takimet";
+            this.lblSotPagesat.Location = new System.Drawing.Point(137, 64);
+            this.lblSotPagesat.Name = "lblSotPagesat";
+            this.lblSotPagesat.Size = new System.Drawing.Size(96, 13);
+            this.lblSotPagesat.TabIndex = 5;
+            this.lblSotPagesat.Text = "12346";
+            this.lblSotPagesat.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // lblGjithsejDiagnozat
+            // lblSotDiagnozat
             // 
-            this.lblGjithsejDiagnozat.AutoSize = true;
-            this.lblGjithsejDiagnozat.Location = new System.Drawing.Point(9, 43);
-            this.lblGjithsejDiagnozat.Name = "lblGjithsejDiagnozat";
-            this.lblGjithsejDiagnozat.Size = new System.Drawing.Size(90, 13);
-            this.lblGjithsejDiagnozat.TabIndex = 1;
-            this.lblGjithsejDiagnozat.Text = "Gjithsej diagnozat";
+            this.lblSotDiagnozat.Location = new System.Drawing.Point(137, 43);
+            this.lblSotDiagnozat.Name = "lblSotDiagnozat";
+            this.lblSotDiagnozat.Size = new System.Drawing.Size(96, 13);
+            this.lblSotDiagnozat.TabIndex = 4;
+            this.lblSotDiagnozat.Text = "12346";
+            this.lblSotDiagnozat.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lblSotTakimet
+            // 
+            this.lblSotTakimet.Location = new System.Drawing.Point(137, 22);
+            this.lblSotTakimet.Name = "lblSotTakimet";
+            this.lblSotTakimet.Size = new System.Drawing.Size(96, 13);
+            this.lblSotTakimet.TabIndex = 3;
+            this.lblSotTakimet.Text = "12346";
+            this.lblSotTakimet.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblFitimi
             // 
@@ -347,29 +361,28 @@
             this.lblFitimi.TabIndex = 2;
             this.lblFitimi.Text = "Pagesat (ne vlere)";
             // 
-            // shapeContainer1
+            // lblGjithsejDiagnozat
             // 
-            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lnshDivider});
-            this.shapeContainer1.Size = new System.Drawing.Size(680, 368);
-            this.shapeContainer1.TabIndex = 23;
-            this.shapeContainer1.TabStop = false;
+            this.lblGjithsejDiagnozat.AutoSize = true;
+            this.lblGjithsejDiagnozat.Location = new System.Drawing.Point(9, 43);
+            this.lblGjithsejDiagnozat.Name = "lblGjithsejDiagnozat";
+            this.lblGjithsejDiagnozat.Size = new System.Drawing.Size(90, 13);
+            this.lblGjithsejDiagnozat.TabIndex = 1;
+            this.lblGjithsejDiagnozat.Text = "Gjithsej diagnozat";
             // 
-            // lnshDivider
+            // lblGjithsejTakime
             // 
-            this.lnshDivider.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dot;
-            this.lnshDivider.Name = "lnshDivider";
-            this.lnshDivider.X1 = 154;
-            this.lnshDivider.X2 = 154;
-            this.lnshDivider.Y1 = 146;
-            this.lnshDivider.Y2 = 353;
+            this.lblGjithsejTakime.AutoSize = true;
+            this.lblGjithsejTakime.Location = new System.Drawing.Point(9, 22);
+            this.lblGjithsejTakime.Name = "lblGjithsejTakime";
+            this.lblGjithsejTakime.Size = new System.Drawing.Size(78, 13);
+            this.lblGjithsejTakime.TabIndex = 0;
+            this.lblGjithsejTakime.Text = "Gjithsej takimet";
             // 
             // pctHeader
             // 
             this.pctHeader.BackColor = System.Drawing.Color.White;
+            this.pctHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pctHeader.Image = global::DentalSoft.Properties.Resources.Logo;
             this.pctHeader.Location = new System.Drawing.Point(0, 24);
@@ -378,11 +391,20 @@
             this.pctHeader.TabIndex = 24;
             this.pctHeader.TabStop = false;
             // 
+            // lblVerticalDivider
+            // 
+            this.lblVerticalDivider.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblVerticalDivider.Location = new System.Drawing.Point(152, 137);
+            this.lblVerticalDivider.Name = "lblVerticalDivider";
+            this.lblVerticalDivider.Size = new System.Drawing.Size(2, 219);
+            this.lblVerticalDivider.TabIndex = 25;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(680, 368);
+            this.Controls.Add(this.lblVerticalDivider);
             this.Controls.Add(this.pctHeader);
             this.Controls.Add(this.grbTeDhenaPerSot);
             this.Controls.Add(this.btnListoDentistet);
@@ -398,7 +420,6 @@
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnProfili);
             this.Controls.Add(this.menuMain);
-            this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuMain;
@@ -453,8 +474,10 @@
         private System.Windows.Forms.Label lblFitimi;
         private System.Windows.Forms.Label lblGjithsejDiagnozat;
         private System.Windows.Forms.Label lblGjithsejTakime;
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lnshDivider;
         private System.Windows.Forms.PictureBox pctHeader;
+        private System.Windows.Forms.Label lblSotPagesat;
+        private System.Windows.Forms.Label lblSotDiagnozat;
+        private System.Windows.Forms.Label lblSotTakimet;
+        private System.Windows.Forms.Label lblVerticalDivider;
     }
 }

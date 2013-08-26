@@ -9,3 +9,15 @@ C:\DentalSoft\DentalSoft\obj\Debug\DentalSoft.exe
 C:\DentalSoft\DentalSoft\obj\Debug\DentalSoft.pdb
 C:\DentalSoft\DentalSoft\obj\Debug\DentalSoft.frmAbout.resources
 C:\DentalSoft\DentalSoft\obj\Debug\DentalSoft.frmMain.resources
+D:\Projects\Trim\dentalsoft\DentalSoft\bin\Debug\DentalSoft.exe.config
+D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.exe
+D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.pdb
+D:\Projects\Trim\dentalsoft\DentalSoft\bin\Debug\DentalSoft.exe
+D:\Projects\Trim\dentalsoft\DentalSoft\bin\Debug\DentalSoft.pdb
+D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.csprojResolveAssemblyReference.cache
+D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.frmAbout.resources
+D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.frmLogin.resources
+D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.frmMain.resources
+D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.Properties.Resources.resources
+D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.csproj.GenerateResource.Cache
+D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.DentistsForm.resources
