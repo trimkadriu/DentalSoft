@@ -34,5 +34,29 @@ namespace DentalSoft
             frmLogin loginForm = new frmLogin();
             loginForm.Show();
         }
+
+        private void btnProfili_Click(object sender, EventArgs e)
+        {
+            frmAddDentist addDentistForm = new frmAddDentist();
+            addDentistForm.ShowDialog();
+        }
+
+        private void btnShtoDentist_Click(object sender, EventArgs e)
+        {
+            frmAddDentist addDentistForm = new frmAddDentist();
+            addDentistForm.ShowDialog();
+        }
+
+        private void btnListoDentistet_Click(object sender, EventArgs e)
+        {
+            frmListDentists listDentistsForm = new frmListDentists();
+            listDentistsForm.ShowDialog();
+        }
+
+        private void menaxhoDentistetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddDentist addDentistForm = new frmAddDentist();
+            addDentistForm.ShowDialog();
+        }
     }
 }

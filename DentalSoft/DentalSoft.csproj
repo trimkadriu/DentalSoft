@@ -73,11 +73,23 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DentistsForm.cs">
+    <Compile Include="AddAppointmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DentistsForm.Designer.cs">
-      <DependentUpon>DentistsForm.cs</DependentUpon>
+    <Compile Include="AddAppointmentForm.Designer.cs">
+      <DependentUpon>AddAppointmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddDentistsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddDentistsForm.Designer.cs">
+      <DependentUpon>AddDentistsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListDentists.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListDentists.Designer.cs">
+      <DependentUpon>ListDentists.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -97,8 +109,14 @@
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DentistsForm.resx">
-      <DependentUpon>DentistsForm.cs</DependentUpon>
+    <EmbeddedResource Include="AddAppointmentForm.resx">
+      <DependentUpon>AddAppointmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddDentistsForm.resx">
+      <DependentUpon>AddDentistsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListDentists.resx">
+      <DependentUpon>ListDentists.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

@@ -20,4 +20,5 @@ D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.frmLogin.resources
 D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.frmMain.resources
 D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.Properties.Resources.resources
 D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.csproj.GenerateResource.Cache
-D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.DentistsForm.resources
+D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.frmAddDentist.resources
+D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.frmListDentists.resources

@@ -57,20 +57,23 @@
             this.btnListoDentistet = new System.Windows.Forms.Button();
             this.btnShtoDentist = new System.Windows.Forms.Button();
             this.dgvDentistet = new System.Windows.Forms.DataGridView();
-            this.grbTeDhenaPerSot = new System.Windows.Forms.GroupBox();
+            this.grbTeDhena = new System.Windows.Forms.GroupBox();
             this.lblSotPagesat = new System.Windows.Forms.Label();
             this.lblSotDiagnozat = new System.Windows.Forms.Label();
             this.lblSotTakimet = new System.Windows.Forms.Label();
-            this.lblFitimi = new System.Windows.Forms.Label();
-            this.lblGjithsejDiagnozat = new System.Windows.Forms.Label();
-            this.lblGjithsejTakime = new System.Windows.Forms.Label();
+            this.lblFitimiSot = new System.Windows.Forms.Label();
+            this.lblGjithsejDiagnozatSot = new System.Windows.Forms.Label();
+            this.lblGjithsejTakimeSot = new System.Windows.Forms.Label();
             this.pctHeader = new System.Windows.Forms.PictureBox();
             this.lblVerticalDivider = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.menuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctUserProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNextAppointments)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDentistet)).BeginInit();
-            this.grbTeDhenaPerSot.SuspendLayout();
+            this.grbTeDhena.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctHeader)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,7 +87,7 @@
             this.miNdihma});
             this.menuMain.Location = new System.Drawing.Point(0, 0);
             this.menuMain.Name = "menuMain";
-            this.menuMain.Size = new System.Drawing.Size(680, 24);
+            this.menuMain.Size = new System.Drawing.Size(706, 24);
             this.menuMain.TabIndex = 0;
             this.menuMain.Text = "mainMenu";
             // 
@@ -100,7 +103,8 @@
             // shkyquToolStripMenuItem
             // 
             this.shkyquToolStripMenuItem.Name = "shkyquToolStripMenuItem";
-            this.shkyquToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.shkyquToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.shkyquToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.shkyquToolStripMenuItem.Text = "&Shkyqu";
             this.shkyquToolStripMenuItem.Click += new System.EventHandler(this.shkyquToolStripMenuItem_Click);
             // 
@@ -108,7 +112,7 @@
             // 
             this.miDalje.Name = "miDalje";
             this.miDalje.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.miDalje.Size = new System.Drawing.Size(142, 22);
+            this.miDalje.Size = new System.Drawing.Size(153, 22);
             this.miDalje.Text = "&Dalje";
             this.miDalje.Click += new System.EventHandler(this.miDalje_Click);
             // 
@@ -124,13 +128,16 @@
             // menaxhoDentistetToolStripMenuItem
             // 
             this.menaxhoDentistetToolStripMenuItem.Name = "menaxhoDentistetToolStripMenuItem";
-            this.menaxhoDentistetToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.menaxhoDentistetToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D)));
+            this.menaxhoDentistetToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
             this.menaxhoDentistetToolStripMenuItem.Text = "Shto nje dentist";
+            this.menaxhoDentistetToolStripMenuItem.Click += new System.EventHandler(this.menaxhoDentistetToolStripMenuItem_Click);
             // 
             // listoDentistetToolStripMenuItem
             // 
             this.listoDentistetToolStripMenuItem.Name = "listoDentistetToolStripMenuItem";
-            this.listoDentistetToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.listoDentistetToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
             this.listoDentistetToolStripMenuItem.Text = "Listo dentistet";
             // 
             // takimetToolStripMenuItem
@@ -145,13 +152,15 @@
             // menaxhoTakimetToolStripMenuItem
             // 
             this.menaxhoTakimetToolStripMenuItem.Name = "menaxhoTakimetToolStripMenuItem";
-            this.menaxhoTakimetToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.menaxhoTakimetToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.T)));
+            this.menaxhoTakimetToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.menaxhoTakimetToolStripMenuItem.Text = "Shto nje takim";
             // 
             // listoTakimetToolStripMenuItem
             // 
             this.listoTakimetToolStripMenuItem.Name = "listoTakimetToolStripMenuItem";
-            this.listoTakimetToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.listoTakimetToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.listoTakimetToolStripMenuItem.Text = "Listo takimet";
             // 
             // raportetToolStripMenuItem
@@ -200,7 +209,7 @@
             // 
             // lblFullName
             // 
-            this.lblFullName.Location = new System.Drawing.Point(12, 137);
+            this.lblFullName.Location = new System.Drawing.Point(16, 144);
             this.lblFullName.Name = "lblFullName";
             this.lblFullName.Size = new System.Drawing.Size(122, 15);
             this.lblFullName.TabIndex = 11;
@@ -209,7 +218,7 @@
             // 
             // lblDataKoha
             // 
-            this.lblDataKoha.Location = new System.Drawing.Point(10, 341);
+            this.lblDataKoha.Location = new System.Drawing.Point(14, 348);
             this.lblDataKoha.Name = "lblDataKoha";
             this.lblDataKoha.Size = new System.Drawing.Size(125, 15);
             this.lblDataKoha.TabIndex = 15;
@@ -219,7 +228,7 @@
             // pctUserProfile
             // 
             this.pctUserProfile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pctUserProfile.Location = new System.Drawing.Point(12, 155);
+            this.pctUserProfile.Location = new System.Drawing.Point(16, 162);
             this.pctUserProfile.Name = "pctUserProfile";
             this.pctUserProfile.Size = new System.Drawing.Size(122, 137);
             this.pctUserProfile.TabIndex = 10;
@@ -227,7 +236,7 @@
             // 
             // lblQasjaEFundit
             // 
-            this.lblQasjaEFundit.Location = new System.Drawing.Point(10, 326);
+            this.lblQasjaEFundit.Location = new System.Drawing.Point(14, 333);
             this.lblQasjaEFundit.Name = "lblQasjaEFundit";
             this.lblQasjaEFundit.Size = new System.Drawing.Size(125, 15);
             this.lblQasjaEFundit.TabIndex = 14;
@@ -237,7 +246,7 @@
             // btnLogOut
             // 
             this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLogOut.Location = new System.Drawing.Point(12, 298);
+            this.btnLogOut.Location = new System.Drawing.Point(80, 305);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(58, 23);
             this.btnLogOut.TabIndex = 12;
@@ -247,25 +256,26 @@
             // btnProfili
             // 
             this.btnProfili.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnProfili.Location = new System.Drawing.Point(76, 298);
+            this.btnProfili.Location = new System.Drawing.Point(17, 301);
             this.btnProfili.Name = "btnProfili";
             this.btnProfili.Size = new System.Drawing.Size(58, 23);
             this.btnProfili.TabIndex = 13;
             this.btnProfili.Text = "Profili";
             this.btnProfili.UseVisualStyleBackColor = true;
+            this.btnProfili.Click += new System.EventHandler(this.btnProfili_Click);
             // 
             // dgvNextAppointments
             // 
             this.dgvNextAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNextAppointments.Location = new System.Drawing.Point(427, 143);
+            this.dgvNextAppointments.Location = new System.Drawing.Point(178, 305);
             this.dgvNextAppointments.Name = "dgvNextAppointments";
-            this.dgvNextAppointments.Size = new System.Drawing.Size(239, 180);
+            this.dgvNextAppointments.Size = new System.Drawing.Size(511, 160);
             this.dgvNextAppointments.TabIndex = 16;
             // 
             // btnListoTakimet
             // 
             this.btnListoTakimet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnListoTakimet.Location = new System.Drawing.Point(427, 331);
+            this.btnListoTakimet.Location = new System.Drawing.Point(178, 473);
             this.btnListoTakimet.Name = "btnListoTakimet";
             this.btnListoTakimet.Size = new System.Drawing.Size(116, 23);
             this.btnListoTakimet.TabIndex = 17;
@@ -275,7 +285,7 @@
             // btnShtoTakim
             // 
             this.btnShtoTakim.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnShtoTakim.Location = new System.Drawing.Point(550, 331);
+            this.btnShtoTakim.Location = new System.Drawing.Point(301, 473);
             this.btnShtoTakim.Name = "btnShtoTakim";
             this.btnShtoTakim.Size = new System.Drawing.Size(116, 23);
             this.btnShtoTakim.TabIndex = 18;
@@ -285,99 +295,104 @@
             // btnListoDentistet
             // 
             this.btnListoDentistet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnListoDentistet.Location = new System.Drawing.Point(174, 329);
+            this.btnListoDentistet.Location = new System.Drawing.Point(402, 256);
             this.btnListoDentistet.Name = "btnListoDentistet";
-            this.btnListoDentistet.Size = new System.Drawing.Size(116, 23);
+            this.btnListoDentistet.Size = new System.Drawing.Size(88, 23);
             this.btnListoDentistet.TabIndex = 20;
             this.btnListoDentistet.Text = "Listo dentistet";
             this.btnListoDentistet.UseVisualStyleBackColor = true;
+            this.btnListoDentistet.Click += new System.EventHandler(this.btnListoDentistet_Click);
             // 
             // btnShtoDentist
             // 
             this.btnShtoDentist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnShtoDentist.Location = new System.Drawing.Point(296, 329);
+            this.btnShtoDentist.Location = new System.Drawing.Point(496, 256);
             this.btnShtoDentist.Name = "btnShtoDentist";
-            this.btnShtoDentist.Size = new System.Drawing.Size(116, 23);
+            this.btnShtoDentist.Size = new System.Drawing.Size(88, 23);
             this.btnShtoDentist.TabIndex = 21;
             this.btnShtoDentist.Text = "Shto dentist";
             this.btnShtoDentist.UseVisualStyleBackColor = true;
+            this.btnShtoDentist.Click += new System.EventHandler(this.btnShtoDentist_Click);
             // 
             // dgvDentistet
             // 
             this.dgvDentistet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDentistet.Location = new System.Drawing.Point(173, 230);
+            this.dgvDentistet.Location = new System.Drawing.Point(402, 144);
             this.dgvDentistet.Name = "dgvDentistet";
-            this.dgvDentistet.Size = new System.Drawing.Size(239, 93);
+            this.dgvDentistet.Size = new System.Drawing.Size(287, 106);
             this.dgvDentistet.TabIndex = 19;
             // 
-            // grbTeDhenaPerSot
+            // grbTeDhena
             // 
-            this.grbTeDhenaPerSot.Controls.Add(this.lblSotPagesat);
-            this.grbTeDhenaPerSot.Controls.Add(this.lblSotDiagnozat);
-            this.grbTeDhenaPerSot.Controls.Add(this.lblSotTakimet);
-            this.grbTeDhenaPerSot.Controls.Add(this.lblFitimi);
-            this.grbTeDhenaPerSot.Controls.Add(this.lblGjithsejDiagnozat);
-            this.grbTeDhenaPerSot.Controls.Add(this.lblGjithsejTakime);
-            this.grbTeDhenaPerSot.Location = new System.Drawing.Point(173, 137);
-            this.grbTeDhenaPerSot.Name = "grbTeDhenaPerSot";
-            this.grbTeDhenaPerSot.Size = new System.Drawing.Size(239, 87);
-            this.grbTeDhenaPerSot.TabIndex = 22;
-            this.grbTeDhenaPerSot.TabStop = false;
-            this.grbTeDhenaPerSot.Text = "Te dhena per sot";
+            this.grbTeDhena.Controls.Add(this.button1);
+            this.grbTeDhena.Controls.Add(this.label1);
+            this.grbTeDhena.Controls.Add(this.button2);
+            this.grbTeDhena.Controls.Add(this.lblSotPagesat);
+            this.grbTeDhena.Controls.Add(this.lblSotDiagnozat);
+            this.grbTeDhena.Controls.Add(this.lblSotTakimet);
+            this.grbTeDhena.Controls.Add(this.lblFitimiSot);
+            this.grbTeDhena.Controls.Add(this.lblGjithsejDiagnozatSot);
+            this.grbTeDhena.Controls.Add(this.lblGjithsejTakimeSot);
+            this.grbTeDhena.Location = new System.Drawing.Point(177, 144);
+            this.grbTeDhena.Name = "grbTeDhena";
+            this.grbTeDhena.Size = new System.Drawing.Size(206, 135);
+            this.grbTeDhena.TabIndex = 22;
+            this.grbTeDhena.TabStop = false;
+            this.grbTeDhena.Text = "Te dhena";
             // 
             // lblSotPagesat
             // 
-            this.lblSotPagesat.Location = new System.Drawing.Point(137, 64);
+            this.lblSotPagesat.Location = new System.Drawing.Point(138, 64);
             this.lblSotPagesat.Name = "lblSotPagesat";
-            this.lblSotPagesat.Size = new System.Drawing.Size(96, 13);
+            this.lblSotPagesat.Size = new System.Drawing.Size(55, 13);
             this.lblSotPagesat.TabIndex = 5;
             this.lblSotPagesat.Text = "12346";
             this.lblSotPagesat.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblSotDiagnozat
             // 
-            this.lblSotDiagnozat.Location = new System.Drawing.Point(137, 43);
+            this.lblSotDiagnozat.Location = new System.Drawing.Point(138, 43);
             this.lblSotDiagnozat.Name = "lblSotDiagnozat";
-            this.lblSotDiagnozat.Size = new System.Drawing.Size(96, 13);
+            this.lblSotDiagnozat.Size = new System.Drawing.Size(55, 13);
             this.lblSotDiagnozat.TabIndex = 4;
             this.lblSotDiagnozat.Text = "12346";
             this.lblSotDiagnozat.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblSotTakimet
             // 
-            this.lblSotTakimet.Location = new System.Drawing.Point(137, 22);
+            this.lblSotTakimet.Location = new System.Drawing.Point(138, 22);
             this.lblSotTakimet.Name = "lblSotTakimet";
-            this.lblSotTakimet.Size = new System.Drawing.Size(96, 13);
+            this.lblSotTakimet.Size = new System.Drawing.Size(55, 13);
             this.lblSotTakimet.TabIndex = 3;
             this.lblSotTakimet.Text = "12346";
             this.lblSotTakimet.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // lblFitimi
+            // lblFitimiSot
             // 
-            this.lblFitimi.AutoSize = true;
-            this.lblFitimi.Location = new System.Drawing.Point(9, 64);
-            this.lblFitimi.Name = "lblFitimi";
-            this.lblFitimi.Size = new System.Drawing.Size(93, 13);
-            this.lblFitimi.TabIndex = 2;
-            this.lblFitimi.Text = "Pagesat (ne vlere)";
+            this.lblFitimiSot.AutoSize = true;
+            this.lblFitimiSot.Location = new System.Drawing.Point(10, 64);
+            this.lblFitimiSot.Name = "lblFitimiSot";
+            this.lblFitimiSot.Size = new System.Drawing.Size(110, 13);
+            this.lblFitimiSot.TabIndex = 2;
+            this.lblFitimiSot.Text = "Pagesat (ne vlere) sot";
             // 
-            // lblGjithsejDiagnozat
+            // lblGjithsejDiagnozatSot
             // 
-            this.lblGjithsejDiagnozat.AutoSize = true;
-            this.lblGjithsejDiagnozat.Location = new System.Drawing.Point(9, 43);
-            this.lblGjithsejDiagnozat.Name = "lblGjithsejDiagnozat";
-            this.lblGjithsejDiagnozat.Size = new System.Drawing.Size(90, 13);
-            this.lblGjithsejDiagnozat.TabIndex = 1;
-            this.lblGjithsejDiagnozat.Text = "Gjithsej diagnozat";
+            this.lblGjithsejDiagnozatSot.AutoSize = true;
+            this.lblGjithsejDiagnozatSot.Location = new System.Drawing.Point(10, 43);
+            this.lblGjithsejDiagnozatSot.Name = "lblGjithsejDiagnozatSot";
+            this.lblGjithsejDiagnozatSot.Size = new System.Drawing.Size(107, 13);
+            this.lblGjithsejDiagnozatSot.TabIndex = 1;
+            this.lblGjithsejDiagnozatSot.Text = "Gjithsej diagnozat sot";
             // 
-            // lblGjithsejTakime
+            // lblGjithsejTakimeSot
             // 
-            this.lblGjithsejTakime.AutoSize = true;
-            this.lblGjithsejTakime.Location = new System.Drawing.Point(9, 22);
-            this.lblGjithsejTakime.Name = "lblGjithsejTakime";
-            this.lblGjithsejTakime.Size = new System.Drawing.Size(78, 13);
-            this.lblGjithsejTakime.TabIndex = 0;
-            this.lblGjithsejTakime.Text = "Gjithsej takimet";
+            this.lblGjithsejTakimeSot.AutoSize = true;
+            this.lblGjithsejTakimeSot.Location = new System.Drawing.Point(10, 22);
+            this.lblGjithsejTakimeSot.Name = "lblGjithsejTakimeSot";
+            this.lblGjithsejTakimeSot.Size = new System.Drawing.Size(95, 13);
+            this.lblGjithsejTakimeSot.TabIndex = 0;
+            this.lblGjithsejTakimeSot.Text = "Gjithsej takimet sot";
             // 
             // pctHeader
             // 
@@ -387,26 +402,54 @@
             this.pctHeader.Image = global::DentalSoft.Properties.Resources.Logo;
             this.pctHeader.Location = new System.Drawing.Point(0, 24);
             this.pctHeader.Name = "pctHeader";
-            this.pctHeader.Size = new System.Drawing.Size(680, 102);
+            this.pctHeader.Size = new System.Drawing.Size(706, 102);
             this.pctHeader.TabIndex = 24;
             this.pctHeader.TabStop = false;
             // 
             // lblVerticalDivider
             // 
             this.lblVerticalDivider.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblVerticalDivider.Location = new System.Drawing.Point(152, 137);
+            this.lblVerticalDivider.Location = new System.Drawing.Point(156, 144);
             this.lblVerticalDivider.Name = "lblVerticalDivider";
-            this.lblVerticalDivider.Size = new System.Drawing.Size(2, 219);
+            this.lblVerticalDivider.Size = new System.Drawing.Size(2, 350);
             this.lblVerticalDivider.TabIndex = 25;
+            // 
+            // label1
+            // 
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Location = new System.Drawing.Point(13, 87);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(178, 2);
+            this.label1.TabIndex = 26;
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(95, 99);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(96, 23);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Listo diagnozat";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Location = new System.Drawing.Point(13, 99);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(76, 23);
+            this.button2.TabIndex = 27;
+            this.button2.Text = "Statistika";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(680, 368);
+            this.ClientSize = new System.Drawing.Size(706, 631);
             this.Controls.Add(this.lblVerticalDivider);
             this.Controls.Add(this.pctHeader);
-            this.Controls.Add(this.grbTeDhenaPerSot);
+            this.Controls.Add(this.grbTeDhena);
             this.Controls.Add(this.btnListoDentistet);
             this.Controls.Add(this.btnShtoDentist);
             this.Controls.Add(this.dgvDentistet);
@@ -432,8 +475,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pctUserProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNextAppointments)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDentistet)).EndInit();
-            this.grbTeDhenaPerSot.ResumeLayout(false);
-            this.grbTeDhenaPerSot.PerformLayout();
+            this.grbTeDhena.ResumeLayout(false);
+            this.grbTeDhena.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctHeader)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -470,14 +513,17 @@
         private System.Windows.Forms.Button btnListoDentistet;
         private System.Windows.Forms.Button btnShtoDentist;
         private System.Windows.Forms.DataGridView dgvDentistet;
-        private System.Windows.Forms.GroupBox grbTeDhenaPerSot;
-        private System.Windows.Forms.Label lblFitimi;
-        private System.Windows.Forms.Label lblGjithsejDiagnozat;
-        private System.Windows.Forms.Label lblGjithsejTakime;
+        private System.Windows.Forms.GroupBox grbTeDhena;
+        private System.Windows.Forms.Label lblFitimiSot;
+        private System.Windows.Forms.Label lblGjithsejDiagnozatSot;
+        private System.Windows.Forms.Label lblGjithsejTakimeSot;
         private System.Windows.Forms.PictureBox pctHeader;
         private System.Windows.Forms.Label lblSotPagesat;
         private System.Windows.Forms.Label lblSotDiagnozat;
         private System.Windows.Forms.Label lblSotTakimet;
         private System.Windows.Forms.Label lblVerticalDivider;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button2;
     }
 }
