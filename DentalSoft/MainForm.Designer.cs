@@ -58,6 +58,9 @@
             this.btnShtoDentist = new System.Windows.Forms.Button();
             this.dgvDentistet = new System.Windows.Forms.DataGridView();
             this.grbTeDhena = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.lblSotPagesat = new System.Windows.Forms.Label();
             this.lblSotDiagnozat = new System.Windows.Forms.Label();
             this.lblSotTakimet = new System.Windows.Forms.Label();
@@ -66,15 +69,16 @@
             this.lblGjithsejTakimeSot = new System.Windows.Forms.Label();
             this.pctHeader = new System.Windows.Forms.PictureBox();
             this.lblVerticalDivider = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.grbTakimet = new System.Windows.Forms.GroupBox();
+            this.grbDentistet = new System.Windows.Forms.GroupBox();
             this.menuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctUserProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNextAppointments)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDentistet)).BeginInit();
             this.grbTeDhena.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctHeader)).BeginInit();
+            this.grbTakimet.SuspendLayout();
+            this.grbDentistet.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuMain
@@ -256,7 +260,7 @@
             // btnProfili
             // 
             this.btnProfili.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnProfili.Location = new System.Drawing.Point(17, 301);
+            this.btnProfili.Location = new System.Drawing.Point(16, 305);
             this.btnProfili.Name = "btnProfili";
             this.btnProfili.Size = new System.Drawing.Size(58, 23);
             this.btnProfili.TabIndex = 13;
@@ -267,35 +271,37 @@
             // dgvNextAppointments
             // 
             this.dgvNextAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNextAppointments.Location = new System.Drawing.Point(178, 305);
+            this.dgvNextAppointments.Location = new System.Drawing.Point(13, 19);
             this.dgvNextAppointments.Name = "dgvNextAppointments";
-            this.dgvNextAppointments.Size = new System.Drawing.Size(511, 160);
+            this.dgvNextAppointments.Size = new System.Drawing.Size(485, 132);
             this.dgvNextAppointments.TabIndex = 16;
             // 
             // btnListoTakimet
             // 
             this.btnListoTakimet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnListoTakimet.Location = new System.Drawing.Point(178, 473);
+            this.btnListoTakimet.Location = new System.Drawing.Point(13, 161);
             this.btnListoTakimet.Name = "btnListoTakimet";
             this.btnListoTakimet.Size = new System.Drawing.Size(116, 23);
             this.btnListoTakimet.TabIndex = 17;
             this.btnListoTakimet.Text = "Listo takimet";
             this.btnListoTakimet.UseVisualStyleBackColor = true;
+            this.btnListoTakimet.Click += new System.EventHandler(this.btnListoTakimet_Click);
             // 
             // btnShtoTakim
             // 
             this.btnShtoTakim.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnShtoTakim.Location = new System.Drawing.Point(301, 473);
+            this.btnShtoTakim.Location = new System.Drawing.Point(136, 161);
             this.btnShtoTakim.Name = "btnShtoTakim";
             this.btnShtoTakim.Size = new System.Drawing.Size(116, 23);
             this.btnShtoTakim.TabIndex = 18;
             this.btnShtoTakim.Text = "Shto takim";
             this.btnShtoTakim.UseVisualStyleBackColor = true;
+            this.btnShtoTakim.Click += new System.EventHandler(this.btnShtoTakim_Click);
             // 
             // btnListoDentistet
             // 
             this.btnListoDentistet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnListoDentistet.Location = new System.Drawing.Point(402, 256);
+            this.btnListoDentistet.Location = new System.Drawing.Point(12, 99);
             this.btnListoDentistet.Name = "btnListoDentistet";
             this.btnListoDentistet.Size = new System.Drawing.Size(88, 23);
             this.btnListoDentistet.TabIndex = 20;
@@ -306,7 +312,7 @@
             // btnShtoDentist
             // 
             this.btnShtoDentist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnShtoDentist.Location = new System.Drawing.Point(496, 256);
+            this.btnShtoDentist.Location = new System.Drawing.Point(106, 99);
             this.btnShtoDentist.Name = "btnShtoDentist";
             this.btnShtoDentist.Size = new System.Drawing.Size(88, 23);
             this.btnShtoDentist.TabIndex = 21;
@@ -317,9 +323,9 @@
             // dgvDentistet
             // 
             this.dgvDentistet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDentistet.Location = new System.Drawing.Point(402, 144);
+            this.dgvDentistet.Location = new System.Drawing.Point(12, 21);
             this.dgvDentistet.Name = "dgvDentistet";
-            this.dgvDentistet.Size = new System.Drawing.Size(287, 106);
+            this.dgvDentistet.Size = new System.Drawing.Size(264, 69);
             this.dgvDentistet.TabIndex = 19;
             // 
             // grbTeDhena
@@ -339,6 +345,34 @@
             this.grbTeDhena.TabIndex = 22;
             this.grbTeDhena.TabStop = false;
             this.grbTeDhena.Text = "Te dhena";
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(95, 99);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(96, 23);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Listo diagnozat";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Location = new System.Drawing.Point(13, 87);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(178, 2);
+            this.label1.TabIndex = 26;
+            // 
+            // button2
+            // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Location = new System.Drawing.Point(13, 99);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(76, 23);
+            this.button2.TabIndex = 27;
+            this.button2.Text = "Statistika";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // lblSotPagesat
             // 
@@ -409,53 +443,45 @@
             // lblVerticalDivider
             // 
             this.lblVerticalDivider.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblVerticalDivider.Location = new System.Drawing.Point(156, 144);
+            this.lblVerticalDivider.Location = new System.Drawing.Point(157, 148);
             this.lblVerticalDivider.Name = "lblVerticalDivider";
-            this.lblVerticalDivider.Size = new System.Drawing.Size(2, 350);
+            this.lblVerticalDivider.Size = new System.Drawing.Size(2, 335);
             this.lblVerticalDivider.TabIndex = 25;
             // 
-            // label1
+            // grbTakimet
             // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(13, 87);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 2);
-            this.label1.TabIndex = 26;
+            this.grbTakimet.Controls.Add(this.dgvNextAppointments);
+            this.grbTakimet.Controls.Add(this.btnShtoTakim);
+            this.grbTakimet.Controls.Add(this.btnListoTakimet);
+            this.grbTakimet.Location = new System.Drawing.Point(177, 287);
+            this.grbTakimet.Name = "grbTakimet";
+            this.grbTakimet.Size = new System.Drawing.Size(512, 199);
+            this.grbTakimet.TabIndex = 28;
+            this.grbTakimet.TabStop = false;
+            this.grbTakimet.Text = "Takimet";
             // 
-            // button1
+            // grbDentistet
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(95, 99);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 23);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "Listo diagnozat";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(13, 99);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(76, 23);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "Statistika";
-            this.button2.UseVisualStyleBackColor = true;
+            this.grbDentistet.Controls.Add(this.btnShtoDentist);
+            this.grbDentistet.Controls.Add(this.dgvDentistet);
+            this.grbDentistet.Controls.Add(this.btnListoDentistet);
+            this.grbDentistet.Location = new System.Drawing.Point(401, 144);
+            this.grbDentistet.Name = "grbDentistet";
+            this.grbDentistet.Size = new System.Drawing.Size(288, 135);
+            this.grbDentistet.TabIndex = 28;
+            this.grbDentistet.TabStop = false;
+            this.grbDentistet.Text = "Dentistet";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(706, 631);
+            this.ClientSize = new System.Drawing.Size(706, 502);
+            this.Controls.Add(this.grbDentistet);
+            this.Controls.Add(this.grbTakimet);
             this.Controls.Add(this.lblVerticalDivider);
             this.Controls.Add(this.pctHeader);
             this.Controls.Add(this.grbTeDhena);
-            this.Controls.Add(this.btnListoDentistet);
-            this.Controls.Add(this.btnShtoDentist);
-            this.Controls.Add(this.dgvDentistet);
-            this.Controls.Add(this.btnListoTakimet);
-            this.Controls.Add(this.btnShtoTakim);
-            this.Controls.Add(this.dgvNextAppointments);
             this.Controls.Add(this.lblFullName);
             this.Controls.Add(this.lblDataKoha);
             this.Controls.Add(this.pctUserProfile);
@@ -478,6 +504,8 @@
             this.grbTeDhena.ResumeLayout(false);
             this.grbTeDhena.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctHeader)).EndInit();
+            this.grbTakimet.ResumeLayout(false);
+            this.grbDentistet.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -525,5 +553,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox grbTakimet;
+        private System.Windows.Forms.GroupBox grbDentistet;
     }
 }

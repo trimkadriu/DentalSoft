@@ -58,5 +58,15 @@ namespace DentalSoft
             frmAddDentist addDentistForm = new frmAddDentist();
             addDentistForm.ShowDialog();
         }
+
+        private void btnShtoTakim_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnListoTakimet_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
