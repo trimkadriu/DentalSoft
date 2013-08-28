@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DentalSoft
 {
-    public partial class AddAppointmentForm : Form
+    public partial class frmAddAppointment : Form
     {
-        public AddAppointmentForm()
+        public frmAddAppointment()
         {
             InitializeComponent();
         }

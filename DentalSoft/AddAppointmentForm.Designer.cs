@@ -1,6 +1,6 @@
 ﻿namespace DentalSoft
 {
-    partial class AddAppointmentForm
+    partial class frmAddAppointment
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddAppointment));
             this.txtRishkruajFjalekalimin = new System.Windows.Forms.TextBox();
             this.lblRishkruajFjalekalimin = new System.Windows.Forms.Label();
             this.txtFjalekalimi = new System.Windows.Forms.TextBox();
@@ -43,7 +44,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -185,7 +185,7 @@
             this.label3.TabIndex = 31;
             this.label3.Text = "Koha e takimit";
             // 
-            // AddAppointmentForm
+            // frmAddAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -206,8 +206,11 @@
             this.Controls.Add(this.lblEmriPacientit);
             this.Controls.Add(this.btnAnulo);
             this.Controls.Add(this.btnShtoDentist);
-            this.Name = "AddAppointmentForm";
-            this.Text = "AddAppointment";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "frmAddAppointment";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Shto takim";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,7 +233,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label label3;
     }
 }
