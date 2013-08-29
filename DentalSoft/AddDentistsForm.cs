@@ -16,5 +16,10 @@ namespace DentalSoft
         {
             InitializeComponent();
         }
+
+        private void btnShfletoFoto_Click(object sender, EventArgs e)
+        {
+            ofdShfletoFoto.ShowDialog();
+        }
     }
 }

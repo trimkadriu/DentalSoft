@@ -31,17 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.miFillimi = new System.Windows.Forms.ToolStripMenuItem();
-            this.shkyquToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.miShkyqu = new System.Windows.Forms.ToolStripMenuItem();
             this.miDalje = new System.Windows.Forms.ToolStripMenuItem();
-            this.dentistetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menaxhoDentistetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listoDentistetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.miDentistet = new System.Windows.Forms.ToolStripMenuItem();
+            this.miMenaxhoDentistet = new System.Windows.Forms.ToolStripMenuItem();
+            this.miListoDentistet = new System.Windows.Forms.ToolStripMenuItem();
             this.takimetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menaxhoTakimetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listoTakimetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.raportetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gjeneroDiagnozeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listoDiagnozatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRaportet = new System.Windows.Forms.ToolStripMenuItem();
+            this.miGjeneroRaport = new System.Windows.Forms.ToolStripMenuItem();
+            this.miListoRaportet = new System.Windows.Forms.ToolStripMenuItem();
             this.statistikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miNdihma = new System.Windows.Forms.ToolStripMenuItem();
             this.miRrethDentalSoft = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +58,7 @@
             this.btnShtoDentist = new System.Windows.Forms.Button();
             this.dgvDentistet = new System.Windows.Forms.DataGridView();
             this.grbTeDhena = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnListoRaportet = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.lblSotPagesat = new System.Windows.Forms.Label();
@@ -83,14 +83,16 @@
             // 
             // menuMain
             // 
+            this.menuMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miFillimi,
-            this.dentistetToolStripMenuItem,
+            this.miDentistet,
             this.takimetToolStripMenuItem,
-            this.raportetToolStripMenuItem,
+            this.miRaportet,
             this.miNdihma});
             this.menuMain.Location = new System.Drawing.Point(0, 0);
             this.menuMain.Name = "menuMain";
+            this.menuMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.menuMain.Size = new System.Drawing.Size(706, 24);
             this.menuMain.TabIndex = 0;
             this.menuMain.Text = "mainMenu";
@@ -98,19 +100,19 @@
             // miFillimi
             // 
             this.miFillimi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.shkyquToolStripMenuItem,
+            this.miShkyqu,
             this.miDalje});
             this.miFillimi.Name = "miFillimi";
             this.miFillimi.Size = new System.Drawing.Size(51, 20);
             this.miFillimi.Text = "&Fillimi";
             // 
-            // shkyquToolStripMenuItem
+            // miShkyqu
             // 
-            this.shkyquToolStripMenuItem.Name = "shkyquToolStripMenuItem";
-            this.shkyquToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.shkyquToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.shkyquToolStripMenuItem.Text = "&Shkyqu";
-            this.shkyquToolStripMenuItem.Click += new System.EventHandler(this.shkyquToolStripMenuItem_Click);
+            this.miShkyqu.Name = "miShkyqu";
+            this.miShkyqu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.miShkyqu.Size = new System.Drawing.Size(153, 22);
+            this.miShkyqu.Text = "&Shkyqu";
+            this.miShkyqu.Click += new System.EventHandler(this.shkyquToolStripMenuItem_Click);
             // 
             // miDalje
             // 
@@ -120,29 +122,30 @@
             this.miDalje.Text = "&Dalje";
             this.miDalje.Click += new System.EventHandler(this.miDalje_Click);
             // 
-            // dentistetToolStripMenuItem
+            // miDentistet
             // 
-            this.dentistetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menaxhoDentistetToolStripMenuItem,
-            this.listoDentistetToolStripMenuItem});
-            this.dentistetToolStripMenuItem.Name = "dentistetToolStripMenuItem";
-            this.dentistetToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.dentistetToolStripMenuItem.Text = "Dentistet";
+            this.miDentistet.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miMenaxhoDentistet,
+            this.miListoDentistet});
+            this.miDentistet.Name = "miDentistet";
+            this.miDentistet.Size = new System.Drawing.Size(66, 20);
+            this.miDentistet.Text = "Dentistet";
             // 
-            // menaxhoDentistetToolStripMenuItem
+            // miMenaxhoDentistet
             // 
-            this.menaxhoDentistetToolStripMenuItem.Name = "menaxhoDentistetToolStripMenuItem";
-            this.menaxhoDentistetToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            this.miMenaxhoDentistet.Name = "miMenaxhoDentistet";
+            this.miMenaxhoDentistet.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.D)));
-            this.menaxhoDentistetToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
-            this.menaxhoDentistetToolStripMenuItem.Text = "Shto nje dentist";
-            this.menaxhoDentistetToolStripMenuItem.Click += new System.EventHandler(this.menaxhoDentistetToolStripMenuItem_Click);
+            this.miMenaxhoDentistet.Size = new System.Drawing.Size(230, 22);
+            this.miMenaxhoDentistet.Text = "Shto nje dentist";
+            this.miMenaxhoDentistet.Click += new System.EventHandler(this.menaxhoDentistetToolStripMenuItem_Click);
             // 
-            // listoDentistetToolStripMenuItem
+            // miListoDentistet
             // 
-            this.listoDentistetToolStripMenuItem.Name = "listoDentistetToolStripMenuItem";
-            this.listoDentistetToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
-            this.listoDentistetToolStripMenuItem.Text = "Listo dentistet";
+            this.miListoDentistet.Name = "miListoDentistet";
+            this.miListoDentistet.Size = new System.Drawing.Size(230, 22);
+            this.miListoDentistet.Text = "Listo dentistet";
+            this.miListoDentistet.Click += new System.EventHandler(this.listoDentistetToolStripMenuItem_Click);
             // 
             // takimetToolStripMenuItem
             // 
@@ -160,39 +163,47 @@
             | System.Windows.Forms.Keys.T)));
             this.menaxhoTakimetToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.menaxhoTakimetToolStripMenuItem.Text = "Shto nje takim";
+            this.menaxhoTakimetToolStripMenuItem.Click += new System.EventHandler(this.menaxhoTakimetToolStripMenuItem_Click);
             // 
             // listoTakimetToolStripMenuItem
             // 
             this.listoTakimetToolStripMenuItem.Name = "listoTakimetToolStripMenuItem";
             this.listoTakimetToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.listoTakimetToolStripMenuItem.Text = "Listo takimet";
+            this.listoTakimetToolStripMenuItem.Click += new System.EventHandler(this.listoTakimetToolStripMenuItem_Click);
             // 
-            // raportetToolStripMenuItem
+            // miRaportet
             // 
-            this.raportetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gjeneroDiagnozeToolStripMenuItem,
-            this.listoDiagnozatToolStripMenuItem,
+            this.miRaportet.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miGjeneroRaport,
+            this.miListoRaportet,
             this.statistikaToolStripMenuItem});
-            this.raportetToolStripMenuItem.Name = "raportetToolStripMenuItem";
-            this.raportetToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.raportetToolStripMenuItem.Text = "Raportet";
+            this.miRaportet.Name = "miRaportet";
+            this.miRaportet.Size = new System.Drawing.Size(64, 20);
+            this.miRaportet.Text = "Raportet";
             // 
-            // gjeneroDiagnozeToolStripMenuItem
+            // miGjeneroRaport
             // 
-            this.gjeneroDiagnozeToolStripMenuItem.Name = "gjeneroDiagnozeToolStripMenuItem";
-            this.gjeneroDiagnozeToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.gjeneroDiagnozeToolStripMenuItem.Text = "Gjenero diagnoze";
+            this.miGjeneroRaport.Name = "miGjeneroRaport";
+            this.miGjeneroRaport.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.R)));
+            this.miGjeneroRaport.Size = new System.Drawing.Size(223, 22);
+            this.miGjeneroRaport.Text = "Gjenero raport";
+            this.miGjeneroRaport.Click += new System.EventHandler(this.miGjeneroRaport_Click);
             // 
-            // listoDiagnozatToolStripMenuItem
+            // miListoRaportet
             // 
-            this.listoDiagnozatToolStripMenuItem.Name = "listoDiagnozatToolStripMenuItem";
-            this.listoDiagnozatToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.listoDiagnozatToolStripMenuItem.Text = "Listo diagnozat";
+            this.miListoRaportet.Name = "miListoRaportet";
+            this.miListoRaportet.Size = new System.Drawing.Size(223, 22);
+            this.miListoRaportet.Text = "Listo raportet";
+            this.miListoRaportet.Click += new System.EventHandler(this.miListoRaportet_Click);
             // 
             // statistikaToolStripMenuItem
             // 
             this.statistikaToolStripMenuItem.Name = "statistikaToolStripMenuItem";
-            this.statistikaToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.statistikaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.statistikaToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.statistikaToolStripMenuItem.Text = "Statistika";
             // 
             // miNdihma
@@ -256,6 +267,7 @@
             this.btnLogOut.TabIndex = 12;
             this.btnLogOut.Text = "Shkyqu";
             this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // btnProfili
             // 
@@ -330,7 +342,7 @@
             // 
             // grbTeDhena
             // 
-            this.grbTeDhena.Controls.Add(this.button1);
+            this.grbTeDhena.Controls.Add(this.btnListoRaportet);
             this.grbTeDhena.Controls.Add(this.label1);
             this.grbTeDhena.Controls.Add(this.button2);
             this.grbTeDhena.Controls.Add(this.lblSotPagesat);
@@ -346,15 +358,16 @@
             this.grbTeDhena.TabStop = false;
             this.grbTeDhena.Text = "Te dhena";
             // 
-            // button1
+            // btnListoRaportet
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(95, 99);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 23);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "Listo diagnozat";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnListoRaportet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnListoRaportet.Location = new System.Drawing.Point(95, 99);
+            this.btnListoRaportet.Name = "btnListoRaportet";
+            this.btnListoRaportet.Size = new System.Drawing.Size(96, 23);
+            this.btnListoRaportet.TabIndex = 26;
+            this.btnListoRaportet.Text = "Listo raportet";
+            this.btnListoRaportet.UseVisualStyleBackColor = true;
+            this.btnListoRaportet.Click += new System.EventHandler(this.btnListoRaportet_Click);
             // 
             // label1
             // 
@@ -495,7 +508,7 @@
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Fillimi";
+            this.Text = "DentalSoft - Fillimi";
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctUserProfile)).EndInit();
@@ -518,23 +531,23 @@
         private System.Windows.Forms.ToolStripMenuItem miDalje;
         private System.Windows.Forms.ToolStripMenuItem miNdihma;
         private System.Windows.Forms.ToolStripMenuItem miRrethDentalSoft;
-        private System.Windows.Forms.ToolStripMenuItem shkyquToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem miShkyqu;
         private System.Windows.Forms.Label lblFullName;
         private System.Windows.Forms.Label lblDataKoha;
         private System.Windows.Forms.PictureBox pctUserProfile;
         private System.Windows.Forms.Label lblQasjaEFundit;
         private System.Windows.Forms.Button btnLogOut;
         private System.Windows.Forms.Button btnProfili;
-        private System.Windows.Forms.ToolStripMenuItem dentistetToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem menaxhoDentistetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem miDentistet;
+        private System.Windows.Forms.ToolStripMenuItem miMenaxhoDentistet;
         private System.Windows.Forms.ToolStripMenuItem takimetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menaxhoTakimetToolStripMenuItem;
         private System.Windows.Forms.DataGridView dgvNextAppointments;
-        private System.Windows.Forms.ToolStripMenuItem raportetToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gjeneroDiagnozeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem listoDiagnozatToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem miRaportet;
+        private System.Windows.Forms.ToolStripMenuItem miGjeneroRaport;
+        private System.Windows.Forms.ToolStripMenuItem miListoRaportet;
         private System.Windows.Forms.ToolStripMenuItem statistikaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem listoDentistetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem miListoDentistet;
         private System.Windows.Forms.ToolStripMenuItem listoTakimetToolStripMenuItem;
         private System.Windows.Forms.Button btnListoTakimet;
         private System.Windows.Forms.Button btnShtoTakim;
@@ -550,7 +563,7 @@
         private System.Windows.Forms.Label lblSotDiagnozat;
         private System.Windows.Forms.Label lblSotTakimet;
         private System.Windows.Forms.Label lblVerticalDivider;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnListoRaportet;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox grbTakimet;

@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListDentists));
             this.lblTitulli = new System.Windows.Forms.Label();
             this.txtKerkoEmriMbiemri = new System.Windows.Forms.TextBox();
-            this.lblKerkoEmriMbiemri = new System.Windows.Forms.Label();
+            this.lblKerkoEmri = new System.Windows.Forms.Label();
             this.dgvListaEDentisteve = new System.Windows.Forms.DataGridView();
             this.lblHorizontalDivider = new System.Windows.Forms.Label();
             this.btnEdito = new System.Windows.Forms.Button();
@@ -51,19 +51,19 @@
             // 
             // txtKerkoEmriMbiemri
             // 
-            this.txtKerkoEmriMbiemri.Location = new System.Drawing.Point(108, 57);
+            this.txtKerkoEmriMbiemri.Location = new System.Drawing.Point(48, 57);
             this.txtKerkoEmriMbiemri.Name = "txtKerkoEmriMbiemri";
-            this.txtKerkoEmriMbiemri.Size = new System.Drawing.Size(165, 20);
+            this.txtKerkoEmriMbiemri.Size = new System.Drawing.Size(198, 20);
             this.txtKerkoEmriMbiemri.TabIndex = 1;
             // 
-            // lblKerkoEmriMbiemri
+            // lblKerkoEmri
             // 
-            this.lblKerkoEmriMbiemri.AutoSize = true;
-            this.lblKerkoEmriMbiemri.Location = new System.Drawing.Point(12, 60);
-            this.lblKerkoEmriMbiemri.Name = "lblKerkoEmriMbiemri";
-            this.lblKerkoEmriMbiemri.Size = new System.Drawing.Size(90, 13);
-            this.lblKerkoEmriMbiemri.TabIndex = 2;
-            this.lblKerkoEmriMbiemri.Text = "Emri dhe Mbiemri:";
+            this.lblKerkoEmri.AutoSize = true;
+            this.lblKerkoEmri.Location = new System.Drawing.Point(12, 60);
+            this.lblKerkoEmri.Name = "lblKerkoEmri";
+            this.lblKerkoEmri.Size = new System.Drawing.Size(30, 13);
+            this.lblKerkoEmri.TabIndex = 2;
+            this.lblKerkoEmri.Text = "Emri:";
             // 
             // dgvListaEDentisteve
             // 
@@ -124,7 +124,7 @@
             this.Controls.Add(this.btnEdito);
             this.Controls.Add(this.lblHorizontalDivider);
             this.Controls.Add(this.dgvListaEDentisteve);
-            this.Controls.Add(this.lblKerkoEmriMbiemri);
+            this.Controls.Add(this.lblKerkoEmri);
             this.Controls.Add(this.txtKerkoEmriMbiemri);
             this.Controls.Add(this.lblTitulli);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -143,7 +143,7 @@
 
         private System.Windows.Forms.Label lblTitulli;
         private System.Windows.Forms.TextBox txtKerkoEmriMbiemri;
-        private System.Windows.Forms.Label lblKerkoEmriMbiemri;
+        private System.Windows.Forms.Label lblKerkoEmri;
         private System.Windows.Forms.DataGridView dgvListaEDentisteve;
         private System.Windows.Forms.Label lblHorizontalDivider;
         private System.Windows.Forms.Button btnEdito;

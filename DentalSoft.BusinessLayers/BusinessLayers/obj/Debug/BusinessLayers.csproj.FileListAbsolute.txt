@@ -1,1 +1,2 @@
 C:\DentalSoft\DentalSoft.BusinessLayers\BusinessLayers\obj\Debug\BusinessLayers.csprojResolveAssemblyReference.cache
+D:\My Documents\Trimi\dentalsoft\DentalSoft.BusinessLayers\BusinessLayers\obj\Debug\BusinessLayers.csprojResolveAssemblyReference.cache

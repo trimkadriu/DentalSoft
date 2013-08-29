@@ -85,11 +85,29 @@
     <Compile Include="AddDentistsForm.Designer.cs">
       <DependentUpon>AddDentistsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GenerateReportsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerateReportsForm.Designer.cs">
+      <DependentUpon>GenerateReportsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListAppointmentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListAppointmentsForm.Designer.cs">
+      <DependentUpon>ListAppointmentsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListDentists.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ListDentists.Designer.cs">
       <DependentUpon>ListDentists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListReportsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListReportsForm.Designer.cs">
+      <DependentUpon>ListReportsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -115,8 +133,17 @@
     <EmbeddedResource Include="AddDentistsForm.resx">
       <DependentUpon>AddDentistsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GenerateReportsForm.resx">
+      <DependentUpon>GenerateReportsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListAppointmentsForm.resx">
+      <DependentUpon>ListAppointmentsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ListDentists.resx">
       <DependentUpon>ListDentists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListReportsForm.resx">
+      <DependentUpon>ListReportsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -172,6 +199,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Logo-Vertical.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dhembet-lart.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dhembet-poshte.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
