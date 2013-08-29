@@ -1,0 +1,5 @@
+CREATE DATABASE dentalsoft CHARACTER SET utf8 COLLATE utf8_bin;
+
+CREATE USER 'dentalsoft'@'localhost' IDENTIFIED BY PASSWORD 'dentalsoft';
+
+GRANT ALL PRIVILEGES ON *.* TO 'dentalsoft'@'localhost' WITH GRANT OPTION; 

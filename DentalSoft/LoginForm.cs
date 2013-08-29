@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dentalsoft.Repositories;
 
 namespace DentalSoft
 {
@@ -23,6 +24,8 @@ namespace DentalSoft
         private void btnLogin_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
+            Connection conn = new Connection();
+            
             this.Close();
         }
 
