@@ -23,3 +23,20 @@ D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.csproj.GenerateResou
 D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.frmAddDentist.resources
 D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.frmListDentists.resources
 D:\Projects\Trim\dentalsoft\DentalSoft\obj\Debug\DentalSoft.AddAppointmentForm.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft\bin\Debug\DentalSoft.exe.config
+D:\My Documents\Trimi\dentalsoft\DentalSoft\obj\Debug\DentalSoft.exe
+D:\My Documents\Trimi\dentalsoft\DentalSoft\obj\Debug\DentalSoft.pdb
+D:\My Documents\Trimi\dentalsoft\DentalSoft\bin\Debug\DentalSoft.exe
+D:\My Documents\Trimi\dentalsoft\DentalSoft\bin\Debug\DentalSoft.pdb
+D:\My Documents\Trimi\dentalsoft\DentalSoft\obj\Debug\DentalSoft.csprojResolveAssemblyReference.cache
+D:\My Documents\Trimi\dentalsoft\DentalSoft\obj\Debug\DentalSoft.frmAbout.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft\obj\Debug\DentalSoft.frmAddAppointment.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft\obj\Debug\DentalSoft.frmAddDentist.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft\obj\Debug\DentalSoft.frmListDentists.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft\obj\Debug\DentalSoft.frmLogin.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft\obj\Debug\DentalSoft.frmMain.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft\obj\Debug\DentalSoft.Properties.Resources.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft\obj\Debug\DentalSoft.csproj.GenerateResource.Cache
+D:\My Documents\Trimi\dentalsoft\DentalSoft\obj\Debug\DentalSoft.frmListAppointments.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft\obj\Debug\DentalSoft.frmGenerateReport.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft\obj\Debug\DentalSoft.frmListReports.resources

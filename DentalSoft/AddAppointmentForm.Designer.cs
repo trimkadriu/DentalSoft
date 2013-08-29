@@ -29,85 +29,89 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddAppointment));
-            this.txtRishkruajFjalekalimin = new System.Windows.Forms.TextBox();
-            this.lblRishkruajFjalekalimin = new System.Windows.Forms.Label();
-            this.txtFjalekalimi = new System.Windows.Forms.TextBox();
-            this.txtPerdoruesi = new System.Windows.Forms.TextBox();
-            this.lblFjalekalimi = new System.Windows.Forms.Label();
-            this.lblPerdoruesi = new System.Windows.Forms.Label();
+            this.lblMosha = new System.Windows.Forms.Label();
+            this.txtTelefoni = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblTelefoni = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
             this.txtEmriPacientit = new System.Windows.Forms.TextBox();
             this.lblEmriPacientit = new System.Windows.Forms.Label();
             this.btnAnulo = new System.Windows.Forms.Button();
-            this.btnShtoDentist = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
+            this.btnShtoTakim = new System.Windows.Forms.Button();
+            this.txtProblemi = new System.Windows.Forms.TextBox();
+            this.lblProblemi = new System.Windows.Forms.Label();
+            this.txtKomenti = new System.Windows.Forms.TextBox();
+            this.lblKomenti = new System.Windows.Forms.Label();
+            this.dtpDataETakimit = new System.Windows.Forms.DateTimePicker();
+            this.lblKohaETakimit = new System.Windows.Forms.Label();
+            this.lblKohezgjatjaETakimit = new System.Windows.Forms.Label();
+            this.nudKohezgjatjaETakimit = new System.Windows.Forms.NumericUpDown();
+            this.lblMinNjehsia = new System.Windows.Forms.Label();
+            this.pcbDhembetSiper = new System.Windows.Forms.PictureBox();
+            this.pcbDhembetPoshte = new System.Windows.Forms.PictureBox();
+            this.lblTitullDhembetSiper = new System.Windows.Forms.Label();
+            this.lblTitullDhembetPoshte = new System.Windows.Forms.Label();
+            this.lblHorizontalDivider = new System.Windows.Forms.Label();
+            this.nudMosha = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.nudKohezgjatjaETakimit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbDhembetSiper)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbDhembetPoshte)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMosha)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtRishkruajFjalekalimin
+            // lblMosha
             // 
-            this.txtRishkruajFjalekalimin.Location = new System.Drawing.Point(126, 41);
-            this.txtRishkruajFjalekalimin.Name = "txtRishkruajFjalekalimin";
-            this.txtRishkruajFjalekalimin.Size = new System.Drawing.Size(201, 20);
-            this.txtRishkruajFjalekalimin.TabIndex = 25;
-            this.txtRishkruajFjalekalimin.UseSystemPasswordChar = true;
+            this.lblMosha.AutoSize = true;
+            this.lblMosha.Location = new System.Drawing.Point(12, 203);
+            this.lblMosha.Name = "lblMosha";
+            this.lblMosha.Size = new System.Drawing.Size(39, 13);
+            this.lblMosha.TabIndex = 24;
+            this.lblMosha.Text = "Mosha";
             // 
-            // lblRishkruajFjalekalimin
+            // txtTelefoni
             // 
-            this.lblRishkruajFjalekalimin.AutoSize = true;
-            this.lblRishkruajFjalekalimin.Location = new System.Drawing.Point(13, 44);
-            this.lblRishkruajFjalekalimin.Name = "lblRishkruajFjalekalimin";
-            this.lblRishkruajFjalekalimin.Size = new System.Drawing.Size(98, 13);
-            this.lblRishkruajFjalekalimin.TabIndex = 24;
-            this.lblRishkruajFjalekalimin.Text = "Numri Personal (ID)";
+            this.txtTelefoni.Location = new System.Drawing.Point(126, 258);
+            this.txtTelefoni.Name = "txtTelefoni";
+            this.txtTelefoni.Size = new System.Drawing.Size(239, 20);
+            this.txtTelefoni.TabIndex = 23;
+            this.txtTelefoni.UseSystemPasswordChar = true;
             // 
-            // txtFjalekalimi
+            // txtEmail
             // 
-            this.txtFjalekalimi.Location = new System.Drawing.Point(126, 98);
-            this.txtFjalekalimi.Name = "txtFjalekalimi";
-            this.txtFjalekalimi.Size = new System.Drawing.Size(201, 20);
-            this.txtFjalekalimi.TabIndex = 23;
-            this.txtFjalekalimi.UseSystemPasswordChar = true;
+            this.txtEmail.Location = new System.Drawing.Point(126, 229);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(239, 20);
+            this.txtEmail.TabIndex = 22;
             // 
-            // txtPerdoruesi
+            // lblTelefoni
             // 
-            this.txtPerdoruesi.Location = new System.Drawing.Point(126, 72);
-            this.txtPerdoruesi.Name = "txtPerdoruesi";
-            this.txtPerdoruesi.Size = new System.Drawing.Size(201, 20);
-            this.txtPerdoruesi.TabIndex = 22;
+            this.lblTelefoni.AutoSize = true;
+            this.lblTelefoni.Location = new System.Drawing.Point(12, 261);
+            this.lblTelefoni.Name = "lblTelefoni";
+            this.lblTelefoni.Size = new System.Drawing.Size(45, 13);
+            this.lblTelefoni.TabIndex = 21;
+            this.lblTelefoni.Text = "Telefoni";
             // 
-            // lblFjalekalimi
+            // lblEmail
             // 
-            this.lblFjalekalimi.AutoSize = true;
-            this.lblFjalekalimi.Location = new System.Drawing.Point(13, 98);
-            this.lblFjalekalimi.Name = "lblFjalekalimi";
-            this.lblFjalekalimi.Size = new System.Drawing.Size(45, 13);
-            this.lblFjalekalimi.TabIndex = 21;
-            this.lblFjalekalimi.Text = "Telefoni";
-            // 
-            // lblPerdoruesi
-            // 
-            this.lblPerdoruesi.AutoSize = true;
-            this.lblPerdoruesi.Location = new System.Drawing.Point(13, 72);
-            this.lblPerdoruesi.Name = "lblPerdoruesi";
-            this.lblPerdoruesi.Size = new System.Drawing.Size(35, 13);
-            this.lblPerdoruesi.TabIndex = 20;
-            this.lblPerdoruesi.Text = "E-mail";
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(12, 232);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(35, 13);
+            this.lblEmail.TabIndex = 20;
+            this.lblEmail.Text = "E-mail";
             // 
             // txtEmriPacientit
             // 
-            this.txtEmriPacientit.Location = new System.Drawing.Point(126, 15);
+            this.txtEmriPacientit.Location = new System.Drawing.Point(126, 171);
             this.txtEmriPacientit.Name = "txtEmriPacientit";
-            this.txtEmriPacientit.Size = new System.Drawing.Size(201, 20);
+            this.txtEmriPacientit.Size = new System.Drawing.Size(239, 20);
             this.txtEmriPacientit.TabIndex = 18;
             // 
             // lblEmriPacientit
             // 
             this.lblEmriPacientit.AutoSize = true;
-            this.lblEmriPacientit.Location = new System.Drawing.Point(13, 18);
+            this.lblEmriPacientit.Location = new System.Drawing.Point(12, 174);
             this.lblEmriPacientit.Name = "lblEmriPacientit";
             this.lblEmriPacientit.Size = new System.Drawing.Size(75, 13);
             this.lblEmriPacientit.TabIndex = 16;
@@ -117,100 +121,230 @@
             // 
             this.btnAnulo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAnulo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAnulo.Location = new System.Drawing.Point(161, 387);
+            this.btnAnulo.Location = new System.Drawing.Point(580, 373);
             this.btnAnulo.Name = "btnAnulo";
             this.btnAnulo.Size = new System.Drawing.Size(75, 23);
             this.btnAnulo.TabIndex = 15;
             this.btnAnulo.Text = "Anulo";
             this.btnAnulo.UseVisualStyleBackColor = true;
+            this.btnAnulo.Click += new System.EventHandler(this.btnAnulo_Click);
             // 
-            // btnShtoDentist
+            // btnShtoTakim
             // 
-            this.btnShtoDentist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnShtoDentist.Location = new System.Drawing.Point(242, 387);
-            this.btnShtoDentist.Name = "btnShtoDentist";
-            this.btnShtoDentist.Size = new System.Drawing.Size(75, 23);
-            this.btnShtoDentist.TabIndex = 14;
-            this.btnShtoDentist.Text = "Shto dentist";
-            this.btnShtoDentist.UseVisualStyleBackColor = true;
+            this.btnShtoTakim.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnShtoTakim.Location = new System.Drawing.Point(661, 373);
+            this.btnShtoTakim.Name = "btnShtoTakim";
+            this.btnShtoTakim.Size = new System.Drawing.Size(75, 23);
+            this.btnShtoTakim.TabIndex = 14;
+            this.btnShtoTakim.Text = "Shto takim";
+            this.btnShtoTakim.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtProblemi
             // 
-            this.textBox1.Location = new System.Drawing.Point(126, 124);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(201, 70);
-            this.textBox1.TabIndex = 27;
-            this.textBox1.UseSystemPasswordChar = true;
+            this.txtProblemi.Location = new System.Drawing.Point(497, 171);
+            this.txtProblemi.Multiline = true;
+            this.txtProblemi.Name = "txtProblemi";
+            this.txtProblemi.Size = new System.Drawing.Size(239, 70);
+            this.txtProblemi.TabIndex = 27;
+            this.txtProblemi.UseSystemPasswordChar = true;
             // 
-            // label1
+            // lblProblemi
             // 
-            this.label1.Location = new System.Drawing.Point(13, 127);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 67);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "Problemi\r\n(pershkruaj problemin dental)";
+            this.lblProblemi.Location = new System.Drawing.Point(381, 174);
+            this.lblProblemi.Name = "lblProblemi";
+            this.lblProblemi.Size = new System.Drawing.Size(107, 67);
+            this.lblProblemi.TabIndex = 26;
+            this.lblProblemi.Text = "Problemi\r\n(pershkruaj problemin dental)";
             // 
-            // textBox2
+            // txtKomenti
             // 
-            this.textBox2.Location = new System.Drawing.Point(126, 200);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(201, 90);
-            this.textBox2.TabIndex = 29;
-            this.textBox2.UseSystemPasswordChar = true;
+            this.txtKomenti.Location = new System.Drawing.Point(497, 248);
+            this.txtKomenti.Multiline = true;
+            this.txtKomenti.Name = "txtKomenti";
+            this.txtKomenti.Size = new System.Drawing.Size(239, 90);
+            this.txtKomenti.TabIndex = 29;
+            this.txtKomenti.UseSystemPasswordChar = true;
             // 
-            // label2
+            // lblKomenti
             // 
-            this.label2.Location = new System.Drawing.Point(13, 203);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 87);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "Komenti shtese\r\n(pershkruaj nese keni ndonje semundje tjeter, alergji ose nese je" +
+            this.lblKomenti.Location = new System.Drawing.Point(381, 251);
+            this.lblKomenti.Name = "lblKomenti";
+            this.lblKomenti.Size = new System.Drawing.Size(107, 87);
+            this.lblKomenti.TabIndex = 28;
+            this.lblKomenti.Text = "Komenti shtese\r\n(pershkruaj nese keni ndonje semundje tjeter, alergji ose nese je" +
     "ni duke marre terapi)";
             // 
-            // dateTimePicker1
+            // dtpDataETakimit
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(126, 296);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(201, 20);
-            this.dateTimePicker1.TabIndex = 30;
+            this.dtpDataETakimit.CustomFormat = "dd MMMM yyyy - hh:mm tt";
+            this.dtpDataETakimit.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDataETakimit.Location = new System.Drawing.Point(126, 287);
+            this.dtpDataETakimit.Name = "dtpDataETakimit";
+            this.dtpDataETakimit.Size = new System.Drawing.Size(197, 20);
+            this.dtpDataETakimit.TabIndex = 30;
+            this.dtpDataETakimit.Value = new System.DateTime(2013, 8, 28, 22, 43, 0, 0);
             // 
-            // label3
+            // lblKohaETakimit
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 302);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 13);
-            this.label3.TabIndex = 31;
-            this.label3.Text = "Koha e takimit";
+            this.lblKohaETakimit.AutoSize = true;
+            this.lblKohaETakimit.Location = new System.Drawing.Point(12, 293);
+            this.lblKohaETakimit.Name = "lblKohaETakimit";
+            this.lblKohaETakimit.Size = new System.Drawing.Size(72, 13);
+            this.lblKohaETakimit.TabIndex = 31;
+            this.lblKohaETakimit.Text = "Data e takimit";
+            // 
+            // lblKohezgjatjaETakimit
+            // 
+            this.lblKohezgjatjaETakimit.AutoSize = true;
+            this.lblKohezgjatjaETakimit.Location = new System.Drawing.Point(12, 318);
+            this.lblKohezgjatjaETakimit.Name = "lblKohezgjatjaETakimit";
+            this.lblKohezgjatjaETakimit.Size = new System.Drawing.Size(104, 13);
+            this.lblKohezgjatjaETakimit.TabIndex = 32;
+            this.lblKohezgjatjaETakimit.Text = "Kohezgjatja e takimit";
+            // 
+            // nudKohezgjatjaETakimit
+            // 
+            this.nudKohezgjatjaETakimit.Location = new System.Drawing.Point(126, 316);
+            this.nudKohezgjatjaETakimit.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.nudKohezgjatjaETakimit.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudKohezgjatjaETakimit.Name = "nudKohezgjatjaETakimit";
+            this.nudKohezgjatjaETakimit.Size = new System.Drawing.Size(85, 20);
+            this.nudKohezgjatjaETakimit.TabIndex = 33;
+            this.nudKohezgjatjaETakimit.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // lblMinNjehsia
+            // 
+            this.lblMinNjehsia.AutoSize = true;
+            this.lblMinNjehsia.Location = new System.Drawing.Point(217, 320);
+            this.lblMinNjehsia.Name = "lblMinNjehsia";
+            this.lblMinNjehsia.Size = new System.Drawing.Size(35, 13);
+            this.lblMinNjehsia.TabIndex = 34;
+            this.lblMinNjehsia.Text = "( min )";
+            // 
+            // pcbDhembetSiper
+            // 
+            this.pcbDhembetSiper.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pcbDhembetSiper.Image = global::DentalSoft.Properties.Resources.Dhembet_lart;
+            this.pcbDhembetSiper.Location = new System.Drawing.Point(10, 37);
+            this.pcbDhembetSiper.Name = "pcbDhembetSiper";
+            this.pcbDhembetSiper.Size = new System.Drawing.Size(365, 103);
+            this.pcbDhembetSiper.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbDhembetSiper.TabIndex = 35;
+            this.pcbDhembetSiper.TabStop = false;
+            // 
+            // pcbDhembetPoshte
+            // 
+            this.pcbDhembetPoshte.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pcbDhembetPoshte.Image = global::DentalSoft.Properties.Resources.Dhembet_poshte;
+            this.pcbDhembetPoshte.Location = new System.Drawing.Point(371, 37);
+            this.pcbDhembetPoshte.Name = "pcbDhembetPoshte";
+            this.pcbDhembetPoshte.Size = new System.Drawing.Size(365, 103);
+            this.pcbDhembetPoshte.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbDhembetPoshte.TabIndex = 36;
+            this.pcbDhembetPoshte.TabStop = false;
+            // 
+            // lblTitullDhembetSiper
+            // 
+            this.lblTitullDhembetSiper.AutoSize = true;
+            this.lblTitullDhembetSiper.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitullDhembetSiper.Location = new System.Drawing.Point(110, 10);
+            this.lblTitullDhembetSiper.Name = "lblTitullDhembetSiper";
+            this.lblTitullDhembetSiper.Size = new System.Drawing.Size(165, 24);
+            this.lblTitullDhembetSiper.TabIndex = 37;
+            this.lblTitullDhembetSiper.Text = "Dhembet e siperm";
+            // 
+            // lblTitullDhembetPoshte
+            // 
+            this.lblTitullDhembetPoshte.AutoSize = true;
+            this.lblTitullDhembetPoshte.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitullDhembetPoshte.Location = new System.Drawing.Point(463, 10);
+            this.lblTitullDhembetPoshte.Name = "lblTitullDhembetPoshte";
+            this.lblTitullDhembetPoshte.Size = new System.Drawing.Size(181, 24);
+            this.lblTitullDhembetPoshte.TabIndex = 38;
+            this.lblTitullDhembetPoshte.Text = "Dhembet e poshtem";
+            // 
+            // lblHorizontalDivider
+            // 
+            this.lblHorizontalDivider.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblHorizontalDivider.Location = new System.Drawing.Point(10, 155);
+            this.lblHorizontalDivider.Name = "lblHorizontalDivider";
+            this.lblHorizontalDivider.Size = new System.Drawing.Size(726, 2);
+            this.lblHorizontalDivider.TabIndex = 39;
+            // 
+            // nudMosha
+            // 
+            this.nudMosha.Location = new System.Drawing.Point(126, 201);
+            this.nudMosha.Maximum = new decimal(new int[] {
+            150,
+            0,
+            0,
+            0});
+            this.nudMosha.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudMosha.Name = "nudMosha";
+            this.nudMosha.Size = new System.Drawing.Size(85, 20);
+            this.nudMosha.TabIndex = 40;
+            this.nudMosha.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // frmAddAppointment
             // 
+            this.AcceptButton = this.btnShtoTakim;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(435, 422);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtRishkruajFjalekalimin);
-            this.Controls.Add(this.lblRishkruajFjalekalimin);
-            this.Controls.Add(this.txtFjalekalimi);
-            this.Controls.Add(this.txtPerdoruesi);
-            this.Controls.Add(this.lblFjalekalimi);
-            this.Controls.Add(this.lblPerdoruesi);
+            this.CancelButton = this.btnAnulo;
+            this.ClientSize = new System.Drawing.Size(748, 408);
+            this.Controls.Add(this.nudMosha);
+            this.Controls.Add(this.lblHorizontalDivider);
+            this.Controls.Add(this.lblTitullDhembetPoshte);
+            this.Controls.Add(this.lblTitullDhembetSiper);
+            this.Controls.Add(this.pcbDhembetPoshte);
+            this.Controls.Add(this.pcbDhembetSiper);
+            this.Controls.Add(this.lblMinNjehsia);
+            this.Controls.Add(this.nudKohezgjatjaETakimit);
+            this.Controls.Add(this.lblKohezgjatjaETakimit);
+            this.Controls.Add(this.lblKohaETakimit);
+            this.Controls.Add(this.dtpDataETakimit);
+            this.Controls.Add(this.txtKomenti);
+            this.Controls.Add(this.lblKomenti);
+            this.Controls.Add(this.txtProblemi);
+            this.Controls.Add(this.lblProblemi);
+            this.Controls.Add(this.lblMosha);
+            this.Controls.Add(this.txtTelefoni);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.lblTelefoni);
+            this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.txtEmriPacientit);
             this.Controls.Add(this.lblEmriPacientit);
             this.Controls.Add(this.btnAnulo);
-            this.Controls.Add(this.btnShtoDentist);
+            this.Controls.Add(this.btnShtoTakim);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAddAppointment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shto takim";
+            ((System.ComponentModel.ISupportInitialize)(this.nudKohezgjatjaETakimit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbDhembetSiper)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbDhembetPoshte)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMosha)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,21 +352,29 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtRishkruajFjalekalimin;
-        private System.Windows.Forms.Label lblRishkruajFjalekalimin;
-        private System.Windows.Forms.TextBox txtFjalekalimi;
-        private System.Windows.Forms.TextBox txtPerdoruesi;
-        private System.Windows.Forms.Label lblFjalekalimi;
-        private System.Windows.Forms.Label lblPerdoruesi;
+        private System.Windows.Forms.Label lblMosha;
+        private System.Windows.Forms.TextBox txtTelefoni;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label lblTelefoni;
+        private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtEmriPacientit;
         private System.Windows.Forms.Label lblEmriPacientit;
         private System.Windows.Forms.Button btnAnulo;
-        private System.Windows.Forms.Button btnShtoDentist;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnShtoTakim;
+        private System.Windows.Forms.TextBox txtProblemi;
+        private System.Windows.Forms.Label lblProblemi;
+        private System.Windows.Forms.TextBox txtKomenti;
+        private System.Windows.Forms.Label lblKomenti;
+        private System.Windows.Forms.DateTimePicker dtpDataETakimit;
+        private System.Windows.Forms.Label lblKohaETakimit;
+        private System.Windows.Forms.Label lblKohezgjatjaETakimit;
+        private System.Windows.Forms.NumericUpDown nudKohezgjatjaETakimit;
+        private System.Windows.Forms.Label lblMinNjehsia;
+        private System.Windows.Forms.PictureBox pcbDhembetSiper;
+        private System.Windows.Forms.PictureBox pcbDhembetPoshte;
+        private System.Windows.Forms.Label lblTitullDhembetSiper;
+        private System.Windows.Forms.Label lblTitullDhembetPoshte;
+        private System.Windows.Forms.Label lblHorizontalDivider;
+        private System.Windows.Forms.NumericUpDown nudMosha;
     }
 }

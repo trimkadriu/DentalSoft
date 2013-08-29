@@ -16,7 +16,12 @@ namespace DentalSoft
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+
+            frmLogin loginForm = new frmLogin();
+            if (loginForm.ShowDialog() == DialogResult.OK)
+                Application.Run(new frmMain());
+            else
+                Application.Exit();
         }
     }
 }

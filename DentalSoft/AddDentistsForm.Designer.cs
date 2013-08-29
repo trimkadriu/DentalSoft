@@ -32,7 +32,7 @@
             this.btnShtoDentist = new System.Windows.Forms.Button();
             this.btnAnulo = new System.Windows.Forms.Button();
             this.lblEmri = new System.Windows.Forms.Label();
-            this.lblMbiemri = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
             this.txtEmri = new System.Windows.Forms.TextBox();
             this.txtMbiemri = new System.Windows.Forms.TextBox();
             this.txtFjalekalimi = new System.Windows.Forms.TextBox();
@@ -78,14 +78,14 @@
             this.lblEmri.TabIndex = 2;
             this.lblEmri.Text = "Emri";
             // 
-            // lblMbiemri
+            // lblEmail
             // 
-            this.lblMbiemri.AutoSize = true;
-            this.lblMbiemri.Location = new System.Drawing.Point(16, 59);
-            this.lblMbiemri.Name = "lblMbiemri";
-            this.lblMbiemri.Size = new System.Drawing.Size(43, 13);
-            this.lblMbiemri.TabIndex = 3;
-            this.lblMbiemri.Text = "Mbiemri";
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(16, 59);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(32, 13);
+            this.lblEmail.TabIndex = 3;
+            this.lblEmail.Text = "Email";
             // 
             // txtEmri
             // 
@@ -162,7 +162,8 @@
             // 
             // ofdShfletoFoto
             // 
-            this.ofdShfletoFoto.FileName = "openFileDialog1";
+            this.ofdShfletoFoto.FileName = "profilePhoto";
+            this.ofdShfletoFoto.Filter = "Images|*.jpg;*.jpeg;*.png;*.bmp";
             // 
             // btnShfletoFoto
             // 
@@ -173,6 +174,7 @@
             this.btnShfletoFoto.TabIndex = 17;
             this.btnShfletoFoto.Text = "Shfleto";
             this.btnShfletoFoto.UseVisualStyleBackColor = true;
+            this.btnShfletoFoto.Click += new System.EventHandler(this.btnShfletoFoto_Click);
             // 
             // lblEmriFajllit
             // 
@@ -201,7 +203,7 @@
             this.Controls.Add(this.lblPerdoruesi);
             this.Controls.Add(this.txtMbiemri);
             this.Controls.Add(this.txtEmri);
-            this.Controls.Add(this.lblMbiemri);
+            this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblEmri);
             this.Controls.Add(this.btnAnulo);
             this.Controls.Add(this.btnShtoDentist);
@@ -222,7 +224,7 @@
         private System.Windows.Forms.Button btnShtoDentist;
         private System.Windows.Forms.Button btnAnulo;
         private System.Windows.Forms.Label lblEmri;
-        private System.Windows.Forms.Label lblMbiemri;
+        private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtEmri;
         private System.Windows.Forms.TextBox txtMbiemri;
         private System.Windows.Forms.TextBox txtFjalekalimi;

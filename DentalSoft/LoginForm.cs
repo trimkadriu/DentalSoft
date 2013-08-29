@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,6 +13,8 @@ namespace DentalSoft
 {
     public partial class frmLogin : Form
     {
+        public bool status = true;
+
         public frmLogin()
         {
             InitializeComponent();
@@ -19,9 +22,8 @@ namespace DentalSoft
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmMain mainForm = new frmMain();
-            mainForm.Show();
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

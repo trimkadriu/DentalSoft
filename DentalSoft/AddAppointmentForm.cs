@@ -15,6 +15,13 @@ namespace DentalSoft
         public frmAddAppointment()
         {
             InitializeComponent();
+            dtpDataETakimit.MinDate = DateTime.Now;
+            dtpDataETakimit.MaxDate = DateTime.Now.AddYears(1);
+        }
+
+        private void btnAnulo_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

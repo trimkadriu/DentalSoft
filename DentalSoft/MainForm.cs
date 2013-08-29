@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -30,9 +31,7 @@ namespace DentalSoft
 
         private void shkyquToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
-            frmLogin loginForm = new frmLogin();
-            loginForm.Show();
+            logout();
         }
 
         private void btnProfili_Click(object sender, EventArgs e)
@@ -59,14 +58,62 @@ namespace DentalSoft
             addDentistForm.ShowDialog();
         }
 
+        private void listoDentistetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListDentists listDentistsForm = new frmListDentists();
+            listDentistsForm.ShowDialog();
+        }
+
         private void btnShtoTakim_Click(object sender, EventArgs e)
         {
-
+            frmAddAppointment addAppointment = new frmAddAppointment();
+            addAppointment.ShowDialog();
         }
 
         private void btnListoTakimet_Click(object sender, EventArgs e)
         {
+            frmListAppointments listAppointments = new frmListAppointments();
+            listAppointments.ShowDialog();
+        }
 
+        private void menaxhoTakimetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddAppointment addAppointment = new frmAddAppointment();
+            addAppointment.ShowDialog();
+        }
+
+        private void listoTakimetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListAppointments listAppointments = new frmListAppointments();
+            listAppointments.ShowDialog();
+        }
+
+        private void miGjeneroRaport_Click(object sender, EventArgs e)
+        {
+            frmGenerateReport generateReport = new frmGenerateReport();
+            generateReport.ShowDialog();
+        }
+
+        private void miListoRaportet_Click(object sender, EventArgs e)
+        {
+            frmListReports listReports = new frmListReports();
+            listReports.ShowDialog();
+        }
+
+        private void btnListoRaportet_Click(object sender, EventArgs e)
+        {
+            frmListReports listReports = new frmListReports();
+            listReports.ShowDialog();
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            logout();
+        }
+
+        private void logout()
+        {
+            Application.Restart();
         }
     }
 }
