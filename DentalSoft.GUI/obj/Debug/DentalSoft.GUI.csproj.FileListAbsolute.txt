@@ -1,0 +1,17 @@
+C:\DentalSoft\DentalSoft.GUI\bin\Debug\DentalSoft.exe.config
+C:\DentalSoft\DentalSoft.GUI\obj\Debug\DentalSoft.exe
+C:\DentalSoft\DentalSoft.GUI\obj\Debug\DentalSoft.pdb
+C:\DentalSoft\DentalSoft.GUI\obj\Debug\DentalSoft.GUI.csprojResolveAssemblyReference.cache
+C:\DentalSoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmAbout.resources
+C:\DentalSoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmAddAppointment.resources
+C:\DentalSoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmAddDentist.resources
+C:\DentalSoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmGenerateReport.resources
+C:\DentalSoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmListAppointments.resources
+C:\DentalSoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmListDentists.resources
+C:\DentalSoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmListReports.resources
+C:\DentalSoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmLogin.resources
+C:\DentalSoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmMain.resources
+C:\DentalSoft\DentalSoft.GUI\obj\Debug\DentalSoft.Properties.Resources.resources
+C:\DentalSoft\DentalSoft.GUI\obj\Debug\DentalSoft.GUI.csproj.GenerateResource.Cache
+C:\DentalSoft\DentalSoft.GUI\bin\Debug\DentalSoft.exe
+C:\DentalSoft\DentalSoft.GUI\bin\Debug\DentalSoft.pdb

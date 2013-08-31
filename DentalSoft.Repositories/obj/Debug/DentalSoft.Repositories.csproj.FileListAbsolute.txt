@@ -5,3 +5,12 @@ D:\Projects\Trim\dentalsoft\DentalSoft.Repositories\bin\Debug\MySql.Data.Entity.
 D:\Projects\Trim\dentalsoft\DentalSoft.Repositories\obj\Debug\DentalSoft.Repositories.csprojResolveAssemblyReference.cache
 D:\Projects\Trim\dentalsoft\DentalSoft.Repositories\obj\Debug\DentalSoft.Repositories.dll
 D:\Projects\Trim\dentalsoft\DentalSoft.Repositories\obj\Debug\DentalSoft.Repositories.pdb
+C:\DentalSoft\DentalSoft.Repositories\obj\Debug\DentalSoft.Repositories.csprojResolveAssemblyReference.cache
+C:\DentalSoft\DentalSoft.Repositories\obj\Debug\DentalSoft.Repositories.dll
+C:\DentalSoft\DentalSoft.Repositories\obj\Debug\DentalSoft.Repositories.pdb
+C:\DentalSoft\DentalSoft.Repositories\bin\Debug\DentalSoft.Repositories.dll
+C:\DentalSoft\DentalSoft.Repositories\bin\Debug\DentalSoft.Repositories.pdb
+C:\DentalSoft\DentalSoft.Repositories\bin\Debug\DentalSoft.Domain.dll
+C:\DentalSoft\DentalSoft.Repositories\bin\Debug\DentalSoft.Library.dll
+C:\DentalSoft\DentalSoft.Repositories\bin\Debug\DentalSoft.Domain.pdb
+C:\DentalSoft\DentalSoft.Repositories\bin\Debug\DentalSoft.Library.pdb
