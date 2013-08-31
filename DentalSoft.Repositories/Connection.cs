@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Dentalsoft.Repositories
 {
-    private abstract class Connection
+    abstract class Connection
     {
         protected MySqlConnection connection;
         private string server;
@@ -77,10 +77,5 @@ namespace Dentalsoft.Repositories
             else
                 MessageBox.Show("Lidhja nuk eshte ne rregull");
         }
-
-        private abstract void insertStatement();
-        private abstract void updateStatement();
-        private abstract void deleteStatement();
-        private abstract List<object>[] selectStatement();
     }
 }

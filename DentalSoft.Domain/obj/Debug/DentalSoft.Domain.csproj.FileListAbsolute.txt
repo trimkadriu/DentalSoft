@@ -1,0 +1,7 @@
+C:\DentalSoft\DentalSoft.Domain\obj\Debug\DentalSoft.Domain.csprojResolveAssemblyReference.cache
+C:\DentalSoft\DentalSoft.Domain\bin\Debug\DentalSoft.Domain.dll
+C:\DentalSoft\DentalSoft.Domain\bin\Debug\DentalSoft.Domain.pdb
+C:\DentalSoft\DentalSoft.Domain\bin\Debug\DentalSoft.Library.dll
+C:\DentalSoft\DentalSoft.Domain\bin\Debug\DentalSoft.Library.pdb
+C:\DentalSoft\DentalSoft.Domain\obj\Debug\DentalSoft.Domain.dll
+C:\DentalSoft\DentalSoft.Domain\obj\Debug\DentalSoft.Domain.pdb

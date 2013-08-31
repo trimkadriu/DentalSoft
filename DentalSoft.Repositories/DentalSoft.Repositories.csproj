@@ -52,6 +52,12 @@
     <Compile Include="DentistsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DentalSoft.Domain\DentalSoft.Domain.csproj">
+      <Project>{efdbddc9-6255-4699-845c-937f1abaaa9d}</Project>
+      <Name>DentalSoft.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
