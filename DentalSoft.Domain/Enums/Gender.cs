@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DentalSoft.Domain.Enums
 {
-    enum Gender
+    public enum Gender
     {
         Mashkull = 1,
         Femer = 0

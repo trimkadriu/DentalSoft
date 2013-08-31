@@ -48,9 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppointmentsRepository.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="DentistsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DentalSoft.Domain\DentalSoft.Domain.csproj">

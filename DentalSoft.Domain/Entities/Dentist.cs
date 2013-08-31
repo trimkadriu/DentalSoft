@@ -9,42 +9,75 @@ namespace DentalSoft.Domain
 {
     public class Dentist
     {
-        private IDGenerator idGenerator;
+        private IDGenerator idGenerator = new IDGenerator();
+        private string id;
+        private string emri;
+        private string email;
+        private string perdoruesi;
+        private string fjalekalimi;
+        private byte[] fotoProfilit;
 
-        public string id
+        public string getId()
         {
-            get { return id; }
-            set { id = idGenerator.newID(); }
+            return id;
         }
 
-        public string emri
+        public void setId(string id = null)
         {
-            get { return emri; }
-            set { emri = value; }
+            if (id != null)
+                this.id = id;
+            else
+                this.id = idGenerator.newID();
         }
 
-        public string email
+        public string getEmri()
         {
-            get { return email; }
-            set { email = value; }
+            return emri;
         }
 
-        public string perdoruesi
+        public void setEmri(string emri)
         {
-            get { return perdoruesi; }
-            set { perdoruesi = value; }
+            this.emri = emri;
         }
 
-        public string fjalekalimi
+        public string getEmail()
         {
-            get { return fjalekalimi; }
-            set { fjalekalimi = value; }
+            return email;
         }
 
-        public byte[] fotoProfilit
+        public void setEmail(string email)
         {
-            get { return fotoProfilit; }
-            set { fotoProfilit = value; }
+            this.email = email;
+        }
+
+        public string getPerdoruesi()
+        {
+            return perdoruesi;
+        }
+
+        public void setPerdoruesi(string perdoruesi)
+        {
+            this.perdoruesi = perdoruesi;
+        }
+
+        public string getFjalekalimi()
+        {
+            return fjalekalimi;
+        }
+
+        public void setFjalekalimi(string fjalekalimi)
+        {
+            this.fjalekalimi = fjalekalimi;
+        }
+
+        public byte[] getFotoProfilit()
+        {
+            return fotoProfilit;
+        }
+
+        public void setFotoProfilit(byte[] fotoProfilit)
+        {
+            this.fotoProfilit = fotoProfilit;
         }
 
         public override bool Equals(object obj)

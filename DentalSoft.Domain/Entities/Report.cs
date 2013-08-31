@@ -8,44 +8,88 @@ using System.Threading.Tasks;
 
 namespace DentalSoft.Domain
 {
-    class Report
+    public class Report
     {
-        private IDGenerator idGenerator;
+        private IDGenerator idGenerator = new IDGenerator();
+        private string id;
+        private string emriPacientit;
+        private int mosha;
+        private Gender gjinia;
+        private string problemi;
+        private int pagesa;
+        private Status perseritKontrollin;
 
-        public string id
+        public string getId()
         {
-            get { return id; }
-            set { id = idGenerator.newID(); }
+            return id;
         }
 
-        public int mosha
+        public void setId(string id = null)
         {
-            get { return mosha; }
-            set { mosha = value; }
+            if (id != null)
+                this.id = id;
+            else
+                this.id = idGenerator.newID();
         }
 
-        public Gender gjinia
+        public string getEmriPacientit()
         {
-            get { return gjinia; }
-            set { gjinia = value; }
+            return emriPacientit;
         }
 
-        public string problemi
+        public void setEmriPacientit(string emriPacientit)
         {
-            get { return problemi; }
-            set { problemi = value; }
+            this.emriPacientit = emriPacientit;
         }
 
-        public int pagesa
+        public int getMosha()
         {
-            get { return pagesa; }
-            set { pagesa = value; }
+            return mosha;
         }
 
-        public Status perseritKontrollin
+        public void setMosha(int mosha)
         {
-            get { return perseritKontrollin; }
-            set { perseritKontrollin = value; }
+            this.mosha = mosha;
+        }
+
+        public Gender getGjinia()
+        {
+            return gjinia;
+        }
+
+        public void setGjinia(Gender gjinia)
+        {
+            this.gjinia = gjinia;
+        }
+
+        public string getProblemi()
+        {
+            return problemi;
+        }
+
+        public void setProblemi(string problemi)
+        {
+            this.problemi = problemi;
+        }
+
+        public int getPagesa()
+        {
+            return pagesa;
+        }
+
+        public void setPagesa(int pagesa)
+        {
+            this.pagesa = pagesa;
+        }
+
+        public Status getPerseritKontrollin()
+        {
+            return perseritKontrollin;
+        }
+
+        public void setPerseritKontrollin(Status perseritKontrollin)
+        {
+            this.perseritKontrollin = perseritKontrollin;
         }
 
         public override bool Equals(object obj)
