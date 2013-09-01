@@ -1,5 +1,6 @@
 ﻿using Dentalsoft.Repositories;
 using DentalSoft.Domain;
+using DentalSoft.Domain.Enums;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -15,16 +16,14 @@ namespace DentalSoft.Repositories
         {
             if (OpenConnection())
             {
-                query = "INSERT INTO " + tableName + " (id, emri_pacientit, mosha, email, telefoni, data_takimit, kohezgjatja_takimit, problemi, komenti) VALUES ('" +
+                query = "INSERT INTO " + tableName + " (id, emri_pacientit, mosha, gjinia, problemi, pagesa, perserit_kontrollin) VALUES ('" +
                         report.getId() + "', '" +
                         report.getEmriPacientit() + "', '" +
                         report.getMosha() + "', '" +
-                        report.getEmail() + "', '" +
-                        report.getTelefoni() + "', '" +
-                        report.getDataTakimit() + "', '" +
-                        report.getKohezgjatjaTakimit() + "', '" +
+                        report.getGjinia() + "', '" +
                         report.getProblemi() + "', '" +
-                        report.getKomenti() + "')";
+                        report.getPagesa() + "', '" +
+                        report.getPerseritKontrollin() + "')";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
                 this.CloseConnection();
@@ -35,18 +34,16 @@ namespace DentalSoft.Repositories
         {
             if (OpenConnection())
             {
-                if (selectStatement(appointment.getId()).Count == 1)
+                if (selectStatement(report.getId()).Count == 1)
                 {
                     query = "UPDATE " + tableName + " SET " +
-                            "emri_pacientit='" + appointment.getEmriPacientit() + "', " +
-                            "mosha='" + appointment.getMosha() + "', " +
-                            "email='" + appointment.getEmail() + "', " +
-                            "telefoni='" + appointment.getTelefoni() + "', " +
-                            "data_takimit='" + appointment.getDataTakimit() + "'" +
-                            "kohezgjatja_takimit='" + appointment.getKohezgjatjaTakimit() + "'" +
-                            "problemi='" + appointment.getProblemi() + "'" +
-                            "komenti='" + appointment.getKomenti() + "' " +
-                            "WHERE id='" + appointment.getId() + "'";
+                            "emri_pacientit='" + report.getEmriPacientit() + "', " +
+                            "mosha='" + report.getMosha() + "', " +
+                            "gjinia='" + report.getGjinia() + "', " +
+                            "problemi='" + report.getProblemi() + "', " +
+                            "pagesa='" + report.getPagesa() + "'" +
+                            "perserit_kontrollin='" + report.getPerseritKontrollin() + "' " +
+                            "WHERE id='" + report.getId() + "'";
                     MySqlCommand cmd = new MySqlCommand(query, connection);
                     cmd.ExecuteNonQuery();
                     this.CloseConnection();
@@ -58,15 +55,15 @@ namespace DentalSoft.Repositories
         {
             if (OpenConnection())
             {
-                query = "DELETE FROM " + tableName + " WHERE id='" + appointment.getId() + "'";
+                query = "DELETE FROM " + tableName + " WHERE id='" + report.getId() + "'";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
                 this.CloseConnection();
             }
         }
 
-        public List<Appointment> selectStatement(string id = null, string emriPacientit = null, string mosha = null, string email = null, string telefoni = null,
-                                                 string dataTakimit = null, string kohezgjatjaTakimit = null, string problemi = null, string komenti = null)
+        public List<Report> selectStatement(string id = null, string emriPacientit = null, string mosha = null, string gjinia = null, string problemi = null,
+                                                 string pagesa = null, string perseritKontrollin = null)
         {
             if (OpenConnection())
             {
@@ -77,34 +74,28 @@ namespace DentalSoft.Repositories
                     query = query + "AND emri_pacientit='" + emriPacientit + "' ";
                 if (mosha != null)
                     query = query + "AND mosha='" + mosha + "' ";
-                if (email != null)
-                    query = query + "AND email='" + email + "' ";
-                if (telefoni != null)
-                    query = query + "AND telefoni='" + telefoni + "' ";
-                if (dataTakimit != null)
-                    query = query + "AND data_takimit='" + dataTakimit + "' ";
-                if (kohezgjatjaTakimit != null)
-                    query = query + "AND kohezgjatja_takimit='" + kohezgjatjaTakimit + "' ";
+                if (gjinia != null)
+                    query = query + "AND gjinia='" + gjinia + "' ";
                 if (problemi != null)
                     query = query + "AND problemi='" + problemi + "' ";
-                if (komenti != null)
-                    query = query + "AND komenti='" + komenti + "'";
+                if (pagesa != null)
+                    query = query + "AND pagesa='" + pagesa + "' ";
+                if (perseritKontrollin != null)
+                    query = query + "AND perserit_kontrollin='" + perseritKontrollin + "'";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
-                List<Appointment> list = new List<Appointment>();
+                List<Report> list = new List<Report>();
                 while (dataReader.Read())
                 {
-                    Appointment a = new Appointment();
-                    a.setId(dataReader["id"].ToString());
-                    a.setEmriPacientit(dataReader["emri_pacientit"].ToString());
-                    a.setMosha(int.Parse(dataReader["mosha"].ToString()));
-                    a.setEmail(dataReader["email"].ToString());
-                    a.setTelefoni(dataReader["telefoni"].ToString());
-                    a.setDataTakimit(DateTime.Parse(dataReader["data_takimit"].ToString()));
-                    a.setKohezgjatjaTakimit(int.Parse(dataReader["kohezgjatja_takimit"].ToString()));
-                    a.setProblemi(dataReader["problemi"].ToString());
-                    a.setKomenti(dataReader["komenti"].ToString());
-                    list.Add(a);
+                    Report r = new Report();
+                    r.setId(dataReader["id"].ToString());
+                    r.setEmriPacientit(dataReader["emri_pacientit"].ToString());
+                    r.setMosha(int.Parse(dataReader["mosha"].ToString()));
+                    r.setGjinia((Gender)Enum.Parse(typeof(Gender), dataReader["gjinia"].ToString()));
+                    r.setProblemi(dataReader["problemi"].ToString());
+                    r.setPagesa(int.Parse(dataReader["pagesa"].ToString()));
+                    r.setPerseritKontrollin((Status)Enum.Parse(typeof(Status), dataReader["perserit_kontrollin"].ToString()));
+                    list.Add(r);
                 }
                 dataReader.Close();
                 cmd.ExecuteNonQuery();

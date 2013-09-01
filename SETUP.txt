@@ -32,13 +32,14 @@ CREATE TABLE IF NOT EXISTS `dentistet` (
 
 CREATE TABLE IF NOT EXISTS `raportet` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `emri_pacientit` varchar(32) COLLATE utf8_bin NOT NULL,
   `mosha` int(2) unsigned NOT NULL,
   `gjinia` enum('1','0') COLLATE utf8_bin NOT NULL,
   `problemi` blob NOT NULL,
   `pagesa` int(10) unsigned NOT NULL,
   `perserit_kontrollin` enum('po','jo','pacaktuar') COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
