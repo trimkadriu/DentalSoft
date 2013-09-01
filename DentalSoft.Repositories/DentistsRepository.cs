@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 namespace DentalSoft.Repositories
 {
-    class DentistsRepository : Connection
+    public class DentistsRepository : Connection
     {
         private string query;
-        private static const string tableName = "dentistet";
+        private const string tableName = "dentistet";
 
         public void insertStatement(Dentist dentist)
         {
@@ -58,7 +58,7 @@ namespace DentalSoft.Repositories
             }
         }
 
-        public List<Dentist> selectStatement(string id = null, string emri = null, string email = null, string perdoruesi = null)
+        public List<Dentist> selectStatement(string id = null, string emri = null, string email = null, string perdoruesi = null, string fjalekalimi = null)
         {
             if (OpenConnection())
             {
@@ -71,6 +71,8 @@ namespace DentalSoft.Repositories
                     query = query + "AND email='" + email + "' ";
                 if (perdoruesi != null)
                     query = query + "AND perdoruesi='" + perdoruesi + "'";
+                if (fjalekalimi != null)
+                    query = query + "AND fjalekalimi='" + fjalekalimi + "'";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 List<Dentist> list = new List<Dentist>();

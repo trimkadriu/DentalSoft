@@ -7,10 +7,10 @@ using System.Collections.Generic;
 
 namespace DentalSoft.Repositories
 {
-    class ReportsRepository : Connection
+    public class ReportsRepository : Connection
     {
         private string query;
-        private static const string tableName = "raportet";
+        private const string tableName = "raportet";
 
         public void insertStatement(Report report)
         {

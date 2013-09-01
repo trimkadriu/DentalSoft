@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Dentalsoft.Repositories
 {
-    abstract class Connection
+    public abstract class Connection
     {
         protected MySqlConnection connection;
         private string server;
