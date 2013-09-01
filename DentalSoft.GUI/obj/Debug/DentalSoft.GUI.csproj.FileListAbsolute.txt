@@ -32,3 +32,12 @@ D:\Projects\Trim\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmLogin.resourc
 D:\Projects\Trim\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmMain.resources
 D:\Projects\Trim\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.Properties.Resources.resources
 D:\Projects\Trim\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.GUI.csproj.GenerateResource.Cache
+C:\DentalSoft\DentalSoft.GUI\bin\Debug\DentalSoft.Library.dll
+C:\DentalSoft\DentalSoft.GUI\bin\Debug\DentalSoft.Library.pdb
+C:\DentalSoft\DentalSoft.GUI\bin\Debug\DentalSoft.Service.dll
+C:\DentalSoft\DentalSoft.GUI\bin\Debug\DentalSoft.Repositories.dll
+C:\DentalSoft\DentalSoft.GUI\bin\Debug\DentalSoft.Domain.dll
+C:\DentalSoft\DentalSoft.GUI\bin\Debug\MySql.Data.dll
+C:\DentalSoft\DentalSoft.GUI\bin\Debug\DentalSoft.Service.pdb
+C:\DentalSoft\DentalSoft.GUI\bin\Debug\DentalSoft.Repositories.pdb
+C:\DentalSoft\DentalSoft.GUI\bin\Debug\DentalSoft.Domain.pdb

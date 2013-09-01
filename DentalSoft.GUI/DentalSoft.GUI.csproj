@@ -206,6 +206,12 @@
   <ItemGroup>
     <None Include="Resources\Dhembet-poshte.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DentalSoft.Service\DentalSoft.Service.csproj">
+      <Project>{9603d458-5c96-4fa4-b25f-6f08f7d064be}</Project>
+      <Name>DentalSoft.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

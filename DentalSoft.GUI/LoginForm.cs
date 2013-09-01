@@ -1,29 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using DentalSoft.Service;
+using System;
 using System.Windows.Forms;
 
 namespace DentalSoft
 {
     public partial class frmLogin : Form
     {
-        public bool status = true;
+        LoginService loginService;
 
         public frmLogin()
         {
             InitializeComponent();
+            loginService = new LoginService();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;            
-            this.Close();
+            bool status = loginService.doLogin(txtUsername.Text, txtPassword.Text);
+            if (status)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+                MessageBox.Show("Perdoruesi ose Fjalekalimi eshte gabim.\nJu lutem provoni perseri.", "Gabim!", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void btnClose_Click(object sender, EventArgs e)

@@ -6,10 +6,10 @@ using System.Collections.Generic;
 
 namespace DentalSoft.Repositories
 {
-    class AppointmentsRepository : Connection
+    public class AppointmentsRepository : Connection
     {
         private string query;
-        private static const string tableName = "takimet";
+        private const string tableName = "takimet";
 
         public void insertStatement(Appointment appointment)
         {
