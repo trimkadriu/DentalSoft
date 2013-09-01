@@ -4,7 +4,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'dentalsoft'@'localhost' WITH GRANT OPTION;
 
 
 --
--- Create schema `dentistet`
+-- Create database `dentistet`
 --
 CREATE DATABASE dentalsoft CHARACTER SET utf8 COLLATE utf8_bin;
 
@@ -59,3 +59,11 @@ CREATE TABLE IF NOT EXISTS `takimet` (
   `komenti` blob,
   PRIMARY KEY (`id`)
 )
+
+
+
+
+
+
+INSERT INTO `dentistet` (`id`, `emri`, `email`, `perdoruesi`, `fjalekalimi`, `foto_profilit`) VALUES
+(1, 'Dentist', 'dentist@email.com', 'dentist', '0987c1f6e6828d62f554d07f8ba744a8', NULL);
