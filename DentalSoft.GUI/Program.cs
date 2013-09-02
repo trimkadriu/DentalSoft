@@ -19,7 +19,7 @@ namespace DentalSoft
 
             frmLogin loginForm = new frmLogin();
             if (loginForm.ShowDialog() == DialogResult.OK)
-                Application.Run(new frmMain());
+                Application.Run(new frmMain(loginForm.loggedInDentist));
             else
                 Application.Exit();
         }

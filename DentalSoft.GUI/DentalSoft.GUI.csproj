@@ -207,6 +207,10 @@
     <None Include="Resources\Dhembet-poshte.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DentalSoft.Domain\DentalSoft.Domain.csproj">
+      <Project>{efdbddc9-6255-4699-845c-937f1abaaa9d}</Project>
+      <Name>DentalSoft.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DentalSoft.Service\DentalSoft.Service.csproj">
       <Project>{9603d458-5c96-4fa4-b25f-6f08f7d064be}</Project>
       <Name>DentalSoft.Service</Name>

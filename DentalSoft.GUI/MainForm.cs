@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using DentalSoft.Domain;
+using System;
 using System.Windows.Forms;
 
 namespace DentalSoft
 {
     public partial class frmMain : Form
     {
-        public frmMain()
+        public frmMain(Dentist loggedInDentist)
         {
             InitializeComponent();
+            lblEmriPlote.Text = "( " + loggedInDentist.getEmri() + " )";
+            lblDataKoha.Text = loggedInDentist.getQasjaFundit().ToString();
         }
 
         private void miRrethDentalSoft_Click(object sender, EventArgs e)

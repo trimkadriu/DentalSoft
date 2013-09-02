@@ -28,6 +28,7 @@ namespace DentalSoft.Repositories
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
                 this.CloseConnection();
+                query = string.Empty;
             }
         }
 
@@ -50,6 +51,7 @@ namespace DentalSoft.Repositories
                     MySqlCommand cmd = new MySqlCommand(query, connection);
                     cmd.ExecuteNonQuery();
                     this.CloseConnection();
+                    query = string.Empty;
                 }
             }
         }
@@ -62,6 +64,7 @@ namespace DentalSoft.Repositories
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
                 this.CloseConnection();
+                query = string.Empty;
             }
         }
 
@@ -109,6 +112,7 @@ namespace DentalSoft.Repositories
                 dataReader.Close();
                 cmd.ExecuteNonQuery();
                 this.CloseConnection();
+                query = string.Empty;
                 return list;
             }
             return null;
