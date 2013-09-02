@@ -1,6 +1,7 @@
 ﻿using DentalSoft.Domain;
 using DentalSoft.Library;
 using DentalSoft.Repositories;
+using System;
 using System.Collections.Generic;
 
 namespace DentalSoft.Service
@@ -16,12 +17,22 @@ namespace DentalSoft.Service
             encryptor = new Encryptor();
         }
 
-        public bool doLogin(string username, string password)
+        public Dentist doLogin(string username, string password)
         {
             List<Dentist> result = dentistsRepository.selectStatement(null, null, null, username, encryptor.encrypt(password));
             if (result.Count == 1)
-                return true;
-            return false;
+            {
+                Dentist dentist = (Dentist)result[0].Clone();
+                updateLastLogin(result[0]);
+                return dentist;
+            }
+            return null;
+        }
+
+        public void updateLastLogin(Dentist dentist)
+        {
+            dentist.setQasjaFundit(DateTime.Now);
+            dentistsRepository.updateStatement(dentist);
         }
     }
 }

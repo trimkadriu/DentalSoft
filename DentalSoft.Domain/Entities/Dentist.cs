@@ -16,6 +16,7 @@ namespace DentalSoft.Domain
         private string perdoruesi;
         private string fjalekalimi;
         private byte[] fotoProfilit;
+        private DateTime qasjaFundit;
 
         public string getId()
         {
@@ -80,6 +81,16 @@ namespace DentalSoft.Domain
             this.fotoProfilit = fotoProfilit;
         }
 
+        public DateTime getQasjaFundit()
+        {
+            return qasjaFundit;
+        }
+
+        public void setQasjaFundit(DateTime qasjaFundit)
+        {
+            this.qasjaFundit = qasjaFundit;
+        }
+
         public override bool Equals(object obj)
         {
             if (obj != null)
@@ -101,6 +112,11 @@ namespace DentalSoft.Domain
         public override string ToString()
         {
             return "Dentist: perdoruesi[" + perdoruesi + "]";
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Dentalsoft.Repositories;
 using DentalSoft.Domain;
+using DentalSoft.Library;
 using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 
 namespace DentalSoft.Repositories
@@ -9,7 +11,7 @@ namespace DentalSoft.Repositories
     {
         private string query;
         private const string tableName = "dentistet";
-
+        
         public void insertStatement(Dentist dentist)
         {
             if (OpenConnection())
@@ -24,6 +26,7 @@ namespace DentalSoft.Repositories
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
                 this.CloseConnection();
+                query = string.Empty;
             }
         }
 
@@ -31,19 +34,19 @@ namespace DentalSoft.Repositories
         {
             if (OpenConnection())
             {
-                if (selectStatement(dentist.getId()).Count == 1)
-                {
-                    query = "UPDATE " + tableName + " SET " +
-                            "emri='" + dentist.getEmri() + "', " +
-                            "email='" + dentist.getEmail() + "', " +
-                            "perdoruesi='" + dentist.getPerdoruesi() + "', " +
-                            "fjalekalimi='" + dentist.getFjalekalimi() + "', " +
-                            "foto_profilit='" + dentist.getFotoProfilit() + "' " +
-                            "WHERE id='" + dentist.getId() + "'";
-                    MySqlCommand cmd = new MySqlCommand(query, connection);
-                    cmd.ExecuteNonQuery();
-                    this.CloseConnection();
-                }
+                Utilities utilities = new Utilities();
+                query = "UPDATE " + tableName + " SET " +
+                        "emri='" + dentist.getEmri() + "', " +
+                        "email='" + dentist.getEmail() + "', " +
+                        "perdoruesi='" + dentist.getPerdoruesi() + "', " +
+                        "fjalekalimi='" + dentist.getFjalekalimi() + "', " +
+                        "foto_profilit='" + dentist.getFotoProfilit() + "', " +
+                        "qasja_fundit='" + utilities.convertDateForDB(dentist.getQasjaFundit()) + "' " +
+                        "WHERE id='" + dentist.getId() + "'";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+                this.CloseConnection();
+                query = string.Empty;
             }
         }
 
@@ -55,6 +58,7 @@ namespace DentalSoft.Repositories
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
                 this.CloseConnection();
+                query = string.Empty;
             }
         }
 
@@ -85,11 +89,13 @@ namespace DentalSoft.Repositories
                     d.setPerdoruesi(dataReader["perdoruesi"].ToString());
                     d.setFjalekalimi(dataReader["fjalekalimi"].ToString());
                     d.setFotoProfilit(System.Text.Encoding.UTF8.GetBytes(dataReader["foto_profilit"].ToString()));
+                    d.setQasjaFundit(DateTime.Parse(dataReader["qasja_fundit"].ToString()));
                     list.Add(d);
                 }
                 dataReader.Close();
                 cmd.ExecuteNonQuery();
                 this.CloseConnection();
+                query = string.Empty;
                 return list;
             }
             return null;

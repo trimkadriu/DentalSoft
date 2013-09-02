@@ -135,5 +135,10 @@ namespace DentalSoft.Domain
         {
             return "Takimi: ID[" + id + "]";
         }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

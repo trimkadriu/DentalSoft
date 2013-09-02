@@ -41,3 +41,12 @@ C:\DentalSoft\DentalSoft.GUI\bin\Debug\MySql.Data.dll
 C:\DentalSoft\DentalSoft.GUI\bin\Debug\DentalSoft.Service.pdb
 C:\DentalSoft\DentalSoft.GUI\bin\Debug\DentalSoft.Repositories.pdb
 C:\DentalSoft\DentalSoft.GUI\bin\Debug\DentalSoft.Domain.pdb
+D:\Projects\Trim\dentalsoft\DentalSoft.GUI\bin\Debug\DentalSoft.Service.dll
+D:\Projects\Trim\dentalsoft\DentalSoft.GUI\bin\Debug\DentalSoft.Repositories.dll
+D:\Projects\Trim\dentalsoft\DentalSoft.GUI\bin\Debug\DentalSoft.Library.dll
+D:\Projects\Trim\dentalsoft\DentalSoft.GUI\bin\Debug\DentalSoft.Domain.dll
+D:\Projects\Trim\dentalsoft\DentalSoft.GUI\bin\Debug\MySql.Data.dll
+D:\Projects\Trim\dentalsoft\DentalSoft.GUI\bin\Debug\DentalSoft.Service.pdb
+D:\Projects\Trim\dentalsoft\DentalSoft.GUI\bin\Debug\DentalSoft.Repositories.pdb
+D:\Projects\Trim\dentalsoft\DentalSoft.GUI\bin\Debug\DentalSoft.Library.pdb
+D:\Projects\Trim\dentalsoft\DentalSoft.GUI\bin\Debug\DentalSoft.Domain.pdb

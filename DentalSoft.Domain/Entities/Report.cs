@@ -114,5 +114,10 @@ namespace DentalSoft.Domain
         {
             return "Raporti: ID[" + id + "]";
         }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

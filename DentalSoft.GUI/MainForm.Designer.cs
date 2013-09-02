@@ -45,7 +45,7 @@
             this.statistikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miNdihma = new System.Windows.Forms.ToolStripMenuItem();
             this.miRrethDentalSoft = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblFullName = new System.Windows.Forms.Label();
+            this.lblEmriPlote = new System.Windows.Forms.Label();
             this.lblDataKoha = new System.Windows.Forms.Label();
             this.pctUserProfile = new System.Windows.Forms.PictureBox();
             this.lblQasjaEFundit = new System.Windows.Forms.Label();
@@ -222,14 +222,14 @@
             this.miRrethDentalSoft.Text = "&Rreth aplikacionit";
             this.miRrethDentalSoft.Click += new System.EventHandler(this.miRrethDentalSoft_Click);
             // 
-            // lblFullName
+            // lblEmriPlote
             // 
-            this.lblFullName.Location = new System.Drawing.Point(16, 144);
-            this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(122, 15);
-            this.lblFullName.TabIndex = 11;
-            this.lblFullName.Text = "( Emri Mbiemri )";
-            this.lblFullName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblEmriPlote.Location = new System.Drawing.Point(16, 144);
+            this.lblEmriPlote.Name = "lblEmriPlote";
+            this.lblEmriPlote.Size = new System.Drawing.Size(122, 15);
+            this.lblEmriPlote.TabIndex = 11;
+            this.lblEmriPlote.Text = "( Emri Mbiemri )";
+            this.lblEmriPlote.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblDataKoha
             // 
@@ -495,7 +495,7 @@
             this.Controls.Add(this.lblVerticalDivider);
             this.Controls.Add(this.pctHeader);
             this.Controls.Add(this.grbTeDhena);
-            this.Controls.Add(this.lblFullName);
+            this.Controls.Add(this.lblEmriPlote);
             this.Controls.Add(this.lblDataKoha);
             this.Controls.Add(this.pctUserProfile);
             this.Controls.Add(this.lblQasjaEFundit);
@@ -532,7 +532,7 @@
         private System.Windows.Forms.ToolStripMenuItem miNdihma;
         private System.Windows.Forms.ToolStripMenuItem miRrethDentalSoft;
         private System.Windows.Forms.ToolStripMenuItem miShkyqu;
-        private System.Windows.Forms.Label lblFullName;
+        private System.Windows.Forms.Label lblEmriPlote;
         private System.Windows.Forms.Label lblDataKoha;
         private System.Windows.Forms.PictureBox pctUserProfile;
         private System.Windows.Forms.Label lblQasjaEFundit;
