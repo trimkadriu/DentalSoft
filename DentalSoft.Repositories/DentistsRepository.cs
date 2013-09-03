@@ -11,6 +11,13 @@ namespace DentalSoft.Repositories
     {
         private string query;
         private const string tableName = "dentistet";
+        private Utilities utilities;
+        MySqlCommand cmd;
+
+        public DentistsRepository()
+        {
+            utilities = new Utilities();
+        }
         
         public void insertStatement(Dentist dentist)
         {
@@ -23,10 +30,9 @@ namespace DentalSoft.Repositories
                         dentist.getPerdoruesi() + "', '" +
                         dentist.getFjalekalimi() + "', '" +
                         dentist.getFotoProfilit() + "')";
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
-                this.CloseConnection();
-                query = string.Empty;
+                clean();
             }
         }
 
@@ -34,20 +40,17 @@ namespace DentalSoft.Repositories
         {
             if (OpenConnection())
             {
-                Encryptor encryptor = new Encryptor();
-                Utilities utilities = new Utilities();
                 query = "UPDATE " + tableName + " SET " +
                         "emri='" + dentist.getEmri() + "', " +
                         "email='" + dentist.getEmail() + "', " +
                         "perdoruesi='" + dentist.getPerdoruesi() + "', " +
-                        "fjalekalimi='" + encryptor.encryptMd5(dentist.getFjalekalimi()) + "', " +
+                        "fjalekalimi='" + dentist.getFjalekalimi() + "', " +
                         "foto_profilit=" + utilities.convertProfilePicForDB(dentist.getFotoProfilit()) + ", " +
                         "qasja_fundit='" + utilities.convertDateForDB(dentist.getQasjaFundit()) + "' " +
                         "WHERE id='" + dentist.getId() + "'";
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
-                this.CloseConnection();
-                query = string.Empty;
+                clean();
             }
         }
 
@@ -56,10 +59,9 @@ namespace DentalSoft.Repositories
             if (OpenConnection())
             {
                 query = "DELETE FROM " + tableName + " WHERE id='" + dentist.getId() + "'";
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
-                this.CloseConnection();
-                query = string.Empty;
+                clean();
             }
         }
 
@@ -78,36 +80,33 @@ namespace DentalSoft.Repositories
                     query = query + "AND perdoruesi='" + perdoruesi + "'";
                 if (fjalekalimi != null)
                     query = query + "AND fjalekalimi='" + fjalekalimi + "'";
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd = new MySqlCommand(query, connection);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 List<Dentist> list = new List<Dentist>();
                 while (dataReader.Read())
                 {
                     Dentist d = new Dentist();
-                    d.setId(dataReader["id"].ToString());
-                    d.setEmri(dataReader["emri"].ToString());
-                    d.setEmail(dataReader["email"].ToString());
-                    d.setPerdoruesi(dataReader["perdoruesi"].ToString());
-                    d.setFjalekalimi(dataReader["fjalekalimi"].ToString());
-                    string fotoProfilit = dataReader["foto_profilit"].ToString();
-                    if (string.IsNullOrEmpty(fotoProfilit))
-                        d.setFotoProfilit(null);
-                    else
-                        d.setFotoProfilit(System.Text.Encoding.UTF8.GetBytes(fotoProfilit));
-                    string qasjaFundit = dataReader["qasja_fundit"].ToString();
-                    if (string.IsNullOrEmpty(qasjaFundit))
-                        d.setQasjaFundit(DateTime.Now);
-                    else
-                        d.setQasjaFundit(DateTime.Parse(dataReader["qasja_fundit"].ToString()));
+                    d.setId(dataReader.GetString("id"));
+                    d.setEmri(dataReader.GetString("emri"));
+                    d.setEmail(dataReader.GetString("email"));
+                    d.setPerdoruesi(dataReader.GetString("perdoruesi"));
+                    d.setFjalekalimi(dataReader.GetString("fjalekalimi"));
+                    d.setFotoProfilit(utilities.convertProfilePicFromDB(dataReader.GetString("foto_profilit")));
+                    d.setQasjaFundit(utilities.convertDateFromDb(dataReader["qasja_fundit"].ToString()));
                     list.Add(d);
                 }
                 dataReader.Close();
-                cmd.ExecuteNonQuery();
-                this.CloseConnection();
-                query = string.Empty;
+                clean();
                 return list;
             }
             return null;
+        }
+
+        private void clean()
+        {
+            cmd.Dispose();
+            this.CloseConnection();
+            query = string.Empty;
         }
     }
 }

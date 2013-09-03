@@ -11,21 +11,36 @@ namespace DentalSoft.Library
             return dateTime.Year + "-" + dateTime.Month + "-" + dateTime.Day + " " + dateTime.Hour + "-" + dateTime.Minute + "-" + dateTime.Second;
         }
 
+        public DateTime convertDateFromDb(string dateTime)
+        {
+            if (string.IsNullOrEmpty(dateTime))
+                return DateTime.Now;
+            else
+                return DateTime.Parse(dateTime);
+        }
+
         public string convertProfilePicForDB(byte[] profilePic)
         {
             if (profilePic == null)
                 return "null";
             else
-                return "'" + profilePic + "'";
+                return "'" + Convert.ToBase64String(profilePic) + "'";
         }
 
-        public Bitmap convertByteToImage(byte[] imageBytes)
+        public byte[] convertProfilePicFromDB(string base64)
         {
-            MemoryStream ms = new MemoryStream();
-            ms.Write(imageBytes, 0, Convert.ToInt32(imageBytes.Length));
-            Bitmap bm = new Bitmap(ms, false);
+            if (string.IsNullOrEmpty(base64))
+                return null;
+            else
+                return Convert.FromBase64String(base64);
+        }
+
+        public Image convertByteToImage(byte[] imageBytes)
+        {
+            MemoryStream ms = new MemoryStream(imageBytes);
+            Image image = Image.FromStream(ms);
             ms.Dispose();
-            return bm;
+            return image;
         }
 
         public byte[] convertImageToByte(Image image)

@@ -18,6 +18,11 @@ namespace DentalSoft.Domain
         private byte[] fotoProfilit;
         private DateTime qasjaFundit;
 
+        public Dentist()
+        {
+            setId();
+        }
+
         public string getId()
         {
             return id;

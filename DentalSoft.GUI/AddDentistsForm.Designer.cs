@@ -45,13 +45,14 @@
             this.ofdShfletoFoto = new System.Windows.Forms.OpenFileDialog();
             this.btnShfletoFoto = new System.Windows.Forms.Button();
             this.lblEmriFajllit = new System.Windows.Forms.Label();
+            this.lblPassowrdInformation = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pctFotoProfil)).BeginInit();
             this.SuspendLayout();
             // 
             // btnShtoDentist
             // 
             this.btnShtoDentist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnShtoDentist.Location = new System.Drawing.Point(185, 206);
+            this.btnShtoDentist.Location = new System.Drawing.Point(185, 237);
             this.btnShtoDentist.Name = "btnShtoDentist";
             this.btnShtoDentist.Size = new System.Drawing.Size(91, 23);
             this.btnShtoDentist.TabIndex = 0;
@@ -63,7 +64,7 @@
             // 
             this.btnAnulo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAnulo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAnulo.Location = new System.Drawing.Point(104, 206);
+            this.btnAnulo.Location = new System.Drawing.Point(104, 237);
             this.btnAnulo.Name = "btnAnulo";
             this.btnAnulo.Size = new System.Drawing.Size(75, 23);
             this.btnAnulo.TabIndex = 1;
@@ -160,6 +161,7 @@
             // pctFotoProfil
             // 
             this.pctFotoProfil.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pctFotoProfil.Image = global::DentalSoft.Properties.Resources.Ska_foto;
             this.pctFotoProfil.Location = new System.Drawing.Point(295, 21);
             this.pctFotoProfil.Name = "pctFotoProfil";
             this.pctFotoProfil.Size = new System.Drawing.Size(118, 125);
@@ -190,6 +192,16 @@
             this.lblEmriFajllit.Name = "lblEmriFajllit";
             this.lblEmriFajllit.Size = new System.Drawing.Size(118, 17);
             this.lblEmriFajllit.TabIndex = 18;
+            this.lblEmriFajllit.Text = "N/A";
+            // 
+            // lblPassowrdInformation
+            // 
+            this.lblPassowrdInformation.Location = new System.Drawing.Point(84, 192);
+            this.lblPassowrdInformation.Name = "lblPassowrdInformation";
+            this.lblPassowrdInformation.Size = new System.Drawing.Size(192, 29);
+            this.lblPassowrdInformation.TabIndex = 19;
+            this.lblPassowrdInformation.Text = "*Nese nuk doni te nderroni fjalekalimin leni fushat e zbrazeta";
+            this.lblPassowrdInformation.Visible = false;
             // 
             // frmAddDentist
             // 
@@ -197,7 +209,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnAnulo;
-            this.ClientSize = new System.Drawing.Size(430, 244);
+            this.ClientSize = new System.Drawing.Size(430, 272);
+            this.Controls.Add(this.lblPassowrdInformation);
             this.Controls.Add(this.lblEmriFajllit);
             this.Controls.Add(this.btnShfletoFoto);
             this.Controls.Add(this.pctFotoProfil);
@@ -243,6 +256,7 @@
         private System.Windows.Forms.OpenFileDialog ofdShfletoFoto;
         private System.Windows.Forms.Button btnShfletoFoto;
         private System.Windows.Forms.Label lblEmriFajllit;
+        private System.Windows.Forms.Label lblPassowrdInformation;
 
     }
 }
