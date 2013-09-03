@@ -5,7 +5,7 @@ namespace DentalSoft.Library
 {
     public class Encryptor
     {
-        public string encrypt(string text)
+        public string encryptMd5(string text)
         {
             MD5 md5 = new MD5CryptoServiceProvider();
             md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(text));

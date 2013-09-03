@@ -19,7 +19,7 @@ namespace DentalSoft.Service
 
         public Dentist doLogin(string username, string password)
         {
-            List<Dentist> result = dentistsRepository.selectStatement(null, null, null, username, encryptor.encrypt(password));
+            List<Dentist> result = dentistsRepository.selectStatement(null, null, null, username, encryptor.encryptMd5(password));
             if (result.Count == 1)
             {
                 Dentist dentist = (Dentist)result[0].Clone();

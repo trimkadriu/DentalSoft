@@ -34,13 +34,14 @@ namespace DentalSoft.Repositories
         {
             if (OpenConnection())
             {
+                Encryptor encryptor = new Encryptor();
                 Utilities utilities = new Utilities();
                 query = "UPDATE " + tableName + " SET " +
                         "emri='" + dentist.getEmri() + "', " +
                         "email='" + dentist.getEmail() + "', " +
                         "perdoruesi='" + dentist.getPerdoruesi() + "', " +
-                        "fjalekalimi='" + dentist.getFjalekalimi() + "', " +
-                        "foto_profilit='" + dentist.getFotoProfilit() + "', " +
+                        "fjalekalimi='" + encryptor.encryptMd5(dentist.getFjalekalimi()) + "', " +
+                        "foto_profilit=" + utilities.convertProfilePicForDB(dentist.getFotoProfilit()) + ", " +
                         "qasja_fundit='" + utilities.convertDateForDB(dentist.getQasjaFundit()) + "' " +
                         "WHERE id='" + dentist.getId() + "'";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
@@ -88,8 +89,16 @@ namespace DentalSoft.Repositories
                     d.setEmail(dataReader["email"].ToString());
                     d.setPerdoruesi(dataReader["perdoruesi"].ToString());
                     d.setFjalekalimi(dataReader["fjalekalimi"].ToString());
-                    d.setFotoProfilit(System.Text.Encoding.UTF8.GetBytes(dataReader["foto_profilit"].ToString()));
-                    d.setQasjaFundit(DateTime.Parse(dataReader["qasja_fundit"].ToString()));
+                    string fotoProfilit = dataReader["foto_profilit"].ToString();
+                    if (string.IsNullOrEmpty(fotoProfilit))
+                        d.setFotoProfilit(null);
+                    else
+                        d.setFotoProfilit(System.Text.Encoding.UTF8.GetBytes(fotoProfilit));
+                    string qasjaFundit = dataReader["qasja_fundit"].ToString();
+                    if (string.IsNullOrEmpty(qasjaFundit))
+                        d.setQasjaFundit(DateTime.Now);
+                    else
+                        d.setQasjaFundit(DateTime.Parse(dataReader["qasja_fundit"].ToString()));
                     list.Add(d);
                 }
                 dataReader.Close();
