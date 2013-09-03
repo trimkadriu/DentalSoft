@@ -69,3 +69,11 @@ INSERT INTO `dentistet` (`id`, `emri`, `email`, `perdoruesi`, `fjalekalimi`, `fo
 (1, 'Dentist', 'dentist@email.com', 'dentist', '0987c1f6e6828d62f554d07f8ba744a8', NULL);
 
 ALTER TABLE  `dentistet` ADD  `qasja_fundit` DATETIME NULL
+
+ALTER TABLE  `dentistet` CHANGE  `foto_profilit`  `foto_profilit` LONGBLOB NULL
+
+ALTER TABLE  `dentistet` CHANGE  `id`  `id` VARCHAR( 10 ) NOT NULL
+
+ALTER TABLE  `raportet` CHANGE  `id`  `id` VARCHAR( 10 ) NOT NULL
+
+ALTER TABLE  `takimet` CHANGE  `id`  `id` VARCHAR( 10 ) NOT NULL

@@ -22,7 +22,7 @@ namespace DentalSoft
             this.dentist = dentist;
             dentistService = new DentistService();
             fotoProfilit = new byte[2000000];
-            fotoProfilit = null;
+
             if (dentist != null)
             {
                 edito = true;

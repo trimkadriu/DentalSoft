@@ -95,7 +95,7 @@
             this.txtEmri.MaxLength = 32;
             this.txtEmri.Name = "txtEmri";
             this.txtEmri.Size = new System.Drawing.Size(189, 20);
-            this.txtEmri.TabIndex = 6;
+            this.txtEmri.TabIndex = 0;
             // 
             // txtEmail
             // 
