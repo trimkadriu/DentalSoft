@@ -28,8 +28,8 @@ namespace DentalSoft.Repositories
                         dentist.getEmri() + "', '" +
                         dentist.getEmail() + "', '" +
                         dentist.getPerdoruesi() + "', '" +
-                        dentist.getFjalekalimi() + "', '" +
-                        dentist.getFotoProfilit() + "')";
+                        dentist.getFjalekalimi() + "', " +
+                        utilities.convertProfilePicForDB(dentist.getFotoProfilit()) + ")";
                 cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
                 clean();
@@ -91,7 +91,10 @@ namespace DentalSoft.Repositories
                     d.setEmail(dataReader.GetString("email"));
                     d.setPerdoruesi(dataReader.GetString("perdoruesi"));
                     d.setFjalekalimi(dataReader.GetString("fjalekalimi"));
-                    d.setFotoProfilit(utilities.convertProfilePicFromDB(dataReader.GetString("foto_profilit")));
+                    if (!string.IsNullOrEmpty(dataReader["foto_profilit"].ToString()))
+                        d.setFotoProfilit(utilities.convertProfilePicFromDB(dataReader.GetString("foto_profilit")));
+                    else
+                        d.setFotoProfilit(null);
                     d.setQasjaFundit(utilities.convertDateFromDb(dataReader["qasja_fundit"].ToString()));
                     list.Add(d);
                 }
