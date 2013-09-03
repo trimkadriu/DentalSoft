@@ -13,6 +13,7 @@ namespace DentalSoft
         private Utilities utilities;
         private Dentist dentist;
         private DentistService dentistService;
+        private byte[] fotoProfilit;
 
         public frmAddDentist(Dentist dentist = null)
         {
@@ -20,6 +21,8 @@ namespace DentalSoft
             utilities = new Utilities();
             this.dentist = dentist;
             dentistService = new DentistService();
+            fotoProfilit = new byte[2000000];
+            fotoProfilit = null;
             if (dentist != null)
             {
                 edito = true;
@@ -30,15 +33,12 @@ namespace DentalSoft
                 txtEmail.Text = dentist.getEmail();
                 txtPerdoruesi.Enabled = false;
                 txtPerdoruesi.Text = dentist.getPerdoruesi();
+                lblPassowrdInformation.Visible = true;
                 if (dentist.getFotoProfilit() == null)
                     pctFotoProfil.Image = Properties.Resources.Ska_foto;
                 else
                     pctFotoProfil.Image = utilities.convertByteToImage(dentist.getFotoProfilit());
             }
-            else
-            {
-            }
-            lblEmriFajllit.Text = "N/A";
         }
 
         private void btnShfletoFoto_Click(object sender, EventArgs e)
@@ -47,7 +47,6 @@ namespace DentalSoft
             if (dialogResult == DialogResult.OK)
             {
                 lblEmriFajllit.Text = ofdShfletoFoto.SafeFileName;
-                byte[] fotoProfilit = new byte[2000000];
                 try
                 {
                     fotoProfilit = File.ReadAllBytes(ofdShfletoFoto.FileName);
@@ -56,7 +55,8 @@ namespace DentalSoft
                 {
                     MessageBox.Show("Gabimi: " + ex.Message, "Gabim!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-                dentist.setFotoProfilit(fotoProfilit);
+                if(edito)
+                    dentist.setFotoProfilit(fotoProfilit);
                 pctFotoProfil.Image = utilities.convertByteToImage(fotoProfilit);
             }
         }
@@ -65,15 +65,32 @@ namespace DentalSoft
         {
             if (validoDentistForm())
             {
+                Encryptor encryptor = new Encryptor();
                 if (edito)
                 {
                     dentist.setEmri(txtEmri.Text);
                     dentist.setEmail(txtEmail.Text);
-                    if(!string.IsNullOrWhiteSpace(txtFjalekalimi.Text))
-                        dentist.setFjalekalimi(txtFjalekalimi.Text);
-                    if(dentistService.editDentist(dentist))
+                    if (!string.IsNullOrWhiteSpace(txtFjalekalimi.Text))
+                    {
+                        dentist.setFjalekalimi(encryptor.encryptMd5(txtFjalekalimi.Text));
+                    }
+                    if (dentistService.editDentist(dentist))
                     {
                         this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    Dentist dentistNew = new Dentist();
+                    dentistNew.setEmri(txtEmri.Text);
+                    dentistNew.setEmail(txtEmail.Text);
+                    dentistNew.setPerdoruesi(txtPerdoruesi.Text);
+                    dentistNew.setFjalekalimi(encryptor.encryptMd5(txtFjalekalimi.Text));
+                    dentistNew.setFotoProfilit(fotoProfilit);
+                    if (dentistService.insertDentist(dentistNew))
+                    {
+                        MessageBox.Show("Dentisti u shtua me sukses.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }
                 }
@@ -110,7 +127,7 @@ namespace DentalSoft
             else if (!txtFjalekalimi.Text.Equals(txtRishkruajFjalekalimin.Text))
             {
                 txtRishkruajFjalekalimin.Focus();
-                MessageBox.Show("Gabim!", "Fjalekalimi dhe rishkrimi i fjalekalimit nuk eshte i njejte. Ju lutem permiresoni fjalekalimin.", 
+                MessageBox.Show("Fjalekalimi dhe rishkrimi i fjalekalimit nuk eshte i njejte. Ju lutem permiresoni fjalekalimin.", "Gabim!",
                                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
