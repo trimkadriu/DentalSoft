@@ -243,9 +243,12 @@
             // pctUserProfile
             // 
             this.pctUserProfile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pctUserProfile.ErrorImage = global::DentalSoft.Properties.Resources.Ska_foto;
+            this.pctUserProfile.InitialImage = global::DentalSoft.Properties.Resources.Ska_foto;
             this.pctUserProfile.Location = new System.Drawing.Point(16, 162);
             this.pctUserProfile.Name = "pctUserProfile";
             this.pctUserProfile.Size = new System.Drawing.Size(122, 137);
+            this.pctUserProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctUserProfile.TabIndex = 10;
             this.pctUserProfile.TabStop = false;
             // 

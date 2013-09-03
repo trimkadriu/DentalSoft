@@ -12,3 +12,10 @@ D:\Projects\Trim\dentalsoft\DentalSoft.Domain\bin\Debug\DentalSoft.Library.pdb
 D:\Projects\Trim\dentalsoft\DentalSoft.Domain\obj\Debug\DentalSoft.Domain.csprojResolveAssemblyReference.cache
 D:\Projects\Trim\dentalsoft\DentalSoft.Domain\obj\Debug\DentalSoft.Domain.dll
 D:\Projects\Trim\dentalsoft\DentalSoft.Domain\obj\Debug\DentalSoft.Domain.pdb
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Domain\bin\Debug\DentalSoft.Domain.dll
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Domain\bin\Debug\DentalSoft.Domain.pdb
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Domain\bin\Debug\DentalSoft.Library.dll
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Domain\bin\Debug\DentalSoft.Library.pdb
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Domain\obj\Debug\DentalSoft.Domain.csprojResolveAssemblyReference.cache
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Domain\obj\Debug\DentalSoft.Domain.dll
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Domain\obj\Debug\DentalSoft.Domain.pdb

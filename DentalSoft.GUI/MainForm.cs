@@ -1,4 +1,5 @@
 ﻿using DentalSoft.Domain;
+using DentalSoft.Library;
 using System;
 using System.Windows.Forms;
 
@@ -6,11 +7,17 @@ namespace DentalSoft
 {
     public partial class frmMain : Form
     {
+        private Dentist loggedInDentist;
+        private Utilities utilities;
+
         public frmMain(Dentist loggedInDentist)
         {
             InitializeComponent();
-            lblEmriPlote.Text = "( " + loggedInDentist.getEmri() + " )";
-            lblDataKoha.Text = loggedInDentist.getQasjaFundit().ToString();
+
+            this.loggedInDentist = loggedInDentist;
+            utilities = new Utilities();
+
+            loadMainFormData();
         }
 
         private void miRrethDentalSoft_Click(object sender, EventArgs e)
@@ -31,8 +38,10 @@ namespace DentalSoft
 
         private void btnProfili_Click(object sender, EventArgs e)
         {
-            frmAddDentist addDentistForm = new frmAddDentist();
+            frmAddDentist addDentistForm = new frmAddDentist(loggedInDentist);
             addDentistForm.ShowDialog();
+            if (addDentistForm.DialogResult.Equals(DialogResult.OK))
+                loadMainFormData();
         }
 
         private void btnShtoDentist_Click(object sender, EventArgs e)
@@ -109,6 +118,16 @@ namespace DentalSoft
         private void logout()
         {
             Application.Restart();
+        }
+
+        private void loadMainFormData()
+        {
+            lblEmriPlote.Text = "( " + loggedInDentist.getEmri() + " )";
+            lblDataKoha.Text = loggedInDentist.getQasjaFundit().ToString();
+            if (loggedInDentist.getFotoProfilit() == null)
+                pctUserProfile.Image = Properties.Resources.Ska_foto;
+            else
+                pctUserProfile.Image = utilities.convertByteToImage(loggedInDentist.getFotoProfilit());
         }
     }
 }

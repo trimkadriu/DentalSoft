@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Drawing;
 
 namespace DentalSoft.Library
 {
@@ -11,9 +8,32 @@ namespace DentalSoft.Library
     {
         public string convertDateForDB(DateTime dateTime)
         {
-            string format = "yyyy-MM-dd HH-MM-ss";
-            System.Diagnostics.Debug.WriteLine(Convert.ToDateTime(dateTime).ToString(format));
-            return Convert.ToDateTime(dateTime).ToString(format);
+            return dateTime.Year + "-" + dateTime.Month + "-" + dateTime.Day + " " + dateTime.Hour + "-" + dateTime.Minute + "-" + dateTime.Second;
+        }
+
+        public string convertProfilePicForDB(byte[] profilePic)
+        {
+            if (profilePic == null)
+                return "null";
+            else
+                return "'" + profilePic + "'";
+        }
+
+        public Bitmap convertByteToImage(byte[] imageBytes)
+        {
+            MemoryStream ms = new MemoryStream();
+            ms.Write(imageBytes, 0, Convert.ToInt32(imageBytes.Length));
+            Bitmap bm = new Bitmap(ms, false);
+            ms.Dispose();
+            return bm;
+        }
+
+        public byte[] convertImageToByte(Image image)
+        {
+            MemoryStream ms = new MemoryStream();
+            image.Save(ms, image.RawFormat);
+            ms.Dispose();
+            return ms.ToArray();
         }
     }
 }

@@ -34,7 +34,7 @@
             this.lblEmri = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtEmri = new System.Windows.Forms.TextBox();
-            this.txtMbiemri = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtFjalekalimi = new System.Windows.Forms.TextBox();
             this.txtPerdoruesi = new System.Windows.Forms.TextBox();
             this.lblFjalekalimi = new System.Windows.Forms.Label();
@@ -51,18 +51,19 @@
             // btnShtoDentist
             // 
             this.btnShtoDentist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnShtoDentist.Location = new System.Drawing.Point(201, 206);
+            this.btnShtoDentist.Location = new System.Drawing.Point(185, 206);
             this.btnShtoDentist.Name = "btnShtoDentist";
-            this.btnShtoDentist.Size = new System.Drawing.Size(75, 23);
+            this.btnShtoDentist.Size = new System.Drawing.Size(91, 23);
             this.btnShtoDentist.TabIndex = 0;
             this.btnShtoDentist.Text = "Shto dentist";
             this.btnShtoDentist.UseVisualStyleBackColor = true;
+            this.btnShtoDentist.Click += new System.EventHandler(this.btnShtoDentist_Click);
             // 
             // btnAnulo
             // 
             this.btnAnulo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAnulo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAnulo.Location = new System.Drawing.Point(120, 206);
+            this.btnAnulo.Location = new System.Drawing.Point(104, 206);
             this.btnAnulo.Name = "btnAnulo";
             this.btnAnulo.Size = new System.Drawing.Size(75, 23);
             this.btnAnulo.TabIndex = 1;
@@ -90,20 +91,23 @@
             // txtEmri
             // 
             this.txtEmri.Location = new System.Drawing.Point(87, 21);
+            this.txtEmri.MaxLength = 32;
             this.txtEmri.Name = "txtEmri";
             this.txtEmri.Size = new System.Drawing.Size(189, 20);
             this.txtEmri.TabIndex = 6;
             // 
-            // txtMbiemri
+            // txtEmail
             // 
-            this.txtMbiemri.Location = new System.Drawing.Point(87, 56);
-            this.txtMbiemri.Name = "txtMbiemri";
-            this.txtMbiemri.Size = new System.Drawing.Size(189, 20);
-            this.txtMbiemri.TabIndex = 7;
+            this.txtEmail.Location = new System.Drawing.Point(87, 56);
+            this.txtEmail.MaxLength = 64;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(189, 20);
+            this.txtEmail.TabIndex = 7;
             // 
             // txtFjalekalimi
             // 
             this.txtFjalekalimi.Location = new System.Drawing.Point(87, 127);
+            this.txtFjalekalimi.MaxLength = 32;
             this.txtFjalekalimi.Name = "txtFjalekalimi";
             this.txtFjalekalimi.Size = new System.Drawing.Size(189, 20);
             this.txtFjalekalimi.TabIndex = 11;
@@ -112,6 +116,7 @@
             // txtPerdoruesi
             // 
             this.txtPerdoruesi.Location = new System.Drawing.Point(87, 91);
+            this.txtPerdoruesi.MaxLength = 32;
             this.txtPerdoruesi.Name = "txtPerdoruesi";
             this.txtPerdoruesi.Size = new System.Drawing.Size(189, 20);
             this.txtPerdoruesi.TabIndex = 10;
@@ -137,6 +142,7 @@
             // txtRishkruajFjalekalimin
             // 
             this.txtRishkruajFjalekalimin.Location = new System.Drawing.Point(87, 163);
+            this.txtRishkruajFjalekalimin.MaxLength = 32;
             this.txtRishkruajFjalekalimin.Name = "txtRishkruajFjalekalimin";
             this.txtRishkruajFjalekalimin.Size = new System.Drawing.Size(189, 20);
             this.txtRishkruajFjalekalimin.TabIndex = 13;
@@ -157,6 +163,7 @@
             this.pctFotoProfil.Location = new System.Drawing.Point(295, 21);
             this.pctFotoProfil.Name = "pctFotoProfil";
             this.pctFotoProfil.Size = new System.Drawing.Size(118, 125);
+            this.pctFotoProfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctFotoProfil.TabIndex = 16;
             this.pctFotoProfil.TabStop = false;
             // 
@@ -183,7 +190,6 @@
             this.lblEmriFajllit.Name = "lblEmriFajllit";
             this.lblEmriFajllit.Size = new System.Drawing.Size(118, 17);
             this.lblEmriFajllit.TabIndex = 18;
-            this.lblEmriFajllit.Text = "emri-fajllit.jpg";
             // 
             // frmAddDentist
             // 
@@ -201,7 +207,7 @@
             this.Controls.Add(this.txtPerdoruesi);
             this.Controls.Add(this.lblFjalekalimi);
             this.Controls.Add(this.lblPerdoruesi);
-            this.Controls.Add(this.txtMbiemri);
+            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtEmri);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblEmri);
@@ -226,7 +232,7 @@
         private System.Windows.Forms.Label lblEmri;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtEmri;
-        private System.Windows.Forms.TextBox txtMbiemri;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtFjalekalimi;
         private System.Windows.Forms.TextBox txtPerdoruesi;
         private System.Windows.Forms.Label lblFjalekalimi;

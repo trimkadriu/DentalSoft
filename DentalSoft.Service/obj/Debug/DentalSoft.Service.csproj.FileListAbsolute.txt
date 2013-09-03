@@ -22,3 +22,15 @@ D:\Projects\Trim\dentalsoft\DentalSoft.Service\bin\Debug\DentalSoft.Repositories
 D:\Projects\Trim\dentalsoft\DentalSoft.Service\obj\Debug\DentalSoft.Service.csprojResolveAssemblyReference.cache
 D:\Projects\Trim\dentalsoft\DentalSoft.Service\obj\Debug\DentalSoft.Service.dll
 D:\Projects\Trim\dentalsoft\DentalSoft.Service\obj\Debug\DentalSoft.Service.pdb
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Service\bin\Debug\DentalSoft.Service.dll
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Service\bin\Debug\DentalSoft.Service.pdb
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Service\bin\Debug\DentalSoft.Domain.dll
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Service\bin\Debug\DentalSoft.Library.dll
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Service\bin\Debug\DentalSoft.Repositories.dll
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Service\bin\Debug\MySql.Data.dll
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Service\bin\Debug\DentalSoft.Domain.pdb
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Service\bin\Debug\DentalSoft.Library.pdb
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Service\bin\Debug\DentalSoft.Repositories.pdb
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Service\obj\Debug\DentalSoft.Service.csprojResolveAssemblyReference.cache
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Service\obj\Debug\DentalSoft.Service.dll
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Service\obj\Debug\DentalSoft.Service.pdb

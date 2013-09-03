@@ -211,10 +211,17 @@
       <Project>{efdbddc9-6255-4699-845c-937f1abaaa9d}</Project>
       <Name>DentalSoft.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DentalSoft.Library\DentalSoft.Library.csproj">
+      <Project>{67c06ab8-5174-4e50-8672-8353ec218913}</Project>
+      <Name>DentalSoft.Library</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DentalSoft.Service\DentalSoft.Service.csproj">
       <Project>{9603d458-5c96-4fa4-b25f-6f08f7d064be}</Project>
       <Name>DentalSoft.Service</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ska_foto.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
