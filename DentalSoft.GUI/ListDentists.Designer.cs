@@ -52,7 +52,7 @@
             // 
             this.txtKerkoEmriMbiemri.Location = new System.Drawing.Point(48, 57);
             this.txtKerkoEmriMbiemri.Name = "txtKerkoEmriMbiemri";
-            this.txtKerkoEmriMbiemri.Size = new System.Drawing.Size(198, 20);
+            this.txtKerkoEmriMbiemri.Size = new System.Drawing.Size(204, 20);
             this.txtKerkoEmriMbiemri.TabIndex = 0;
             // 
             // lblKerkoEmri
@@ -68,11 +68,16 @@
             // 
             this.dgvListaEDentisteve.AllowUserToAddRows = false;
             this.dgvListaEDentisteve.AllowUserToDeleteRows = false;
+            this.dgvListaEDentisteve.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvListaEDentisteve.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvListaEDentisteve.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaEDentisteve.Location = new System.Drawing.Point(15, 89);
+            this.dgvListaEDentisteve.MultiSelect = false;
             this.dgvListaEDentisteve.Name = "dgvListaEDentisteve";
             this.dgvListaEDentisteve.ReadOnly = true;
-            this.dgvListaEDentisteve.Size = new System.Drawing.Size(390, 239);
+            this.dgvListaEDentisteve.RowHeadersVisible = false;
+            this.dgvListaEDentisteve.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvListaEDentisteve.Size = new System.Drawing.Size(546, 239);
             this.dgvListaEDentisteve.TabIndex = 3;
             // 
             // lblHorizontalDivider
@@ -80,13 +85,13 @@
             this.lblHorizontalDivider.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblHorizontalDivider.Location = new System.Drawing.Point(15, 40);
             this.lblHorizontalDivider.Name = "lblHorizontalDivider";
-            this.lblHorizontalDivider.Size = new System.Drawing.Size(390, 2);
+            this.lblHorizontalDivider.Size = new System.Drawing.Size(546, 2);
             this.lblHorizontalDivider.TabIndex = 26;
             // 
             // btnFshij
             // 
             this.btnFshij.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnFshij.Location = new System.Drawing.Point(330, 337);
+            this.btnFshij.Location = new System.Drawing.Point(486, 339);
             this.btnFshij.Name = "btnFshij";
             this.btnFshij.Size = new System.Drawing.Size(75, 23);
             this.btnFshij.TabIndex = 2;
@@ -97,7 +102,7 @@
             // 
             this.btnMbylle.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnMbylle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnMbylle.Location = new System.Drawing.Point(15, 337);
+            this.btnMbylle.Location = new System.Drawing.Point(15, 339);
             this.btnMbylle.Name = "btnMbylle";
             this.btnMbylle.Size = new System.Drawing.Size(75, 23);
             this.btnMbylle.TabIndex = 3;
@@ -109,7 +114,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnMbylle;
-            this.ClientSize = new System.Drawing.Size(421, 375);
+            this.ClientSize = new System.Drawing.Size(576, 375);
             this.Controls.Add(this.btnMbylle);
             this.Controls.Add(this.btnFshij);
             this.Controls.Add(this.lblHorizontalDivider);

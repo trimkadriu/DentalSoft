@@ -97,7 +97,7 @@ namespace DentalSoft.Repositories
                     else
                         d.setFotoProfilit(null);
                     d.setQasjaFundit(utilities.convertDateFromDb(dataReader["qasja_fundit"].ToString()));
-                    list.Add(d);dataReader.GetSchemaTable
+                    list.Add(d);
                 }
                 dataReader.Close();
                 clean();
@@ -106,17 +106,24 @@ namespace DentalSoft.Repositories
             return null;
         }
 
-        public DataColumn getSchemaTable()
+        public List<DataColumn> getSchemaTable()
         {
-            query = "SELECT columns FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '" + this.database + "' AND TABLE_NAME = '" + tableName + "'";
-            cmd = new MySqlCommand(query, connection);
-            MySqlDataReader dataReader = cmd.ExecuteReader();
-            List<DataColumn> columns = new List<DataColumn>();
-            while (dataReader.Read())
+            if (OpenConnection())
             {
-                columns.Add(dataReader.GetString("columns"));
+                query = "SELECT COLUMN_NAME as columns FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '" + 
+                        this.database + "' AND TABLE_NAME = '" + tableName + "'";
+                cmd = new MySqlCommand(query, connection);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+                List<DataColumn> columns = new List<DataColumn>();
+                while (dataReader.Read())
+                {
+                    DataColumn dc = new DataColumn();
+                    dc.ColumnName = utilities.toUpperFirstLetter(dataReader.GetString("columns"));
+                    columns.Add(dc);
+                }
+                return columns;
             }
-            return columns;
+            return null;
         }
 
         private void clean()

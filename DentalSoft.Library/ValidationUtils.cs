@@ -2,7 +2,7 @@
 
 namespace DentalSoft.Library
 {
-    public class Validators
+    public class ValidationUtils
     {
         public bool isValidEmail(string email)
         {
