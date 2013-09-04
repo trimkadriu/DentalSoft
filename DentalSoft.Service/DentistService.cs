@@ -2,6 +2,7 @@
 using DentalSoft.Library;
 using DentalSoft.Repositories;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 
 namespace DentalSoft.Service
@@ -9,12 +10,12 @@ namespace DentalSoft.Service
     public class DentistService
     {
         private DentistsRepository dentistsRepository;
-        private Validators validators;
+        private ValidationUtils validationUtils;
 
         public DentistService()
         {
             dentistsRepository = new DentistsRepository();
-            validators = new Validators();
+            validationUtils = new ValidationUtils();
         }
 
         public bool editDentist(Dentist dentist)
@@ -32,7 +33,7 @@ namespace DentalSoft.Service
 
         public bool insertDentist(Dentist dentist)
         {
-            if (!validators.isValidEmail(dentist.getEmail()))
+            if (!validationUtils.isValidEmail(dentist.getEmail()))
             {
                 MessageBox.Show("Email-i nuk eshte valid. Ju lutem shkruani emailin ne forme te rregullt.", "Gabim!",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -58,8 +59,28 @@ namespace DentalSoft.Service
 
         public List<Dentist> getAllDentists()
         {
-            List<Dentist> dentists = dentistsRepository.selectStatement();
-            return dentists;
+            return dentistsRepository.selectStatement();
+        }
+
+        public List<DataColumn> getSchemaTable()
+        {
+            return dentistsRepository.getSchemaTable();
+        }
+
+        public DataTable getDataTable()
+        {
+            DataTable dataTable = new DataTable();
+            List<Dentist> dentists = getAllDentists();
+            dataTable.Columns.AddRange(getSchemaTable().ToArray());
+            foreach (Dentist dentist in dentists)
+            {
+                dataTable.Rows.Add(new object[] 
+                {
+                    dentist.getId(), dentist.getEmri(), dentist.getEmail(), dentist.getPerdoruesi(), 
+                    dentist.getFjalekalimi(), dentist.getFotoProfilit(), dentist.getQasjaFundit().ToString()
+                });
+            }
+            return dataTable;
         }
     }
 }

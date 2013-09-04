@@ -21,8 +21,10 @@ namespace DentalSoft
 
         private void Init()
         {
-            List<Dentist> dentists = dentistService.getAllDentists();
-            dataTable.Columns.AddRange(null);
+            dataTable = dentistService.getDataTable();
+            dgvListaEDentisteve.DataSource = dataTable;
+            dgvListaEDentisteve.Columns["Fjalekalimi"].Visible = false;
+            dgvListaEDentisteve.Columns["Foto e profilit"].Visible = false;
         }
     }
 }
