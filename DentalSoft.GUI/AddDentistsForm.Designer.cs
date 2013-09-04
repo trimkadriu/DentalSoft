@@ -55,7 +55,7 @@
             this.btnShtoDentist.Location = new System.Drawing.Point(185, 237);
             this.btnShtoDentist.Name = "btnShtoDentist";
             this.btnShtoDentist.Size = new System.Drawing.Size(91, 23);
-            this.btnShtoDentist.TabIndex = 0;
+            this.btnShtoDentist.TabIndex = 6;
             this.btnShtoDentist.Text = "Shto dentist";
             this.btnShtoDentist.UseVisualStyleBackColor = true;
             this.btnShtoDentist.Click += new System.EventHandler(this.btnShtoDentist_Click);
@@ -67,7 +67,7 @@
             this.btnAnulo.Location = new System.Drawing.Point(104, 237);
             this.btnAnulo.Name = "btnAnulo";
             this.btnAnulo.Size = new System.Drawing.Size(75, 23);
-            this.btnAnulo.TabIndex = 1;
+            this.btnAnulo.TabIndex = 7;
             this.btnAnulo.Text = "Anulo";
             this.btnAnulo.UseVisualStyleBackColor = true;
             // 
@@ -103,7 +103,7 @@
             this.txtEmail.MaxLength = 64;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(189, 20);
-            this.txtEmail.TabIndex = 7;
+            this.txtEmail.TabIndex = 1;
             // 
             // txtFjalekalimi
             // 
@@ -111,7 +111,7 @@
             this.txtFjalekalimi.MaxLength = 32;
             this.txtFjalekalimi.Name = "txtFjalekalimi";
             this.txtFjalekalimi.Size = new System.Drawing.Size(189, 20);
-            this.txtFjalekalimi.TabIndex = 11;
+            this.txtFjalekalimi.TabIndex = 3;
             this.txtFjalekalimi.UseSystemPasswordChar = true;
             // 
             // txtPerdoruesi
@@ -120,7 +120,7 @@
             this.txtPerdoruesi.MaxLength = 32;
             this.txtPerdoruesi.Name = "txtPerdoruesi";
             this.txtPerdoruesi.Size = new System.Drawing.Size(189, 20);
-            this.txtPerdoruesi.TabIndex = 10;
+            this.txtPerdoruesi.TabIndex = 2;
             // 
             // lblFjalekalimi
             // 
@@ -146,7 +146,7 @@
             this.txtRishkruajFjalekalimin.MaxLength = 32;
             this.txtRishkruajFjalekalimin.Name = "txtRishkruajFjalekalimin";
             this.txtRishkruajFjalekalimin.Size = new System.Drawing.Size(189, 20);
-            this.txtRishkruajFjalekalimin.TabIndex = 13;
+            this.txtRishkruajFjalekalimin.TabIndex = 4;
             this.txtRishkruajFjalekalimin.UseSystemPasswordChar = true;
             // 
             // lblRishkruajFjalekalimin
@@ -180,7 +180,7 @@
             this.btnShfletoFoto.Location = new System.Drawing.Point(295, 169);
             this.btnShfletoFoto.Name = "btnShfletoFoto";
             this.btnShfletoFoto.Size = new System.Drawing.Size(118, 23);
-            this.btnShfletoFoto.TabIndex = 17;
+            this.btnShfletoFoto.TabIndex = 5;
             this.btnShfletoFoto.Text = "Shfleto";
             this.btnShfletoFoto.UseVisualStyleBackColor = true;
             this.btnShfletoFoto.Click += new System.EventHandler(this.btnShfletoFoto_Click);

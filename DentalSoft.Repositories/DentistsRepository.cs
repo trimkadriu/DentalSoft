@@ -4,6 +4,7 @@ using DentalSoft.Library;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace DentalSoft.Repositories
 {
@@ -96,13 +97,26 @@ namespace DentalSoft.Repositories
                     else
                         d.setFotoProfilit(null);
                     d.setQasjaFundit(utilities.convertDateFromDb(dataReader["qasja_fundit"].ToString()));
-                    list.Add(d);
+                    list.Add(d);dataReader.GetSchemaTable
                 }
                 dataReader.Close();
                 clean();
                 return list;
             }
             return null;
+        }
+
+        public DataColumn getSchemaTable()
+        {
+            query = "SELECT columns FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '" + this.database + "' AND TABLE_NAME = '" + tableName + "'";
+            cmd = new MySqlCommand(query, connection);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+            List<DataColumn> columns = new List<DataColumn>();
+            while (dataReader.Read())
+            {
+                columns.Add(dataReader.GetString("columns"));
+            }
+            return columns;
         }
 
         private void clean()
