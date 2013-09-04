@@ -34,7 +34,6 @@
             this.lblKerkoEmri = new System.Windows.Forms.Label();
             this.dgvListaEDentisteve = new System.Windows.Forms.DataGridView();
             this.lblHorizontalDivider = new System.Windows.Forms.Label();
-            this.btnEdito = new System.Windows.Forms.Button();
             this.btnFshij = new System.Windows.Forms.Button();
             this.btnMbylle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaEDentisteve)).BeginInit();
@@ -54,7 +53,7 @@
             this.txtKerkoEmriMbiemri.Location = new System.Drawing.Point(48, 57);
             this.txtKerkoEmriMbiemri.Name = "txtKerkoEmriMbiemri";
             this.txtKerkoEmriMbiemri.Size = new System.Drawing.Size(198, 20);
-            this.txtKerkoEmriMbiemri.TabIndex = 1;
+            this.txtKerkoEmriMbiemri.TabIndex = 0;
             // 
             // lblKerkoEmri
             // 
@@ -67,9 +66,12 @@
             // 
             // dgvListaEDentisteve
             // 
+            this.dgvListaEDentisteve.AllowUserToAddRows = false;
+            this.dgvListaEDentisteve.AllowUserToDeleteRows = false;
             this.dgvListaEDentisteve.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaEDentisteve.Location = new System.Drawing.Point(15, 89);
             this.dgvListaEDentisteve.Name = "dgvListaEDentisteve";
+            this.dgvListaEDentisteve.ReadOnly = true;
             this.dgvListaEDentisteve.Size = new System.Drawing.Size(390, 239);
             this.dgvListaEDentisteve.TabIndex = 3;
             // 
@@ -81,24 +83,13 @@
             this.lblHorizontalDivider.Size = new System.Drawing.Size(390, 2);
             this.lblHorizontalDivider.TabIndex = 26;
             // 
-            // btnEdito
-            // 
-            this.btnEdito.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnEdito.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEdito.Location = new System.Drawing.Point(330, 338);
-            this.btnEdito.Name = "btnEdito";
-            this.btnEdito.Size = new System.Drawing.Size(75, 23);
-            this.btnEdito.TabIndex = 27;
-            this.btnEdito.Text = "Edito";
-            this.btnEdito.UseVisualStyleBackColor = true;
-            // 
             // btnFshij
             // 
             this.btnFshij.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnFshij.Location = new System.Drawing.Point(249, 337);
+            this.btnFshij.Location = new System.Drawing.Point(330, 337);
             this.btnFshij.Name = "btnFshij";
             this.btnFshij.Size = new System.Drawing.Size(75, 23);
-            this.btnFshij.TabIndex = 28;
+            this.btnFshij.TabIndex = 2;
             this.btnFshij.Text = "Fshij";
             this.btnFshij.UseVisualStyleBackColor = true;
             // 
@@ -109,7 +100,7 @@
             this.btnMbylle.Location = new System.Drawing.Point(15, 337);
             this.btnMbylle.Name = "btnMbylle";
             this.btnMbylle.Size = new System.Drawing.Size(75, 23);
-            this.btnMbylle.TabIndex = 29;
+            this.btnMbylle.TabIndex = 3;
             this.btnMbylle.Text = "Mbylle";
             this.btnMbylle.UseVisualStyleBackColor = true;
             // 
@@ -121,7 +112,6 @@
             this.ClientSize = new System.Drawing.Size(421, 375);
             this.Controls.Add(this.btnMbylle);
             this.Controls.Add(this.btnFshij);
-            this.Controls.Add(this.btnEdito);
             this.Controls.Add(this.lblHorizontalDivider);
             this.Controls.Add(this.dgvListaEDentisteve);
             this.Controls.Add(this.lblKerkoEmri);
@@ -146,7 +136,6 @@
         private System.Windows.Forms.Label lblKerkoEmri;
         private System.Windows.Forms.DataGridView dgvListaEDentisteve;
         private System.Windows.Forms.Label lblHorizontalDivider;
-        private System.Windows.Forms.Button btnEdito;
         private System.Windows.Forms.Button btnFshij;
         private System.Windows.Forms.Button btnMbylle;
     }

@@ -17,7 +17,7 @@ namespace DentalSoft
             this.loggedInDentist = loggedInDentist;
             utilities = new Utilities();
 
-            loadMainFormData();
+            Init();
         }
 
         private void miRrethDentalSoft_Click(object sender, EventArgs e)
@@ -41,7 +41,7 @@ namespace DentalSoft
             frmAddDentist addDentistForm = new frmAddDentist(loggedInDentist);
             addDentistForm.ShowDialog();
             if (addDentistForm.DialogResult.Equals(DialogResult.OK))
-                loadMainFormData();
+                Init();
         }
 
         private void btnShtoDentist_Click(object sender, EventArgs e)
@@ -120,7 +120,7 @@ namespace DentalSoft
             Application.Restart();
         }
 
-        private void loadMainFormData()
+        private void Init()
         {
             lblEmriPlote.Text = "( " + loggedInDentist.getEmri() + " )";
             lblDataKoha.Text = loggedInDentist.getQasjaFundit().ToString();

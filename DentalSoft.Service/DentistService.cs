@@ -1,4 +1,5 @@
 ﻿using DentalSoft.Domain;
+using DentalSoft.Library;
 using DentalSoft.Repositories;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -8,10 +9,12 @@ namespace DentalSoft.Service
     public class DentistService
     {
         private DentistsRepository dentistsRepository;
+        private Validators validators;
 
         public DentistService()
         {
             dentistsRepository = new DentistsRepository();
+            validators = new Validators();
         }
 
         public bool editDentist(Dentist dentist)
@@ -29,7 +32,12 @@ namespace DentalSoft.Service
 
         public bool insertDentist(Dentist dentist)
         {
-            //VALIDOJE EMAILIN
+            if (!validators.isValidEmail(dentist.getEmail()))
+            {
+                MessageBox.Show("Email-i nuk eshte valid. Ju lutem shkruani emailin ne forme te rregullt.", "Gabim!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
             List<Dentist> dentistsByEmail = dentistsRepository.selectStatement(null, null, dentist.getEmail());
             if (dentistsByEmail.Count == 1)
             {
@@ -46,6 +54,12 @@ namespace DentalSoft.Service
             }
             dentistsRepository.insertStatement(dentist);
             return true;
+        }
+
+        public List<Dentist> getAllDentists()
+        {
+            List<Dentist> dentists = dentistsRepository.selectStatement();
+            return dentists;
         }
     }
 }

@@ -7,8 +7,8 @@ namespace Dentalsoft.Repositories
     public abstract class Connection
     {
         protected MySqlConnection connection;
-        private string server;
-        private string database;
+        protected string server;
+        protected string database;
         private string username;
         private string password;
 
