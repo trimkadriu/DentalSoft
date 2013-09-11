@@ -121,6 +121,7 @@ namespace DentalSoft.Repositories
                     dc.ColumnName = utilities.toUpperFirstLetter(dataReader.GetString("columns"));
                     columns.Add(dc);
                 }
+                clean();
                 return columns;
             }
             return null;

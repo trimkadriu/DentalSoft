@@ -10,17 +10,18 @@ namespace DentalSoft
     {
         private DentistService dentistService;
         private BindingSource bindingSource;
+        private DataGridViewRow lastSelectedDentist;
 
         public frmListDentists()
         {
             InitializeComponent();
             bindingSource = new BindingSource();
+            dentistService = new DentistService();
             Init();
         }
 
         private void Init()
         {
-            dentistService = new DentistService(); 
             bindingSource.DataSource = dentistService.getBindingSource();
             dgvListaEDentisteve.DataSource = bindingSource;
             dgvListaEDentisteve.Columns["Fjalekalimi"].Visible = false;
@@ -34,15 +35,18 @@ namespace DentalSoft
 
         private void btnFshij_Click(object sender, System.EventArgs e)
         {
-            string id = dgvListaEDentisteve.SelectedRows[0].Cells[0].Value.ToString();
-            string perdoruesi = dgvListaEDentisteve.SelectedRows[0].Cells[3].Value.ToString();
-            DialogResult dr = MessageBox.Show("A jeni i sigurte qe deshironi ta fshini dentistin me emrin e perdorusit: " + perdoruesi,
-                                              "Konfirmo ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dr == DialogResult.Yes)
+            if (dgvListaEDentisteve.SelectedRows.Count == 1)
             {
-                Dentist dentist = new Dentist(id);
-                dentistService.removeDentist(dentist);
-                Init();
+                string id = dgvListaEDentisteve.SelectedRows[0].Cells[0].Value.ToString();
+                string perdoruesi = dgvListaEDentisteve.SelectedRows[0].Cells[3].Value.ToString();
+                DialogResult dr = MessageBox.Show("A jeni i sigurte qe deshironi ta fshini\ndentistin me emrin e perdorusit: [ " + perdoruesi.ToUpper() + " ]",
+                                                  "Konfirmo ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                {
+                    Dentist dentist = new Dentist(id);
+                    dentistService.removeDentist(dentist);
+                    Init();
+                }
             }
         }
     }
