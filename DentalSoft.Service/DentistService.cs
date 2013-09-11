@@ -57,6 +57,11 @@ namespace DentalSoft.Service
             return true;
         }
 
+        public void removeDentist(Dentist dentist)
+        {
+            dentistsRepository.deleteStatement(dentist);
+        }
+
         public List<Dentist> getAllDentists()
         {
             return dentistsRepository.selectStatement();
@@ -67,9 +72,10 @@ namespace DentalSoft.Service
             return dentistsRepository.getSchemaTable();
         }
 
-        public DataTable getDataTable()
+        public BindingSource getBindingSource()
         {
             DataTable dataTable = new DataTable();
+            BindingSource bindingSource = new BindingSource();
             List<Dentist> dentists = getAllDentists();
             dataTable.Columns.AddRange(getSchemaTable().ToArray());
             foreach (Dentist dentist in dentists)
@@ -80,7 +86,8 @@ namespace DentalSoft.Service
                     dentist.getFjalekalimi(), dentist.getFotoProfilit(), dentist.getQasjaFundit().ToString()
                 });
             }
-            return dataTable;
+            bindingSource.DataSource = dataTable;
+            return bindingSource;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 
 namespace Dentalsoft.Repositories
@@ -31,6 +32,8 @@ namespace Dentalsoft.Repositories
 
         protected bool OpenConnection()
         {
+            if (connection.State.Equals(ConnectionState.Open))
+                return true;
             try
             {
                 connection.Open();

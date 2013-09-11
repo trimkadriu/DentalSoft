@@ -23,6 +23,22 @@ namespace DentalSoft.Domain
             setId();
         }
 
+        public Dentist(string id = null, string emri = null, string email = null, string perdoruesi = null, 
+                        string fjalekalimi = null, byte[] fotoProfilit = null)
+        {
+            setId(id);
+            if (emri != null)
+                this.emri = emri;
+            if (email != null)
+                this.email = email;
+            if (perdoruesi != null)
+                this.perdoruesi = perdoruesi;
+            if (fjalekalimi != null)
+                this.fjalekalimi = fjalekalimi;
+            if (fotoProfilit != null)
+                this.fotoProfilit = fotoProfilit;
+        }
+
         public string getId()
         {
             return id;
