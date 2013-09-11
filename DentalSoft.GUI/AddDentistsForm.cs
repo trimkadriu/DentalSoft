@@ -86,12 +86,8 @@ namespace DentalSoft
                 }
                 else
                 {
-                    Dentist dentistNew = new Dentist();
-                    dentistNew.setEmri(txtEmri.Text);
-                    dentistNew.setEmail(txtEmail.Text);
-                    dentistNew.setPerdoruesi(txtPerdoruesi.Text);
-                    dentistNew.setFjalekalimi(encryptor.encryptMd5(txtFjalekalimi.Text));
-                    dentistNew.setFotoProfilit(fotoProfilit);
+                    Dentist dentistNew = new Dentist(null, txtEmri.Text, txtEmail.Text, txtPerdoruesi.Text, 
+                                                     encryptor.encryptMd5(txtFjalekalimi.Text), fotoProfilit);
                     if (dentistService.insertDentist(dentistNew))
                     {
                         MessageBox.Show("Dentisti u shtua me sukses.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);

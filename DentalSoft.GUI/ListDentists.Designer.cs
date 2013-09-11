@@ -54,6 +54,7 @@
             this.txtKerkoEmriMbiemri.Name = "txtKerkoEmriMbiemri";
             this.txtKerkoEmriMbiemri.Size = new System.Drawing.Size(204, 20);
             this.txtKerkoEmriMbiemri.TabIndex = 0;
+            this.txtKerkoEmriMbiemri.TextChanged += new System.EventHandler(this.txtKerkoEmriMbiemri_TextChanged);
             // 
             // lblKerkoEmri
             // 
@@ -97,6 +98,7 @@
             this.btnFshij.TabIndex = 2;
             this.btnFshij.Text = "Fshij";
             this.btnFshij.UseVisualStyleBackColor = true;
+            this.btnFshij.Click += new System.EventHandler(this.btnFshij_Click);
             // 
             // btnMbylle
             // 
