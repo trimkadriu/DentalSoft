@@ -20,6 +20,33 @@ namespace DentalSoft.Domain
         private string problemi;
         private string komenti;
 
+        public Appointment()
+        {
+            setId();
+        }
+
+        public Appointment(string id = null, string emriPacientit = null, int mosha = 0, string email = null, string telefoni = null, 
+                            DateTime? dataTakimit = null, int kohezgjatjaTakimit = 0, string problemi = null, string komenti = null)
+        {
+            setId(id);
+            if (emriPacientit != null)
+                this.emriPacientit = emriPacientit;
+            if (mosha != 0)
+                this.mosha = mosha;
+            if (email != null)
+                this.email = email;
+            if (telefoni != null)
+                this.telefoni = telefoni;
+            if (dataTakimit.HasValue)
+                this.dataTakimit = dataTakimit.Value;
+            if (kohezgjatjaTakimit != 0)
+                this.kohezgjatjaTakimit = kohezgjatjaTakimit;
+            if (problemi != null)
+                this.problemi = problemi;
+            if (komenti != null)
+                this.komenti = komenti;
+        }
+
         public string getId()
         {
             return id;

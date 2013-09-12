@@ -1,8 +1,10 @@
 ﻿using Dentalsoft.Repositories;
 using DentalSoft.Domain;
+using DentalSoft.Library;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace DentalSoft.Repositories
 {
@@ -10,6 +12,13 @@ namespace DentalSoft.Repositories
     {
         private string query;
         private const string tableName = "takimet";
+        private Utilities utilities;
+        MySqlCommand cmd;
+
+        public AppointmentsRepository()
+        {
+            utilities = new Utilities();
+        }
 
         public void insertStatement(Appointment appointment)
         {
@@ -21,14 +30,13 @@ namespace DentalSoft.Repositories
                         appointment.getMosha() + "', '" +
                         appointment.getEmail() + "', '" +
                         appointment.getTelefoni() + "', '" +
-                        appointment.getDataTakimit() + "', '" +
+                        utilities.convertDateForDB(appointment.getDataTakimit()) + "', '" +
                         appointment.getKohezgjatjaTakimit() + "', '" +
                         appointment.getProblemi() + "', '" +
                         appointment.getKomenti() + "')";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
-                this.CloseConnection();
-                query = string.Empty;
+                clean();
             }
         }
 
@@ -36,23 +44,19 @@ namespace DentalSoft.Repositories
         {
             if (OpenConnection())
             {
-                if (selectStatement(appointment.getId()).Count == 1)
-                {
-                    query = "UPDATE " + tableName + " SET " +
-                            "emri_pacientit='" + appointment.getEmriPacientit() + "', " +
-                            "mosha='" + appointment.getMosha() + "', " +
-                            "email='" + appointment.getEmail() + "', " +
-                            "telefoni='" + appointment.getTelefoni() + "', " +
-                            "data_takimit='" + appointment.getDataTakimit() + "'" +
-                            "kohezgjatja_takimit='" + appointment.getKohezgjatjaTakimit() + "'" +
-                            "problemi='" + appointment.getProblemi() + "'" +
-                            "komenti='" + appointment.getKomenti() + "' " +
-                            "WHERE id='" + appointment.getId() + "'";
-                    MySqlCommand cmd = new MySqlCommand(query, connection);
-                    cmd.ExecuteNonQuery();
-                    this.CloseConnection();
-                    query = string.Empty;
-                }
+                query = "UPDATE " + tableName + " SET " +
+                        "emri_pacientit='" + appointment.getEmriPacientit() + "', " +
+                        "mosha='" + appointment.getMosha() + "', " +
+                        "email='" + appointment.getEmail() + "', " +
+                        "telefoni='" + appointment.getTelefoni() + "', " +
+                        "data_takimit='" + utilities.convertDateForDB(appointment.getDataTakimit()) + "'" +
+                        "kohezgjatja_takimit='" + appointment.getKohezgjatjaTakimit() + "'" +
+                        "problemi='" + appointment.getProblemi() + "'" +
+                        "komenti='" + appointment.getKomenti() + "' " +
+                        "WHERE id='" + appointment.getId() + "'";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+                clean();
             }
         }
 
@@ -63,13 +67,12 @@ namespace DentalSoft.Repositories
                 query = "DELETE FROM " + tableName + " WHERE id='" + appointment.getId() + "'";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
-                this.CloseConnection();
-                query = string.Empty;
+                clean();
             }
         }
 
-        public List<Appointment> selectStatement(string id = null, string emriPacientit = null, string mosha = null, string email = null, string telefoni = null,
-                                                 string dataTakimit = null, string kohezgjatjaTakimit = null, string problemi = null, string komenti = null)
+        public List<Appointment> selectStatement(string id = null, string emriPacientit = null, int mosha = 0, string email = null, string telefoni = null,
+                                                 DateTime? dataTakimit = null, int kohezgjatjaTakimit = 0, string problemi = null, string komenti = null)
         {
             if (OpenConnection())
             {
@@ -78,15 +81,15 @@ namespace DentalSoft.Repositories
                     query = query + "AND id='" + id + "' ";
                 if (emriPacientit != null)
                     query = query + "AND emri_pacientit='" + emriPacientit + "' ";
-                if (mosha != null)
+                if (mosha != 0)
                     query = query + "AND mosha='" + mosha + "' ";
                 if (email != null)
                     query = query + "AND email='" + email + "' ";
                 if (telefoni != null)
                     query = query + "AND telefoni='" + telefoni + "' ";
-                if (dataTakimit != null)
-                    query = query + "AND data_takimit='" + dataTakimit + "' ";
-                if (kohezgjatjaTakimit != null)
+                if (dataTakimit.HasValue)
+                    query = query + "AND data_takimit='" + utilities.convertDateForDB(dataTakimit.Value) + "' ";
+                if (kohezgjatjaTakimit != 0)
                     query = query + "AND kohezgjatja_takimit='" + kohezgjatjaTakimit + "' ";
                 if (problemi != null)
                     query = query + "AND problemi='" + problemi + "' ";
@@ -98,24 +101,51 @@ namespace DentalSoft.Repositories
                 while (dataReader.Read())
                 {
                     Appointment a = new Appointment();
-                    a.setId(dataReader["id"].ToString());
-                    a.setEmriPacientit(dataReader["emri_pacientit"].ToString());
-                    a.setMosha(int.Parse(dataReader["mosha"].ToString()));
-                    a.setEmail(dataReader["email"].ToString());
-                    a.setTelefoni(dataReader["telefoni"].ToString());
-                    a.setDataTakimit(DateTime.Parse(dataReader["data_takimit"].ToString()));
-                    a.setKohezgjatjaTakimit(int.Parse(dataReader["kohezgjatja_takimit"].ToString()));
-                    a.setProblemi(dataReader["problemi"].ToString());
-                    a.setKomenti(dataReader["komenti"].ToString());
+                    a.setId(dataReader.GetString("id"));
+                    a.setEmriPacientit(dataReader.GetString("emri_pacientit"));
+                    a.setMosha(int.Parse(dataReader.GetString("mosha")));
+                    a.setEmail(dataReader.GetString("email"));
+                    a.setTelefoni(dataReader.GetString("telefoni"));
+                    a.setDataTakimit(utilities.convertDateFromDb(dataReader["data_takimit"].ToString()));
+                    a.setKohezgjatjaTakimit(int.Parse(dataReader.GetString("kohezgjatja_takimit")));
+                    a.setProblemi(dataReader.GetString("problemi"));
+                    a.setKomenti(dataReader.GetString("komenti"));
                     list.Add(a);
                 }
                 dataReader.Close();
                 cmd.ExecuteNonQuery();
-                this.CloseConnection();
-                query = string.Empty;
+                clean();
                 return list;
             }
             return null;
+        }
+
+        public List<DataColumn> getSchemaTable()
+        {
+            if (OpenConnection())
+            {
+                query = "SELECT COLUMN_NAME as columns FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '" +
+                        this.database + "' AND TABLE_NAME = '" + tableName + "'";
+                cmd = new MySqlCommand(query, connection);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+                List<DataColumn> columns = new List<DataColumn>();
+                while (dataReader.Read())
+                {
+                    DataColumn dc = new DataColumn();
+                    dc.ColumnName = utilities.toUpperFirstLetter(dataReader.GetString("columns"));
+                    columns.Add(dc);
+                }
+                clean();
+                return columns;
+            }
+            return null;
+        }
+
+        private void clean()
+        {
+            cmd.Dispose();
+            this.CloseConnection();
+            query = string.Empty;
         }
     }
 }
