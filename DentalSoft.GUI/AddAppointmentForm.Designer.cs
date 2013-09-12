@@ -138,6 +138,7 @@
             this.btnShtoTakim.TabIndex = 14;
             this.btnShtoTakim.Text = "Shto takim";
             this.btnShtoTakim.UseVisualStyleBackColor = true;
+            this.btnShtoTakim.Click += new System.EventHandler(this.btnShtoTakim_Click);
             // 
             // txtProblemi
             // 

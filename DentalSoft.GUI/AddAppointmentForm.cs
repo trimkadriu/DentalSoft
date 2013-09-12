@@ -23,5 +23,50 @@ namespace DentalSoft
         {
             this.Close();
         }
+
+        private void btnShtoTakim_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private bool validoDentistForm()
+        {
+            if (string.IsNullOrWhiteSpace(txtEmriPacientit.Text))
+            {
+                txtEmriPacientit.Focus();
+                return false;
+            }
+            if (nudMosha.Value > 0)
+            {
+                txtEmriPacientit.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtEmriPacientit.Text))
+            {
+                txtEmriPacientit.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtEmriPacientit.Text))
+            {
+                txtEmriPacientit.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtEmriPacientit.Text))
+            {
+                txtEmriPacientit.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtEmriPacientit.Text))
+            {
+                txtEmriPacientit.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtEmriPacientit.Text))
+            {
+                txtEmriPacientit.Focus();
+                return false;
+            }
+
+        }
     }
 }
