@@ -46,9 +46,17 @@
             // 
             // dgvTakimet
             // 
+            this.dgvTakimet.AllowUserToAddRows = false;
+            this.dgvTakimet.AllowUserToDeleteRows = false;
+            this.dgvTakimet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTakimet.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvTakimet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTakimet.Location = new System.Drawing.Point(15, 145);
+            this.dgvTakimet.MultiSelect = false;
             this.dgvTakimet.Name = "dgvTakimet";
+            this.dgvTakimet.ReadOnly = true;
+            this.dgvTakimet.RowHeadersVisible = false;
+            this.dgvTakimet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTakimet.Size = new System.Drawing.Size(948, 375);
             this.dgvTakimet.TabIndex = 0;
             // 
@@ -73,6 +81,7 @@
             this.btnFshij.TabIndex = 31;
             this.btnFshij.Text = "Fshij";
             this.btnFshij.UseVisualStyleBackColor = true;
+            this.btnFshij.Click += new System.EventHandler(this.btnFshij_Click);
             // 
             // btnEdito
             // 
@@ -84,6 +93,7 @@
             this.btnEdito.TabIndex = 30;
             this.btnEdito.Text = "Edito";
             this.btnEdito.UseVisualStyleBackColor = true;
+            this.btnEdito.Click += new System.EventHandler(this.btnEdito_Click);
             // 
             // lblHorizontalDivider
             // 
@@ -178,6 +188,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmListAppointments";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listo takimet";
             ((System.ComponentModel.ISupportInitialize)(this.dgvTakimet)).EndInit();

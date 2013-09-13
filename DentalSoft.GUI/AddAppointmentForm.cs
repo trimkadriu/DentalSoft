@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DentalSoft.Domain;
+using DentalSoft.Service;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +14,37 @@ namespace DentalSoft
 {
     public partial class frmAddAppointment : Form
     {
-        public frmAddAppointment()
+        private AppointmentService appointmentService;
+        private Appointment appointment;
+
+        public frmAddAppointment(Appointment appointment = null)
         {
             InitializeComponent();
-            dtpDataETakimit.MinDate = DateTime.Now;
+            appointmentService = new AppointmentService();
+            this.appointment = appointment;
+            Init();
+        }
+
+        public void Init()
+        {
+            if (appointment != null)
+            {
+                btnShtoTakim.Text = "Ruaj ndryshimet";
+                this.Text = "Ndrysho takimin";
+                txtEmriPacientit.Text = appointment.getEmriPacientit();
+                nudMosha.Text = appointment.getMosha().ToString();
+                txtEmail.Text = appointment.getEmail();
+                txtTelefoni.Text = appointment.getTelefoni();
+                dtpDataETakimit.Value = appointment.getDataTakimit();
+                dtpDataETakimit.MinDate = appointment.getDataTakimit();
+                nudKohezgjatjaETakimit.Text = appointment.getKohezgjatjaTakimit().ToString();
+                txtProblemi.Text = appointment.getProblemi();
+                txtKomenti.Text = appointment.getKomenti();
+            }
+            else
+            {
+                dtpDataETakimit.MinDate = DateTime.Now;
+            }
             dtpDataETakimit.MaxDate = DateTime.Now.AddYears(1);
         }
 
@@ -26,47 +55,71 @@ namespace DentalSoft
 
         private void btnShtoTakim_Click(object sender, EventArgs e)
         {
-
+            if (validoAppointmentForm())
+            {
+                if (appointment != null)
+                {
+                    appointment.setEmriPacientit(txtEmriPacientit.Text);
+                    appointment.setMosha(int.Parse(nudMosha.Text));
+                    appointment.setTelefoni(txtTelefoni.Text);
+                    appointment.setDataTakimit(dtpDataETakimit.Value);
+                    appointment.setKohezgjatjaTakimit(int.Parse(nudKohezgjatjaETakimit.Text));
+                    appointment.setProblemi(txtProblemi.Text);
+                    appointment.setKomenti(txtKomenti.Text);
+                    if(appointmentService.editAppointment(appointment))
+                        this.Close();
+                }
+                else
+                {
+                    Appointment newAppointment = new Appointment(null, txtEmriPacientit.Text, int.Parse(nudMosha.Text), txtEmail.Text, txtTelefoni.Text,
+                                                              dtpDataETakimit.Value, int.Parse(nudKohezgjatjaETakimit.Text), txtProblemi.Text, txtKomenti.Text);
+                    if (appointmentService.insertAppointment(newAppointment))
+                    {
+                        MessageBox.Show("Takimi u shtua me sukses.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                }
+            }
         }
 
-        private bool validoDentistForm()
+        private bool validoAppointmentForm()
         {
             if (string.IsNullOrWhiteSpace(txtEmriPacientit.Text))
             {
                 txtEmriPacientit.Focus();
                 return false;
             }
-            if (nudMosha.Value > 0)
+            if (string.IsNullOrWhiteSpace(nudMosha.Text))
+            {
+                nudMosha.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                txtEmail.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtTelefoni.Text))
+            {
+                txtTelefoni.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(dtpDataETakimit.Text))
+            {
+                dtpDataETakimit.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(nudKohezgjatjaETakimit.Text))
             {
                 txtEmriPacientit.Focus();
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(txtEmriPacientit.Text))
+            if (string.IsNullOrWhiteSpace(txtProblemi.Text))
             {
-                txtEmriPacientit.Focus();
+                txtProblemi.Focus();
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(txtEmriPacientit.Text))
-            {
-                txtEmriPacientit.Focus();
-                return false;
-            }
-            if (string.IsNullOrWhiteSpace(txtEmriPacientit.Text))
-            {
-                txtEmriPacientit.Focus();
-                return false;
-            }
-            if (string.IsNullOrWhiteSpace(txtEmriPacientit.Text))
-            {
-                txtEmriPacientit.Focus();
-                return false;
-            }
-            if (string.IsNullOrWhiteSpace(txtEmriPacientit.Text))
-            {
-                txtEmriPacientit.Focus();
-                return false;
-            }
-
+            return true;
         }
     }
 }

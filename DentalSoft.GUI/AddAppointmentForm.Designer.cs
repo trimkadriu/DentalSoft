@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddAppointment));
             this.lblMosha = new System.Windows.Forms.Label();
-            this.txtTelefoni = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblTelefoni = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -53,6 +52,7 @@
             this.lblTitullDhembetPoshte = new System.Windows.Forms.Label();
             this.lblHorizontalDivider = new System.Windows.Forms.Label();
             this.nudMosha = new System.Windows.Forms.NumericUpDown();
+            this.txtTelefoni = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudKohezgjatjaETakimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbDhembetSiper)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbDhembetPoshte)).BeginInit();
@@ -68,20 +68,12 @@
             this.lblMosha.TabIndex = 24;
             this.lblMosha.Text = "Mosha";
             // 
-            // txtTelefoni
-            // 
-            this.txtTelefoni.Location = new System.Drawing.Point(126, 258);
-            this.txtTelefoni.Name = "txtTelefoni";
-            this.txtTelefoni.Size = new System.Drawing.Size(239, 20);
-            this.txtTelefoni.TabIndex = 23;
-            this.txtTelefoni.UseSystemPasswordChar = true;
-            // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(126, 229);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(239, 20);
-            this.txtEmail.TabIndex = 22;
+            this.txtEmail.TabIndex = 3;
             // 
             // lblTelefoni
             // 
@@ -106,7 +98,7 @@
             this.txtEmriPacientit.Location = new System.Drawing.Point(126, 171);
             this.txtEmriPacientit.Name = "txtEmriPacientit";
             this.txtEmriPacientit.Size = new System.Drawing.Size(239, 20);
-            this.txtEmriPacientit.TabIndex = 18;
+            this.txtEmriPacientit.TabIndex = 1;
             // 
             // lblEmriPacientit
             // 
@@ -121,10 +113,10 @@
             // 
             this.btnAnulo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAnulo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAnulo.Location = new System.Drawing.Point(580, 373);
+            this.btnAnulo.Location = new System.Drawing.Point(547, 373);
             this.btnAnulo.Name = "btnAnulo";
-            this.btnAnulo.Size = new System.Drawing.Size(75, 23);
-            this.btnAnulo.TabIndex = 15;
+            this.btnAnulo.Size = new System.Drawing.Size(85, 23);
+            this.btnAnulo.TabIndex = 10;
             this.btnAnulo.Text = "Anulo";
             this.btnAnulo.UseVisualStyleBackColor = true;
             this.btnAnulo.Click += new System.EventHandler(this.btnAnulo_Click);
@@ -132,10 +124,10 @@
             // btnShtoTakim
             // 
             this.btnShtoTakim.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnShtoTakim.Location = new System.Drawing.Point(661, 373);
+            this.btnShtoTakim.Location = new System.Drawing.Point(638, 373);
             this.btnShtoTakim.Name = "btnShtoTakim";
-            this.btnShtoTakim.Size = new System.Drawing.Size(75, 23);
-            this.btnShtoTakim.TabIndex = 14;
+            this.btnShtoTakim.Size = new System.Drawing.Size(98, 23);
+            this.btnShtoTakim.TabIndex = 9;
             this.btnShtoTakim.Text = "Shto takim";
             this.btnShtoTakim.UseVisualStyleBackColor = true;
             this.btnShtoTakim.Click += new System.EventHandler(this.btnShtoTakim_Click);
@@ -146,7 +138,7 @@
             this.txtProblemi.Multiline = true;
             this.txtProblemi.Name = "txtProblemi";
             this.txtProblemi.Size = new System.Drawing.Size(239, 70);
-            this.txtProblemi.TabIndex = 27;
+            this.txtProblemi.TabIndex = 7;
             this.txtProblemi.UseSystemPasswordChar = true;
             // 
             // lblProblemi
@@ -163,7 +155,7 @@
             this.txtKomenti.Multiline = true;
             this.txtKomenti.Name = "txtKomenti";
             this.txtKomenti.Size = new System.Drawing.Size(239, 90);
-            this.txtKomenti.TabIndex = 29;
+            this.txtKomenti.TabIndex = 8;
             this.txtKomenti.UseSystemPasswordChar = true;
             // 
             // lblKomenti
@@ -182,7 +174,7 @@
             this.dtpDataETakimit.Location = new System.Drawing.Point(126, 287);
             this.dtpDataETakimit.Name = "dtpDataETakimit";
             this.dtpDataETakimit.Size = new System.Drawing.Size(197, 20);
-            this.dtpDataETakimit.TabIndex = 30;
+            this.dtpDataETakimit.TabIndex = 5;
             this.dtpDataETakimit.Value = new System.DateTime(2013, 8, 28, 22, 43, 0, 0);
             // 
             // lblKohaETakimit
@@ -218,7 +210,7 @@
             0});
             this.nudKohezgjatjaETakimit.Name = "nudKohezgjatjaETakimit";
             this.nudKohezgjatjaETakimit.Size = new System.Drawing.Size(85, 20);
-            this.nudKohezgjatjaETakimit.TabIndex = 33;
+            this.nudKohezgjatjaETakimit.TabIndex = 6;
             this.nudKohezgjatjaETakimit.Value = new decimal(new int[] {
             1,
             0,
@@ -288,7 +280,7 @@
             // 
             this.nudMosha.Location = new System.Drawing.Point(126, 201);
             this.nudMosha.Maximum = new decimal(new int[] {
-            150,
+            120,
             0,
             0,
             0});
@@ -299,12 +291,21 @@
             0});
             this.nudMosha.Name = "nudMosha";
             this.nudMosha.Size = new System.Drawing.Size(85, 20);
-            this.nudMosha.TabIndex = 40;
+            this.nudMosha.TabIndex = 2;
             this.nudMosha.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            // 
+            // txtTelefoni
+            // 
+            this.txtTelefoni.BeepOnError = true;
+            this.txtTelefoni.Location = new System.Drawing.Point(126, 258);
+            this.txtTelefoni.Mask = "(999) 000-000";
+            this.txtTelefoni.Name = "txtTelefoni";
+            this.txtTelefoni.Size = new System.Drawing.Size(85, 20);
+            this.txtTelefoni.TabIndex = 4;
             // 
             // frmAddAppointment
             // 
@@ -313,6 +314,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnAnulo;
             this.ClientSize = new System.Drawing.Size(748, 408);
+            this.Controls.Add(this.txtTelefoni);
             this.Controls.Add(this.nudMosha);
             this.Controls.Add(this.lblHorizontalDivider);
             this.Controls.Add(this.lblTitullDhembetPoshte);
@@ -329,7 +331,6 @@
             this.Controls.Add(this.txtProblemi);
             this.Controls.Add(this.lblProblemi);
             this.Controls.Add(this.lblMosha);
-            this.Controls.Add(this.txtTelefoni);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.lblTelefoni);
             this.Controls.Add(this.lblEmail);
@@ -340,6 +341,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAddAppointment";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shto takim";
             ((System.ComponentModel.ISupportInitialize)(this.nudKohezgjatjaETakimit)).EndInit();
@@ -354,7 +356,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblMosha;
-        private System.Windows.Forms.TextBox txtTelefoni;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblTelefoni;
         private System.Windows.Forms.Label lblEmail;
@@ -377,5 +378,6 @@
         private System.Windows.Forms.Label lblTitullDhembetPoshte;
         private System.Windows.Forms.Label lblHorizontalDivider;
         private System.Windows.Forms.NumericUpDown nudMosha;
+        private System.Windows.Forms.MaskedTextBox txtTelefoni;
     }
 }

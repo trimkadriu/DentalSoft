@@ -34,7 +34,7 @@ namespace DentalSoft.Repositories
                         appointment.getKohezgjatjaTakimit() + "', '" +
                         appointment.getProblemi() + "', '" +
                         appointment.getKomenti() + "')";
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
                 clean();
             }
@@ -54,7 +54,7 @@ namespace DentalSoft.Repositories
                         "problemi='" + appointment.getProblemi() + "'" +
                         "komenti='" + appointment.getKomenti() + "' " +
                         "WHERE id='" + appointment.getId() + "'";
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
                 clean();
             }
@@ -65,7 +65,7 @@ namespace DentalSoft.Repositories
             if (OpenConnection())
             {
                 query = "DELETE FROM " + tableName + " WHERE id='" + appointment.getId() + "'";
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
                 clean();
             }
@@ -95,7 +95,7 @@ namespace DentalSoft.Repositories
                     query = query + "AND problemi='" + problemi + "' ";
                 if (komenti != null)
                     query = query + "AND komenti='" + komenti + "'";
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd = new MySqlCommand(query, connection);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 List<Appointment> list = new List<Appointment>();
                 while (dataReader.Read())

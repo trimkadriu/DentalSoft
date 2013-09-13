@@ -13,11 +13,19 @@ namespace DentalSoft
         public frmMain(Dentist loggedInDentist)
         {
             InitializeComponent();
-
             this.loggedInDentist = loggedInDentist;
             utilities = new Utilities();
-
             Init();
+        }
+
+        private void Init()
+        {
+            lblEmriPlote.Text = "( " + loggedInDentist.getEmri() + " )";
+            lblDataKoha.Text = loggedInDentist.getQasjaFundit().ToString();
+            if (loggedInDentist.getFotoProfilit() == null)
+                pctUserProfile.Image = Properties.Resources.Ska_foto;
+            else
+                pctUserProfile.Image = utilities.convertByteToImage(loggedInDentist.getFotoProfilit());
         }
 
         private void miRrethDentalSoft_Click(object sender, EventArgs e)
@@ -118,16 +126,6 @@ namespace DentalSoft
         private void logout()
         {
             Application.Restart();
-        }
-
-        private void Init()
-        {
-            lblEmriPlote.Text = "( " + loggedInDentist.getEmri() + " )";
-            lblDataKoha.Text = loggedInDentist.getQasjaFundit().ToString();
-            if (loggedInDentist.getFotoProfilit() == null)
-                pctUserProfile.Image = Properties.Resources.Ska_foto;
-            else
-                pctUserProfile.Image = utilities.convertByteToImage(loggedInDentist.getFotoProfilit());
         }
     }
 }

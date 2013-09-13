@@ -18,21 +18,42 @@ namespace DentalSoft.Service
             validationUtils = new ValidationUtils();
         }
 
-        public bool editDentist(Dentist dentist)
+        public bool editAppointment(Appointment appointment)
         {
-            
+            appointmentsRepository.updateStatement(appointment);
             return true;
         }
 
-        public bool insertDentist(Dentist dentist)
+        public bool insertAppointment(Appointment appointment)
         {
-            
+            if (!validationUtils.isValidEmail(appointment.getEmail()))
+            {
+                MessageBox.Show("Email-i nuk eshte valid. Ju lutem shkruani emailin ne forme te rregullt.", "Gabim!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            if (appointment.getTelefoni().Length != 13)
+            {
+                MessageBox.Show("Telefoni nuk eshte valid. Ju lutem shkruani telefonin ne forme te rregullt.", "Gabim!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            appointmentsRepository.insertStatement(appointment);
             return true;
         }
 
-        public void removeDentist(Dentist dentist)
+        public void removeDentist(Appointment appointment)
         {
 
+        }
+
+        public Appointment getAppointmentById(string id)
+        {
+            List<Appointment> appointments = appointmentsRepository.selectStatement(id);
+            if (appointments.Count == 1)
+                return appointments[0];
+            else
+                return null;
         }
 
         public List<Appointment> getAllAppointments()
