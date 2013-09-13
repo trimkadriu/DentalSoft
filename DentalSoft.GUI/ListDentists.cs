@@ -10,7 +10,6 @@ namespace DentalSoft
     {
         private DentistService dentistService;
         private BindingSource bindingSource;
-        private DataGridViewRow lastSelectedDentist;
 
         public frmListDentists()
         {

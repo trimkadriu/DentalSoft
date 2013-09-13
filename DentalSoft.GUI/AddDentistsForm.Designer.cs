@@ -46,6 +46,7 @@
             this.btnShfletoFoto = new System.Windows.Forms.Button();
             this.lblEmriFajllit = new System.Windows.Forms.Label();
             this.lblPassowrdInformation = new System.Windows.Forms.Label();
+            this.btnFshijFoto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pctFotoProfil)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,9 +178,9 @@
             // btnShfletoFoto
             // 
             this.btnShfletoFoto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnShfletoFoto.Location = new System.Drawing.Point(295, 169);
+            this.btnShfletoFoto.Location = new System.Drawing.Point(357, 169);
             this.btnShfletoFoto.Name = "btnShfletoFoto";
-            this.btnShfletoFoto.Size = new System.Drawing.Size(118, 23);
+            this.btnShfletoFoto.Size = new System.Drawing.Size(56, 23);
             this.btnShfletoFoto.TabIndex = 5;
             this.btnShfletoFoto.Text = "Shfleto";
             this.btnShfletoFoto.UseVisualStyleBackColor = true;
@@ -203,6 +204,17 @@
             this.lblPassowrdInformation.Text = "*Nese nuk doni te nderroni fjalekalimin leni fushat e zbrazeta";
             this.lblPassowrdInformation.Visible = false;
             // 
+            // btnFshijFoto
+            // 
+            this.btnFshijFoto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnFshijFoto.Location = new System.Drawing.Point(295, 169);
+            this.btnFshijFoto.Name = "btnFshijFoto";
+            this.btnFshijFoto.Size = new System.Drawing.Size(56, 23);
+            this.btnFshijFoto.TabIndex = 20;
+            this.btnFshijFoto.Text = "Fshij";
+            this.btnFshijFoto.UseVisualStyleBackColor = true;
+            this.btnFshijFoto.Click += new System.EventHandler(this.btnFshijFoto_Click);
+            // 
             // frmAddDentist
             // 
             this.AcceptButton = this.btnShtoDentist;
@@ -210,6 +222,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnAnulo;
             this.ClientSize = new System.Drawing.Size(430, 272);
+            this.Controls.Add(this.btnFshijFoto);
             this.Controls.Add(this.lblPassowrdInformation);
             this.Controls.Add(this.lblEmriFajllit);
             this.Controls.Add(this.btnShfletoFoto);
@@ -230,6 +243,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmAddDentist";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shto dentist";
             ((System.ComponentModel.ISupportInitialize)(this.pctFotoProfil)).EndInit();
@@ -257,6 +271,7 @@
         private System.Windows.Forms.Button btnShfletoFoto;
         private System.Windows.Forms.Label lblEmriFajllit;
         private System.Windows.Forms.Label lblPassowrdInformation;
+        private System.Windows.Forms.Button btnFshijFoto;
 
     }
 }

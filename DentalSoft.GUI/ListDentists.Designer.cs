@@ -70,7 +70,6 @@
             this.dgvListaEDentisteve.AllowUserToAddRows = false;
             this.dgvListaEDentisteve.AllowUserToDeleteRows = false;
             this.dgvListaEDentisteve.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvListaEDentisteve.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvListaEDentisteve.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaEDentisteve.Location = new System.Drawing.Point(15, 89);
             this.dgvListaEDentisteve.MultiSelect = false;
@@ -128,6 +127,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmListDentists";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listo dentistet";
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaEDentisteve)).EndInit();

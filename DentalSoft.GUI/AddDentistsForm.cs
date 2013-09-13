@@ -31,8 +31,7 @@ namespace DentalSoft
             {
                 edito = true;
                 btnShtoDentist.Text = "Ruaj ndryshimet";
-                this.Text = "Edito dentist";
-
+                this.Text = "Ndrysho profilin";
                 txtEmri.Text = dentist.getEmri();
                 txtEmail.Text = dentist.getEmail();
                 txtPerdoruesi.Enabled = false;
@@ -90,7 +89,7 @@ namespace DentalSoft
                                                      encryptor.encryptMd5(txtFjalekalimi.Text), fotoProfilit);
                     if (dentistService.insertDentist(dentistNew))
                     {
-                        MessageBox.Show("Dentisti u shtua me sukses.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //MessageBox.Show("Dentisti u shtua me sukses.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }
                 }
@@ -132,6 +131,14 @@ namespace DentalSoft
                 return false;
             }
             return true;
+        }
+
+        private void btnFshijFoto_Click(object sender, EventArgs e)
+        {
+            fotoProfilit = null;
+            pctFotoProfil.Image = Properties.Resources.Ska_foto;
+            if (edito)
+                dentist.setFotoProfilit(null);
         }
     }
 }

@@ -77,3 +77,9 @@ ALTER TABLE  `dentistet` CHANGE  `id`  `id` VARCHAR( 10 ) NOT NULL;
 ALTER TABLE  `raportet` CHANGE  `id`  `id` VARCHAR( 10 ) NOT NULL;
 
 ALTER TABLE  `takimet` CHANGE  `id`  `id` VARCHAR( 10 ) NOT NULL;
+
+ALTER TABLE  `takimet` ADD UNIQUE (`id`);
+
+ALTER TABLE  `raportet` ADD UNIQUE (`id`);
+
+ALTER TABLE  `dentistet` ADD UNIQUE (`id`);
