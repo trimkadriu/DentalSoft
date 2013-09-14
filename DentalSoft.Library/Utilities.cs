@@ -57,7 +57,7 @@ namespace DentalSoft.Library
                 return string.Empty;
             char[] letters = source.ToCharArray();
             letters[0] = char.ToUpper(letters[0]);
-            return new string(letters).Replace("_", " e ");
+            return new string(letters).Replace("_", " ");
         }
     }
 }

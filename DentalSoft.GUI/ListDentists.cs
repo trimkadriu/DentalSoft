@@ -24,7 +24,7 @@ namespace DentalSoft
             bindingSource.DataSource = dentistService.getBindingSource();
             dgvListaEDentisteve.DataSource = bindingSource;
             dgvListaEDentisteve.Columns["Fjalekalimi"].Visible = false;
-            dgvListaEDentisteve.Columns["Foto e profilit"].Visible = false;
+            dgvListaEDentisteve.Columns["Foto profilit"].Visible = false;
         }
 
         private void txtKerkoEmriMbiemri_TextChanged(object sender, System.EventArgs e)

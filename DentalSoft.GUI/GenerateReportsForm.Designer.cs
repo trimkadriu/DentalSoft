@@ -60,6 +60,7 @@
             // txtEmriPacientit
             // 
             this.txtEmriPacientit.Location = new System.Drawing.Point(127, 14);
+            this.txtEmriPacientit.MaxLength = 32;
             this.txtEmriPacientit.Name = "txtEmriPacientit";
             this.txtEmriPacientit.Size = new System.Drawing.Size(239, 20);
             this.txtEmriPacientit.TabIndex = 27;
@@ -76,6 +77,7 @@
             // txtProblemi
             // 
             this.txtProblemi.Location = new System.Drawing.Point(127, 95);
+            this.txtProblemi.MaxLength = 512;
             this.txtProblemi.Multiline = true;
             this.txtProblemi.Name = "txtProblemi";
             this.txtProblemi.Size = new System.Drawing.Size(239, 70);
@@ -144,7 +146,7 @@
             // 
             this.nudMosha.Location = new System.Drawing.Point(127, 42);
             this.nudMosha.Maximum = new decimal(new int[] {
-            150,
+            120,
             0,
             0,
             0});

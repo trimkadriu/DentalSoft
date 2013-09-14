@@ -66,8 +66,11 @@ namespace DentalSoft
                     appointment.setKohezgjatjaTakimit(int.Parse(nudKohezgjatjaETakimit.Text));
                     appointment.setProblemi(txtProblemi.Text);
                     appointment.setKomenti(txtKomenti.Text);
-                    if(appointmentService.editAppointment(appointment))
+                    if (appointmentService.editAppointment(appointment))
+                    {
+                        this.DialogResult = DialogResult.Yes;
                         this.Close();
+                    }
                 }
                 else
                 {
@@ -75,7 +78,7 @@ namespace DentalSoft
                                                               dtpDataETakimit.Value, int.Parse(nudKohezgjatjaETakimit.Text), txtProblemi.Text, txtKomenti.Text);
                     if (appointmentService.insertAppointment(newAppointment))
                     {
-                        MessageBox.Show("Takimi u shtua me sukses.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //MessageBox.Show("Takimi u shtua me sukses.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }
                 }

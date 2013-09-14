@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListAppointments));
             this.dgvTakimet = new System.Windows.Forms.DataGridView();
             this.btnMbylle = new System.Windows.Forms.Button();
@@ -49,16 +50,19 @@
             this.dgvTakimet.AllowUserToAddRows = false;
             this.dgvTakimet.AllowUserToDeleteRows = false;
             this.dgvTakimet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvTakimet.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvTakimet.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.dgvTakimet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTakimet.Location = new System.Drawing.Point(15, 145);
             this.dgvTakimet.MultiSelect = false;
             this.dgvTakimet.Name = "dgvTakimet";
             this.dgvTakimet.ReadOnly = true;
             this.dgvTakimet.RowHeadersVisible = false;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTakimet.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTakimet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTakimet.Size = new System.Drawing.Size(948, 375);
-            this.dgvTakimet.TabIndex = 0;
+            this.dgvTakimet.TabIndex = 3;
+            this.dgvTakimet.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTakimet_CellMouseDoubleClick);
             // 
             // btnMbylle
             // 
@@ -67,7 +71,7 @@
             this.btnMbylle.Location = new System.Drawing.Point(15, 541);
             this.btnMbylle.Name = "btnMbylle";
             this.btnMbylle.Size = new System.Drawing.Size(75, 23);
-            this.btnMbylle.TabIndex = 32;
+            this.btnMbylle.TabIndex = 6;
             this.btnMbylle.Text = "Mbylle";
             this.btnMbylle.UseVisualStyleBackColor = true;
             this.btnMbylle.Click += new System.EventHandler(this.btnMbylle_Click);
@@ -78,7 +82,7 @@
             this.btnFshij.Location = new System.Drawing.Point(807, 541);
             this.btnFshij.Name = "btnFshij";
             this.btnFshij.Size = new System.Drawing.Size(75, 23);
-            this.btnFshij.TabIndex = 31;
+            this.btnFshij.TabIndex = 5;
             this.btnFshij.Text = "Fshij";
             this.btnFshij.UseVisualStyleBackColor = true;
             this.btnFshij.Click += new System.EventHandler(this.btnFshij_Click);
@@ -90,7 +94,7 @@
             this.btnEdito.Location = new System.Drawing.Point(888, 541);
             this.btnEdito.Name = "btnEdito";
             this.btnEdito.Size = new System.Drawing.Size(75, 23);
-            this.btnEdito.TabIndex = 30;
+            this.btnEdito.TabIndex = 4;
             this.btnEdito.Text = "Edito";
             this.btnEdito.UseVisualStyleBackColor = true;
             this.btnEdito.Click += new System.EventHandler(this.btnEdito_Click);
@@ -117,7 +121,8 @@
             this.txtEmriPacientit.Location = new System.Drawing.Point(132, 52);
             this.txtEmriPacientit.Name = "txtEmriPacientit";
             this.txtEmriPacientit.Size = new System.Drawing.Size(198, 20);
-            this.txtEmriPacientit.TabIndex = 34;
+            this.txtEmriPacientit.TabIndex = 0;
+            this.txtEmriPacientit.TextChanged += new System.EventHandler(this.txtEmriPacientit_TextChanged);
             // 
             // lblTitulli
             // 
@@ -145,8 +150,9 @@
             this.dtpDataETakimitPrej.Location = new System.Drawing.Point(132, 79);
             this.dtpDataETakimitPrej.Name = "dtpDataETakimitPrej";
             this.dtpDataETakimitPrej.Size = new System.Drawing.Size(197, 20);
-            this.dtpDataETakimitPrej.TabIndex = 37;
+            this.dtpDataETakimitPrej.TabIndex = 1;
             this.dtpDataETakimitPrej.Value = new System.DateTime(2013, 8, 28, 22, 43, 0, 0);
+            this.dtpDataETakimitPrej.ValueChanged += new System.EventHandler(this.datesValuesChanged);
             // 
             // lblDataETakimitDeri
             // 
@@ -164,11 +170,13 @@
             this.dtpDataETakimitDeri.Location = new System.Drawing.Point(132, 106);
             this.dtpDataETakimitDeri.Name = "dtpDataETakimitDeri";
             this.dtpDataETakimitDeri.Size = new System.Drawing.Size(197, 20);
-            this.dtpDataETakimitDeri.TabIndex = 39;
+            this.dtpDataETakimitDeri.TabIndex = 2;
             this.dtpDataETakimitDeri.Value = new System.DateTime(2013, 8, 28, 22, 43, 0, 0);
+            this.dtpDataETakimitDeri.ValueChanged += new System.EventHandler(this.datesValuesChanged);
             // 
             // frmListAppointments
             // 
+            this.AcceptButton = this.btnEdito;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnMbylle;
