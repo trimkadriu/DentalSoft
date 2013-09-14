@@ -49,9 +49,9 @@ namespace DentalSoft.Repositories
                         "mosha='" + appointment.getMosha() + "', " +
                         "email='" + appointment.getEmail() + "', " +
                         "telefoni='" + appointment.getTelefoni() + "', " +
-                        "data_takimit='" + utilities.convertDateForDB(appointment.getDataTakimit()) + "'" +
-                        "kohezgjatja_takimit='" + appointment.getKohezgjatjaTakimit() + "'" +
-                        "problemi='" + appointment.getProblemi() + "'" +
+                        "data_takimit='" + utilities.convertDateForDB(appointment.getDataTakimit()) + "', " +
+                        "kohezgjatja_takimit='" + appointment.getKohezgjatjaTakimit() + "', " +
+                        "problemi='" + appointment.getProblemi() + "', " +
                         "komenti='" + appointment.getKomenti() + "' " +
                         "WHERE id='" + appointment.getId() + "'";
                 cmd = new MySqlCommand(query, connection);

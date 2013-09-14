@@ -71,6 +71,7 @@
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(126, 229);
+            this.txtEmail.MaxLength = 64;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(239, 20);
             this.txtEmail.TabIndex = 3;
@@ -96,6 +97,7 @@
             // txtEmriPacientit
             // 
             this.txtEmriPacientit.Location = new System.Drawing.Point(126, 171);
+            this.txtEmriPacientit.MaxLength = 32;
             this.txtEmriPacientit.Name = "txtEmriPacientit";
             this.txtEmriPacientit.Size = new System.Drawing.Size(239, 20);
             this.txtEmriPacientit.TabIndex = 1;
@@ -135,6 +137,7 @@
             // txtProblemi
             // 
             this.txtProblemi.Location = new System.Drawing.Point(497, 171);
+            this.txtProblemi.MaxLength = 512;
             this.txtProblemi.Multiline = true;
             this.txtProblemi.Name = "txtProblemi";
             this.txtProblemi.Size = new System.Drawing.Size(239, 70);
@@ -152,6 +155,7 @@
             // txtKomenti
             // 
             this.txtKomenti.Location = new System.Drawing.Point(497, 248);
+            this.txtKomenti.MaxLength = 512;
             this.txtKomenti.Multiline = true;
             this.txtKomenti.Name = "txtKomenti";
             this.txtKomenti.Size = new System.Drawing.Size(239, 90);
