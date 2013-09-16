@@ -10,12 +10,14 @@ namespace DentalSoft
     {
         private DentistService dentistService;
         private BindingSource bindingSource;
+        private Dentist loggedInDentist;
 
-        public frmListDentists()
+        public frmListDentists(Dentist dentist = null)
         {
             InitializeComponent();
             bindingSource = new BindingSource();
             dentistService = new DentistService();
+            loggedInDentist = dentist;
             Init();
         }
 
@@ -44,6 +46,11 @@ namespace DentalSoft
                 {
                     Dentist dentist = new Dentist(id);
                     dentistService.removeDentist(dentist);
+                    if (loggedInDentist.Equals(dentist))
+                    {
+                        this.DialogResult = DialogResult.Yes;
+                        this.Close();
+                    }
                     Init();
                 }
             }

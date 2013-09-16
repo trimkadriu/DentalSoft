@@ -26,11 +26,14 @@ namespace DentalSoft.Service
 
         public bool insertAppointment(Appointment appointment)
         {
-            if (!validationUtils.isValidEmail(appointment.getEmail()))
+            if (!string.IsNullOrEmpty(appointment.getEmail()))
             {
-                MessageBox.Show("Email-i nuk eshte valid. Ju lutem shkruani emailin ne forme te rregullt.", "Gabim!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
+                if (!validationUtils.isValidEmail(appointment.getEmail()))
+                {
+                    MessageBox.Show("Email-i nuk eshte valid. Ju lutem shkruani emailin ne forme te rregullt.", "Gabim!",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
             }
             if (appointment.getTelefoni().Length != 13)
             {
