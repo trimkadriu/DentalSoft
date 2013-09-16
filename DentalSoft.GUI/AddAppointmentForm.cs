@@ -61,6 +61,7 @@ namespace DentalSoft
                 {
                     appointment.setEmriPacientit(txtEmriPacientit.Text);
                     appointment.setMosha(int.Parse(nudMosha.Text));
+                    appointment.setEmail(txtEmail.Text);
                     appointment.setTelefoni(txtTelefoni.Text);
                     appointment.setDataTakimit(dtpDataETakimit.Value);
                     appointment.setKohezgjatjaTakimit(int.Parse(nudKohezgjatjaETakimit.Text));
@@ -97,11 +98,11 @@ namespace DentalSoft
                 nudMosha.Focus();
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(txtEmail.Text))
-            {
-                txtEmail.Focus();
-                return false;
-            }
+            //if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            //{
+            //    txtEmail.Focus();
+            //    return false;
+            //}
             if (string.IsNullOrWhiteSpace(txtTelefoni.Text))
             {
                 txtTelefoni.Focus();

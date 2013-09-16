@@ -21,7 +21,7 @@ namespace DentalSoft
             utilities = new Utilities();
             this.dentist = dentist;
             dentistService = new DentistService();
-            fotoProfilit = new byte[2000000];
+            fotoProfilit = null; //new byte[2000000];
             Init();
         }
 

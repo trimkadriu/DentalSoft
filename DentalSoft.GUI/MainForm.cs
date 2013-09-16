@@ -60,8 +60,10 @@ namespace DentalSoft
 
         private void btnListoDentistet_Click(object sender, EventArgs e)
         {
-            frmListDentists listDentistsForm = new frmListDentists();
-            listDentistsForm.ShowDialog();
+            frmListDentists listDentistsForm = new frmListDentists(loggedInDentist);
+            DialogResult dr = listDentistsForm.ShowDialog();
+            if (dr == DialogResult.Yes)
+                logout();
         }
 
         private void menaxhoDentistetToolStripMenuItem_Click(object sender, EventArgs e)
