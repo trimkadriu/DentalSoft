@@ -109,6 +109,7 @@
             this.btnMbylle.TabIndex = 3;
             this.btnMbylle.Text = "Mbylle";
             this.btnMbylle.UseVisualStyleBackColor = true;
+            this.btnMbylle.Click += new System.EventHandler(this.btnMbylle_Click);
             // 
             // frmListDentists
             // 

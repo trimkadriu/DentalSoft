@@ -1,13 +1,7 @@
 ﻿using DentalSoft.Domain;
+using DentalSoft.Library;
 using DentalSoft.Service;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DentalSoft
@@ -16,16 +10,17 @@ namespace DentalSoft
     {
         private AppointmentService appointmentService;
         private BindingSource bindingSource;
-        private bool firstLoad;
+        private Utilities utilities;
+        private bool dateFilter;
 
         public frmListAppointments()
         {
             InitializeComponent();
             appointmentService = new AppointmentService();
             bindingSource = new BindingSource();
+            utilities = new Utilities();
+            dateFilter = false;
             Init();
-            firstLoad = true;
-            resetDates();
         }
 
         private void Init()
@@ -70,38 +65,47 @@ namespace DentalSoft
 
         private void txtEmriPacientit_TextChanged(object sender, EventArgs e)
         {
-            bindingSource.Filter = "[Emri pacientit] like '%" + txtEmriPacientit.Text + "%'";
-        }
-
-        private void resetDates()
-        {
-            dtpDataETakimitPrej.CustomFormat = " ";
-            dtpDataETakimitDeri.CustomFormat = " ";
-            //
-            dtpDataETakimitPrej.MinDate = DateTime.Now.AddYears(-3);
-            dtpDataETakimitPrej.MaxDate = DateTime.Now.AddYears(1);
-            dtpDataETakimitPrej.Value = DateTime.Now.AddDays(-3);
-            //
-            dtpDataETakimitDeri.MinDate = DateTime.Now.AddYears(-1);
-            dtpDataETakimitDeri.MaxDate = DateTime.Now.AddYears(1);
-            dtpDataETakimitDeri.Value = DateTime.Now;
+            dataGridFilter();
         }
 
         private void datesValuesChanged(object sender, EventArgs e)
         {
-            if (firstLoad)
-                return;
-            firstLoad = false;
             if (dtpDataETakimitPrej.Value > dtpDataETakimitDeri.Value)
             {
                 MessageBox.Show("Datat e perzgjedhura jane kontradiktore. Ju lutem zgjedhni datat perseri", "Gabim!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                resetDates();
+                dtpDataETakimitPrej.Value = dtpDataETakimitDeri.Value.AddMinutes(-1);
+                dtpDataETakimitDeri.Value = DateTime.Now;
+                dtpDataETakimitPrej.CustomFormat = " ";
+                dtpDataETakimitDeri.CustomFormat = " ";
+                dateFilter = false;
             }
             else
             {
                 dtpDataETakimitPrej.CustomFormat = "dd MMMM yyyy - hh:mm tt";
                 dtpDataETakimitDeri.CustomFormat = "dd MMMM yyyy - hh:mm tt";
+                dateFilter = true;
             }
+            dataGridFilter();
+        }
+
+        private void dataGridFilter()
+        {
+            string filter = string.Empty;
+            if (!string.IsNullOrWhiteSpace(txtEmriPacientit.Text) && dateFilter)
+                filter = string.Format("[Emri pacientit] like '%{0}%' AND [Data takimit] >= '{1}' AND [Data takimit] <= '{2}'",
+                                        txtEmriPacientit.Text,
+                                        utilities.convertDateForBindingSource(dtpDataETakimitPrej.Value),
+                                        utilities.convertDateForBindingSource(dtpDataETakimitDeri.Value));
+            else
+            {
+                if (!string.IsNullOrWhiteSpace(txtEmriPacientit.Text))
+                    filter = string.Format("[Emri pacientit] like '%{0}%'", txtEmriPacientit.Text);
+                else if (dateFilter)
+                    filter = string.Format("[Data takimit] >= '{0}' AND [Data takimit] <= '{1}'", 
+                                            utilities.convertDateForBindingSource(dtpDataETakimitPrej.Value),
+                                            utilities.convertDateForBindingSource(dtpDataETakimitDeri.Value));
+            }
+            bindingSource.Filter = filter;
         }
     }
 }

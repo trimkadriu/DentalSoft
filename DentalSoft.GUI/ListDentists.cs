@@ -55,5 +55,10 @@ namespace DentalSoft
                 }
             }
         }
+
+        private void btnMbylle_Click(object sender, System.EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

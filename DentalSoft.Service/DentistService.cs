@@ -83,7 +83,7 @@ namespace DentalSoft.Service
                 dataTable.Rows.Add(new object[] 
                 {
                     dentist.getId(), dentist.getEmri(), dentist.getEmail(), dentist.getPerdoruesi(), 
-                    dentist.getFjalekalimi(), dentist.getFotoProfilit(), dentist.getQasjaFundit().ToString()
+                    dentist.getFjalekalimi(), dentist.getFotoProfilit(), dentist.getQasjaFundit()
                 });
             }
             bindingSource.DataSource = dataTable;

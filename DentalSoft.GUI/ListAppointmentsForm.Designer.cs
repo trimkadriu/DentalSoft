@@ -145,13 +145,15 @@
             // 
             // dtpDataETakimitPrej
             // 
-            this.dtpDataETakimitPrej.CustomFormat = "dd MMMM yyyy - hh:mm tt";
+            this.dtpDataETakimitPrej.CustomFormat = " ";
             this.dtpDataETakimitPrej.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDataETakimitPrej.Location = new System.Drawing.Point(132, 79);
+            this.dtpDataETakimitPrej.MaxDate = new System.DateTime(2014, 9, 17, 15, 42, 21, 718);
+            this.dtpDataETakimitPrej.MinDate = new System.DateTime(2010, 9, 17, 15, 42, 21, 718);
             this.dtpDataETakimitPrej.Name = "dtpDataETakimitPrej";
             this.dtpDataETakimitPrej.Size = new System.Drawing.Size(197, 20);
             this.dtpDataETakimitPrej.TabIndex = 1;
-            this.dtpDataETakimitPrej.Value = new System.DateTime(2013, 8, 28, 22, 43, 0, 0);
+            this.dtpDataETakimitPrej.Value = new System.DateTime(2013, 9, 17, 15, 42, 21, 718);
             this.dtpDataETakimitPrej.ValueChanged += new System.EventHandler(this.datesValuesChanged);
             // 
             // lblDataETakimitDeri
@@ -165,13 +167,15 @@
             // 
             // dtpDataETakimitDeri
             // 
-            this.dtpDataETakimitDeri.CustomFormat = "dd MMMM yyyy - hh:mm tt";
+            this.dtpDataETakimitDeri.CustomFormat = " ";
             this.dtpDataETakimitDeri.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDataETakimitDeri.Location = new System.Drawing.Point(132, 106);
+            this.dtpDataETakimitDeri.MaxDate = new System.DateTime(2014, 9, 17, 15, 42, 21, 722);
+            this.dtpDataETakimitDeri.MinDate = new System.DateTime(2012, 9, 17, 15, 42, 21, 721);
             this.dtpDataETakimitDeri.Name = "dtpDataETakimitDeri";
             this.dtpDataETakimitDeri.Size = new System.Drawing.Size(197, 20);
             this.dtpDataETakimitDeri.TabIndex = 2;
-            this.dtpDataETakimitDeri.Value = new System.DateTime(2013, 8, 28, 22, 43, 0, 0);
+            this.dtpDataETakimitDeri.Value = new System.DateTime(2013, 9, 17, 15, 42, 21, 721);
             this.dtpDataETakimitDeri.ValueChanged += new System.EventHandler(this.datesValuesChanged);
             // 
             // frmListAppointments
