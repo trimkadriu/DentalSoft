@@ -1,0 +1,87 @@
+CREATE USER 'dentalsoft'@'localhost' IDENTIFIED BY PASSWORD '*9FD0F0F15AB2A466AEB2C53802DB0A14B8F1F8A5';
+
+GRANT ALL PRIVILEGES ON *.* TO 'dentalsoft'@'localhost' WITH GRANT OPTION; 
+
+
+--
+-- Create database `dentistet`
+--
+CREATE DATABASE dentalsoft CHARACTER SET utf8 COLLATE utf8_bin;
+
+--
+-- Table structure for table `dentistet`
+--
+
+CREATE TABLE IF NOT EXISTS `dentistet` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `emri` varchar(32) COLLATE utf8_bin NOT NULL,
+  `email` varchar(64) COLLATE utf8_bin NOT NULL,
+  `perdoruesi` varchar(32) COLLATE utf8_bin NOT NULL,
+  `fjalekalimi` varchar(32) COLLATE utf8_bin NOT NULL,
+  `foto_profilit` longblob,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `perdoruesi` (`perdoruesi`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `raportet`
+--
+
+CREATE TABLE IF NOT EXISTS `raportet` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `emri_pacientit` varchar(32) COLLATE utf8_bin NOT NULL,
+  `mosha` int(2) unsigned NOT NULL,
+  `gjinia` enum('1','0') COLLATE utf8_bin NOT NULL,
+  `problemi` blob NOT NULL,
+  `pagesa` int(10) unsigned NOT NULL,
+  `perserit_kontrollin` enum('po','jo','pacaktuar') COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `takimet`
+--
+
+CREATE TABLE IF NOT EXISTS `takimet` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `emri_pacientit` varchar(32) COLLATE utf8_bin NOT NULL,
+  `mosha` int(2) unsigned NOT NULL,
+  `email` varchar(64) COLLATE utf8_bin NOT NULL,
+  `telefoni` varchar(32) COLLATE utf8_bin NOT NULL,
+  `data_takimit` datetime NOT NULL,
+  `kohezgjatja_takimit` int(5) unsigned NOT NULL,
+  `problemi` blob NOT NULL,
+  `komenti` blob,
+  PRIMARY KEY (`id`)
+)
+
+
+
+
+
+
+INSERT INTO `dentistet` (`id`, `emri`, `email`, `perdoruesi`, `fjalekalimi`, `foto_profilit`) VALUES
+(1, 'Dentist', 'dentist@email.com', 'dentist', '0987c1f6e6828d62f554d07f8ba744a8', NULL);
+
+ALTER TABLE  `dentistet` ADD  `qasja_fundit` DATETIME NULL;
+
+ALTER TABLE  `dentistet` CHANGE  `foto_profilit`  `foto_profilit` LONGBLOB NULL;
+
+ALTER TABLE  `dentistet` CHANGE  `id`  `id` VARCHAR( 10 ) NOT NULL;
+
+ALTER TABLE  `raportet` CHANGE  `id`  `id` VARCHAR( 10 ) NOT NULL;
+
+ALTER TABLE  `takimet` CHANGE  `id`  `id` VARCHAR( 10 ) NOT NULL;
+
+ALTER TABLE  `takimet` ADD UNIQUE (`id`);
+
+ALTER TABLE  `raportet` ADD UNIQUE (`id`);
+
+ALTER TABLE  `dentistet` ADD UNIQUE (`id`);
+
+ALTER TABLE  `takimet` CHANGE  `email`  `email` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_bin NULL;

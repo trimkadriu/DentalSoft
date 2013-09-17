@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DentalSoft.Repositories", "DentalSoft.Repositories\DentalSoft.Repositories.csproj", "{68584D49-12D7-4394-B735-D30C28A32475}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DentalSoft.Domain", "DentalSoft.Domain\DentalSoft.Domain.csproj", "{EFDBDDC9-6255-4699-845C-937F1ABAAA9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DentalSoft.Library", "DentalSoft.Library\DentalSoft.Library.csproj", "{67C06AB8-5174-4E50-8672-8353EC218913}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DentalSoft.GUI", "DentalSoft.GUI\DentalSoft.GUI.csproj", "{B497D25B-2747-4441-8436-5B08A73049D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DentalSoft.Service", "DentalSoft.Service\DentalSoft.Service.csproj", "{9603D458-5C96-4FA4-B25F-6F08F7D064BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68584D49-12D7-4394-B735-D30C28A32475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68584D49-12D7-4394-B735-D30C28A32475}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68584D49-12D7-4394-B735-D30C28A32475}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68584D49-12D7-4394-B735-D30C28A32475}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFDBDDC9-6255-4699-845C-937F1ABAAA9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFDBDDC9-6255-4699-845C-937F1ABAAA9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFDBDDC9-6255-4699-845C-937F1ABAAA9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFDBDDC9-6255-4699-845C-937F1ABAAA9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67C06AB8-5174-4E50-8672-8353EC218913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67C06AB8-5174-4E50-8672-8353EC218913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67C06AB8-5174-4E50-8672-8353EC218913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67C06AB8-5174-4E50-8672-8353EC218913}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B497D25B-2747-4441-8436-5B08A73049D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B497D25B-2747-4441-8436-5B08A73049D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B497D25B-2747-4441-8436-5B08A73049D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B497D25B-2747-4441-8436-5B08A73049D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9603D458-5C96-4FA4-B25F-6F08F7D064BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9603D458-5C96-4FA4-B25F-6F08F7D064BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9603D458-5C96-4FA4-B25F-6F08F7D064BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9603D458-5C96-4FA4-B25F-6F08F7D064BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
