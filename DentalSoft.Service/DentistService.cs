@@ -67,16 +67,25 @@ namespace DentalSoft.Service
             return dentistsRepository.selectStatement();
         }
 
+        public List<Dentist> getDentistsForDashboard(int limit)
+        {
+            return dentistsRepository.selectStatement(null, null, null, null, null, limit, null);
+        }
+
         public List<DataColumn> getSchemaTable()
         {
             return dentistsRepository.getSchemaTable();
         }
 
-        public BindingSource getBindingSource()
+        public BindingSource getBindingSource(List<Dentist> loadedDentists = null)
         {
             DataTable dataTable = new DataTable();
             BindingSource bindingSource = new BindingSource();
-            List<Dentist> dentists = getAllDentists();
+            List<Dentist> dentists;
+            if(loadedDentists != null)
+                dentists = loadedDentists;
+            else
+                dentists = getAllDentists();
             dataTable.Columns.AddRange(getSchemaTable().ToArray());
             foreach (Dentist dentist in dentists)
             {

@@ -24,8 +24,9 @@ namespace DentalSoft.Repositories
         {
             if (OpenConnection())
             {
-                query = "INSERT INTO " + tableName + " (id, emri_pacientit, mosha, email, telefoni, data_takimit, kohezgjatja_takimit, problemi, komenti) VALUES ('" +
+                query = "INSERT INTO " + tableName + " (id, dentisti, emri_pacientit, mosha, email, telefoni, data_takimit, kohezgjatja_takimit, problemi, komenti) VALUES ('" +
                         appointment.getId() + "', '" +
+                        appointment.getDentistId() + "', '" +
                         appointment.getEmriPacientit() + "', '" +
                         appointment.getMosha() + "', '" +
                         appointment.getEmail() + "', '" +
@@ -64,6 +65,14 @@ namespace DentalSoft.Repositories
         {
             if (OpenConnection())
             {
+                ReportsRepository reportsRepository = new ReportsRepository();
+                List<Report> reportList = reportsRepository.selectStatement(null, null, null, appointment.getId());
+                if (reportList.Count == 1)
+                {
+                    reportList[0].setTakimiArdhshem(null);
+                    reportList[0].setTakimiArdhshemStatus(Domain.Enums.TakimiRiStatus.Pacaktuar);
+                    reportsRepository.updateStatement(reportList[0]);
+                }
                 query = "DELETE FROM " + tableName + " WHERE id='" + appointment.getId() + "'";
                 cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
@@ -71,14 +80,16 @@ namespace DentalSoft.Repositories
             }
         }
 
-        public List<Appointment> selectStatement(string id = null, string emriPacientit = null, int mosha = 0, string email = null, string telefoni = null,
-                                                 DateTime? dataTakimit = null, int kohezgjatjaTakimit = 0, string problemi = null, string komenti = null)
+        public List<Appointment> selectStatement(string id = null, string dentistId = null, string emriPacientit = null, int mosha = 0, string email = null, string telefoni = null,
+                                                 DateTime? dataTakimit = null, int kohezgjatjaTakimit = 0, string problemi = null, string komenti = null, bool forDashboard = false)
         {
             if (OpenConnection())
             {
                 query = "SELECT * FROM " + tableName + " WHERE 1 ";
                 if (id != null)
                     query = query + "AND id='" + id + "' ";
+                if (dentistId != null)
+                    query = query + "AND dentisti='" + dentistId + "' ";
                 if (emriPacientit != null)
                     query = query + "AND emri_pacientit='" + emriPacientit + "' ";
                 if (mosha != 0)
@@ -94,7 +105,13 @@ namespace DentalSoft.Repositories
                 if (problemi != null)
                     query = query + "AND problemi='" + problemi + "' ";
                 if (komenti != null)
-                    query = query + "AND komenti='" + komenti + "'";
+                    query = query + "AND komenti='" + komenti + "' ";
+                if (forDashboard) {
+                    DateTime today = DateTime.Now; 
+                    DateTime startOfToday = today.Date; 
+                    DateTime endOfToday = startOfToday.AddDays(1).AddTicks(-1);
+                    query = query + "AND `data_takimit` between '" + utilities.convertDateForDB(startOfToday) + "' AND '" + utilities.convertDateForDB(endOfToday) + "'";
+                }
                 cmd = new MySqlCommand(query, connection);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 List<Appointment> list = new List<Appointment>();
@@ -102,6 +119,7 @@ namespace DentalSoft.Repositories
                 {
                     Appointment a = new Appointment();
                     a.setId(dataReader.GetString("id"));
+                    a.setDentistId(dataReader.GetString("dentisti"));
                     a.setEmriPacientit(dataReader.GetString("emri_pacientit"));
                     a.setMosha(int.Parse(dataReader.GetString("mosha")));
                     a.setEmail(dataReader.GetString("email"));

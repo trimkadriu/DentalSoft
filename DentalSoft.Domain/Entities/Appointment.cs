@@ -11,6 +11,7 @@ namespace DentalSoft.Domain
     {
         private IDGenerator idGenerator = new IDGenerator();
         private string id;
+        private string dentistId;
         private string emriPacientit;
         private int mosha;
         private string email;
@@ -25,10 +26,12 @@ namespace DentalSoft.Domain
             setId();
         }
 
-        public Appointment(string id = null, string emriPacientit = null, int mosha = 0, string email = null, string telefoni = null, 
+        public Appointment(string id = null, string dentistId = null, string emriPacientit = null, int mosha = 0, string email = null, string telefoni = null, 
                             DateTime? dataTakimit = null, int kohezgjatjaTakimit = 0, string problemi = null, string komenti = null)
         {
             setId(id);
+            if (dentistId != null)
+                this.dentistId = dentistId;
             if (emriPacientit != null)
                 this.emriPacientit = emriPacientit;
             if (mosha != 0)
@@ -58,6 +61,16 @@ namespace DentalSoft.Domain
                 this.id = id;
             else
                 this.id = idGenerator.newID();
+        }
+
+        public string getDentistId()
+        {
+            return dentistId;
+        }
+
+        public void setDentistId(string dentistId)
+        {
+            this.dentistId = dentistId;
         }
 
         public string getEmriPacientit()

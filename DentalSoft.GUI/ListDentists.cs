@@ -10,14 +10,12 @@ namespace DentalSoft
     {
         private DentistService dentistService;
         private BindingSource bindingSource;
-        private Dentist loggedInDentist;
 
-        public frmListDentists(Dentist dentist = null)
+        public frmListDentists()
         {
             InitializeComponent();
             bindingSource = new BindingSource();
             dentistService = new DentistService();
-            loggedInDentist = dentist;
             Init();
         }
 
@@ -25,6 +23,7 @@ namespace DentalSoft
         {
             bindingSource.DataSource = dentistService.getBindingSource();
             dgvListaEDentisteve.DataSource = bindingSource;
+            dgvListaEDentisteve.Columns["Id"].Visible = false;
             dgvListaEDentisteve.Columns["Fjalekalimi"].Visible = false;
             dgvListaEDentisteve.Columns["Foto profilit"].Visible = false;
         }
@@ -46,7 +45,7 @@ namespace DentalSoft
                 {
                     Dentist dentist = new Dentist(id);
                     dentistService.removeDentist(dentist);
-                    if (loggedInDentist.Equals(dentist))
+                    if (frmMain.loggedInDentist.Equals(dentist))
                     {
                         this.DialogResult = DialogResult.Yes;
                         this.Close();
@@ -54,6 +53,11 @@ namespace DentalSoft
                     Init();
                 }
             }
+        }
+
+        private void dgvListaEDentisteve_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvListaEDentisteve.ClearSelection();
         }
 
         private void btnMbylle_Click(object sender, System.EventArgs e)

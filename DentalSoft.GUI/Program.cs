@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DentalSoft.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace DentalSoft
 
             frmLogin loginForm = new frmLogin();
             if (loginForm.ShowDialog() == DialogResult.OK)
-                Application.Run(new frmMain(loginForm.loggedInDentist));
+               Application.Run(new frmMain(loginForm.dentist));
             else
                 Application.Exit();
         }
