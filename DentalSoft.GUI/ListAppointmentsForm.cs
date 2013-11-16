@@ -1,7 +1,13 @@
 ﻿using DentalSoft.Domain;
-using DentalSoft.Library;
 using DentalSoft.Service;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DentalSoft
@@ -9,24 +15,27 @@ namespace DentalSoft
     public partial class frmListAppointments : Form
     {
         private AppointmentService appointmentService;
+        private ReportService reportService;
         private BindingSource bindingSource;
-        private Utilities utilities;
-        private bool dateFilter;
+        private bool firstLoad;
 
         public frmListAppointments()
         {
             InitializeComponent();
             appointmentService = new AppointmentService();
+            reportService = new ReportService();
             bindingSource = new BindingSource();
-            utilities = new Utilities();
-            dateFilter = false;
             Init();
+            firstLoad = true;
+            resetDates();
         }
 
         private void Init()
         {
-            bindingSource.DataSource = appointmentService.getBindingSource();
+            bindingSource.DataSource = appointmentService.getBindingSource(frmMain.loggedInDentist);
             dgvTakimet.DataSource = bindingSource;
+            dgvTakimet.Columns["Id"].Visible = false;
+            dgvTakimet.Columns["Dentisti"].Visible = false;
         }
 
         private void btnMbylle_Click(object sender, EventArgs e)
@@ -42,7 +51,17 @@ namespace DentalSoft
 
         private void btnFshij_Click(object sender, EventArgs e)
         {
-
+            if (dgvTakimet.SelectedRows.Count == 1)
+            {
+                DialogResult dr = MessageBox.Show("A jeni i sigurte qe deshironi te fshini kete takim ?", "Konfirmo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr.Equals(DialogResult.Yes))
+                {
+                    string id = dgvTakimet.SelectedRows[0].Cells[0].Value.ToString();
+                    Appointment appointment = new Appointment(id);
+                    appointmentService.removeAppointment(appointment);
+                    Init();
+                }
+            }
         }
         
         private void editAppointment()
@@ -65,47 +84,65 @@ namespace DentalSoft
 
         private void txtEmriPacientit_TextChanged(object sender, EventArgs e)
         {
-            dataGridFilter();
+            bindingSource.Filter = "[Emri pacientit] like '%" + txtEmriPacientit.Text + "%'";
+        }
+
+        private void resetDates()
+        {
+            dtpDataETakimitPrej.CustomFormat = " ";
+            dtpDataETakimitDeri.CustomFormat = " ";
+            //
+            dtpDataETakimitPrej.MinDate = DateTime.Now.AddYears(-3);
+            dtpDataETakimitPrej.MaxDate = DateTime.Now.AddYears(1);
+            dtpDataETakimitPrej.Value = DateTime.Now.AddDays(-3);
+            //
+            dtpDataETakimitDeri.MinDate = DateTime.Now.AddYears(-1);
+            dtpDataETakimitDeri.MaxDate = DateTime.Now.AddYears(1);
+            dtpDataETakimitDeri.Value = DateTime.Now;
         }
 
         private void datesValuesChanged(object sender, EventArgs e)
         {
+            if (firstLoad)
+                return;
+            firstLoad = false;
             if (dtpDataETakimitPrej.Value > dtpDataETakimitDeri.Value)
             {
                 MessageBox.Show("Datat e perzgjedhura jane kontradiktore. Ju lutem zgjedhni datat perseri", "Gabim!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                dtpDataETakimitPrej.Value = dtpDataETakimitDeri.Value.AddMinutes(-1);
-                dtpDataETakimitDeri.Value = DateTime.Now;
-                dtpDataETakimitPrej.CustomFormat = " ";
-                dtpDataETakimitDeri.CustomFormat = " ";
-                dateFilter = false;
+                resetDates();
             }
             else
             {
                 dtpDataETakimitPrej.CustomFormat = "dd MMMM yyyy - hh:mm tt";
                 dtpDataETakimitDeri.CustomFormat = "dd MMMM yyyy - hh:mm tt";
-                dateFilter = true;
             }
-            dataGridFilter();
         }
 
-        private void dataGridFilter()
+        private void btnGjeneroRaport_Click(object sender, EventArgs e)
         {
-            string filter = string.Empty;
-            if (!string.IsNullOrWhiteSpace(txtEmriPacientit.Text) && dateFilter)
-                filter = string.Format("[Emri pacientit] like '%{0}%' AND [Data takimit] >= '{1}' AND [Data takimit] <= '{2}'",
-                                        txtEmriPacientit.Text,
-                                        utilities.convertDateForBindingSource(dtpDataETakimitPrej.Value),
-                                        utilities.convertDateForBindingSource(dtpDataETakimitDeri.Value));
-            else
+            if (dgvTakimet.SelectedRows.Count == 1)
             {
-                if (!string.IsNullOrWhiteSpace(txtEmriPacientit.Text))
-                    filter = string.Format("[Emri pacientit] like '%{0}%'", txtEmriPacientit.Text);
-                else if (dateFilter)
-                    filter = string.Format("[Data takimit] >= '{0}' AND [Data takimit] <= '{1}'", 
-                                            utilities.convertDateForBindingSource(dtpDataETakimitPrej.Value),
-                                            utilities.convertDateForBindingSource(dtpDataETakimitDeri.Value));
+                string id = dgvTakimet.SelectedRows[0].Cells[0].Value.ToString();
+                Appointment appointment = appointmentService.getAppointmentById(id);
+                Report report = reportService.getReportByAppointmentId(id);
+                frmGenerateReport generateReportForm;
+                if (report != null)
+                {
+                    //Update report
+                    generateReportForm = new frmGenerateReport(appointment, report);
+                }
+                else
+                {
+                    //Create new report
+                    generateReportForm = new frmGenerateReport(appointment);
+                }
+                generateReportForm.ShowDialog();
             }
-            bindingSource.Filter = filter;
+        }
+
+        private void dgvTakimet_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvTakimet.ClearSelection();
         }
     }
 }

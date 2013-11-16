@@ -12,12 +12,33 @@ namespace DentalSoft.Domain
     {
         private IDGenerator idGenerator = new IDGenerator();
         private string id;
-        private string emriPacientit;
-        private int mosha;
-        private Gender gjinia;
-        private string problemi;
-        private int pagesa;
-        private Status perseritKontrollin;
+        private string dentistId;
+        private string takimiId;
+        private string takimiArdhshem;
+        private decimal pagesa;
+        private TakimiRiStatus takimiArdhshemStatus;
+
+        public Report()
+        {
+            setId();
+        }
+
+        public Report(string id = null, string dentistId = null, string takimiId = null, string takimiArdhshem = null, decimal pagesa = 0, TakimiRiStatus? takimiArdhshemStatus = null)
+        {
+            setId(id);
+            if (dentistId != null)
+                this.dentistId = dentistId;
+            if (takimiId != null)
+                this.takimiId = takimiId;
+            if (takimiArdhshem != null)
+                this.takimiArdhshem = takimiArdhshem;
+            if (pagesa != 0)
+                this.pagesa = pagesa;
+            if (takimiArdhshemStatus.HasValue)
+                this.takimiArdhshemStatus = takimiArdhshemStatus.Value;
+            else
+                this.takimiArdhshemStatus = TakimiRiStatus.Pacaktuar;
+        }
 
         public string getId()
         {
@@ -32,64 +53,59 @@ namespace DentalSoft.Domain
                 this.id = idGenerator.newID();
         }
 
-        public string getEmriPacientit()
+        public string getDentistId()
         {
-            return emriPacientit;
+            return dentistId;
         }
 
-        public void setEmriPacientit(string emriPacientit)
+        public void setDentistId(string dentistId)
         {
-            this.emriPacientit = emriPacientit;
+            this.dentistId = dentistId;
         }
 
-        public int getMosha()
+        public string getTakimiId()
         {
-            return mosha;
+            return takimiId;
         }
 
-        public void setMosha(int mosha)
+        public void setTakimiId(string takimiId)
         {
-            this.mosha = mosha;
+            this.takimiId = takimiId;
         }
 
-        public Gender getGjinia()
+        public string getTakimiArdhshem()
         {
-            return gjinia;
+            return takimiArdhshem;
         }
 
-        public void setGjinia(Gender gjinia)
+        public void setTakimiArdhshem(string takimiArdhshem)
         {
-            this.gjinia = gjinia;
+            this.takimiArdhshem = takimiArdhshem;
         }
 
-        public string getProblemi()
-        {
-            return problemi;
-        }
-
-        public void setProblemi(string problemi)
-        {
-            this.problemi = problemi;
-        }
-
-        public int getPagesa()
+        public decimal getPagesa()
         {
             return pagesa;
         }
 
-        public void setPagesa(int pagesa)
+        public void setPagesa(decimal pagesa)
         {
             this.pagesa = pagesa;
         }
 
-        public Status getPerseritKontrollin()
+        public TakimiRiStatus getTakimiArdhshemStatus()
         {
-            return perseritKontrollin;
+            return takimiArdhshemStatus;
         }
 
-        public void setPerseritKontrollin(Status perseritKontrollin)
+        public void setTakimiArdhshemStatus(TakimiRiStatus takimiArdhshemStatus)
         {
-            this.perseritKontrollin = perseritKontrollin;
+            this.takimiArdhshemStatus = takimiArdhshemStatus;
+        }
+
+        public void setTakimiArdhshemStatus(string takimiArdhshemStatus)
+        {
+            this.takimiArdhshemStatus = (TakimiRiStatus)Enum.Parse(typeof(TakimiRiStatus), takimiArdhshemStatus);
         }
 
         public override bool Equals(object obj)

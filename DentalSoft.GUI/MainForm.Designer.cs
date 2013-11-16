@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.miFillimi = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,9 +41,7 @@
             this.menaxhoTakimetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listoTakimetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miRaportet = new System.Windows.Forms.ToolStripMenuItem();
-            this.miGjeneroRaport = new System.Windows.Forms.ToolStripMenuItem();
             this.miListoRaportet = new System.Windows.Forms.ToolStripMenuItem();
-            this.statistikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miNdihma = new System.Windows.Forms.ToolStripMenuItem();
             this.miRrethDentalSoft = new System.Windows.Forms.ToolStripMenuItem();
             this.lblEmriPlote = new System.Windows.Forms.Label();
@@ -60,7 +59,6 @@
             this.grbTeDhena = new System.Windows.Forms.GroupBox();
             this.btnListoRaportet = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.lblSotPagesat = new System.Windows.Forms.Label();
             this.lblSotDiagnozat = new System.Windows.Forms.Label();
             this.lblSotTakimet = new System.Windows.Forms.Label();
@@ -70,6 +68,7 @@
             this.pctHeader = new System.Windows.Forms.PictureBox();
             this.lblVerticalDivider = new System.Windows.Forms.Label();
             this.grbTakimet = new System.Windows.Forms.GroupBox();
+            this.btnGjeneroRaport = new System.Windows.Forms.Button();
             this.grbDentistet = new System.Windows.Forms.GroupBox();
             this.menuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctUserProfile)).BeginInit();
@@ -175,36 +174,17 @@
             // miRaportet
             // 
             this.miRaportet.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miGjeneroRaport,
-            this.miListoRaportet,
-            this.statistikaToolStripMenuItem});
+            this.miListoRaportet});
             this.miRaportet.Name = "miRaportet";
             this.miRaportet.Size = new System.Drawing.Size(64, 20);
             this.miRaportet.Text = "Raportet";
             // 
-            // miGjeneroRaport
-            // 
-            this.miGjeneroRaport.Name = "miGjeneroRaport";
-            this.miGjeneroRaport.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.R)));
-            this.miGjeneroRaport.Size = new System.Drawing.Size(223, 22);
-            this.miGjeneroRaport.Text = "Gjenero raport";
-            this.miGjeneroRaport.Click += new System.EventHandler(this.miGjeneroRaport_Click);
-            // 
             // miListoRaportet
             // 
             this.miListoRaportet.Name = "miListoRaportet";
-            this.miListoRaportet.Size = new System.Drawing.Size(223, 22);
+            this.miListoRaportet.Size = new System.Drawing.Size(152, 22);
             this.miListoRaportet.Text = "Listo raportet";
             this.miListoRaportet.Click += new System.EventHandler(this.miListoRaportet_Click);
-            // 
-            // statistikaToolStripMenuItem
-            // 
-            this.statistikaToolStripMenuItem.Name = "statistikaToolStripMenuItem";
-            this.statistikaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.S)));
-            this.statistikaToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
-            this.statistikaToolStripMenuItem.Text = "Statistika";
             // 
             // miNdihma
             // 
@@ -285,11 +265,25 @@
             // 
             // dgvNextAppointments
             // 
+            this.dgvNextAppointments.AllowUserToAddRows = false;
+            this.dgvNextAppointments.AllowUserToDeleteRows = false;
+            this.dgvNextAppointments.AllowUserToResizeColumns = false;
+            this.dgvNextAppointments.AllowUserToResizeRows = false;
+            this.dgvNextAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvNextAppointments.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            this.dgvNextAppointments.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvNextAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNextAppointments.Location = new System.Drawing.Point(13, 19);
+            this.dgvNextAppointments.MultiSelect = false;
             this.dgvNextAppointments.Name = "dgvNextAppointments";
+            this.dgvNextAppointments.ReadOnly = true;
+            this.dgvNextAppointments.RowHeadersVisible = false;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNextAppointments.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvNextAppointments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNextAppointments.Size = new System.Drawing.Size(485, 132);
             this.dgvNextAppointments.TabIndex = 16;
+            this.dgvNextAppointments.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvDentistet_DataBindingComplete);
             // 
             // btnListoTakimet
             // 
@@ -337,17 +331,27 @@
             // 
             // dgvDentistet
             // 
+            this.dgvDentistet.AllowUserToAddRows = false;
+            this.dgvDentistet.AllowUserToDeleteRows = false;
+            this.dgvDentistet.AllowUserToResizeColumns = false;
+            this.dgvDentistet.AllowUserToResizeRows = false;
+            this.dgvDentistet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDentistet.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvDentistet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDentistet.Location = new System.Drawing.Point(12, 21);
+            this.dgvDentistet.MultiSelect = false;
             this.dgvDentistet.Name = "dgvDentistet";
-            this.dgvDentistet.Size = new System.Drawing.Size(264, 69);
+            this.dgvDentistet.ReadOnly = true;
+            this.dgvDentistet.RowHeadersVisible = false;
+            this.dgvDentistet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDentistet.Size = new System.Drawing.Size(264, 66);
             this.dgvDentistet.TabIndex = 19;
+            this.dgvDentistet.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvDentistet_DataBindingComplete);
             // 
             // grbTeDhena
             // 
             this.grbTeDhena.Controls.Add(this.btnListoRaportet);
             this.grbTeDhena.Controls.Add(this.label1);
-            this.grbTeDhena.Controls.Add(this.button2);
             this.grbTeDhena.Controls.Add(this.lblSotPagesat);
             this.grbTeDhena.Controls.Add(this.lblSotDiagnozat);
             this.grbTeDhena.Controls.Add(this.lblSotTakimet);
@@ -364,7 +368,7 @@
             // btnListoRaportet
             // 
             this.btnListoRaportet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnListoRaportet.Location = new System.Drawing.Point(95, 99);
+            this.btnListoRaportet.Location = new System.Drawing.Point(13, 99);
             this.btnListoRaportet.Name = "btnListoRaportet";
             this.btnListoRaportet.Size = new System.Drawing.Size(96, 23);
             this.btnListoRaportet.TabIndex = 26;
@@ -380,23 +384,12 @@
             this.label1.Size = new System.Drawing.Size(178, 2);
             this.label1.TabIndex = 26;
             // 
-            // button2
-            // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(13, 99);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(76, 23);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "Statistika";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // lblSotPagesat
             // 
             this.lblSotPagesat.Location = new System.Drawing.Point(138, 64);
             this.lblSotPagesat.Name = "lblSotPagesat";
             this.lblSotPagesat.Size = new System.Drawing.Size(55, 13);
             this.lblSotPagesat.TabIndex = 5;
-            this.lblSotPagesat.Text = "12346";
             this.lblSotPagesat.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblSotDiagnozat
@@ -405,7 +398,6 @@
             this.lblSotDiagnozat.Name = "lblSotDiagnozat";
             this.lblSotDiagnozat.Size = new System.Drawing.Size(55, 13);
             this.lblSotDiagnozat.TabIndex = 4;
-            this.lblSotDiagnozat.Text = "12346";
             this.lblSotDiagnozat.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblSotTakimet
@@ -414,7 +406,6 @@
             this.lblSotTakimet.Name = "lblSotTakimet";
             this.lblSotTakimet.Size = new System.Drawing.Size(55, 13);
             this.lblSotTakimet.TabIndex = 3;
-            this.lblSotTakimet.Text = "12346";
             this.lblSotTakimet.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblFitimiSot
@@ -422,18 +413,18 @@
             this.lblFitimiSot.AutoSize = true;
             this.lblFitimiSot.Location = new System.Drawing.Point(10, 64);
             this.lblFitimiSot.Name = "lblFitimiSot";
-            this.lblFitimiSot.Size = new System.Drawing.Size(110, 13);
+            this.lblFitimiSot.Size = new System.Drawing.Size(63, 13);
             this.lblFitimiSot.TabIndex = 2;
-            this.lblFitimiSot.Text = "Pagesat (ne vlere) sot";
+            this.lblFitimiSot.Text = "Pagesat sot";
             // 
             // lblGjithsejDiagnozatSot
             // 
             this.lblGjithsejDiagnozatSot.AutoSize = true;
             this.lblGjithsejDiagnozatSot.Location = new System.Drawing.Point(10, 43);
             this.lblGjithsejDiagnozatSot.Name = "lblGjithsejDiagnozatSot";
-            this.lblGjithsejDiagnozatSot.Size = new System.Drawing.Size(107, 13);
+            this.lblGjithsejDiagnozatSot.Size = new System.Drawing.Size(97, 13);
             this.lblGjithsejDiagnozatSot.TabIndex = 1;
-            this.lblGjithsejDiagnozatSot.Text = "Gjithsej diagnozat sot";
+            this.lblGjithsejDiagnozatSot.Text = "Gjithsej raportet sot";
             // 
             // lblGjithsejTakimeSot
             // 
@@ -466,6 +457,7 @@
             // 
             // grbTakimet
             // 
+            this.grbTakimet.Controls.Add(this.btnGjeneroRaport);
             this.grbTakimet.Controls.Add(this.dgvNextAppointments);
             this.grbTakimet.Controls.Add(this.btnShtoTakim);
             this.grbTakimet.Controls.Add(this.btnListoTakimet);
@@ -474,7 +466,17 @@
             this.grbTakimet.Size = new System.Drawing.Size(512, 199);
             this.grbTakimet.TabIndex = 28;
             this.grbTakimet.TabStop = false;
-            this.grbTakimet.Text = "Takimet";
+            this.grbTakimet.Text = "Takimet per sot";
+            // 
+            // btnGjeneroRaport
+            // 
+            this.btnGjeneroRaport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGjeneroRaport.Location = new System.Drawing.Point(382, 161);
+            this.btnGjeneroRaport.Name = "btnGjeneroRaport";
+            this.btnGjeneroRaport.Size = new System.Drawing.Size(116, 23);
+            this.btnGjeneroRaport.TabIndex = 19;
+            this.btnGjeneroRaport.Text = "Gjenero raport";
+            this.btnGjeneroRaport.UseVisualStyleBackColor = true;
             // 
             // grbDentistet
             // 
@@ -486,7 +488,7 @@
             this.grbDentistet.Size = new System.Drawing.Size(288, 135);
             this.grbDentistet.TabIndex = 28;
             this.grbDentistet.TabStop = false;
-            this.grbDentistet.Text = "Dentistet";
+            this.grbDentistet.Text = "Dentistet me aktiv";
             // 
             // frmMain
             // 
@@ -547,9 +549,7 @@
         private System.Windows.Forms.ToolStripMenuItem menaxhoTakimetToolStripMenuItem;
         private System.Windows.Forms.DataGridView dgvNextAppointments;
         private System.Windows.Forms.ToolStripMenuItem miRaportet;
-        private System.Windows.Forms.ToolStripMenuItem miGjeneroRaport;
         private System.Windows.Forms.ToolStripMenuItem miListoRaportet;
-        private System.Windows.Forms.ToolStripMenuItem statistikaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem miListoDentistet;
         private System.Windows.Forms.ToolStripMenuItem listoTakimetToolStripMenuItem;
         private System.Windows.Forms.Button btnListoTakimet;
@@ -568,8 +568,8 @@
         private System.Windows.Forms.Label lblVerticalDivider;
         private System.Windows.Forms.Button btnListoRaportet;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox grbTakimet;
         private System.Windows.Forms.GroupBox grbDentistet;
+        private System.Windows.Forms.Button btnGjeneroRaport;
     }
 }

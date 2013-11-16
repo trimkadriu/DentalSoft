@@ -53,6 +53,7 @@
             this.lblHorizontalDivider = new System.Windows.Forms.Label();
             this.nudMosha = new System.Windows.Forms.NumericUpDown();
             this.txtTelefoni = new System.Windows.Forms.MaskedTextBox();
+            this.txtOret = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudKohezgjatjaETakimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbDhembetSiper)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbDhembetPoshte)).BeginInit();
@@ -203,7 +204,7 @@
             // 
             this.nudKohezgjatjaETakimit.Location = new System.Drawing.Point(126, 316);
             this.nudKohezgjatjaETakimit.Maximum = new decimal(new int[] {
-            60,
+            480,
             0,
             0,
             0});
@@ -213,18 +214,21 @@
             0,
             0});
             this.nudKohezgjatjaETakimit.Name = "nudKohezgjatjaETakimit";
-            this.nudKohezgjatjaETakimit.Size = new System.Drawing.Size(85, 20);
+            this.nudKohezgjatjaETakimit.Size = new System.Drawing.Size(98, 20);
             this.nudKohezgjatjaETakimit.TabIndex = 6;
+            this.nudKohezgjatjaETakimit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nudKohezgjatjaETakimit.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            this.nudKohezgjatjaETakimit.ValueChanged += new System.EventHandler(this.nudKohezgjatjaETakimit_ValueChanged);
             // 
             // lblMinNjehsia
             // 
             this.lblMinNjehsia.AutoSize = true;
-            this.lblMinNjehsia.Location = new System.Drawing.Point(217, 320);
+            this.lblMinNjehsia.BackColor = System.Drawing.Color.White;
+            this.lblMinNjehsia.Location = new System.Drawing.Point(128, 318);
             this.lblMinNjehsia.Name = "lblMinNjehsia";
             this.lblMinNjehsia.Size = new System.Drawing.Size(35, 13);
             this.lblMinNjehsia.TabIndex = 34;
@@ -296,6 +300,7 @@
             this.nudMosha.Name = "nudMosha";
             this.nudMosha.Size = new System.Drawing.Size(85, 20);
             this.nudMosha.TabIndex = 2;
+            this.nudMosha.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nudMosha.Value = new decimal(new int[] {
             1,
             0,
@@ -311,6 +316,16 @@
             this.txtTelefoni.Size = new System.Drawing.Size(85, 20);
             this.txtTelefoni.TabIndex = 4;
             // 
+            // txtOret
+            // 
+            this.txtOret.Location = new System.Drawing.Point(230, 316);
+            this.txtOret.Name = "txtOret";
+            this.txtOret.ReadOnly = true;
+            this.txtOret.Size = new System.Drawing.Size(135, 20);
+            this.txtOret.TabIndex = 55;
+            this.txtOret.Text = "00:01:00";
+            this.txtOret.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // frmAddAppointment
             // 
             this.AcceptButton = this.btnShtoTakim;
@@ -318,6 +333,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnAnulo;
             this.ClientSize = new System.Drawing.Size(748, 408);
+            this.Controls.Add(this.txtOret);
             this.Controls.Add(this.txtTelefoni);
             this.Controls.Add(this.nudMosha);
             this.Controls.Add(this.lblHorizontalDivider);
@@ -383,5 +399,6 @@
         private System.Windows.Forms.Label lblHorizontalDivider;
         private System.Windows.Forms.NumericUpDown nudMosha;
         private System.Windows.Forms.MaskedTextBox txtTelefoni;
+        private System.Windows.Forms.TextBox txtOret;
     }
 }

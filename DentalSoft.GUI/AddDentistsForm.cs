@@ -15,21 +15,21 @@ namespace DentalSoft
         private DentistService dentistService;
         private byte[] fotoProfilit;
 
-        public frmAddDentist(Dentist dentist = null)
+        public frmAddDentist(bool editProfile = false)
         {
             InitializeComponent();
             utilities = new Utilities();
-            this.dentist = dentist;
+            this.dentist = frmMain.loggedInDentist;
             dentistService = new DentistService();
             fotoProfilit = null; //new byte[2000000];
+            edito = editProfile;
             Init();
         }
 
         private void Init()
         {
-            if (dentist != null)
+            if (edito)
             {
-                edito = true;
                 btnShtoDentist.Text = "Ruaj ndryshimet";
                 this.Text = "Ndrysho profilin";
                 txtEmri.Text = dentist.getEmri();
@@ -71,6 +71,8 @@ namespace DentalSoft
                 Encryptor encryptor = new Encryptor();
                 if (edito)
                 {
+                    if(fotoProfilit == null)
+                        dentist.setFotoProfilit(null);
                     dentist.setEmri(txtEmri.Text);
                     dentist.setEmail(txtEmail.Text);
                     if (!string.IsNullOrWhiteSpace(txtFjalekalimi.Text))
@@ -137,8 +139,6 @@ namespace DentalSoft
         {
             fotoProfilit = null;
             pctFotoProfil.Image = Properties.Resources.Ska_foto;
-            if (edito)
-                dentist.setFotoProfilit(null);
         }
     }
 }

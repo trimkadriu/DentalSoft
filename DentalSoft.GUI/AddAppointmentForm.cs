@@ -75,11 +75,12 @@ namespace DentalSoft
                 }
                 else
                 {
-                    Appointment newAppointment = new Appointment(null, txtEmriPacientit.Text, int.Parse(nudMosha.Text), txtEmail.Text, txtTelefoni.Text,
-                                                              dtpDataETakimit.Value, int.Parse(nudKohezgjatjaETakimit.Text), txtProblemi.Text, txtKomenti.Text);
+                    Appointment newAppointment = new Appointment(null, frmMain.loggedInDentist.getId(), txtEmriPacientit.Text, int.Parse(nudMosha.Text), 
+                                                                 txtEmail.Text, txtTelefoni.Text, dtpDataETakimit.Value, int.Parse(nudKohezgjatjaETakimit.Text), 
+                                                                 txtProblemi.Text, txtKomenti.Text);
                     if (appointmentService.insertAppointment(newAppointment))
                     {
-                        //MessageBox.Show("Takimi u shtua me sukses.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.DialogResult = DialogResult.Yes;
                         this.Close();
                     }
                 }
@@ -98,11 +99,6 @@ namespace DentalSoft
                 nudMosha.Focus();
                 return false;
             }
-            //if (string.IsNullOrWhiteSpace(txtEmail.Text))
-            //{
-            //    txtEmail.Focus();
-            //    return false;
-            //}
             if (string.IsNullOrWhiteSpace(txtTelefoni.Text))
             {
                 txtTelefoni.Focus();
@@ -124,6 +120,17 @@ namespace DentalSoft
                 return false;
             }
             return true;
+        }
+
+        private void nudKohezgjatjaETakimit_ValueChanged(object sender, EventArgs e)
+        {
+            llogaritMinutatNeOre();
+        }
+
+        private void llogaritMinutatNeOre()
+        {
+            TimeSpan ts = TimeSpan.FromMinutes(double.Parse(nudKohezgjatjaETakimit.Text));
+            txtOret.Text = ts.ToString();
         }
     }
 }

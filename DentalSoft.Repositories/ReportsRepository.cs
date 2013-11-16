@@ -1,9 +1,11 @@
 ﻿using Dentalsoft.Repositories;
 using DentalSoft.Domain;
 using DentalSoft.Domain.Enums;
+using DentalSoft.Library;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace DentalSoft.Repositories
 {
@@ -11,23 +13,33 @@ namespace DentalSoft.Repositories
     {
         private string query;
         private const string tableName = "raportet";
+        private Utilities utilities;
+        private MySqlCommand cmd;
+
+        public ReportsRepository()
+        {
+            utilities = new Utilities();
+        }
 
         public void insertStatement(Report report)
         {
             if (OpenConnection())
             {
-                query = "INSERT INTO " + tableName + " (id, emri_pacientit, mosha, gjinia, problemi, pagesa, perserit_kontrollin) VALUES ('" +
+                string takimiArdhshem;
+                if (report.getTakimiArdhshem() == null)
+                    takimiArdhshem = "NULL";
+                else
+                    takimiArdhshem = report.getTakimiArdhshem();
+                query = "INSERT INTO " + tableName + " (id, dentisti, takimi, takimi_ardhshem, pagesa, perserit_kontrollin) VALUES ('" +
                         report.getId() + "', '" +
-                        report.getEmriPacientit() + "', '" +
-                        report.getMosha() + "', '" +
-                        report.getGjinia() + "', '" +
-                        report.getProblemi() + "', '" +
+                        report.getDentistId() + "', '" +
+                        report.getTakimiId() + "', '" +
+                        takimiArdhshem + "', '" +
                         report.getPagesa() + "', '" +
-                        report.getPerseritKontrollin() + "')";
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                        report.getTakimiArdhshemStatus() + "')";
+                cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
-                this.CloseConnection();
-                query = string.Empty;
+                clean();
             }
         }
 
@@ -35,21 +47,19 @@ namespace DentalSoft.Repositories
         {
             if (OpenConnection())
             {
-                if (selectStatement(report.getId()).Count == 1)
-                {
-                    query = "UPDATE " + tableName + " SET " +
-                            "emri_pacientit='" + report.getEmriPacientit() + "', " +
-                            "mosha='" + report.getMosha() + "', " +
-                            "gjinia='" + report.getGjinia() + "', " +
-                            "problemi='" + report.getProblemi() + "', " +
-                            "pagesa='" + report.getPagesa() + "'" +
-                            "perserit_kontrollin='" + report.getPerseritKontrollin() + "' " +
-                            "WHERE id='" + report.getId() + "'";
-                    MySqlCommand cmd = new MySqlCommand(query, connection);
-                    cmd.ExecuteNonQuery();
-                    this.CloseConnection();
-                    query = string.Empty;
-                }
+                string takimiArdhshem;
+                if(report.getTakimiArdhshem() == null)
+                    takimiArdhshem = "takimi_ardhshem=NULL, ";
+                else
+                    takimiArdhshem = "takimi_ardhshem='" + report.getTakimiArdhshem() + "', ";
+                query = "UPDATE " + tableName + " SET " +
+                        takimiArdhshem +
+                        "pagesa='" + report.getPagesa() + "', " +
+                        "perserit_kontrollin='" + report.getTakimiArdhshemStatus() + "' " +
+                        "WHERE id='" + report.getId() + "'";
+                cmd = new MySqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+                clean();
             }
         }
 
@@ -58,55 +68,78 @@ namespace DentalSoft.Repositories
             if (OpenConnection())
             {
                 query = "DELETE FROM " + tableName + " WHERE id='" + report.getId() + "'";
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
-                this.CloseConnection();
-                query = string.Empty;
+                clean();
             }
         }
 
-        public List<Report> selectStatement(string id = null, string emriPacientit = null, string mosha = null, string gjinia = null, string problemi = null,
-                                                 string pagesa = null, string perseritKontrollin = null)
+        public List<Report> selectStatement(string id = null, string dentistId = null, string takimiId = null, string takimiArdhshem = null,
+                                            string pagesa = null, string perseritKontrollin = null)
         {
             if (OpenConnection())
             {
                 query = "SELECT * FROM " + tableName + " WHERE 1 ";
                 if (id != null)
                     query = query + "AND id='" + id + "' ";
-                if (emriPacientit != null)
-                    query = query + "AND emri_pacientit='" + emriPacientit + "' ";
-                if (mosha != null)
-                    query = query + "AND mosha='" + mosha + "' ";
-                if (gjinia != null)
-                    query = query + "AND gjinia='" + gjinia + "' ";
-                if (problemi != null)
-                    query = query + "AND problemi='" + problemi + "' ";
+                if (dentistId != null)
+                    query = query + "AND dentisti='" + dentistId + "' ";
+                if (takimiId != null)
+                    query = query + "AND takimi='" + takimiId + "' ";
+                if (takimiArdhshem != null)
+                    query = query + "AND takimi_ardhshem='" + takimiArdhshem + "' ";
                 if (pagesa != null)
                     query = query + "AND pagesa='" + pagesa + "' ";
                 if (perseritKontrollin != null)
                     query = query + "AND perserit_kontrollin='" + perseritKontrollin + "'";
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd = new MySqlCommand(query, connection);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 List<Report> list = new List<Report>();
                 while (dataReader.Read())
                 {
                     Report r = new Report();
                     r.setId(dataReader["id"].ToString());
-                    r.setEmriPacientit(dataReader["emri_pacientit"].ToString());
-                    r.setMosha(int.Parse(dataReader["mosha"].ToString()));
-                    r.setGjinia((Gender)Enum.Parse(typeof(Gender), dataReader["gjinia"].ToString()));
-                    r.setProblemi(dataReader["problemi"].ToString());
-                    r.setPagesa(int.Parse(dataReader["pagesa"].ToString()));
-                    r.setPerseritKontrollin((Status)Enum.Parse(typeof(Status), dataReader["perserit_kontrollin"].ToString()));
+                    r.setDentistId(dataReader["dentisti"].ToString());
+                    r.setTakimiId(dataReader["takimi"].ToString());
+                    r.setTakimiArdhshem(dataReader["takimi_ardhshem"].ToString());
+                    r.setPagesa(decimal.Parse(dataReader["pagesa"].ToString()));
+                    r.setTakimiArdhshemStatus(dataReader["perserit_kontrollin"].ToString());
                     list.Add(r);
                 }
                 dataReader.Close();
                 cmd.ExecuteNonQuery();
-                this.CloseConnection();
-                query = string.Empty;
+                clean();
                 return list;
             }
             return null;
+        }
+
+        public List<DataColumn> getSchemaTable()
+        {
+            if (OpenConnection())
+            {
+                query = "SELECT COLUMN_NAME as columns FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '" +
+                        this.database + "' AND TABLE_NAME = '" + tableName + "'";
+                cmd = new MySqlCommand(query, connection);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+                List<DataColumn> columns = new List<DataColumn>();
+                while (dataReader.Read())
+                {
+                    DataColumn dc = new DataColumn();
+                    dc.ColumnName = utilities.toUpperFirstLetter(dataReader.GetString("columns"));
+                    columns.Add(dc);
+                }
+                clean();
+                return columns;
+            }
+            return null;
+        }
+
+        private void clean()
+        {
+            cmd.Dispose();
+            this.CloseConnection();
+            query = string.Empty;
         }
     }
 }

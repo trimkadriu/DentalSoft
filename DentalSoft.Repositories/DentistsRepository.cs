@@ -13,7 +13,7 @@ namespace DentalSoft.Repositories
         private string query;
         private const string tableName = "dentistet";
         private Utilities utilities;
-        MySqlCommand cmd;
+        private MySqlCommand cmd;
 
         public DentistsRepository()
         {
@@ -66,7 +66,8 @@ namespace DentalSoft.Repositories
             }
         }
 
-        public List<Dentist> selectStatement(string id = null, string emri = null, string email = null, string perdoruesi = null, string fjalekalimi = null)
+        public List<Dentist> selectStatement(string id = null, string emri = null, string email = null, string perdoruesi = null, string fjalekalimi = null, 
+                                            int limit = 0, string order = null)
         {
             if (OpenConnection())
             {
@@ -78,9 +79,13 @@ namespace DentalSoft.Repositories
                 if (email != null)
                     query = query + "AND email='" + email + "' ";
                 if (perdoruesi != null)
-                    query = query + "AND perdoruesi='" + perdoruesi + "'";
+                    query = query + "AND perdoruesi='" + perdoruesi + "' ";
                 if (fjalekalimi != null)
-                    query = query + "AND fjalekalimi='" + fjalekalimi + "'";
+                    query = query + "AND fjalekalimi='" + fjalekalimi + "' ";
+                if (order != null)
+                    query = query + "ORDER BY " + order + " ";
+                if (limit != 0)
+                    query = query + "LIMIT " + limit;
                 cmd = new MySqlCommand(query, connection);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 List<Dentist> list = new List<Dentist>();
