@@ -1,0 +1,7 @@
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Domain\bin\Release\DentalSoft.Domain.dll
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Domain\bin\Release\DentalSoft.Domain.pdb
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Domain\bin\Release\DentalSoft.Library.dll
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Domain\bin\Release\DentalSoft.Library.pdb
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Domain\obj\Release\DentalSoft.Domain.csprojResolveAssemblyReference.cache
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Domain\obj\Release\DentalSoft.Domain.dll
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Domain\obj\Release\DentalSoft.Domain.pdb

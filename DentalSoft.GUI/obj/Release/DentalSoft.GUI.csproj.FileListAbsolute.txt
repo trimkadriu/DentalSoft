@@ -1,0 +1,12 @@
+D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\bin\Release\DentalSoft.exe.config
+D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Release\DentalSoft.frmAbout.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Release\DentalSoft.frmAddAppointment.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Release\DentalSoft.frmAddDentist.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Release\DentalSoft.frmGenerateReport.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Release\DentalSoft.frmListAppointments.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Release\DentalSoft.frmListDentists.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Release\DentalSoft.frmListReports.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Release\DentalSoft.frmLogin.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Release\DentalSoft.frmMain.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Release\DentalSoft.Properties.Resources.resources
+D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Release\DentalSoft.GUI.csproj.GenerateResource.Cache

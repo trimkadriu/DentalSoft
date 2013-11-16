@@ -15,6 +15,7 @@ namespace DentalSoft
     public partial class frmListAppointments : Form
     {
         private AppointmentService appointmentService;
+        private ReportService reportService;
         private BindingSource bindingSource;
         private bool firstLoad;
 
@@ -22,6 +23,7 @@ namespace DentalSoft
         {
             InitializeComponent();
             appointmentService = new AppointmentService();
+            reportService = new ReportService();
             bindingSource = new BindingSource();
             Init();
             firstLoad = true;
@@ -30,8 +32,10 @@ namespace DentalSoft
 
         private void Init()
         {
-            bindingSource.DataSource = appointmentService.getBindingSource();
+            bindingSource.DataSource = appointmentService.getBindingSource(frmMain.loggedInDentist);
             dgvTakimet.DataSource = bindingSource;
+            dgvTakimet.Columns["Id"].Visible = false;
+            dgvTakimet.Columns["Dentisti"].Visible = false;
         }
 
         private void btnMbylle_Click(object sender, EventArgs e)
@@ -47,7 +51,17 @@ namespace DentalSoft
 
         private void btnFshij_Click(object sender, EventArgs e)
         {
-
+            if (dgvTakimet.SelectedRows.Count == 1)
+            {
+                DialogResult dr = MessageBox.Show("A jeni i sigurte qe deshironi te fshini kete takim ?", "Konfirmo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr.Equals(DialogResult.Yes))
+                {
+                    string id = dgvTakimet.SelectedRows[0].Cells[0].Value.ToString();
+                    Appointment appointment = new Appointment(id);
+                    appointmentService.removeAppointment(appointment);
+                    Init();
+                }
+            }
         }
         
         private void editAppointment()
@@ -102,6 +116,33 @@ namespace DentalSoft
                 dtpDataETakimitPrej.CustomFormat = "dd MMMM yyyy - hh:mm tt";
                 dtpDataETakimitDeri.CustomFormat = "dd MMMM yyyy - hh:mm tt";
             }
+        }
+
+        private void btnGjeneroRaport_Click(object sender, EventArgs e)
+        {
+            if (dgvTakimet.SelectedRows.Count == 1)
+            {
+                string id = dgvTakimet.SelectedRows[0].Cells[0].Value.ToString();
+                Appointment appointment = appointmentService.getAppointmentById(id);
+                Report report = reportService.getReportByAppointmentId(id);
+                frmGenerateReport generateReportForm;
+                if (report != null)
+                {
+                    //Update report
+                    generateReportForm = new frmGenerateReport(appointment, report);
+                }
+                else
+                {
+                    //Create new report
+                    generateReportForm = new frmGenerateReport(appointment);
+                }
+                generateReportForm.ShowDialog();
+            }
+        }
+
+        private void dgvTakimet_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvTakimet.ClearSelection();
         }
     }
 }

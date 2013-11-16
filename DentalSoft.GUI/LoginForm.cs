@@ -8,7 +8,7 @@ namespace DentalSoft
     public partial class frmLogin : Form
     {
         LoginService loginService;
-        public Dentist loggedInDentist { get; set; }
+        public Dentist dentist { get; set; }
 
         public frmLogin()
         {
@@ -22,7 +22,7 @@ namespace DentalSoft
             if (dentist != null)
             {
                 this.DialogResult = DialogResult.OK;
-                this.loggedInDentist = dentist;
+                this.dentist = dentist;
                 this.Close();
             }
             else

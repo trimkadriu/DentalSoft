@@ -85,3 +85,79 @@ ALTER TABLE  `raportet` ADD UNIQUE (`id`);
 ALTER TABLE  `dentistet` ADD UNIQUE (`id`);
 
 ALTER TABLE  `takimet` CHANGE  `email`  `email` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_bin NULL;
+
+
+
+
+
+
+
+
+
+============================================================
+== CHANGESET: Adding relations for multiple dentists
+============================================================
+
+ALTER TABLE  `takimet` ADD  `dentisti` VARCHAR( 10 ) NOT NULL AFTER  `id`;
+
+ALTER TABLE  `takimet` ADD INDEX (  `dentisti` );
+
+ALTER TABLE  `takimet` ADD FOREIGN KEY (  `dentisti` ) REFERENCES  `dentalsoft`.`dentistet` (
+`id`
+) ON DELETE CASCADE ON UPDATE CASCADE ;
+
+ALTER TABLE  `raportet` ADD  `dentisti` VARCHAR( 10 ) NOT NULL AFTER  `id`;
+
+ALTER TABLE  `raportet` ADD INDEX (  `dentisti` );
+
+ALTER TABLE  `raportet` ADD FOREIGN KEY (  `dentisti` ) REFERENCES  `dentalsoft`.`dentistet` (
+`id`
+) ON DELETE CASCADE ON UPDATE CASCADE ;
+
+============================================================
+
+============================================================
+== CHANGESET: Adding relations for reports and appointments
+============================================================
+
+ALTER TABLE  `raportet` ADD  `takimi` VARCHAR( 10 ) NOT NULL AFTER  `dentisti`;
+
+ALTER TABLE  `raportet` ADD INDEX (  `takimi` );
+
+ALTER TABLE  `raportet` ADD FOREIGN KEY (  `takimi` ) REFERENCES  `dentalsoft`.`takimet` (
+`id`
+) ON DELETE CASCADE ON UPDATE CASCADE ;
+
+ALTER TABLE  `raportet` DROP  `emri_pacientit` ,
+DROP  `mosha` ,
+DROP  `gjinia` ,
+DROP  `problemi` ;
+
+ALTER TABLE  `raportet` ADD  `takimi_ardhshem` VARCHAR( 10 ) NULL DEFAULT NULL AFTER  `takimi`;
+
+ALTER TABLE  `raportet` ADD INDEX (  `takimi_ardhshem` );
+
+ALTER TABLE  `raportet` ADD  `data_krijimit` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+
+============================================================
+
+
+
+
+
+
+
+
+
+
+
+
+============================================================
+TO DO
+------------------------------
+
+- Sinkronizo kohen mes takimeve ose qite kohezgjatjen te raportet
+- Ndere filterin e kohes
+- Krijo raporte reale qe munen mu printu dhe exportu ne PDF
+- Mundsisht bone databazen dinamike (qe munet mu ndryshu)
+============================================================

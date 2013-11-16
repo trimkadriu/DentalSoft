@@ -1,0 +1,4 @@
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Library\bin\Release\DentalSoft.Library.dll
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Library\bin\Release\DentalSoft.Library.pdb
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Library\obj\Release\DentalSoft.Library.dll
+D:\My Documents\Trimi\dentalsoft\DentalSoft.Library\obj\Release\DentalSoft.Library.pdb

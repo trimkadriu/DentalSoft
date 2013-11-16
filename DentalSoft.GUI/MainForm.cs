@@ -1,31 +1,59 @@
 ﻿using DentalSoft.Domain;
 using DentalSoft.Library;
+using DentalSoft.Service;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace DentalSoft
 {
     public partial class frmMain : Form
     {
-        private Dentist loggedInDentist;
+        public static Dentist loggedInDentist;
         private Utilities utilities;
+        private DentistService dentistService;
+        private AppointmentService appointmentService;
 
-        public frmMain(Dentist loggedInDentist)
+        public frmMain(Dentist dentist)
         {
+            loggedInDentist = dentist;
             InitializeComponent();
-            this.loggedInDentist = loggedInDentist;
             utilities = new Utilities();
+            dentistService = new DentistService();
+            appointmentService = new AppointmentService();
             Init();
         }
 
         private void Init()
         {
+            // Load profile
             lblEmriPlote.Text = "( " + loggedInDentist.getEmri() + " )";
             lblDataKoha.Text = loggedInDentist.getQasjaFundit().ToString();
             if (loggedInDentist.getFotoProfilit() == null)
                 pctUserProfile.Image = Properties.Resources.Ska_foto;
             else
                 pctUserProfile.Image = utilities.convertByteToImage(loggedInDentist.getFotoProfilit());
+
+            // Load Dentists
+            List<Dentist> dentists = dentistService.getDentistsForDashboard(2);
+            BindingSource dentistBindingSource = dentistService.getBindingSource(dentists);
+            dgvDentistet.DataSource = dentistBindingSource;
+            dgvDentistet.Columns["Id"].Visible = false;
+            dgvDentistet.Columns["Fjalekalimi"].Visible = false;
+            dgvDentistet.Columns["Foto profilit"].Visible = false;
+            dgvDentistet.Columns["Email"].Visible = false;
+            dgvDentistet.Columns["Perdoruesi"].Visible = false;
+
+            // Load Appointments
+            List<Appointment> appointments = appointmentService.getAppointmentsForDashboard();
+            BindingSource appointmentsBindingSource = appointmentService.getBindingSource(loggedInDentist, appointments);
+            dgvNextAppointments.DataSource = appointmentsBindingSource;
+            dgvNextAppointments.Columns["Id"].Visible = false;
+            dgvNextAppointments.Columns["Dentisti"].Visible = false;
+            dgvNextAppointments.Columns["Email"].Visible = false;
+            dgvNextAppointments.Columns["Mosha"].Visible = false;
+            dgvNextAppointments.Columns["Komenti"].Visible = false;
+            lblSotTakimet.Text = appointments.Count.ToString();
         }
 
         private void miRrethDentalSoft_Click(object sender, EventArgs e)
@@ -46,7 +74,7 @@ namespace DentalSoft
 
         private void btnProfili_Click(object sender, EventArgs e)
         {
-            frmAddDentist addDentistForm = new frmAddDentist(loggedInDentist);
+            frmAddDentist addDentistForm = new frmAddDentist(true);
             addDentistForm.ShowDialog();
             if (addDentistForm.DialogResult.Equals(DialogResult.OK))
                 Init();
@@ -60,7 +88,7 @@ namespace DentalSoft
 
         private void btnListoDentistet_Click(object sender, EventArgs e)
         {
-            frmListDentists listDentistsForm = new frmListDentists(loggedInDentist);
+            frmListDentists listDentistsForm = new frmListDentists();
             DialogResult dr = listDentistsForm.ShowDialog();
             if (dr == DialogResult.Yes)
                 logout();
@@ -104,8 +132,8 @@ namespace DentalSoft
 
         private void miGjeneroRaport_Click(object sender, EventArgs e)
         {
-            frmGenerateReport generateReport = new frmGenerateReport();
-            generateReport.ShowDialog();
+            //frmGenerateReport generateReport = new frmGenerateReport();
+            //generateReport.ShowDialog();
         }
 
         private void miListoRaportet_Click(object sender, EventArgs e)
@@ -128,6 +156,17 @@ namespace DentalSoft
         private void logout()
         {
             Application.Restart();
+        }
+
+        private void clearDataGridSelection()
+        {
+            dgvDentistet.ClearSelection();
+            dgvNextAppointments.ClearSelection();
+        }
+
+        private void dgvDentistet_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            clearDataGridSelection();
         }
     }
 }
