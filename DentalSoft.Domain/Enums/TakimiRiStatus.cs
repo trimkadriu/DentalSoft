@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DentalSoft.Domain.Enums
 {
-    public enum Status
+    public enum TakimiRiStatus
     {
         Po,
         Jo,

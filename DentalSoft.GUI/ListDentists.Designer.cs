@@ -79,6 +79,7 @@
             this.dgvListaEDentisteve.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaEDentisteve.Size = new System.Drawing.Size(546, 239);
             this.dgvListaEDentisteve.TabIndex = 3;
+            this.dgvListaEDentisteve.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvListaEDentisteve_DataBindingComplete);
             // 
             // lblHorizontalDivider
             // 

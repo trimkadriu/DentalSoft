@@ -42,6 +42,7 @@
             this.dtpDataETakimitPrej = new System.Windows.Forms.DateTimePicker();
             this.lblDataETakimitDeri = new System.Windows.Forms.Label();
             this.dtpDataETakimitDeri = new System.Windows.Forms.DateTimePicker();
+            this.btnGjeneroRaport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTakimet)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,6 +64,7 @@
             this.dgvTakimet.Size = new System.Drawing.Size(948, 375);
             this.dgvTakimet.TabIndex = 3;
             this.dgvTakimet.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTakimet_CellMouseDoubleClick);
+            this.dgvTakimet.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvTakimet_DataBindingComplete);
             // 
             // btnMbylle
             // 
@@ -79,10 +81,10 @@
             // btnFshij
             // 
             this.btnFshij.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnFshij.Location = new System.Drawing.Point(807, 541);
+            this.btnFshij.Location = new System.Drawing.Point(685, 541);
             this.btnFshij.Name = "btnFshij";
             this.btnFshij.Size = new System.Drawing.Size(75, 23);
-            this.btnFshij.TabIndex = 5;
+            this.btnFshij.TabIndex = 6;
             this.btnFshij.Text = "Fshij";
             this.btnFshij.UseVisualStyleBackColor = true;
             this.btnFshij.Click += new System.EventHandler(this.btnFshij_Click);
@@ -174,6 +176,17 @@
             this.dtpDataETakimitDeri.Value = new System.DateTime(2013, 8, 28, 22, 43, 0, 0);
             this.dtpDataETakimitDeri.ValueChanged += new System.EventHandler(this.datesValuesChanged);
             // 
+            // btnGjeneroRaport
+            // 
+            this.btnGjeneroRaport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGjeneroRaport.Location = new System.Drawing.Point(766, 541);
+            this.btnGjeneroRaport.Name = "btnGjeneroRaport";
+            this.btnGjeneroRaport.Size = new System.Drawing.Size(116, 23);
+            this.btnGjeneroRaport.TabIndex = 5;
+            this.btnGjeneroRaport.Text = "Gjenero raport";
+            this.btnGjeneroRaport.UseVisualStyleBackColor = true;
+            this.btnGjeneroRaport.Click += new System.EventHandler(this.btnGjeneroRaport_Click);
+            // 
             // frmListAppointments
             // 
             this.AcceptButton = this.btnEdito;
@@ -181,6 +194,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnMbylle;
             this.ClientSize = new System.Drawing.Size(975, 576);
+            this.Controls.Add(this.btnGjeneroRaport);
             this.Controls.Add(this.lblDataETakimitDeri);
             this.Controls.Add(this.dtpDataETakimitDeri);
             this.Controls.Add(this.lblDataETakimitPrej);
@@ -219,5 +233,6 @@
         private System.Windows.Forms.DateTimePicker dtpDataETakimitPrej;
         private System.Windows.Forms.Label lblDataETakimitDeri;
         private System.Windows.Forms.DateTimePicker dtpDataETakimitDeri;
+        private System.Windows.Forms.Button btnGjeneroRaport;
     }
 }
