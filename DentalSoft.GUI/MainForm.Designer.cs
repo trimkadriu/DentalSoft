@@ -50,7 +50,7 @@
             this.lblQasjaEFundit = new System.Windows.Forms.Label();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btnProfili = new System.Windows.Forms.Button();
-            this.dgvNextAppointments = new System.Windows.Forms.DataGridView();
+            this.dgvTakimetSot = new System.Windows.Forms.DataGridView();
             this.btnListoTakimet = new System.Windows.Forms.Button();
             this.btnShtoTakim = new System.Windows.Forms.Button();
             this.btnListoDentistet = new System.Windows.Forms.Button();
@@ -60,7 +60,7 @@
             this.btnListoRaportet = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblSotPagesat = new System.Windows.Forms.Label();
-            this.lblSotDiagnozat = new System.Windows.Forms.Label();
+            this.lblSotRaportet = new System.Windows.Forms.Label();
             this.lblSotTakimet = new System.Windows.Forms.Label();
             this.lblFitimiSot = new System.Windows.Forms.Label();
             this.lblGjithsejDiagnozatSot = new System.Windows.Forms.Label();
@@ -72,7 +72,7 @@
             this.grbDentistet = new System.Windows.Forms.GroupBox();
             this.menuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctUserProfile)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvNextAppointments)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTakimetSot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDentistet)).BeginInit();
             this.grbTeDhena.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctHeader)).BeginInit();
@@ -182,7 +182,7 @@
             // miListoRaportet
             // 
             this.miListoRaportet.Name = "miListoRaportet";
-            this.miListoRaportet.Size = new System.Drawing.Size(152, 22);
+            this.miListoRaportet.Size = new System.Drawing.Size(144, 22);
             this.miListoRaportet.Text = "Listo raportet";
             this.miListoRaportet.Click += new System.EventHandler(this.miListoRaportet_Click);
             // 
@@ -263,27 +263,27 @@
             this.btnProfili.UseVisualStyleBackColor = true;
             this.btnProfili.Click += new System.EventHandler(this.btnProfili_Click);
             // 
-            // dgvNextAppointments
+            // dgvTakimetSot
             // 
-            this.dgvNextAppointments.AllowUserToAddRows = false;
-            this.dgvNextAppointments.AllowUserToDeleteRows = false;
-            this.dgvNextAppointments.AllowUserToResizeColumns = false;
-            this.dgvNextAppointments.AllowUserToResizeRows = false;
-            this.dgvNextAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvNextAppointments.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
-            this.dgvNextAppointments.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvNextAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNextAppointments.Location = new System.Drawing.Point(13, 19);
-            this.dgvNextAppointments.MultiSelect = false;
-            this.dgvNextAppointments.Name = "dgvNextAppointments";
-            this.dgvNextAppointments.ReadOnly = true;
-            this.dgvNextAppointments.RowHeadersVisible = false;
+            this.dgvTakimetSot.AllowUserToAddRows = false;
+            this.dgvTakimetSot.AllowUserToDeleteRows = false;
+            this.dgvTakimetSot.AllowUserToResizeColumns = false;
+            this.dgvTakimetSot.AllowUserToResizeRows = false;
+            this.dgvTakimetSot.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTakimetSot.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            this.dgvTakimetSot.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvTakimetSot.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTakimetSot.Location = new System.Drawing.Point(13, 19);
+            this.dgvTakimetSot.MultiSelect = false;
+            this.dgvTakimetSot.Name = "dgvTakimetSot";
+            this.dgvTakimetSot.ReadOnly = true;
+            this.dgvTakimetSot.RowHeadersVisible = false;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvNextAppointments.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvNextAppointments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNextAppointments.Size = new System.Drawing.Size(485, 132);
-            this.dgvNextAppointments.TabIndex = 16;
-            this.dgvNextAppointments.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvDentistet_DataBindingComplete);
+            this.dgvTakimetSot.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvTakimetSot.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTakimetSot.Size = new System.Drawing.Size(485, 132);
+            this.dgvTakimetSot.TabIndex = 16;
+            this.dgvTakimetSot.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvDentistet_DataBindingComplete);
             // 
             // btnListoTakimet
             // 
@@ -353,7 +353,7 @@
             this.grbTeDhena.Controls.Add(this.btnListoRaportet);
             this.grbTeDhena.Controls.Add(this.label1);
             this.grbTeDhena.Controls.Add(this.lblSotPagesat);
-            this.grbTeDhena.Controls.Add(this.lblSotDiagnozat);
+            this.grbTeDhena.Controls.Add(this.lblSotRaportet);
             this.grbTeDhena.Controls.Add(this.lblSotTakimet);
             this.grbTeDhena.Controls.Add(this.lblFitimiSot);
             this.grbTeDhena.Controls.Add(this.lblGjithsejDiagnozatSot);
@@ -392,13 +392,13 @@
             this.lblSotPagesat.TabIndex = 5;
             this.lblSotPagesat.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // lblSotDiagnozat
+            // lblSotRaportet
             // 
-            this.lblSotDiagnozat.Location = new System.Drawing.Point(138, 43);
-            this.lblSotDiagnozat.Name = "lblSotDiagnozat";
-            this.lblSotDiagnozat.Size = new System.Drawing.Size(55, 13);
-            this.lblSotDiagnozat.TabIndex = 4;
-            this.lblSotDiagnozat.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblSotRaportet.Location = new System.Drawing.Point(138, 43);
+            this.lblSotRaportet.Name = "lblSotRaportet";
+            this.lblSotRaportet.Size = new System.Drawing.Size(55, 13);
+            this.lblSotRaportet.TabIndex = 4;
+            this.lblSotRaportet.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblSotTakimet
             // 
@@ -458,7 +458,7 @@
             // grbTakimet
             // 
             this.grbTakimet.Controls.Add(this.btnGjeneroRaport);
-            this.grbTakimet.Controls.Add(this.dgvNextAppointments);
+            this.grbTakimet.Controls.Add(this.dgvTakimetSot);
             this.grbTakimet.Controls.Add(this.btnShtoTakim);
             this.grbTakimet.Controls.Add(this.btnListoTakimet);
             this.grbTakimet.Location = new System.Drawing.Point(177, 287);
@@ -477,6 +477,7 @@
             this.btnGjeneroRaport.TabIndex = 19;
             this.btnGjeneroRaport.Text = "Gjenero raport";
             this.btnGjeneroRaport.UseVisualStyleBackColor = true;
+            this.btnGjeneroRaport.Click += new System.EventHandler(this.btnGjeneroRaport_Click);
             // 
             // grbDentistet
             // 
@@ -517,7 +518,7 @@
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctUserProfile)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvNextAppointments)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTakimetSot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDentistet)).EndInit();
             this.grbTeDhena.ResumeLayout(false);
             this.grbTeDhena.PerformLayout();
@@ -547,7 +548,7 @@
         private System.Windows.Forms.ToolStripMenuItem miMenaxhoDentistet;
         private System.Windows.Forms.ToolStripMenuItem takimetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menaxhoTakimetToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dgvNextAppointments;
+        private System.Windows.Forms.DataGridView dgvTakimetSot;
         private System.Windows.Forms.ToolStripMenuItem miRaportet;
         private System.Windows.Forms.ToolStripMenuItem miListoRaportet;
         private System.Windows.Forms.ToolStripMenuItem miListoDentistet;
@@ -563,7 +564,7 @@
         private System.Windows.Forms.Label lblGjithsejTakimeSot;
         private System.Windows.Forms.PictureBox pctHeader;
         private System.Windows.Forms.Label lblSotPagesat;
-        private System.Windows.Forms.Label lblSotDiagnozat;
+        private System.Windows.Forms.Label lblSotRaportet;
         private System.Windows.Forms.Label lblSotTakimet;
         private System.Windows.Forms.Label lblVerticalDivider;
         private System.Windows.Forms.Button btnListoRaportet;

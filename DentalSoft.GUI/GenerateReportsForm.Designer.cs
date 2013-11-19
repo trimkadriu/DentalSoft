@@ -46,6 +46,8 @@ namespace DentalSoft
             this.lblProblemi = new System.Windows.Forms.Label();
             this.txtOret = new System.Windows.Forms.TextBox();
             this.ItemTemplate = new Microsoft.VisualBasic.PowerPacks.DataRepeaterItem();
+            this.rtbRaport = new System.Windows.Forms.RichTextBox();
+            this.lblVerticalDivider = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudPagesa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKohezgjatja)).BeginInit();
             this.SuspendLayout();
@@ -230,15 +232,35 @@ namespace DentalSoft
             // 
             this.ItemTemplate.Size = new System.Drawing.Size(232, 136);
             // 
+            // rtbRaport
+            // 
+            this.rtbRaport.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.rtbRaport.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtbRaport.Location = new System.Drawing.Point(354, 15);
+            this.rtbRaport.Name = "rtbRaport";
+            this.rtbRaport.ReadOnly = true;
+            this.rtbRaport.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.rtbRaport.Size = new System.Drawing.Size(469, 550);
+            this.rtbRaport.TabIndex = 56;
+            this.rtbRaport.Text = "";
+            // 
+            // lblVerticalDivider
+            // 
+            this.lblVerticalDivider.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblVerticalDivider.Location = new System.Drawing.Point(338, 13);
+            this.lblVerticalDivider.Name = "lblVerticalDivider";
+            this.lblVerticalDivider.Size = new System.Drawing.Size(2, 554);
+            this.lblVerticalDivider.TabIndex = 57;
+            // 
             // frmGenerateReport
             // 
             this.AcceptButton = this.btnGjeneroRaport;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.btnAnulo;
-            this.ClientSize = new System.Drawing.Size(339, 277);
+            this.ClientSize = new System.Drawing.Size(836, 577);
+            this.Controls.Add(this.lblVerticalDivider);
+            this.Controls.Add(this.rtbRaport);
             this.Controls.Add(this.txtOret);
             this.Controls.Add(this.btnAnulo);
             this.Controls.Add(this.btnGjeneroRaport);
@@ -285,5 +307,7 @@ namespace DentalSoft
         private System.Windows.Forms.Label lblProblemi;
         private System.Windows.Forms.TextBox txtOret;
         private Microsoft.VisualBasic.PowerPacks.DataRepeaterItem ItemTemplate;
+        private System.Windows.Forms.RichTextBox rtbRaport;
+        private System.Windows.Forms.Label lblVerticalDivider;
     }
 }

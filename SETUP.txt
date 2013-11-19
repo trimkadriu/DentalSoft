@@ -137,7 +137,9 @@ ALTER TABLE  `raportet` ADD  `takimi_ardhshem` VARCHAR( 10 ) NULL DEFAULT NULL A
 
 ALTER TABLE  `raportet` ADD INDEX (  `takimi_ardhshem` );
 
-ALTER TABLE  `raportet` ADD  `data_krijimit` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+ALTER TABLE  `raportet` ADD  `data_krijimit` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+ALTER TABLE  `raportet` MODIFY COLUMN `pagesa` DOUBLE(10, 2) NOT NULL;
 
 ============================================================
 

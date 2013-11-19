@@ -50,6 +50,17 @@ namespace DentalSoft.Service
                 return null;
         }
 
+        public List<Report> getReportsForDashboard(Dentist dentist)
+        {
+            List<Report> reports = reportsRepository.selectStatement(null, dentist.getId(), null, null, null, null, true);
+            return reports;
+        }
+
+        public string getSumPagesat(Dentist dentist)
+        {
+            return reportsRepository.selectSumPagesat(dentist);
+        }
+
         public List<Report> getAllReports(Dentist dentist)
         {
             return reportsRepository.selectStatement(null, dentist.getId());

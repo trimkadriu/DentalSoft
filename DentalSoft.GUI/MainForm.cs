@@ -13,6 +13,7 @@ namespace DentalSoft
         private Utilities utilities;
         private DentistService dentistService;
         private AppointmentService appointmentService;
+        private ReportService reportService;
 
         public frmMain(Dentist dentist)
         {
@@ -21,6 +22,7 @@ namespace DentalSoft
             utilities = new Utilities();
             dentistService = new DentistService();
             appointmentService = new AppointmentService();
+            reportService = new ReportService();
             Init();
         }
 
@@ -45,21 +47,25 @@ namespace DentalSoft
             dgvDentistet.Columns["Perdoruesi"].Visible = false;
 
             // Load Appointments
-            List<Appointment> appointments = appointmentService.getAppointmentsForDashboard();
+            List<Appointment> appointments = appointmentService.getAppointmentsForDashboard(loggedInDentist);
             BindingSource appointmentsBindingSource = appointmentService.getBindingSource(loggedInDentist, appointments);
-            dgvNextAppointments.DataSource = appointmentsBindingSource;
-            dgvNextAppointments.Columns["Id"].Visible = false;
-            dgvNextAppointments.Columns["Dentisti"].Visible = false;
-            dgvNextAppointments.Columns["Email"].Visible = false;
-            dgvNextAppointments.Columns["Mosha"].Visible = false;
-            dgvNextAppointments.Columns["Komenti"].Visible = false;
+            dgvTakimetSot.DataSource = appointmentsBindingSource;
+            dgvTakimetSot.Columns["Id"].Visible = false;
+            dgvTakimetSot.Columns["Dentisti"].Visible = false;
+            dgvTakimetSot.Columns["Email"].Visible = false;
+            dgvTakimetSot.Columns["Mosha"].Visible = false;
+            dgvTakimetSot.Columns["Komenti"].Visible = false;
+
+            // Load "Te dhena" Panel data
+            lblSotRaportet.Text = reportService.getReportsForDashboard(loggedInDentist).Count.ToString();
+            lblSotPagesat.Text = reportService.getSumPagesat(loggedInDentist) + " €";
             lblSotTakimet.Text = appointments.Count.ToString();
         }
 
         private void miRrethDentalSoft_Click(object sender, EventArgs e)
         {
-            frmAbout form = new frmAbout();
-            form.ShowDialog();
+            frmAbout aboutForm = new frmAbout();
+            aboutForm.ShowDialog();
         }
 
         private void miDalje_Click(object sender, EventArgs e)
@@ -84,13 +90,17 @@ namespace DentalSoft
         {
             frmAddDentist addDentistForm = new frmAddDentist();
             addDentistForm.ShowDialog();
+            if (addDentistForm.DialogResult.Equals(DialogResult.OK))
+                Init();
         }
 
         private void btnListoDentistet_Click(object sender, EventArgs e)
         {
             frmListDentists listDentistsForm = new frmListDentists();
-            DialogResult dr = listDentistsForm.ShowDialog();
-            if (dr == DialogResult.Yes)
+            listDentistsForm.ShowDialog();
+            if (listDentistsForm.DialogResult.Equals(DialogResult.OK))
+                Init();
+            else if (listDentistsForm.DialogResult.Equals(DialogResult.Yes))
                 logout();
         }
 
@@ -98,36 +108,50 @@ namespace DentalSoft
         {
             frmAddDentist addDentistForm = new frmAddDentist();
             addDentistForm.ShowDialog();
+            if (addDentistForm.DialogResult.Equals(DialogResult.OK))
+                Init();
         }
 
         private void listoDentistetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListDentists listDentistsForm = new frmListDentists();
             listDentistsForm.ShowDialog();
+            if (listDentistsForm.DialogResult.Equals(DialogResult.OK))
+                Init();
+            else if (listDentistsForm.DialogResult.Equals(DialogResult.Yes))
+                logout();
         }
 
         private void btnShtoTakim_Click(object sender, EventArgs e)
         {
             frmAddAppointment addAppointment = new frmAddAppointment();
             addAppointment.ShowDialog();
+            if (addAppointment.DialogResult.Equals(DialogResult.OK))
+                Init();
         }
 
         private void btnListoTakimet_Click(object sender, EventArgs e)
         {
             frmListAppointments listAppointments = new frmListAppointments();
             listAppointments.ShowDialog();
+            if (listAppointments.DialogResult.Equals(DialogResult.OK))
+                Init();
         }
 
         private void menaxhoTakimetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAddAppointment addAppointment = new frmAddAppointment();
             addAppointment.ShowDialog();
+            if (addAppointment.DialogResult.Equals(DialogResult.OK))
+                Init();
         }
 
         private void listoTakimetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListAppointments listAppointments = new frmListAppointments();
             listAppointments.ShowDialog();
+            if (listAppointments.DialogResult.Equals(DialogResult.OK))
+                Init();
         }
 
         private void miGjeneroRaport_Click(object sender, EventArgs e)
@@ -161,12 +185,36 @@ namespace DentalSoft
         private void clearDataGridSelection()
         {
             dgvDentistet.ClearSelection();
-            dgvNextAppointments.ClearSelection();
+            dgvTakimetSot.ClearSelection();
         }
 
         private void dgvDentistet_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             clearDataGridSelection();
+        }
+
+        private void btnGjeneroRaport_Click(object sender, EventArgs e)
+        {
+            if (dgvTakimetSot.SelectedRows.Count == 1)
+            {
+                string id = dgvTakimetSot.SelectedRows[0].Cells[0].Value.ToString();
+                Appointment appointment = appointmentService.getAppointmentById(id);
+                Report report = reportService.getReportByAppointmentId(id);
+                frmGenerateReport generateReportForm;
+                if (report != null)
+                {
+                    //Update report
+                    generateReportForm = new frmGenerateReport(appointment, report);
+                }
+                else
+                {
+                    //Create new report
+                    generateReportForm = new frmGenerateReport(appointment);
+                }
+                generateReportForm.ShowDialog();
+                if (generateReportForm.DialogResult.Equals(DialogResult.OK))
+                    Init();
+            }
         }
     }
 }
