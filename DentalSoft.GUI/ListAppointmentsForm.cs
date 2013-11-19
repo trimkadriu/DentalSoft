@@ -18,6 +18,7 @@ namespace DentalSoft
         private ReportService reportService;
         private BindingSource bindingSource;
         private bool firstLoad;
+        private bool refreshOnClose;
 
         public frmListAppointments()
         {
@@ -27,6 +28,7 @@ namespace DentalSoft
             bindingSource = new BindingSource();
             Init();
             firstLoad = true;
+            refreshOnClose = false;
             resetDates();
         }
 
@@ -46,7 +48,6 @@ namespace DentalSoft
         private void btnEdito_Click(object sender, EventArgs e)
         {
             editAppointment();
-            this.DialogResult = DialogResult.None;
         }
 
         private void btnFshij_Click(object sender, EventArgs e)
@@ -59,6 +60,7 @@ namespace DentalSoft
                     string id = dgvTakimet.SelectedRows[0].Cells[0].Value.ToString();
                     Appointment appointment = new Appointment(id);
                     appointmentService.removeAppointment(appointment);
+                    this.DialogResult = DialogResult.OK;
                     Init();
                 }
             }
@@ -73,13 +75,14 @@ namespace DentalSoft
                 frmAddAppointment editAppointmentForm = new frmAddAppointment(appointment);
                 if (editAppointmentForm.ShowDialog() == DialogResult.Yes)
                     Init();
+                refreshOnClose = true;
             }
+            this.DialogResult = DialogResult.None;
         }
 
         private void dgvTakimet_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             editAppointment();
-            this.DialogResult = DialogResult.None;
         }
 
         private void txtEmriPacientit_TextChanged(object sender, EventArgs e)
@@ -137,12 +140,20 @@ namespace DentalSoft
                     generateReportForm = new frmGenerateReport(appointment);
                 }
                 generateReportForm.ShowDialog();
+                this.DialogResult = DialogResult.None;
+                refreshOnClose = true;
             }
         }
 
         private void dgvTakimet_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             dgvTakimet.ClearSelection();
+        }
+
+        private void frmListAppointments_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (refreshOnClose)
+                this.DialogResult = DialogResult.OK;
         }
     }
 }

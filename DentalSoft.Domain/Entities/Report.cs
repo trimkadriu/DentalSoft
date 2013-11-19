@@ -17,13 +17,15 @@ namespace DentalSoft.Domain
         private string takimiArdhshem;
         private decimal pagesa;
         private TakimiRiStatus takimiArdhshemStatus;
+        private DateTime dataKrijimit;
 
         public Report()
         {
             setId();
         }
 
-        public Report(string id = null, string dentistId = null, string takimiId = null, string takimiArdhshem = null, decimal pagesa = 0, TakimiRiStatus? takimiArdhshemStatus = null)
+        public Report(string id = null, string dentistId = null, string takimiId = null, string takimiArdhshem = null, decimal pagesa = 0,
+                      TakimiRiStatus? takimiArdhshemStatus = null, DateTime? dataKrijimit = null)
         {
             setId(id);
             if (dentistId != null)
@@ -38,6 +40,9 @@ namespace DentalSoft.Domain
                 this.takimiArdhshemStatus = takimiArdhshemStatus.Value;
             else
                 this.takimiArdhshemStatus = TakimiRiStatus.Pacaktuar;
+            if (dataKrijimit.HasValue)
+                this.dataKrijimit = dataKrijimit.Value;
+
         }
 
         public string getId()
@@ -106,6 +111,16 @@ namespace DentalSoft.Domain
         public void setTakimiArdhshemStatus(string takimiArdhshemStatus)
         {
             this.takimiArdhshemStatus = (TakimiRiStatus)Enum.Parse(typeof(TakimiRiStatus), takimiArdhshemStatus);
+        }
+
+        public void setDataKrijimit(DateTime dataKrijimit)
+        {
+            this.dataKrijimit = dataKrijimit;
+        }
+
+        public DateTime getDataKrijimit()
+        {
+            return dataKrijimit;
         }
 
         public override bool Equals(object obj)

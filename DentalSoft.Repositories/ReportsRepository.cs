@@ -25,10 +25,8 @@ namespace DentalSoft.Repositories
         {
             if (OpenConnection())
             {
-                string takimiArdhshem;
-                if (report.getTakimiArdhshem() == null)
-                    takimiArdhshem = "NULL";
-                else
+                string takimiArdhshem = "NULL";
+                if (report.getTakimiArdhshem() != null)
                     takimiArdhshem = report.getTakimiArdhshem();
                 query = "INSERT INTO " + tableName + " (id, dentisti, takimi, takimi_ardhshem, pagesa, perserit_kontrollin) VALUES ('" +
                         report.getId() + "', '" +
@@ -75,7 +73,7 @@ namespace DentalSoft.Repositories
         }
 
         public List<Report> selectStatement(string id = null, string dentistId = null, string takimiId = null, string takimiArdhshem = null,
-                                            string pagesa = null, string perseritKontrollin = null)
+                                            string pagesa = null, string perseritKontrollin = null, bool forDashboard = false)
         {
             if (OpenConnection())
             {
@@ -91,19 +89,30 @@ namespace DentalSoft.Repositories
                 if (pagesa != null)
                     query = query + "AND pagesa='" + pagesa + "' ";
                 if (perseritKontrollin != null)
-                    query = query + "AND perserit_kontrollin='" + perseritKontrollin + "'";
+                    query = query + "AND perserit_kontrollin='" + perseritKontrollin + "' ";
+                if (forDashboard)
+                {
+                    DateTime today = DateTime.Now;
+                    DateTime startOfToday = today.Date;
+                    DateTime endOfToday = startOfToday.AddDays(1).AddTicks(-1);
+                    query = query + "AND `data_krijimit` between '" + utilities.convertDateForDB(startOfToday) + "' AND '" + utilities.convertDateForDB(endOfToday) + "'";
+                }
                 cmd = new MySqlCommand(query, connection);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 List<Report> list = new List<Report>();
                 while (dataReader.Read())
                 {
                     Report r = new Report();
-                    r.setId(dataReader["id"].ToString());
-                    r.setDentistId(dataReader["dentisti"].ToString());
-                    r.setTakimiId(dataReader["takimi"].ToString());
-                    r.setTakimiArdhshem(dataReader["takimi_ardhshem"].ToString());
-                    r.setPagesa(decimal.Parse(dataReader["pagesa"].ToString()));
-                    r.setTakimiArdhshemStatus(dataReader["perserit_kontrollin"].ToString());
+                    r.setId(dataReader.GetString("id"));
+                    r.setDentistId(dataReader.GetString("dentisti"));
+                    r.setTakimiId(dataReader.GetString("takimi"));
+                    if(string.IsNullOrEmpty(dataReader["takimi_ardhshem"].ToString()))
+                        r.setTakimiArdhshem(null);
+                    else
+                        r.setTakimiArdhshem(dataReader["takimi_ardhshem"].ToString());
+                    r.setPagesa(decimal.Parse(dataReader.GetString("pagesa")));
+                    r.setTakimiArdhshemStatus(dataReader.GetString("perserit_kontrollin"));
+                    r.setDataKrijimit(utilities.convertDateFromDb(dataReader["data_krijimit"].ToString()));
                     list.Add(r);
                 }
                 dataReader.Close();
@@ -112,6 +121,32 @@ namespace DentalSoft.Repositories
                 return list;
             }
             return null;
+        }
+
+        public string selectSumPagesat(Dentist dentist)
+        {
+            string sumPagesat = "0.00";
+            if (OpenConnection())
+            {
+                DateTime today = DateTime.Now;
+                DateTime startOfToday = today.Date;
+                DateTime endOfToday = startOfToday.AddDays(1).AddTicks(-1);
+                query = "SELECT SUM(`pagesa`) AS `pagesat_total` FROM " + tableName + 
+                        " WHERE `dentisti` = '" + dentist.getId() + "' AND `data_krijimit` between '" + 
+                        utilities.convertDateForDB(startOfToday) + "' AND '" + utilities.convertDateForDB(endOfToday) + "'";
+                cmd = new MySqlCommand(query, connection);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+                List<Report> list = new List<Report>();
+                while (dataReader.Read())
+                {
+                    if (!string.IsNullOrEmpty((dataReader["pagesat_total"].ToString())))
+                        sumPagesat = dataReader.GetString("pagesat_total");
+                }
+                dataReader.Close();
+                cmd.ExecuteNonQuery();
+                clean();
+            }
+            return sumPagesat;
         }
 
         public List<DataColumn> getSchemaTable()

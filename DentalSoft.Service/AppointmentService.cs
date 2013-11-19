@@ -54,9 +54,9 @@ namespace DentalSoft.Service
             return appointmentsRepository.selectStatement(null, dentist.getId());
         }
 
-        public List<Appointment> getAppointmentsForDashboard()
+        public List<Appointment> getAppointmentsForDashboard(Dentist dentist)
         {
-            return appointmentsRepository.selectStatement(null, null, null, 0, null, null, null, 0, null, null, true);
+            return appointmentsRepository.selectStatement(null, dentist.getId(), null, 0, null, null, null, 0, null, null, true);
         }
 
         public List<DataColumn> getSchemaTable()

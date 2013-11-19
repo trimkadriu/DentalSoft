@@ -91,7 +91,7 @@ namespace DentalSoft
                                                      encryptor.encryptMd5(txtFjalekalimi.Text), fotoProfilit);
                     if (dentistService.insertDentist(dentistNew))
                     {
-                        //MessageBox.Show("Dentisti u shtua me sukses.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
                 }

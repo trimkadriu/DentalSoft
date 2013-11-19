@@ -49,6 +49,29 @@ namespace DentalSoft
             }
             dtpDataETakimitTjeter.MaxDate = DateTime.Now.AddYears(1);
             showHideAppointmentFields();
+            rtbRaport.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang1033\\deflangfe1033{\\fonttbl{\\f0\\fnil\\fcharset0 Times New Roman;}}" +
+                            "{\\*\\generator Msftedit 5.41.21.2509;}\\viewkind4\\uc1\\pard\\nowidctlpar\\sa200\\qc\\lang9\\f0\\fs72 RAPORT\\par" +
+                            "\\fs24\\line\\par" +
+                            "\\pard\\nowidctlpar\\sa200\\sl276\\slmult1\\b\\fs28 P\\lang1033\\'ebrserit Kontrollin\\lang9 :\\tab\\b0 PO\\tab       \\b Takimi i ardhshem: \\b0 2013-11-18 22:26\\par" +
+                            "\\pard\\nowidctlpar\\sa200\\sl276\\slmult1\\qc\\lang1033\\b\\fs22 ________________________________________________________________________\\line\\b0\\fs28\\par" +
+                            "\\pard\\nowidctlpar\\sa200\\b Emri pacientit\\lang9 :\\tab\\tab\\lang1033\\b0 Sadudin Bushi\\tab\\tab\\b Mosha:\\tab\\b0 20\\lang9\\fs22\\par" +
+                            "\\b\\fs28 Email:\\tab\\tab\\tab\\b0 sadudin_bushi@hotmail.com\\par" +
+                            "\\b Telefoni:\\tab\\tab\\tab\\b0 (044) 123-789\\par" +
+                            "\\b Data e takimit:\\tab\\tab\\b0 2013-11-05 00:50\\par" +
+                            "\\b Kohezgjatja e takimit:\\tab\\b0 10 (min)\\par" +
+                            "\\ul\\b Problemi:\\ulnone\\b0\\par" +
+                            "Heqje te dhembeve te fundit 28, 29, 30. Modelimi i protezave fikse.\\par" +
+                            "\\ul\\b Komenti:\\ulnone\\b0\\par" +
+                            "Nuk ka koment.\\par" +
+                            "\\pard\\nowidctlpar\\sa200\\qc\\lang1033\\b\\fs22 ________________________________________________________________________\\par" +
+                            "\\pard\\nowidctlpar\\sa200\\fs28\\par" +
+                            "\\lang9 Dentist:\\tab\\b0 Trim Kadriu\\lang1033\\b\\par" +
+                            "Kontakt:\\tab\\lang9\\b0 trim.kadriu@hotmail.com\\lang1033\\b\\par" +
+                            "Pagesa:\\tab\\b0 250 \\'80\\par" +
+                            "\\b Data:\\tab\\tab\\lang9\\b0 2013-11-05 00:50\\par" +
+                            "\\lang1033\\line\\pard\\nowidctlpar\\sa200\\qr ____________________________\\line\\fs22 Nenshkrimi dhe vula\\tab\\tab\\par" +
+                            "}";
+            rtbRaport.ZoomFactor = 0.80f;
         }
 
         private bool isEditingReport()

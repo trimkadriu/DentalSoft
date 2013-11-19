@@ -50,6 +50,11 @@ namespace DentalSoft
                         this.DialogResult = DialogResult.Yes;
                         this.Close();
                     }
+                    else
+                    {
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
                     Init();
                 }
             }
