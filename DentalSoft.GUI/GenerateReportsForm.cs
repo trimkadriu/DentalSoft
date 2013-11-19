@@ -59,19 +59,19 @@ namespace DentalSoft
                             "\\b Telefoni:\\tab\\tab\\tab\\b0 (044) 123-789\\par" +
                             "\\b Data e takimit:\\tab\\tab\\b0 2013-11-05 00:50\\par" +
                             "\\b Kohezgjatja e takimit:\\tab\\b0 10 (min)\\par" +
-                            "\\ul\\b Problemi:\\ulnone\\b0\\par" +
+                            "\\ul\\b Problemi:\\ulnone\\b0\\par " +
                             "Heqje te dhembeve te fundit 28, 29, 30. Modelimi i protezave fikse.\\par" +
-                            "\\ul\\b Komenti:\\ulnone\\b0\\par" +
+                            "\\ul\\b Komenti:\\ulnone\\b0\\par " +
                             "Nuk ka koment.\\par" +
                             "\\pard\\nowidctlpar\\sa200\\qc\\lang1033\\b\\fs22 ________________________________________________________________________\\par" +
                             "\\pard\\nowidctlpar\\sa200\\fs28\\par" +
-                            "\\lang9 Dentist:\\tab\\b0 Trim Kadriu\\lang1033\\b\\par" +
-                            "Kontakt:\\tab\\lang9\\b0 trim.kadriu@hotmail.com\\lang1033\\b\\par" +
-                            "Pagesa:\\tab\\b0 250 \\'80\\par" +
+                            "\\lang9 Dentist:\\tab\\b0 Trim Kadriu\\lang1033\\b\\par " +
+                            "Kontakt:\\tab\\lang9\\b0 trim.kadriu@hotmail.com\\lang1033\\b\\par " +
+                            "Pagesa:\\tab\\b0 250 \\'80\\par " +
                             "\\b Data:\\tab\\tab\\lang9\\b0 2013-11-05 00:50\\par" +
                             "\\lang1033\\line\\pard\\nowidctlpar\\sa200\\qr ____________________________\\line\\fs22 Nenshkrimi dhe vula\\tab\\tab\\par" +
                             "}";
-            rtbRaport.ZoomFactor = 0.80f;
+            rtbRaport.ZoomFactor = 0.60f;
         }
 
         private bool isEditingReport()

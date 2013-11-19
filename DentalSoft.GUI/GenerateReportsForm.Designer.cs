@@ -235,12 +235,12 @@ namespace DentalSoft
             // rtbRaport
             // 
             this.rtbRaport.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.rtbRaport.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtbRaport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.rtbRaport.Location = new System.Drawing.Point(354, 15);
             this.rtbRaport.Name = "rtbRaport";
             this.rtbRaport.ReadOnly = true;
             this.rtbRaport.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.rtbRaport.Size = new System.Drawing.Size(469, 550);
+            this.rtbRaport.Size = new System.Drawing.Size(367, 520);
             this.rtbRaport.TabIndex = 56;
             this.rtbRaport.Text = "";
             // 
@@ -249,7 +249,7 @@ namespace DentalSoft
             this.lblVerticalDivider.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblVerticalDivider.Location = new System.Drawing.Point(338, 13);
             this.lblVerticalDivider.Name = "lblVerticalDivider";
-            this.lblVerticalDivider.Size = new System.Drawing.Size(2, 554);
+            this.lblVerticalDivider.Size = new System.Drawing.Size(2, 520);
             this.lblVerticalDivider.TabIndex = 57;
             // 
             // frmGenerateReport
@@ -258,7 +258,7 @@ namespace DentalSoft
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnAnulo;
-            this.ClientSize = new System.Drawing.Size(836, 577);
+            this.ClientSize = new System.Drawing.Size(734, 547);
             this.Controls.Add(this.lblVerticalDivider);
             this.Controls.Add(this.rtbRaport);
             this.Controls.Add(this.txtOret);
