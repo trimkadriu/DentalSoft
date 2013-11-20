@@ -1,5 +1,6 @@
-DentalSoft.Service/bin/*.*
-DentalSoft.Repositories/bin/*.*
-DentalSoft.Library/bin/*.*
-DentalSoft.GUI/bin/*.*
-DentalSoft.Domain/bin/*.*
+syntax: glob
+DentalSoft.Service/bin/**
+DentalSoft.Repositories/bin/**
+DentalSoft.Library/bin/**
+DentalSoft.GUI/bin/**
+DentalSoft.Domain/bin/**
