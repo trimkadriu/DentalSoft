@@ -1,4 +1,5 @@
-﻿namespace DentalSoft
+﻿using System;
+namespace DentalSoft
 {
     partial class frmListAppointments
     {
@@ -43,6 +44,7 @@
             this.lblDataETakimitDeri = new System.Windows.Forms.Label();
             this.dtpDataETakimitDeri = new System.Windows.Forms.DateTimePicker();
             this.btnGjeneroRaport = new System.Windows.Forms.Button();
+            this.btnFshijDatat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTakimet)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,7 +70,6 @@
             // 
             // btnMbylle
             // 
-            this.btnMbylle.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnMbylle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnMbylle.Location = new System.Drawing.Point(15, 541);
             this.btnMbylle.Name = "btnMbylle";
@@ -139,45 +140,43 @@
             // lblDataETakimitPrej
             // 
             this.lblDataETakimitPrej.AutoSize = true;
-            this.lblDataETakimitPrej.Location = new System.Drawing.Point(12, 85);
+            this.lblDataETakimitPrej.Location = new System.Drawing.Point(12, 82);
             this.lblDataETakimitPrej.Name = "lblDataETakimitPrej";
-            this.lblDataETakimitPrej.Size = new System.Drawing.Size(92, 13);
+            this.lblDataETakimitPrej.Size = new System.Drawing.Size(95, 13);
             this.lblDataETakimitPrej.TabIndex = 38;
-            this.lblDataETakimitPrej.Text = "Data e takimit prej";
+            this.lblDataETakimitPrej.Text = "Data e takimit prej:";
             // 
             // dtpDataETakimitPrej
             // 
             this.dtpDataETakimitPrej.CustomFormat = " ";
             this.dtpDataETakimitPrej.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDataETakimitPrej.Location = new System.Drawing.Point(132, 79);
-            this.dtpDataETakimitPrej.MaxDate = new System.DateTime(2014, 9, 17, 15, 42, 21, 718);
-            this.dtpDataETakimitPrej.MinDate = new System.DateTime(2010, 9, 17, 15, 42, 21, 718);
+            this.dtpDataETakimitPrej.MaxDate = new System.DateTime(2014, 11, 21, 23, 0, 50, 161);
+            this.dtpDataETakimitPrej.MinDate = new System.DateTime(2010, 11, 21, 23, 0, 50, 161);
             this.dtpDataETakimitPrej.Name = "dtpDataETakimitPrej";
             this.dtpDataETakimitPrej.Size = new System.Drawing.Size(197, 20);
             this.dtpDataETakimitPrej.TabIndex = 1;
-            this.dtpDataETakimitPrej.Value = new System.DateTime(2013, 9, 17, 15, 42, 21, 718);
             this.dtpDataETakimitPrej.ValueChanged += new System.EventHandler(this.datesValuesChanged);
             // 
             // lblDataETakimitDeri
             // 
             this.lblDataETakimitDeri.AutoSize = true;
-            this.lblDataETakimitDeri.Location = new System.Drawing.Point(12, 112);
+            this.lblDataETakimitDeri.Location = new System.Drawing.Point(12, 109);
             this.lblDataETakimitDeri.Name = "lblDataETakimitDeri";
-            this.lblDataETakimitDeri.Size = new System.Drawing.Size(92, 13);
+            this.lblDataETakimitDeri.Size = new System.Drawing.Size(95, 13);
             this.lblDataETakimitDeri.TabIndex = 40;
-            this.lblDataETakimitDeri.Text = "Data e takimit deri";
+            this.lblDataETakimitDeri.Text = "Data e takimit deri:";
             // 
             // dtpDataETakimitDeri
             // 
             this.dtpDataETakimitDeri.CustomFormat = " ";
             this.dtpDataETakimitDeri.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDataETakimitDeri.Location = new System.Drawing.Point(132, 106);
-            this.dtpDataETakimitDeri.MaxDate = new System.DateTime(2014, 9, 17, 15, 42, 21, 722);
-            this.dtpDataETakimitDeri.MinDate = new System.DateTime(2012, 9, 17, 15, 42, 21, 721);
+            this.dtpDataETakimitDeri.MaxDate = new System.DateTime(2014, 11, 21, 23, 0, 50, 188);
+            this.dtpDataETakimitDeri.MinDate = new System.DateTime(2012, 11, 21, 23, 0, 50, 189);
             this.dtpDataETakimitDeri.Name = "dtpDataETakimitDeri";
             this.dtpDataETakimitDeri.Size = new System.Drawing.Size(197, 20);
             this.dtpDataETakimitDeri.TabIndex = 2;
-            this.dtpDataETakimitDeri.Value = new System.DateTime(2013, 9, 17, 15, 42, 21, 721);
             this.dtpDataETakimitDeri.ValueChanged += new System.EventHandler(this.datesValuesChanged);
             // 
             // btnGjeneroRaport
@@ -191,6 +190,17 @@
             this.btnGjeneroRaport.UseVisualStyleBackColor = true;
             this.btnGjeneroRaport.Click += new System.EventHandler(this.btnGjeneroRaport_Click);
             // 
+            // btnFshijDatat
+            // 
+            this.btnFshijDatat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnFshijDatat.Location = new System.Drawing.Point(340, 91);
+            this.btnFshijDatat.Name = "btnFshijDatat";
+            this.btnFshijDatat.Size = new System.Drawing.Size(84, 23);
+            this.btnFshijDatat.TabIndex = 41;
+            this.btnFshijDatat.Text = "Fshij Datat";
+            this.btnFshijDatat.UseVisualStyleBackColor = true;
+            this.btnFshijDatat.Click += new System.EventHandler(this.btnFshijDatat_Click);
+            // 
             // frmListAppointments
             // 
             this.AcceptButton = this.btnEdito;
@@ -198,6 +208,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnMbylle;
             this.ClientSize = new System.Drawing.Size(975, 576);
+            this.Controls.Add(this.btnFshijDatat);
             this.Controls.Add(this.btnGjeneroRaport);
             this.Controls.Add(this.lblDataETakimitDeri);
             this.Controls.Add(this.dtpDataETakimitDeri);
@@ -239,5 +250,6 @@
         private System.Windows.Forms.Label lblDataETakimitDeri;
         private System.Windows.Forms.DateTimePicker dtpDataETakimitDeri;
         private System.Windows.Forms.Button btnGjeneroRaport;
+        private System.Windows.Forms.Button btnFshijDatat;
     }
 }

@@ -74,6 +74,7 @@ namespace DentalSoft.Service
             else
                 appointments = appoints;
             dataTable.Columns.AddRange(getSchemaTable().ToArray());
+            dataTable.Columns["Data Takimit"].DataType = typeof(DateTime);
             foreach (Appointment appointment in appointments)
             {
                 dataTable.Rows.Add(new object[] 

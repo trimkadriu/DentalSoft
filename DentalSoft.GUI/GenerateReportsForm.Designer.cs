@@ -35,7 +35,7 @@ namespace DentalSoft
             this.lblTakimiTjeterStatus = new System.Windows.Forms.Label();
             this.lblMonedha = new System.Windows.Forms.Label();
             this.nudPagesa = new System.Windows.Forms.NumericUpDown();
-            this.btnAnulo = new System.Windows.Forms.Button();
+            this.btnMbyll = new System.Windows.Forms.Button();
             this.btnGjeneroRaport = new System.Windows.Forms.Button();
             this.lblMin = new System.Windows.Forms.Label();
             this.nudKohezgjatja = new System.Windows.Forms.NumericUpDown();
@@ -114,16 +114,17 @@ namespace DentalSoft
             this.nudPagesa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nudPagesa.ThousandsSeparator = true;
             // 
-            // btnAnulo
+            // btnMbyll
             // 
-            this.btnAnulo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnAnulo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAnulo.Location = new System.Drawing.Point(142, 239);
-            this.btnAnulo.Name = "btnAnulo";
-            this.btnAnulo.Size = new System.Drawing.Size(75, 23);
-            this.btnAnulo.TabIndex = 6;
-            this.btnAnulo.Text = "Anulo";
-            this.btnAnulo.UseVisualStyleBackColor = true;
+            this.btnMbyll.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnMbyll.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnMbyll.Location = new System.Drawing.Point(142, 239);
+            this.btnMbyll.Name = "btnMbyll";
+            this.btnMbyll.Size = new System.Drawing.Size(75, 23);
+            this.btnMbyll.TabIndex = 6;
+            this.btnMbyll.Text = "Mbyll";
+            this.btnMbyll.UseVisualStyleBackColor = true;
+            this.btnMbyll.Click += new System.EventHandler(this.btnMbyll_Click);
             // 
             // btnGjeneroRaport
             // 
@@ -313,13 +314,13 @@ namespace DentalSoft
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.CancelButton = this.btnAnulo;
+            this.CancelButton = this.btnMbyll;
             this.ClientSize = new System.Drawing.Size(734, 572);
             this.Controls.Add(this.outputReportStrip);
             this.Controls.Add(this.lblVerticalDivider);
             this.Controls.Add(this.rtbRaport);
             this.Controls.Add(this.txtOret);
-            this.Controls.Add(this.btnAnulo);
+            this.Controls.Add(this.btnMbyll);
             this.Controls.Add(this.btnGjeneroRaport);
             this.Controls.Add(this.txtProblemi);
             this.Controls.Add(this.lblProblemi);
@@ -355,7 +356,7 @@ namespace DentalSoft
         private System.Windows.Forms.Label lblTakimiTjeterStatus;
         private System.Windows.Forms.Label lblMonedha;
         private System.Windows.Forms.NumericUpDown nudPagesa;
-        private System.Windows.Forms.Button btnAnulo;
+        private System.Windows.Forms.Button btnMbyll;
         private System.Windows.Forms.Button btnGjeneroRaport;
         private System.Windows.Forms.Label lblMin;
         private System.Windows.Forms.NumericUpDown nudKohezgjatja;

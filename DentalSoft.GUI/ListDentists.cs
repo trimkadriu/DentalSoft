@@ -3,6 +3,7 @@ using DentalSoft.Domain;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Data;
+using System.ComponentModel;
 
 namespace DentalSoft
 {
@@ -26,6 +27,7 @@ namespace DentalSoft
             dgvListaEDentisteve.Columns["Id"].Visible = false;
             dgvListaEDentisteve.Columns["Fjalekalimi"].Visible = false;
             dgvListaEDentisteve.Columns["Foto profilit"].Visible = false;
+            dgvListaEDentisteve.Sort(this.dgvListaEDentisteve.Columns["Emri"], ListSortDirection.Ascending);
         }
 
         private void txtKerkoEmriMbiemri_TextChanged(object sender, System.EventArgs e)

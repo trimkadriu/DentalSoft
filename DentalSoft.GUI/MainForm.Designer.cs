@@ -40,8 +40,6 @@
             this.takimetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menaxhoTakimetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listoTakimetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.miRaportet = new System.Windows.Forms.ToolStripMenuItem();
-            this.miListoRaportet = new System.Windows.Forms.ToolStripMenuItem();
             this.miNdihma = new System.Windows.Forms.ToolStripMenuItem();
             this.miRrethDentalSoft = new System.Windows.Forms.ToolStripMenuItem();
             this.lblEmriPlote = new System.Windows.Forms.Label();
@@ -57,7 +55,6 @@
             this.btnShtoDentist = new System.Windows.Forms.Button();
             this.dgvDentistet = new System.Windows.Forms.DataGridView();
             this.grbTeDhena = new System.Windows.Forms.GroupBox();
-            this.btnListoRaportet = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblSotPagesat = new System.Windows.Forms.Label();
             this.lblSotRaportet = new System.Windows.Forms.Label();
@@ -68,8 +65,10 @@
             this.pctHeader = new System.Windows.Forms.PictureBox();
             this.lblVerticalDivider = new System.Windows.Forms.Label();
             this.grbTakimet = new System.Windows.Forms.GroupBox();
+            this.btnNdryshoTakim = new System.Windows.Forms.Button();
             this.btnGjeneroRaport = new System.Windows.Forms.Button();
             this.grbDentistet = new System.Windows.Forms.GroupBox();
+            this.btnFshij = new System.Windows.Forms.Button();
             this.menuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctUserProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTakimetSot)).BeginInit();
@@ -87,7 +86,6 @@
             this.miFillimi,
             this.miDentistet,
             this.takimetToolStripMenuItem,
-            this.miRaportet,
             this.miNdihma});
             this.menuMain.Location = new System.Drawing.Point(0, 0);
             this.menuMain.Name = "menuMain";
@@ -171,21 +169,6 @@
             this.listoTakimetToolStripMenuItem.Text = "Listo te gjitha takimet";
             this.listoTakimetToolStripMenuItem.Click += new System.EventHandler(this.listoTakimetToolStripMenuItem_Click);
             // 
-            // miRaportet
-            // 
-            this.miRaportet.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miListoRaportet});
-            this.miRaportet.Name = "miRaportet";
-            this.miRaportet.Size = new System.Drawing.Size(64, 20);
-            this.miRaportet.Text = "Raportet";
-            // 
-            // miListoRaportet
-            // 
-            this.miListoRaportet.Name = "miListoRaportet";
-            this.miListoRaportet.Size = new System.Drawing.Size(190, 22);
-            this.miListoRaportet.Text = "Listo te gjitha raportet";
-            this.miListoRaportet.Click += new System.EventHandler(this.miListoRaportet_Click);
-            // 
             // miNdihma
             // 
             this.miNdihma.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -247,7 +230,7 @@
             this.btnLogOut.Location = new System.Drawing.Point(80, 305);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(58, 23);
-            this.btnLogOut.TabIndex = 12;
+            this.btnLogOut.TabIndex = 16;
             this.btnLogOut.Text = "Shkyqu";
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
@@ -258,7 +241,7 @@
             this.btnProfili.Location = new System.Drawing.Point(16, 305);
             this.btnProfili.Name = "btnProfili";
             this.btnProfili.Size = new System.Drawing.Size(58, 23);
-            this.btnProfili.TabIndex = 13;
+            this.btnProfili.TabIndex = 14;
             this.btnProfili.Text = "Profili";
             this.btnProfili.UseVisualStyleBackColor = true;
             this.btnProfili.Click += new System.EventHandler(this.btnProfili_Click);
@@ -283,26 +266,28 @@
             this.dgvTakimetSot.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTakimetSot.Size = new System.Drawing.Size(485, 132);
             this.dgvTakimetSot.TabIndex = 16;
+            this.dgvTakimetSot.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTakimetSot_CellMouseDoubleClick);
             this.dgvTakimetSot.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvDentistet_DataBindingComplete);
             // 
             // btnListoTakimet
             // 
+            this.btnListoTakimet.BackColor = System.Drawing.SystemColors.Control;
             this.btnListoTakimet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnListoTakimet.Location = new System.Drawing.Point(13, 161);
+            this.btnListoTakimet.Location = new System.Drawing.Point(13, 99);
             this.btnListoTakimet.Name = "btnListoTakimet";
-            this.btnListoTakimet.Size = new System.Drawing.Size(116, 23);
-            this.btnListoTakimet.TabIndex = 17;
-            this.btnListoTakimet.Text = "Listo takimet";
-            this.btnListoTakimet.UseVisualStyleBackColor = true;
+            this.btnListoTakimet.Size = new System.Drawing.Size(178, 23);
+            this.btnListoTakimet.TabIndex = 4;
+            this.btnListoTakimet.Text = "Listo te gjitha takimet";
+            this.btnListoTakimet.UseVisualStyleBackColor = false;
             this.btnListoTakimet.Click += new System.EventHandler(this.btnListoTakimet_Click);
             // 
             // btnShtoTakim
             // 
             this.btnShtoTakim.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnShtoTakim.Location = new System.Drawing.Point(136, 161);
+            this.btnShtoTakim.Location = new System.Drawing.Point(382, 161);
             this.btnShtoTakim.Name = "btnShtoTakim";
             this.btnShtoTakim.Size = new System.Drawing.Size(116, 23);
-            this.btnShtoTakim.TabIndex = 18;
+            this.btnShtoTakim.TabIndex = 0;
             this.btnShtoTakim.Text = "Shto takim";
             this.btnShtoTakim.UseVisualStyleBackColor = true;
             this.btnShtoTakim.Click += new System.EventHandler(this.btnShtoTakim_Click);
@@ -310,10 +295,10 @@
             // btnListoDentistet
             // 
             this.btnListoDentistet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnListoDentistet.Location = new System.Drawing.Point(12, 99);
+            this.btnListoDentistet.Location = new System.Drawing.Point(94, 99);
             this.btnListoDentistet.Name = "btnListoDentistet";
             this.btnListoDentistet.Size = new System.Drawing.Size(88, 23);
-            this.btnListoDentistet.TabIndex = 20;
+            this.btnListoDentistet.TabIndex = 10;
             this.btnListoDentistet.Text = "Listo dentistet";
             this.btnListoDentistet.UseVisualStyleBackColor = true;
             this.btnListoDentistet.Click += new System.EventHandler(this.btnListoDentistet_Click);
@@ -321,10 +306,10 @@
             // btnShtoDentist
             // 
             this.btnShtoDentist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnShtoDentist.Location = new System.Drawing.Point(106, 99);
+            this.btnShtoDentist.Location = new System.Drawing.Point(188, 99);
             this.btnShtoDentist.Name = "btnShtoDentist";
             this.btnShtoDentist.Size = new System.Drawing.Size(88, 23);
-            this.btnShtoDentist.TabIndex = 21;
+            this.btnShtoDentist.TabIndex = 8;
             this.btnShtoDentist.Text = "Shto dentist";
             this.btnShtoDentist.UseVisualStyleBackColor = true;
             this.btnShtoDentist.Click += new System.EventHandler(this.btnShtoDentist_Click);
@@ -350,11 +335,11 @@
             // 
             // grbTeDhena
             // 
-            this.grbTeDhena.Controls.Add(this.btnListoRaportet);
             this.grbTeDhena.Controls.Add(this.label1);
             this.grbTeDhena.Controls.Add(this.lblSotPagesat);
             this.grbTeDhena.Controls.Add(this.lblSotRaportet);
             this.grbTeDhena.Controls.Add(this.lblSotTakimet);
+            this.grbTeDhena.Controls.Add(this.btnListoTakimet);
             this.grbTeDhena.Controls.Add(this.lblFitimiSot);
             this.grbTeDhena.Controls.Add(this.lblGjithsejDiagnozatSot);
             this.grbTeDhena.Controls.Add(this.lblGjithsejTakimeSot);
@@ -364,17 +349,6 @@
             this.grbTeDhena.TabIndex = 22;
             this.grbTeDhena.TabStop = false;
             this.grbTeDhena.Text = "Te dhena";
-            // 
-            // btnListoRaportet
-            // 
-            this.btnListoRaportet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnListoRaportet.Location = new System.Drawing.Point(13, 99);
-            this.btnListoRaportet.Name = "btnListoRaportet";
-            this.btnListoRaportet.Size = new System.Drawing.Size(96, 23);
-            this.btnListoRaportet.TabIndex = 26;
-            this.btnListoRaportet.Text = "Listo raportet";
-            this.btnListoRaportet.UseVisualStyleBackColor = true;
-            this.btnListoRaportet.Click += new System.EventHandler(this.btnListoRaportet_Click);
             // 
             // label1
             // 
@@ -457,10 +431,11 @@
             // 
             // grbTakimet
             // 
+            this.grbTakimet.Controls.Add(this.btnFshij);
+            this.grbTakimet.Controls.Add(this.btnNdryshoTakim);
             this.grbTakimet.Controls.Add(this.btnGjeneroRaport);
             this.grbTakimet.Controls.Add(this.dgvTakimetSot);
             this.grbTakimet.Controls.Add(this.btnShtoTakim);
-            this.grbTakimet.Controls.Add(this.btnListoTakimet);
             this.grbTakimet.Location = new System.Drawing.Point(177, 287);
             this.grbTakimet.Name = "grbTakimet";
             this.grbTakimet.Size = new System.Drawing.Size(512, 199);
@@ -468,13 +443,24 @@
             this.grbTakimet.TabStop = false;
             this.grbTakimet.Text = "Takimet per sot";
             // 
+            // btnNdryshoTakim
+            // 
+            this.btnNdryshoTakim.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnNdryshoTakim.Location = new System.Drawing.Point(259, 161);
+            this.btnNdryshoTakim.Name = "btnNdryshoTakim";
+            this.btnNdryshoTakim.Size = new System.Drawing.Size(116, 23);
+            this.btnNdryshoTakim.TabIndex = 2;
+            this.btnNdryshoTakim.Text = "Ndrysho takim";
+            this.btnNdryshoTakim.UseVisualStyleBackColor = true;
+            this.btnNdryshoTakim.Click += new System.EventHandler(this.btnNdryshoTakim_Click);
+            // 
             // btnGjeneroRaport
             // 
             this.btnGjeneroRaport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnGjeneroRaport.Location = new System.Drawing.Point(382, 161);
+            this.btnGjeneroRaport.Location = new System.Drawing.Point(13, 161);
             this.btnGjeneroRaport.Name = "btnGjeneroRaport";
             this.btnGjeneroRaport.Size = new System.Drawing.Size(116, 23);
-            this.btnGjeneroRaport.TabIndex = 19;
+            this.btnGjeneroRaport.TabIndex = 6;
             this.btnGjeneroRaport.Text = "Gjenero raport";
             this.btnGjeneroRaport.UseVisualStyleBackColor = true;
             this.btnGjeneroRaport.Click += new System.EventHandler(this.btnGjeneroRaport_Click);
@@ -490,6 +476,17 @@
             this.grbDentistet.TabIndex = 28;
             this.grbDentistet.TabStop = false;
             this.grbDentistet.Text = "Dentistet e fundit aktiv";
+            // 
+            // btnFshij
+            // 
+            this.btnFshij.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnFshij.Location = new System.Drawing.Point(136, 161);
+            this.btnFshij.Name = "btnFshij";
+            this.btnFshij.Size = new System.Drawing.Size(117, 23);
+            this.btnFshij.TabIndex = 17;
+            this.btnFshij.Text = "Fshij";
+            this.btnFshij.UseVisualStyleBackColor = true;
+            this.btnFshij.Click += new System.EventHandler(this.btnFshij_Click);
             // 
             // frmMain
             // 
@@ -549,8 +546,6 @@
         private System.Windows.Forms.ToolStripMenuItem takimetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menaxhoTakimetToolStripMenuItem;
         private System.Windows.Forms.DataGridView dgvTakimetSot;
-        private System.Windows.Forms.ToolStripMenuItem miRaportet;
-        private System.Windows.Forms.ToolStripMenuItem miListoRaportet;
         private System.Windows.Forms.ToolStripMenuItem miListoDentistet;
         private System.Windows.Forms.ToolStripMenuItem listoTakimetToolStripMenuItem;
         private System.Windows.Forms.Button btnListoTakimet;
@@ -567,10 +562,11 @@
         private System.Windows.Forms.Label lblSotRaportet;
         private System.Windows.Forms.Label lblSotTakimet;
         private System.Windows.Forms.Label lblVerticalDivider;
-        private System.Windows.Forms.Button btnListoRaportet;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox grbTakimet;
         private System.Windows.Forms.GroupBox grbDentistet;
         private System.Windows.Forms.Button btnGjeneroRaport;
+        private System.Windows.Forms.Button btnNdryshoTakim;
+        private System.Windows.Forms.Button btnFshij;
     }
 }
