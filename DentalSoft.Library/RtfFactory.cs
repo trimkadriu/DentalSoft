@@ -9,7 +9,7 @@ namespace DentalSoft.Library
     public class RtfFactory
     {
         private string template =   "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang1033\\deflangfe1033{\\fonttbl{\\f0\\fnil\\fcharset0 Times New Roman;}}" +
-                                    "{\\*\\generator Msftedit 5.41.21.2509;}\\viewkind4\\uc1\\pard\\nowidctlpar\\sa200\\qc\\lang9\\f0\\fs72 RAPORT\\par" +
+                                    "{\\*\\generator Msftedit 5.41.21.2509;}\\viewkind4\\uc1\\pard\\nowidctlpar\\sa200\\qc\\lang9\\f0\\fs56 RAPORT DENTAR\\par" +
                                     "\\fs24\\line\\par" +
                                     "\\pard\\nowidctlpar\\sa200\\sl276\\slmult1\\b\\fs28 P\\lang1033\\'ebrserit Kontrollin\\lang9 :\\tab\\b0 #PERSERIT_KONTROLLIN#\\tab       \\b Takimi i ardhshem: \\b0 #TAKIMI_ARDHSHEM#\\par" +
                                     "\\pard\\nowidctlpar\\sa200\\sl276\\slmult1\\qc\\lang1033\\b\\fs22 ________________________________________________________________________\\line\\b0\\fs28\\par" +

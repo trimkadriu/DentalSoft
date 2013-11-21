@@ -1,6 +1,7 @@
 ﻿using DentalSoft.Domain;
 using DentalSoft.Library;
 using DentalSoft.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
@@ -67,9 +68,11 @@ namespace DentalSoft.Service
             return dentistsRepository.selectStatement();
         }
 
-        public List<Dentist> getDentistsForDashboard(int limit)
+        public List<Dentist> getDentistsForDashboard(Dentist dentist, int limit)
         {
-            return dentistsRepository.selectStatement(null, null, null, null, null, limit, null);
+            List<Dentist> dentists = dentistsRepository.selectStatement(null, null, null, null, null, limit, "`qasja_fundit` DESC");
+            dentists.Remove(dentist);
+            return dentists;
         }
 
         public List<DataColumn> getSchemaTable()
@@ -87,6 +90,7 @@ namespace DentalSoft.Service
             else
                 dentists = getAllDentists();
             dataTable.Columns.AddRange(getSchemaTable().ToArray());
+            dataTable.Columns["Qasja Fundit"].DataType = typeof(DateTime);
             foreach (Dentist dentist in dentists)
             {
                 dataTable.Rows.Add(new object[] 

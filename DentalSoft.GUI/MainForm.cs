@@ -3,6 +3,7 @@ using DentalSoft.Library;
 using DentalSoft.Service;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace DentalSoft
@@ -37,7 +38,7 @@ namespace DentalSoft
                 pctUserProfile.Image = utilities.convertByteToImage(loggedInDentist.getFotoProfilit());
 
             // Load Dentists
-            List<Dentist> dentists = dentistService.getDentistsForDashboard(2);
+            List<Dentist> dentists = dentistService.getDentistsForDashboard(loggedInDentist, 3);
             BindingSource dentistBindingSource = dentistService.getBindingSource(dentists);
             dgvDentistet.DataSource = dentistBindingSource;
             dgvDentistet.Columns["Id"].Visible = false;
@@ -45,6 +46,7 @@ namespace DentalSoft
             dgvDentistet.Columns["Foto profilit"].Visible = false;
             dgvDentistet.Columns["Email"].Visible = false;
             dgvDentistet.Columns["Perdoruesi"].Visible = false;
+            dgvDentistet.Sort(this.dgvDentistet.Columns["Qasja Fundit"], ListSortDirection.Descending);
 
             // Load Appointments
             List<Appointment> appointments = appointmentService.getAppointmentsForDashboard(loggedInDentist);
@@ -55,6 +57,7 @@ namespace DentalSoft
             dgvTakimetSot.Columns["Email"].Visible = false;
             dgvTakimetSot.Columns["Mosha"].Visible = false;
             dgvTakimetSot.Columns["Komenti"].Visible = false;
+            dgvTakimetSot.Sort(this.dgvTakimetSot.Columns["Data Takimit"], ListSortDirection.Ascending);
 
             // Load "Te dhena" Panel data
             lblSotRaportet.Text = reportService.getReportsForDashboard(loggedInDentist).Count.ToString();
@@ -153,25 +156,7 @@ namespace DentalSoft
             if (listAppointments.DialogResult.Equals(DialogResult.OK))
                 Init();
         }
-
-        private void miGjeneroRaport_Click(object sender, EventArgs e)
-        {
-            //frmGenerateReport generateReport = new frmGenerateReport();
-            //generateReport.ShowDialog();
-        }
-
-        private void miListoRaportet_Click(object sender, EventArgs e)
-        {
-            frmListReports listReports = new frmListReports();
-            listReports.ShowDialog();
-        }
-
-        private void btnListoRaportet_Click(object sender, EventArgs e)
-        {
-            frmListReports listReports = new frmListReports();
-            listReports.ShowDialog();
-        }
-
+        
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             logout();
@@ -214,6 +199,44 @@ namespace DentalSoft
                 generateReportForm.ShowDialog();
                 if (generateReportForm.DialogResult.Equals(DialogResult.OK))
                     Init();
+            }
+        }
+
+        private void ndryshoTakim()
+        {
+            if (dgvTakimetSot.SelectedRows.Count == 1)
+            {
+                string id = dgvTakimetSot.SelectedRows[0].Cells[0].Value.ToString();
+                Appointment appointment = appointmentService.getAppointmentById(id);
+                frmAddAppointment editAppointmentForm = new frmAddAppointment(appointment);
+                if (editAppointmentForm.ShowDialog() == DialogResult.Yes)
+                    Init();
+            }
+        }
+
+        private void btnNdryshoTakim_Click(object sender, EventArgs e)
+        {
+            ndryshoTakim();
+        }
+
+        private void dgvTakimetSot_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            ndryshoTakim();
+        }
+
+        private void btnFshij_Click(object sender, EventArgs e)
+        {
+            if (dgvTakimetSot.SelectedRows.Count == 1)
+            {
+                DialogResult dr = MessageBox.Show("A jeni i sigurte qe deshironi te fshini kete takim ?", "Konfirmo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr.Equals(DialogResult.Yes))
+                {
+                    string id = dgvTakimetSot.SelectedRows[0].Cells[0].Value.ToString();
+                    Appointment appointment = new Appointment(id);
+                    appointmentService.removeAppointment(appointment);
+                    this.DialogResult = DialogResult.OK;
+                    Init();
+                }
             }
         }
     }

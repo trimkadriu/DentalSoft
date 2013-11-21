@@ -25,7 +25,6 @@ namespace DentalSoft
             this.report = report;
             appointmentService = new AppointmentService();
             reportService = new ReportService();
-            rtf = new RtfFactory();
             Init();
         }
 
@@ -38,32 +37,16 @@ namespace DentalSoft
                 btnGjeneroRaport.Text = "Ruaj ndryshimet";
                 nudPagesa.Value = report.getPagesa();
                 cmbTakimiTjeterStatus.SelectedItem = report.getTakimiArdhshemStatus();
-                rtf.setPerseritKontrollin(report.getTakimiArdhshemStatus().ToString());
                 if (report.getTakimiArdhshemStatus().Equals(TakimiRiStatus.Po))
                 {
                     nextAppointment = appointmentService.getAppointmentById(report.getTakimiArdhshem());
-                    rtf.setTakimiArdhshem(nextAppointment.getDataTakimit().ToString("dd/MM/yyyy HH:mm"));
                     dtpDataETakimitTjeter.Value = nextAppointment.getDataTakimit();
                     dtpDataETakimitTjeter.MinDate = dtpDataETakimitTjeter.Value;
                     nudKohezgjatja.Value = nextAppointment.getKohezgjatjaTakimit();
                     txtProblemi.Text = nextAppointment.getProblemi();
                     llogaritMinutatNeOre();
                 }
-                else
-                    rtf.setTakimiArdhshem("");
-                rtf.setEmriPacientit(appointment.getEmriPacientit());
-                rtf.setMoshaPacientit(appointment.getMosha().ToString());
-                rtf.setEmailPacientit(appointment.getEmail());
-                rtf.setTelefoniPacientit(appointment.getTelefoni());
-                rtf.setDataTakimit(appointment.getDataTakimit().ToString("dd/MM/yyyy HH:mm"));
-                rtf.setKoheZgjatjaTakimit(appointment.getKohezgjatjaTakimit().ToString());
-                rtf.setProblemi(appointment.getProblemi());
-                rtf.setKomenti(appointment.getKomenti());
-                rtf.setDentisti(frmMain.loggedInDentist.getEmri());
-                rtf.setKontaktDentisti(frmMain.loggedInDentist.getEmail());
-                rtf.setPagesa(report.getPagesa().ToString());
-                rtf.setDataRaportit(report.getDataKrijimit().ToString("dd/MM/yyyy HH:mm"));
-                rtbRaport.Rtf = rtf.generateRtf();
+                populateRtfBox();
                 outputReportStrip.Visible = true;
                 rtbRaport.Visible = true;
                 lblVerticalDivider.Visible = true;
@@ -75,7 +58,6 @@ namespace DentalSoft
             }
             dtpDataETakimitTjeter.MaxDate = DateTime.Now.AddYears(1);
             showHideAppointmentFields();
-            rtbRaport.ZoomFactor = 0.60f;
         }
 
         private bool isEditingReport()
@@ -103,7 +85,7 @@ namespace DentalSoft
                 txtProblemi.Visible = true;
                 txtOret.Visible = true;
                 btnGjeneroRaport.Top = 239;
-                btnAnulo.Top = 239;
+                btnMbyll.Top = 239;
             }
             else
             {
@@ -116,7 +98,7 @@ namespace DentalSoft
                 txtProblemi.Visible = false;
                 txtOret.Visible = false;
                 btnGjeneroRaport.Top = 90;
-                btnAnulo.Top = 90;
+                btnMbyll.Top = 90;
             }
         }
 
@@ -155,7 +137,6 @@ namespace DentalSoft
                             report.setTakimiArdhshem(null);
                         }
                     reportService.editReport(report);
-                    MessageBox.Show("Raporti i ndryshua me sukses", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -172,12 +153,15 @@ namespace DentalSoft
                         report = new Report(null, frmMain.loggedInDentist.getId(), appointment.getId(), null, decimal.Parse(nudPagesa.Text), 
                                             getTakimiStatusFromComboBox(cmbTakimiTjeterStatus));
                     reportService.insertReport(report);
-                    MessageBox.Show("Raporti i gjenerua me sukses", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     outputReportStrip.Visible = true;
                     rtbRaport.Visible = true;
                     lblVerticalDivider.Visible = true;
                     this.CenterToScreen();
                 }
+                MessageBox.Show("Raporti i gjenerua me sukses", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Text = "Ndrysho raport";
+                btnGjeneroRaport.Text = "Ruaj ndryshimet";
+                populateRtfBox();
             }
         }
 
@@ -227,13 +211,13 @@ namespace DentalSoft
 
         private void btnPrintReport_Click(object sender, EventArgs e)
         {
-            outputRtfFile(appointment.getEmriPacientit() + " - Raport Dentar (" + DateTime.Today.ToString() + ").rtf", true);
+            outputRtfFile(appointment.getEmriPacientit() + " - Raport Dentar (" + DateTime.Now.ToString("dd-MM-yyyy HH-mm") + ").rtf", true);
         }
 
         private void btnSaveReport_Click(object sender, EventArgs e)
         {
-            
-            saveReportDialog.FileName = appointment.getEmriPacientit() + " - Raport Dentar (" + DateTime.Today.ToString() + ").doc";
+
+            saveReportDialog.FileName = appointment.getEmriPacientit() + " - Raport Dentar (" + DateTime.Now.ToString("dd-MM-yyyy HH-mm") + ").doc";
             saveReportDialog.ShowDialog();
         }
 
@@ -262,6 +246,37 @@ namespace DentalSoft
             }
             else
                 rtbRaport.SaveFile(path);
+        }
+
+        private void populateRtfBox()
+        {
+            rtbRaport.ZoomFactor = 1.0f;
+            rtbRaport.Clear();
+            rtf = new RtfFactory();
+            if (report.getTakimiArdhshemStatus().Equals(TakimiRiStatus.Po))
+                rtf.setTakimiArdhshem(nextAppointment.getDataTakimit().ToString("dd/MM/yyyy HH:mm"));
+            else
+                rtf.setTakimiArdhshem("");
+            rtf.setPerseritKontrollin(report.getTakimiArdhshemStatus().ToString());
+            rtf.setEmriPacientit(appointment.getEmriPacientit());
+            rtf.setMoshaPacientit(appointment.getMosha().ToString());
+            rtf.setEmailPacientit(appointment.getEmail());
+            rtf.setTelefoniPacientit(appointment.getTelefoni());
+            rtf.setDataTakimit(appointment.getDataTakimit().ToString("dd/MM/yyyy HH:mm"));
+            rtf.setKoheZgjatjaTakimit(appointment.getKohezgjatjaTakimit().ToString());
+            rtf.setProblemi(appointment.getProblemi());
+            rtf.setKomenti(appointment.getKomenti());
+            rtf.setDentisti(frmMain.loggedInDentist.getEmri());
+            rtf.setKontaktDentisti(frmMain.loggedInDentist.getEmail());
+            rtf.setPagesa(report.getPagesa().ToString());
+            rtf.setDataRaportit(report.getDataKrijimit().ToString("dd/MM/yyyy HH:mm"));
+            rtbRaport.Rtf = rtf.generateRtf();
+            rtbRaport.ZoomFactor = 0.60f;
+        }
+
+        private void btnMbyll_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

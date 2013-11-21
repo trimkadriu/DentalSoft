@@ -161,7 +161,5 @@ TO DO
 ------------------------------
 
 - Sinkronizo kohen mes takimeve ose qite kohezgjatjen te raportet
-- Ndere filterin e kohes
-- Krijo raporte reale qe munen mu printu dhe exportu ne PDF
-- Mundsisht bone databazen dinamike (qe munet mu ndryshu)
+- Mundsisht bone databazen dinamike (qe munet mu ndryshu) ose perdor LightSQL
 ============================================================

@@ -17,8 +17,9 @@ namespace DentalSoft
         private AppointmentService appointmentService;
         private ReportService reportService;
         private BindingSource bindingSource;
-        private bool firstLoad;
         private bool refreshOnClose;
+        private bool filterEmri;
+        private bool filterData;
 
         public frmListAppointments()
         {
@@ -27,8 +28,9 @@ namespace DentalSoft
             reportService = new ReportService();
             bindingSource = new BindingSource();
             Init();
-            firstLoad = true;
             refreshOnClose = false;
+            filterEmri = false;
+            filterData = false;
             resetDates();
         }
 
@@ -38,6 +40,7 @@ namespace DentalSoft
             dgvTakimet.DataSource = bindingSource;
             dgvTakimet.Columns["Id"].Visible = false;
             dgvTakimet.Columns["Dentisti"].Visible = false;
+            dgvTakimet.Sort(this.dgvTakimet.Columns["Data Takimit"], ListSortDirection.Descending);
         }
 
         private void btnMbylle_Click(object sender, EventArgs e)
@@ -87,38 +90,58 @@ namespace DentalSoft
 
         private void txtEmriPacientit_TextChanged(object sender, EventArgs e)
         {
-            bindingSource.Filter = "[Emri pacientit] like '%" + txtEmriPacientit.Text + "%'";
+            if (!string.IsNullOrWhiteSpace(txtEmriPacientit.Text))
+                filterEmri = true;
+            else
+                filterEmri = false;
+            dataGridViewFilter();
         }
 
         private void resetDates()
         {
             dtpDataETakimitPrej.CustomFormat = " ";
             dtpDataETakimitDeri.CustomFormat = " ";
-            //
-            dtpDataETakimitPrej.MinDate = DateTime.Now.AddYears(-3);
-            dtpDataETakimitPrej.MaxDate = DateTime.Now.AddYears(1);
-            dtpDataETakimitPrej.Value = DateTime.Now.AddDays(-3);
-            //
-            dtpDataETakimitDeri.MinDate = DateTime.Now.AddYears(-1);
-            dtpDataETakimitDeri.MaxDate = DateTime.Now.AddYears(1);
-            dtpDataETakimitDeri.Value = DateTime.Now;
+            filterData = false;
         }
 
         private void datesValuesChanged(object sender, EventArgs e)
         {
-            if (firstLoad)
-                return;
-            firstLoad = false;
             if (dtpDataETakimitPrej.Value > dtpDataETakimitDeri.Value)
             {
                 MessageBox.Show("Datat e perzgjedhura jane kontradiktore. Ju lutem zgjedhni datat perseri", "Gabim!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                dtpDataETakimitPrej.Value = DateTime.Now.AddDays(-3);
+                dtpDataETakimitDeri.Value = DateTime.Now;
                 resetDates();
             }
             else
             {
-                dtpDataETakimitPrej.CustomFormat = "dd MMMM yyyy - hh:mm tt";
-                dtpDataETakimitDeri.CustomFormat = "dd MMMM yyyy - hh:mm tt";
+                dtpDataETakimitPrej.CustomFormat = "dd/MMMM/yyyy hh:mm tt";
+                dtpDataETakimitDeri.CustomFormat = "dd/MMMM/yyyy hh:mm tt";
+                filterData = true;
+                dataGridViewFilter();
             }
+        }
+
+        private void dataGridViewFilter()
+        {
+            string filter = string.Empty;
+            if (filterEmri && !filterData)
+            {
+                filter = "[Emri pacientit] like '%" + txtEmriPacientit.Text + "%'";
+            }
+            else if (filterData && !filterEmri)
+            {
+                filter = string.Format("[Data takimit] >= '{0}' AND [Data takimit] <= '{1}'", 
+                                        dtpDataETakimitPrej.Value, dtpDataETakimitDeri.Value);
+            }
+            else if (filterData && filterEmri)
+            {
+                filter = string.Format("[Emri pacientit] like '%{0}%' AND [Data takimit] >= '{1}' AND [Data takimit] <= '{2}'",
+                                        txtEmriPacientit.Text,
+                                        dtpDataETakimitPrej.Value,
+                                        dtpDataETakimitDeri.Value);
+            }
+            bindingSource.Filter = filter;
         }
 
         private void btnGjeneroRaport_Click(object sender, EventArgs e)
@@ -155,6 +178,14 @@ namespace DentalSoft
         {
             if (refreshOnClose)
                 this.DialogResult = DialogResult.OK;
+        }
+
+        private void btnFshijDatat_Click(object sender, EventArgs e)
+        {
+            dtpDataETakimitPrej.Value = DateTime.Now.AddDays(-3);
+            dtpDataETakimitDeri.Value = DateTime.Now;
+            resetDates();
+            dataGridViewFilter();
         }
     }
 }
