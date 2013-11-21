@@ -1,7 +1,10 @@
 ﻿using DentalSoft.Domain;
 using DentalSoft.Domain.Enums;
+using DentalSoft.Library;
 using DentalSoft.Service;
 using System;
+using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 
 namespace DentalSoft
@@ -13,6 +16,7 @@ namespace DentalSoft
         private Appointment nextAppointment;
         private AppointmentService appointmentService;
         private ReportService reportService;
+        private RtfFactory rtf;
 
         public frmGenerateReport(Appointment appointment, Report report = null)
         {
@@ -21,26 +25,48 @@ namespace DentalSoft
             this.report = report;
             appointmentService = new AppointmentService();
             reportService = new ReportService();
+            rtf = new RtfFactory();
             Init();
         }
 
         private void Init()
         {
+            dtpDataETakimitTjeter.Value = DateTime.Now;
             if (isEditingReport())
             {
                 this.Text = "Ndrysho raport";
                 btnGjeneroRaport.Text = "Ruaj ndryshimet";
                 nudPagesa.Value = report.getPagesa();
                 cmbTakimiTjeterStatus.SelectedItem = report.getTakimiArdhshemStatus();
+                rtf.setPerseritKontrollin(report.getTakimiArdhshemStatus().ToString());
                 if (report.getTakimiArdhshemStatus().Equals(TakimiRiStatus.Po))
                 {
                     nextAppointment = appointmentService.getAppointmentById(report.getTakimiArdhshem());
+                    rtf.setTakimiArdhshem(nextAppointment.getDataTakimit().ToString("dd/MM/yyyy HH:mm"));
                     dtpDataETakimitTjeter.Value = nextAppointment.getDataTakimit();
                     dtpDataETakimitTjeter.MinDate = dtpDataETakimitTjeter.Value;
                     nudKohezgjatja.Value = nextAppointment.getKohezgjatjaTakimit();
                     txtProblemi.Text = nextAppointment.getProblemi();
                     llogaritMinutatNeOre();
                 }
+                else
+                    rtf.setTakimiArdhshem("");
+                rtf.setEmriPacientit(appointment.getEmriPacientit());
+                rtf.setMoshaPacientit(appointment.getMosha().ToString());
+                rtf.setEmailPacientit(appointment.getEmail());
+                rtf.setTelefoniPacientit(appointment.getTelefoni());
+                rtf.setDataTakimit(appointment.getDataTakimit().ToString("dd/MM/yyyy HH:mm"));
+                rtf.setKoheZgjatjaTakimit(appointment.getKohezgjatjaTakimit().ToString());
+                rtf.setProblemi(appointment.getProblemi());
+                rtf.setKomenti(appointment.getKomenti());
+                rtf.setDentisti(frmMain.loggedInDentist.getEmri());
+                rtf.setKontaktDentisti(frmMain.loggedInDentist.getEmail());
+                rtf.setPagesa(report.getPagesa().ToString());
+                rtf.setDataRaportit(report.getDataKrijimit().ToString("dd/MM/yyyy HH:mm"));
+                rtbRaport.Rtf = rtf.generateRtf();
+                outputReportStrip.Visible = true;
+                rtbRaport.Visible = true;
+                lblVerticalDivider.Visible = true;
             }
             else
             {
@@ -49,28 +75,6 @@ namespace DentalSoft
             }
             dtpDataETakimitTjeter.MaxDate = DateTime.Now.AddYears(1);
             showHideAppointmentFields();
-            rtbRaport.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang1033\\deflangfe1033{\\fonttbl{\\f0\\fnil\\fcharset0 Times New Roman;}}" +
-                            "{\\*\\generator Msftedit 5.41.21.2509;}\\viewkind4\\uc1\\pard\\nowidctlpar\\sa200\\qc\\lang9\\f0\\fs72 RAPORT\\par" +
-                            "\\fs24\\line\\par" +
-                            "\\pard\\nowidctlpar\\sa200\\sl276\\slmult1\\b\\fs28 P\\lang1033\\'ebrserit Kontrollin\\lang9 :\\tab\\b0 PO\\tab       \\b Takimi i ardhshem: \\b0 2013-11-18 22:26\\par" +
-                            "\\pard\\nowidctlpar\\sa200\\sl276\\slmult1\\qc\\lang1033\\b\\fs22 ________________________________________________________________________\\line\\b0\\fs28\\par" +
-                            "\\pard\\nowidctlpar\\sa200\\b Emri pacientit\\lang9 :\\tab\\tab\\lang1033\\b0 Sadudin Bushi\\tab\\tab\\b Mosha:\\tab\\b0 20\\lang9\\fs22\\par" +
-                            "\\b\\fs28 Email:\\tab\\tab\\tab\\b0 sadudin_bushi@hotmail.com\\par" +
-                            "\\b Telefoni:\\tab\\tab\\tab\\b0 (044) 123-789\\par" +
-                            "\\b Data e takimit:\\tab\\tab\\b0 2013-11-05 00:50\\par" +
-                            "\\b Kohezgjatja e takimit:\\tab\\b0 10 (min)\\par" +
-                            "\\ul\\b Problemi:\\ulnone\\b0\\par " +
-                            "Heqje te dhembeve te fundit 28, 29, 30. Modelimi i protezave fikse.\\par" +
-                            "\\ul\\b Komenti:\\ulnone\\b0\\par " +
-                            "Nuk ka koment.\\par" +
-                            "\\pard\\nowidctlpar\\sa200\\qc\\lang1033\\b\\fs22 ________________________________________________________________________\\par" +
-                            "\\pard\\nowidctlpar\\sa200\\fs28\\par" +
-                            "\\lang9 Dentist:\\tab\\b0 Trim Kadriu\\lang1033\\b\\par " +
-                            "Kontakt:\\tab\\lang9\\b0 trim.kadriu@hotmail.com\\lang1033\\b\\par " +
-                            "Pagesa:\\tab\\b0 250 \\'80\\par " +
-                            "\\b Data:\\tab\\tab\\lang9\\b0 2013-11-05 00:50\\par" +
-                            "\\lang1033\\line\\pard\\nowidctlpar\\sa200\\qr ____________________________\\line\\fs22 Nenshkrimi dhe vula\\tab\\tab\\par" +
-                            "}";
             rtbRaport.ZoomFactor = 0.60f;
         }
 
@@ -151,6 +155,7 @@ namespace DentalSoft
                             report.setTakimiArdhshem(null);
                         }
                     reportService.editReport(report);
+                    MessageBox.Show("Raporti i ndryshua me sukses", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -167,6 +172,11 @@ namespace DentalSoft
                         report = new Report(null, frmMain.loggedInDentist.getId(), appointment.getId(), null, decimal.Parse(nudPagesa.Text), 
                                             getTakimiStatusFromComboBox(cmbTakimiTjeterStatus));
                     reportService.insertReport(report);
+                    MessageBox.Show("Raporti i gjenerua me sukses", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    outputReportStrip.Visible = true;
+                    rtbRaport.Visible = true;
+                    lblVerticalDivider.Visible = true;
+                    this.CenterToScreen();
                 }
             }
         }
@@ -213,6 +223,45 @@ namespace DentalSoft
         {
             TimeSpan ts = TimeSpan.FromMinutes(double.Parse(nudKohezgjatja.Text));
             txtOret.Text = ts.ToString();
+        }
+
+        private void btnPrintReport_Click(object sender, EventArgs e)
+        {
+            outputRtfFile(appointment.getEmriPacientit() + " - Raport Dentar (" + DateTime.Today.ToString() + ").rtf", true);
+        }
+
+        private void btnSaveReport_Click(object sender, EventArgs e)
+        {
+            
+            saveReportDialog.FileName = appointment.getEmriPacientit() + " - Raport Dentar (" + DateTime.Today.ToString() + ").doc";
+            saveReportDialog.ShowDialog();
+        }
+
+        private void saveReportDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            outputRtfFile(saveReportDialog.FileName);
+        }
+
+        private void outputRtfFile(string path, bool print = false)
+        {
+            if (print)
+            {
+                string filePathAndName = Application.StartupPath + "\\" + path;
+                rtbRaport.SaveFile(filePathAndName);
+                Process printProcces = new Process();
+                printProcces.StartInfo.FileName = filePathAndName;
+                printProcces.StartInfo.Verb = "Print";
+                printProcces.StartInfo.CreateNoWindow = true;
+                printProcces.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                printProcces.Start();
+                printProcces.WaitForExit();
+                if (File.Exists(@filePathAndName))
+                {
+                    File.Delete(@filePathAndName);
+                }
+            }
+            else
+                rtbRaport.SaveFile(path);
         }
     }
 }

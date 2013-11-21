@@ -48,8 +48,14 @@ namespace DentalSoft
             this.ItemTemplate = new Microsoft.VisualBasic.PowerPacks.DataRepeaterItem();
             this.rtbRaport = new System.Windows.Forms.RichTextBox();
             this.lblVerticalDivider = new System.Windows.Forms.Label();
+            this.outputReportStrip = new System.Windows.Forms.ToolStrip();
+            this.btnPrintReport = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.btnSaveReport = new System.Windows.Forms.ToolStripButton();
+            this.saveReportDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.nudPagesa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKohezgjatja)).BeginInit();
+            this.outputReportStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblPagesa
@@ -236,29 +242,80 @@ namespace DentalSoft
             // 
             this.rtbRaport.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.rtbRaport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rtbRaport.Location = new System.Drawing.Point(354, 15);
+            this.rtbRaport.Location = new System.Drawing.Point(355, 40);
+            this.rtbRaport.Margin = new System.Windows.Forms.Padding(18);
             this.rtbRaport.Name = "rtbRaport";
             this.rtbRaport.ReadOnly = true;
             this.rtbRaport.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.rtbRaport.Size = new System.Drawing.Size(367, 520);
             this.rtbRaport.TabIndex = 56;
             this.rtbRaport.Text = "";
+            this.rtbRaport.Visible = false;
             // 
             // lblVerticalDivider
             // 
             this.lblVerticalDivider.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblVerticalDivider.Location = new System.Drawing.Point(338, 13);
             this.lblVerticalDivider.Name = "lblVerticalDivider";
-            this.lblVerticalDivider.Size = new System.Drawing.Size(2, 520);
+            this.lblVerticalDivider.Size = new System.Drawing.Size(2, 545);
             this.lblVerticalDivider.TabIndex = 57;
+            this.lblVerticalDivider.Visible = false;
+            // 
+            // outputReportStrip
+            // 
+            this.outputReportStrip.AutoSize = false;
+            this.outputReportStrip.CanOverflow = false;
+            this.outputReportStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.outputReportStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.outputReportStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnPrintReport,
+            this.toolStripSeparator,
+            this.btnSaveReport});
+            this.outputReportStrip.Location = new System.Drawing.Point(355, 16);
+            this.outputReportStrip.Name = "outputReportStrip";
+            this.outputReportStrip.Size = new System.Drawing.Size(367, 25);
+            this.outputReportStrip.TabIndex = 58;
+            this.outputReportStrip.Text = "ReportToolStrip";
+            this.outputReportStrip.Visible = false;
+            // 
+            // btnPrintReport
+            // 
+            this.btnPrintReport.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintReport.Image")));
+            this.btnPrintReport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPrintReport.Name = "btnPrintReport";
+            this.btnPrintReport.Size = new System.Drawing.Size(52, 22);
+            this.btnPrintReport.Text = "&Print";
+            this.btnPrintReport.Click += new System.EventHandler(this.btnPrintReport_Click);
+            // 
+            // toolStripSeparator
+            // 
+            this.toolStripSeparator.Name = "toolStripSeparator";
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnSaveReport
+            // 
+            this.btnSaveReport.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveReport.Image")));
+            this.btnSaveReport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSaveReport.Name = "btnSaveReport";
+            this.btnSaveReport.Size = new System.Drawing.Size(51, 22);
+            this.btnSaveReport.Text = "&Save";
+            this.btnSaveReport.Click += new System.EventHandler(this.btnSaveReport_Click);
+            // 
+            // saveReportDialog
+            // 
+            this.saveReportDialog.DefaultExt = "rtf";
+            this.saveReportDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.saveReportDialog_FileOk);
             // 
             // frmGenerateReport
             // 
             this.AcceptButton = this.btnGjeneroRaport;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.btnAnulo;
-            this.ClientSize = new System.Drawing.Size(734, 547);
+            this.ClientSize = new System.Drawing.Size(734, 572);
+            this.Controls.Add(this.outputReportStrip);
             this.Controls.Add(this.lblVerticalDivider);
             this.Controls.Add(this.rtbRaport);
             this.Controls.Add(this.txtOret);
@@ -284,6 +341,8 @@ namespace DentalSoft
             this.Text = "Gjenero raport";
             ((System.ComponentModel.ISupportInitialize)(this.nudPagesa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKohezgjatja)).EndInit();
+            this.outputReportStrip.ResumeLayout(false);
+            this.outputReportStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,5 +368,10 @@ namespace DentalSoft
         private Microsoft.VisualBasic.PowerPacks.DataRepeaterItem ItemTemplate;
         private System.Windows.Forms.RichTextBox rtbRaport;
         private System.Windows.Forms.Label lblVerticalDivider;
+        private System.Windows.Forms.ToolStrip outputReportStrip;
+        private System.Windows.Forms.ToolStripButton btnPrintReport;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
+        private System.Windows.Forms.ToolStripButton btnSaveReport;
+        private System.Windows.Forms.SaveFileDialog saveReportDialog;
     }
 }

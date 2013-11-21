@@ -142,6 +142,7 @@ namespace DentalSoft
                 generateReportForm.ShowDialog();
                 this.DialogResult = DialogResult.None;
                 refreshOnClose = true;
+                Init();
             }
         }
 

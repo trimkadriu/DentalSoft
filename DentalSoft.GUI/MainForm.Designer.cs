@@ -143,7 +143,7 @@
             // 
             this.miListoDentistet.Name = "miListoDentistet";
             this.miListoDentistet.Size = new System.Drawing.Size(230, 22);
-            this.miListoDentistet.Text = "Listo dentistet";
+            this.miListoDentistet.Text = "Listo te gjithe dentistet";
             this.miListoDentistet.Click += new System.EventHandler(this.listoDentistetToolStripMenuItem_Click);
             // 
             // takimetToolStripMenuItem
@@ -168,7 +168,7 @@
             // 
             this.listoTakimetToolStripMenuItem.Name = "listoTakimetToolStripMenuItem";
             this.listoTakimetToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
-            this.listoTakimetToolStripMenuItem.Text = "Listo takimet";
+            this.listoTakimetToolStripMenuItem.Text = "Listo te gjitha takimet";
             this.listoTakimetToolStripMenuItem.Click += new System.EventHandler(this.listoTakimetToolStripMenuItem_Click);
             // 
             // miRaportet
@@ -182,8 +182,8 @@
             // miListoRaportet
             // 
             this.miListoRaportet.Name = "miListoRaportet";
-            this.miListoRaportet.Size = new System.Drawing.Size(144, 22);
-            this.miListoRaportet.Text = "Listo raportet";
+            this.miListoRaportet.Size = new System.Drawing.Size(190, 22);
+            this.miListoRaportet.Text = "Listo te gjitha raportet";
             this.miListoRaportet.Click += new System.EventHandler(this.miListoRaportet_Click);
             // 
             // miNdihma
@@ -489,7 +489,7 @@
             this.grbDentistet.Size = new System.Drawing.Size(288, 135);
             this.grbDentistet.TabIndex = 28;
             this.grbDentistet.TabStop = false;
-            this.grbDentistet.Text = "Dentistet me aktiv";
+            this.grbDentistet.Text = "Dentistet e fundit aktiv";
             // 
             // frmMain
             // 
