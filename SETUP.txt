@@ -141,6 +141,8 @@ ALTER TABLE  `raportet` ADD  `data_krijimit` TIMESTAMP NOT NULL DEFAULT CURRENT_
 
 ALTER TABLE  `raportet` MODIFY COLUMN `pagesa` DOUBLE(10, 2) NOT NULL;
 
+ALTER TABLE  `raportet` CHANGE  `data_krijimit`  `data_krijimit` TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
 ============================================================
 
 
