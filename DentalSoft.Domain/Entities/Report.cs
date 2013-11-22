@@ -110,7 +110,7 @@ namespace DentalSoft.Domain
 
         public void setTakimiArdhshemStatus(string takimiArdhshemStatus)
         {
-            this.takimiArdhshemStatus = (TakimiRiStatus)Enum.Parse(typeof(TakimiRiStatus), takimiArdhshemStatus);
+            this.takimiArdhshemStatus = (TakimiRiStatus)Enum.Parse(typeof(TakimiRiStatus), takimiArdhshemStatus, true);
         }
 
         public void setDataKrijimit(DateTime dataKrijimit)
