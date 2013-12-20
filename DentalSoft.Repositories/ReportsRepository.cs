@@ -1,20 +1,18 @@
 ﻿using Dentalsoft.Repositories;
 using DentalSoft.Domain;
-using DentalSoft.Domain.Enums;
 using DentalSoft.Library;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Windows.Forms;
 
 namespace DentalSoft.Repositories
 {
-    public class ReportsRepository : Connection
+    public class ReportsRepository : DBConnection
     {
-        private string query;
-        private const string tableName = "raportet";
+        private const string tableName = "`raportet`";
         private Utilities utilities;
-        private MySqlCommand cmd;
 
         public ReportsRepository()
         {
@@ -23,158 +21,207 @@ namespace DentalSoft.Repositories
 
         public void insertStatement(Report report)
         {
-            if (OpenConnection())
+            try
             {
+                connection.Open();
+                string query = "INSERT INTO " + tableName + " (id, dentisti, takimi, takimi_ardhshem, pagesa, perserit_kontrollin) VALUES ('" +
+                               "'@Id', '@Dentisti', '@Takimi', '@TakimiArdhshem', '@Pagesa', '@PerseritKontrollin')";
                 string takimiArdhshem = "NULL";
                 if (report.getTakimiArdhshem() != null)
                     takimiArdhshem = report.getTakimiArdhshem();
-                query = "INSERT INTO " + tableName + " (id, dentisti, takimi, takimi_ardhshem, pagesa, perserit_kontrollin) VALUES ('" +
-                        report.getId() + "', '" +
-                        report.getDentistId() + "', '" +
-                        report.getTakimiId() + "', '" +
-                        takimiArdhshem + "', '" +
-                        report.getPagesa() + "', '" +
-                        report.getTakimiArdhshemStatus() + "')";
-                cmd = new MySqlCommand(query, connection);
-                cmd.ExecuteNonQuery();
-                clean();
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Id", report.getId());
+                    cmd.Parameters.AddWithValue("@Dentisti", report.getDentistId());
+                    cmd.Parameters.AddWithValue("@Takimi", report.getTakimiId());
+                    cmd.Parameters.AddWithValue("@TakimiArdhshem", takimiArdhshem);
+                    cmd.Parameters.AddWithValue("@Pagesa", report.getPagesa());
+                    cmd.Parameters.AddWithValue("@PerseritKontrollin", report.getTakimiArdhshemStatus());
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException MySqlEx)
+            {
+                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Dispose();
             }
         }
 
         public void updateStatement(Report report)
         {
-            if (OpenConnection())
+            try
             {
+                connection.Open();
                 string takimiArdhshem;
-                if(report.getTakimiArdhshem() == null)
-                    takimiArdhshem = "takimi_ardhshem=NULL, ";
+                if (report.getTakimiArdhshem() == null)
+                    takimiArdhshem = "`takimi_ardhshem`=NULL,";
                 else
-                    takimiArdhshem = "takimi_ardhshem='" + report.getTakimiArdhshem() + "', ";
-                query = "UPDATE " + tableName + " SET " +
-                        takimiArdhshem +
-                        "pagesa='" + report.getPagesa() + "', " +
-                        "perserit_kontrollin='" + report.getTakimiArdhshemStatus() + "' " +
-                        "WHERE id='" + report.getId() + "'";
-                cmd = new MySqlCommand(query, connection);
-                cmd.ExecuteNonQuery();
-                clean();
+                    takimiArdhshem = "`takimi_ardhshem`='" + report.getTakimiArdhshem() + "',";
+                string query = "UPDATE " + tableName + " SET " + takimiArdhshem + " `pagesa`='@Pagesa', `perserit_kontrollin`='@PerseritKontrollin' WHERE `id`='@Id'";
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Pagesa", report.getPagesa());
+                    cmd.Parameters.AddWithValue("@PerseritKontrollin", report.getTakimiArdhshemStatus());
+                    cmd.Parameters.AddWithValue("@Id", report.getId());
+                }
+            }
+            catch (MySqlException MySqlEx)
+            {
+                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Dispose();
             }
         }
 
         public void deleteStatement(Report report)
         {
-            if (OpenConnection())
+            try
             {
-                query = "DELETE FROM " + tableName + " WHERE id='" + report.getId() + "'";
-                cmd = new MySqlCommand(query, connection);
-                cmd.ExecuteNonQuery();
-                clean();
+                connection.Open();
+                string query = "DELETE FROM " + tableName + " WHERE `id`='@Id'";
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Id", report.getId());
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException MySqlEx)
+            {
+                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Dispose();
             }
         }
 
         public List<Report> selectStatement(string id = null, string dentistId = null, string takimiId = null, string takimiArdhshem = null,
                                             string pagesa = null, string perseritKontrollin = null, bool forDashboard = false)
         {
-            if (OpenConnection())
+            List<Report> reportList = new List<Report>();
+            try
             {
-                query = "SELECT * FROM " + tableName + " WHERE 1 ";
-                if (id != null)
-                    query = query + "AND id='" + id + "' ";
-                if (dentistId != null)
-                    query = query + "AND dentisti='" + dentistId + "' ";
-                if (takimiId != null)
-                    query = query + "AND takimi='" + takimiId + "' ";
-                if (takimiArdhshem != null)
-                    query = query + "AND takimi_ardhshem='" + takimiArdhshem + "' ";
-                if (pagesa != null)
-                    query = query + "AND pagesa='" + pagesa + "' ";
-                if (perseritKontrollin != null)
-                    query = query + "AND perserit_kontrollin='" + perseritKontrollin + "' ";
-                if (forDashboard)
+                connection.Open();
+                string query = "SELECT * FROM " + tableName + " WHERE 1 ";
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
-                    DateTime today = DateTime.Now;
-                    DateTime startOfToday = today.Date;
-                    DateTime endOfToday = startOfToday.AddDays(1).AddTicks(-1);
-                    query = query + "AND `data_krijimit` between '" + utilities.convertDateForDB(startOfToday) + "' AND '" + utilities.convertDateForDB(endOfToday) + "'";
+                    if (id != null)
+                    {
+                        query += "AND `id`='@Id' ";
+                        cmd.Parameters.AddWithValue("@Id", id);
+                    }
+                    if (dentistId != null)
+                    {
+                        query += "AND `dentisti`='@Dentisti' ";
+                        cmd.Parameters.AddWithValue("@Dentisti", dentistId);
+                    }
+                    if (takimiId != null)
+                    {
+                        query += "AND `takimi`='@Takimi' ";
+                        cmd.Parameters.AddWithValue("@Takimi", takimiId);
+                    }
+                    if (takimiArdhshem != null)
+                    {
+                        query += "AND `takimi_ardhshem`='@TakimiArdhshem' ";
+                        cmd.Parameters.AddWithValue("@TakimiArdhshem", takimiArdhshem);
+                    }
+                    if (pagesa != null)
+                    {
+                        query += "AND `pagesa`='@Pagesa' ";
+                        cmd.Parameters.AddWithValue("@Pagesa", pagesa);
+                    }
+                    if (perseritKontrollin != null)
+                    {
+                        query += "AND `perserit_kontrollin`='@PerseritKontrollin' ";
+                        cmd.Parameters.AddWithValue("@PerseritKontrollin", perseritKontrollin);
+                    }
+                    if (forDashboard)
+                    {
+                        DateTime today = DateTime.Now;
+                        DateTime startOfToday = today.Date;
+                        DateTime endOfToday = startOfToday.AddDays(1).AddTicks(-1);
+                        query += "AND `data_krijimit` between '@StartOfToday' AND '@EndOfToday'";
+                        cmd.Parameters.AddWithValue("@StartOfToday", utilities.convertDateForDB(startOfToday));
+                        cmd.Parameters.AddWithValue("@EndOfToday", utilities.convertDateForDB(endOfToday));
+                    }
+                    using(MySqlDataReader dataReader = cmd.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            Report r = new Report();
+                            r.setId(dataReader.GetString("id"));
+                            r.setDentistId(dataReader.GetString("dentisti"));
+                            r.setTakimiId(dataReader.GetString("takimi"));
+                            if(string.IsNullOrEmpty(dataReader["takimi_ardhshem"].ToString()))
+                                r.setTakimiArdhshem(null);
+                            else
+                                r.setTakimiArdhshem(dataReader["takimi_ardhshem"].ToString());
+                            r.setPagesa(decimal.Parse(dataReader.GetString("pagesa")));
+                            r.setTakimiArdhshemStatus(dataReader.GetString("perserit_kontrollin"));
+                            r.setDataKrijimit(utilities.convertDateFromDb(dataReader["data_krijimit"].ToString()));
+                            reportList.Add(r);
+                        }
+                    }
                 }
-                cmd = new MySqlCommand(query, connection);
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-                List<Report> list = new List<Report>();
-                while (dataReader.Read())
-                {
-                    Report r = new Report();
-                    r.setId(dataReader.GetString("id"));
-                    r.setDentistId(dataReader.GetString("dentisti"));
-                    r.setTakimiId(dataReader.GetString("takimi"));
-                    if(string.IsNullOrEmpty(dataReader["takimi_ardhshem"].ToString()))
-                        r.setTakimiArdhshem(null);
-                    else
-                        r.setTakimiArdhshem(dataReader["takimi_ardhshem"].ToString());
-                    r.setPagesa(decimal.Parse(dataReader.GetString("pagesa")));
-                    r.setTakimiArdhshemStatus(dataReader.GetString("perserit_kontrollin"));
-                    r.setDataKrijimit(utilities.convertDateFromDb(dataReader["data_krijimit"].ToString()));
-                    list.Add(r);
-                }
-                dataReader.Close();
-                cmd.ExecuteNonQuery();
-                clean();
-                return list;
             }
-            return null;
+            catch (MySqlException MySqlEx)
+            {
+                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return reportList;
         }
 
         public string selectSumPagesat(Dentist dentist)
         {
             string sumPagesat = "0.00";
-            if (OpenConnection())
+            try
             {
-                DateTime today = DateTime.Now;
-                DateTime startOfToday = today.Date;
-                DateTime endOfToday = startOfToday.AddDays(1).AddTicks(-1);
-                query = "SELECT SUM(`pagesa`) AS `pagesat_total` FROM " + tableName + 
-                        " WHERE `dentisti` = '" + dentist.getId() + "' AND `data_krijimit` between '" + 
-                        utilities.convertDateForDB(startOfToday) + "' AND '" + utilities.convertDateForDB(endOfToday) + "'";
-                cmd = new MySqlCommand(query, connection);
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-                List<Report> list = new List<Report>();
-                while (dataReader.Read())
+                connection.Open();
+                string query = "SELECT SUM(`pagesa`) AS `pagesat_total` FROM " + tableName + " " +
+                               "WHERE `dentisti` = '@Dentist' AND `data_krijimit` between '@StartOfToday' AND '@EndOfToday'";
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
-                    if (!string.IsNullOrEmpty((dataReader["pagesat_total"].ToString())))
-                        sumPagesat = dataReader.GetString("pagesat_total");
+                    DateTime today = DateTime.Now;
+                    DateTime startOfToday = today.Date;
+                    DateTime endOfToday = startOfToday.AddDays(1).AddTicks(-1);
+
+                    cmd.Parameters.AddWithValue("@Dentist", dentist.getId());
+                    cmd.Parameters.AddWithValue("@StartOfToday", utilities.convertDateForDB(startOfToday));
+                    cmd.Parameters.AddWithValue("@EndOfToday", utilities.convertDateForDB(endOfToday));
+
+                    using(MySqlDataReader dataReader = cmd.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            if (!string.IsNullOrEmpty((dataReader["pagesat_total"].ToString())))
+                                sumPagesat = dataReader.GetString("pagesat_total");
+                        }
+                    }
                 }
-                dataReader.Close();
-                cmd.ExecuteNonQuery();
-                clean();
+            }
+            catch (MySqlException MySqlEx)
+            {
+                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Dispose();
             }
             return sumPagesat;
         }
 
         public List<DataColumn> getSchemaTable()
         {
-            if (OpenConnection())
-            {
-                query = "SELECT COLUMN_NAME as columns FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '" +
-                        this.database + "' AND TABLE_NAME = '" + tableName + "'";
-                cmd = new MySqlCommand(query, connection);
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-                List<DataColumn> columns = new List<DataColumn>();
-                while (dataReader.Read())
-                {
-                    DataColumn dc = new DataColumn();
-                    dc.ColumnName = utilities.toUpperFirstLetter(dataReader.GetString("columns"));
-                    columns.Add(dc);
-                }
-                clean();
-                return columns;
-            }
-            return null;
-        }
-
-        private void clean()
-        {
-            cmd.Dispose();
-            this.CloseConnection();
-            query = string.Empty;
+            return getSchemaTable(tableName);
         }
     }
 }

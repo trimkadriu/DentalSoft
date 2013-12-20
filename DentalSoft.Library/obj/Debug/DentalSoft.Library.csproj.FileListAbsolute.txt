@@ -10,6 +10,5 @@ D:\Projects\Trim\dentalsoft\DentalSoft.Library\obj\Debug\DentalSoft.Library.dll
 D:\Projects\Trim\dentalsoft\DentalSoft.Library\obj\Debug\DentalSoft.Library.pdb
 D:\My Documents\Trimi\dentalsoft\DentalSoft.Library\bin\Debug\DentalSoft.Library.dll
 D:\My Documents\Trimi\dentalsoft\DentalSoft.Library\bin\Debug\DentalSoft.Library.pdb
-D:\My Documents\Trimi\dentalsoft\DentalSoft.Library\obj\Debug\DentalSoft.Library.csprojResolveAssemblyReference.cache
 D:\My Documents\Trimi\dentalsoft\DentalSoft.Library\obj\Debug\DentalSoft.Library.dll
 D:\My Documents\Trimi\dentalsoft\DentalSoft.Library\obj\Debug\DentalSoft.Library.pdb

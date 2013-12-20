@@ -1,19 +1,22 @@
-﻿using MySql.Data.MySqlClient;
+﻿using DentalSoft.Library;
+using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
 namespace Dentalsoft.Repositories
 {
-    public abstract class Connection
+    public abstract class DBConnection
     {
         protected MySqlConnection connection;
-        protected string server;
+        protected string connectionString;
         protected string database;
+
+        private string server;
         private string username;
         private string password;
 
-        public Connection()
+        public DBConnection()
         {
             Initialize();
         }
@@ -24,61 +27,43 @@ namespace Dentalsoft.Repositories
             database = "dentalsoft";
             username = "dentalsoft";
             password = "dentalsoft";
-            string connectionString;
-            connectionString = "SERVER=" + server + ";" + "DATABASE=" +
-            database + ";" + "UID=" + username + ";" + "PASSWORD=" + password + ";";
+            connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + username + ";" + "PASSWORD=" + password + ";";
             connection = new MySqlConnection(connectionString);
         }
 
-        protected bool OpenConnection()
+        protected List<DataColumn> getSchemaTable(string tableName)
         {
-            if (connection.State.Equals(ConnectionState.Open))
-                return true;
+            List<DataColumn> dataColumnsList = new List<DataColumn>();
+            Utilities utilities = new Utilities();
             try
             {
                 connection.Open();
-                return true;
-            }
-            catch (MySqlException ex)
-            {
-                switch (ex.Number)
+                string query = "SELECT COLUMN_NAME as columns FROM INFORMATION_SCHEMA.COLUMNS WHERE `TABLE_SCHEMA`= '@Database' AND `TABLE_NAME`='@TableName'";
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
-                    case 0:
-                        MessageBox.Show("Nuk mund te kyqet ne bazen e te dhenave.", "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
+                    cmd.Parameters.AddWithValue("@Database", database);
+                    cmd.Parameters.AddWithValue("@TableName", tableName);
 
-                    case 1045:
-                        MessageBox.Show("Qasja ne bazen e te dhenave nuk eshte ne rregull.", "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
-
-                    default:
-                        MessageBox.Show("MySQL numri i gabimit: " + ex.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
+                    using (MySqlDataReader dataReader = cmd.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            DataColumn dc = new DataColumn();
+                            dc.ColumnName = utilities.toUpperFirstLetter(dataReader.GetString("columns"));
+                            dataColumnsList.Add(dc);
+                        }
+                    }
                 }
-                return false;
             }
-        }
-
-        protected bool CloseConnection()
-        {
-            try
+            catch (MySqlException MySqlEx)
             {
-                connection.Close();
-                return true;
+                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (MySqlException ex)
+            finally
             {
-                MessageBox.Show(ex.Message);
-                return false;
+                connection.Dispose();
             }
-        }
-
-        protected void testConnection()
-        {
-            if (OpenConnection())
-                MessageBox.Show("Lidhja ne rregull");
-            else
-                MessageBox.Show("Lidhja nuk eshte ne rregull");
+            return dataColumnsList;
         }
     }
 }
