@@ -21,7 +21,6 @@ namespace DentalSoft.Library
 
         public string convertDateForBindingSource(DateTime dateTime)
         {
-            System.Diagnostics.Debug.WriteLine(dateTime.ToString("dd/MM/yyyy HH:mm:ss tt"));
             return dateTime.ToString("dd/MM/yyyy hh:mm:ss tt");
         }
 

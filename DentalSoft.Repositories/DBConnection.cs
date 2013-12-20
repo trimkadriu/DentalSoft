@@ -31,6 +31,11 @@ namespace Dentalsoft.Repositories
             connection = new MySqlConnection(connectionString);
         }
 
+        protected void handleException(MySqlException ex)
+        {
+            MessageBox.Show("MySQL numri i gabimit: " + ex.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         protected List<DataColumn> getSchemaTable(string tableName)
         {
             List<DataColumn> dataColumnsList = new List<DataColumn>();
@@ -55,9 +60,9 @@ namespace Dentalsoft.Repositories
                     }
                 }
             }
-            catch (MySqlException MySqlEx)
+            catch (MySqlException ex)
             {
-                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                handleException(ex);
             }
             finally
             {

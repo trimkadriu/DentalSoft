@@ -10,7 +10,7 @@ namespace DentalSoft.Repositories
 {
     public class DentistsRepository : DBConnection
     {
-        private const string tableName = "`dentistet`";
+        private const string tableName = "dentistet";
         private Utilities utilities;
 
         public DentistsRepository()
@@ -36,9 +36,9 @@ namespace DentalSoft.Repositories
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (MySqlException MySqlEx)
+            catch (MySqlException ex)
             {
-                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                handleException(ex);
             }
             finally
             {
@@ -51,8 +51,8 @@ namespace DentalSoft.Repositories
             try
             {
                 connection.Open();
-                string query = "UPDATE " + tableName + " SET `emri`='@Emri', `email`='@Email', `perdoruesi`='@Perdoruesi', `fjalekalimi`='@Fjalekalimi', " +
-                               "`foto_profilit`='@FotoProfilit', `qasja_fundit`='@QasjaFundit' WHERE `id`='@Id'";
+                string query = "UPDATE " + tableName + " SET emri='@Emri', email='@Email', perdoruesi='@Perdoruesi', fjalekalimi='@Fjalekalimi', " +
+                               "foto_profilit='@FotoProfilit', qasja_fundit='@QasjaFundit' WHERE id='@Id'";
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Id", dentist.getId());
@@ -65,9 +65,9 @@ namespace DentalSoft.Repositories
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (MySqlException MySqlEx)
+            catch (MySqlException ex)
             {
-                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                handleException(ex);
             }
             finally
             {
@@ -80,16 +80,16 @@ namespace DentalSoft.Repositories
             try
             {
                 connection.Open();
-                string query = "DELETE FROM " + tableName + " WHERE `id`='@Id'";
+                string query = "DELETE FROM " + tableName + " WHERE id='@Id'";
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Id", dentist.getId());
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (MySqlException MySqlEx)
+            catch (MySqlException ex)
             {
-                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                handleException(ex);
             }
             finally
             {
@@ -109,27 +109,27 @@ namespace DentalSoft.Repositories
                 {
                     if (id != null)
                     {
-                        cmd.CommandText += "AND `id`='@Id' ";
+                        cmd.CommandText += "AND id=@Id ";
                         cmd.Parameters.AddWithValue("@Id", id);
                     }
                     if (emri != null)
                     {
-                        cmd.CommandText += "AND `emri`='@Emri' ";
+                        cmd.CommandText += "AND emri=@Emri ";
                         cmd.Parameters.AddWithValue("@Emri", emri);
                     }
                     if (email != null)
                     {
-                        cmd.CommandText += "AND `email`='@Email' ";
+                        cmd.CommandText += "AND email=@Email ";
                         cmd.Parameters.AddWithValue("@Email", email);
                     }
                     if (perdoruesi != null)
                     {
-                        cmd.CommandText += "AND `perdoruesi`='@Perdoruesi' ";
+                        cmd.CommandText += "AND perdoruesi=@Perdoruesi ";
                         cmd.Parameters.AddWithValue("@Perdoruesi", perdoruesi);
                     }
                     if (fjalekalimi != null)
                     {
-                        cmd.CommandText += "AND `fjalekalimi`='@Fjalekalimi' ";
+                        cmd.CommandText += "AND fjalekalimi=@Fjalekalimi ";
                         cmd.Parameters.AddWithValue("@Fjalekalimi", fjalekalimi);
                     }
                     if (order != null)
@@ -162,9 +162,9 @@ namespace DentalSoft.Repositories
                     }
                 }
             }
-            catch (MySqlException MySqlEx)
+            catch (MySqlException ex)
             {
-                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                handleException(ex);
             }
             finally
             {
