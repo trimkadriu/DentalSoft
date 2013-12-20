@@ -5,15 +5,14 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Windows.Forms;
 
 namespace DentalSoft.Repositories
 {
-    public class AppointmentsRepository : Connection
+    public class AppointmentsRepository : DBConnection
     {
-        private string query;
-        private const string tableName = "takimet";
+        private const string tableName = "`takimet`";
         private Utilities utilities;
-        MySqlCommand cmd;
 
         public AppointmentsRepository()
         {
@@ -22,148 +21,202 @@ namespace DentalSoft.Repositories
 
         public void insertStatement(Appointment appointment)
         {
-            if (OpenConnection())
+            try
             {
-                query = "INSERT INTO " + tableName + " (id, dentisti, emri_pacientit, mosha, email, telefoni, data_takimit, kohezgjatja_takimit, problemi, komenti) VALUES ('" +
-                        appointment.getId() + "', '" +
-                        appointment.getDentistId() + "', '" +
-                        appointment.getEmriPacientit() + "', '" +
-                        appointment.getMosha() + "', '" +
-                        appointment.getEmail() + "', '" +
-                        appointment.getTelefoni() + "', '" +
-                        utilities.convertDateForDB(appointment.getDataTakimit()) + "', '" +
-                        appointment.getKohezgjatjaTakimit() + "', '" +
-                        appointment.getProblemi() + "', '" +
-                        appointment.getKomenti() + "')";
-                cmd = new MySqlCommand(query, connection);
-                cmd.ExecuteNonQuery();
-                clean();
+                connection.Open();
+                string query = "INSERT INTO " + tableName + " (id, dentisti, emri_pacientit, mosha, email, telefoni, data_takimit, " + 
+                               "kohezgjatja_takimit, problemi, komenti) VALUES ('@Id', '@Dentisti', '@EmriPacientit', '@Mosha'," +
+                               "'@Email', '@Telefoni', '@DataTakimit', '@KohezgjatjaTakimit', '@Problemi', '@Komenti')";
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Id", appointment.getId());
+                    cmd.Parameters.AddWithValue("@Dentisti", appointment.getDentistId());
+                    cmd.Parameters.AddWithValue("@EmriPacientit", appointment.getEmriPacientit());
+                    cmd.Parameters.AddWithValue("@Mosha", appointment.getMosha());
+                    cmd.Parameters.AddWithValue("@Email", appointment.getEmail());
+                    cmd.Parameters.AddWithValue("@Telefoni", appointment.getTelefoni());
+                    cmd.Parameters.AddWithValue("@DataTakimit", utilities.convertDateForDB(appointment.getDataTakimit()));
+                    cmd.Parameters.AddWithValue("@KohezgjatjaTakimit", appointment.getKohezgjatjaTakimit());
+                    cmd.Parameters.AddWithValue("@Problemi", appointment.getProblemi());
+                    cmd.Parameters.AddWithValue("@Komenti", appointment.getKomenti());
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException MySqlEx)
+            {
+                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Dispose();
             }
         }
 
         public void updateStatement(Appointment appointment)
         {
-            if (OpenConnection())
+            try
             {
-                query = "UPDATE " + tableName + " SET " +
-                        "emri_pacientit='" + appointment.getEmriPacientit() + "', " +
-                        "mosha='" + appointment.getMosha() + "', " +
-                        "email='" + appointment.getEmail() + "', " +
-                        "telefoni='" + appointment.getTelefoni() + "', " +
-                        "data_takimit='" + utilities.convertDateForDB(appointment.getDataTakimit()) + "', " +
-                        "kohezgjatja_takimit='" + appointment.getKohezgjatjaTakimit() + "', " +
-                        "problemi='" + appointment.getProblemi() + "', " +
-                        "komenti='" + appointment.getKomenti() + "' " +
-                        "WHERE id='" + appointment.getId() + "'";
-                cmd = new MySqlCommand(query, connection);
-                cmd.ExecuteNonQuery();
-                clean();
+                connection.Open();
+                string query = "UPDATE " + tableName + " SET `emri_pacientit`='@EmriPacientit', `mosha`='@Mosha', `email`='@Email', " +
+                               "`telefoni`='@Telefoni', `data_takimit`='@DataTakimit', `kohezgjatja_takimit`='@KohezgjatjaTakimit', " +
+                               "`problemi`='@Problemi', `komenti`='@Komenti' WHERE `id`='@Id'";
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Id", appointment.getId());
+                    cmd.Parameters.AddWithValue("@EmriPacientit", appointment.getEmriPacientit());
+                    cmd.Parameters.AddWithValue("@Mosha", appointment.getMosha());
+                    cmd.Parameters.AddWithValue("@Email", appointment.getEmail());
+                    cmd.Parameters.AddWithValue("@Telefoni", appointment.getTelefoni());
+                    cmd.Parameters.AddWithValue("@DataTakimit", utilities.convertDateForDB(appointment.getDataTakimit()));
+                    cmd.Parameters.AddWithValue("@KohezgjatjaTakimit", appointment.getKohezgjatjaTakimit());
+                    cmd.Parameters.AddWithValue("@Problemi", appointment.getProblemi());
+                    cmd.Parameters.AddWithValue("@Komenti", appointment.getKomenti());
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException MySqlEx)
+            {
+                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Dispose();
             }
         }
 
         public void deleteStatement(Appointment appointment)
         {
-            if (OpenConnection())
+            ReportsRepository reportsRepository = new ReportsRepository();
+            List<Report> reportList = reportsRepository.selectStatement(null, null, null, appointment.getId());
+            if (reportList.Count == 1)
             {
-                ReportsRepository reportsRepository = new ReportsRepository();
-                List<Report> reportList = reportsRepository.selectStatement(null, null, null, appointment.getId());
-                if (reportList.Count == 1)
+                reportList[0].setTakimiArdhshem(null);
+                reportList[0].setTakimiArdhshemStatus(Domain.Enums.TakimiRiStatus.Pacaktuar);
+                reportsRepository.updateStatement(reportList[0]);
+            }
+            try
+            {
+                connection.Open();
+                string query = "DELETE FROM " + tableName + " WHERE `id`='@Id'";
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
-                    reportList[0].setTakimiArdhshem(null);
-                    reportList[0].setTakimiArdhshemStatus(Domain.Enums.TakimiRiStatus.Pacaktuar);
-                    reportsRepository.updateStatement(reportList[0]);
+                    cmd.Parameters.AddWithValue("@Id", appointment.getId());
+                    cmd.ExecuteNonQuery();
                 }
-                query = "DELETE FROM " + tableName + " WHERE id='" + appointment.getId() + "'";
-                cmd = new MySqlCommand(query, connection);
-                cmd.ExecuteNonQuery();
-                clean();
+            }
+            catch (MySqlException MySqlEx)
+            {
+                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Dispose();
             }
         }
 
         public List<Appointment> selectStatement(string id = null, string dentistId = null, string emriPacientit = null, int mosha = 0, string email = null, string telefoni = null,
                                                  DateTime? dataTakimit = null, int kohezgjatjaTakimit = 0, string problemi = null, string komenti = null, bool forDashboard = false)
         {
-            if (OpenConnection())
+            List<Appointment> appointmentList = new List<Appointment>();
+            try
             {
-                query = "SELECT * FROM " + tableName + " WHERE 1 ";
-                if (id != null)
-                    query = query + "AND id='" + id + "' ";
-                if (dentistId != null)
-                    query = query + "AND dentisti='" + dentistId + "' ";
-                if (emriPacientit != null)
-                    query = query + "AND emri_pacientit='" + emriPacientit + "' ";
-                if (mosha != 0)
-                    query = query + "AND mosha='" + mosha + "' ";
-                if (email != null)
-                    query = query + "AND email='" + email + "' ";
-                if (telefoni != null)
-                    query = query + "AND telefoni='" + telefoni + "' ";
-                if (dataTakimit.HasValue)
-                    query = query + "AND data_takimit='" + utilities.convertDateForDB(dataTakimit.Value) + "' ";
-                if (kohezgjatjaTakimit != 0)
-                    query = query + "AND kohezgjatja_takimit='" + kohezgjatjaTakimit + "' ";
-                if (problemi != null)
-                    query = query + "AND problemi='" + problemi + "' ";
-                if (komenti != null)
-                    query = query + "AND komenti='" + komenti + "' ";
-                if (forDashboard) {
-                    DateTime today = DateTime.Now; 
-                    DateTime startOfToday = today.Date; 
-                    DateTime endOfToday = startOfToday.AddDays(1).AddTicks(-1);
-                    query = query + "AND `data_takimit` between '" + utilities.convertDateForDB(startOfToday) + "' AND '" + utilities.convertDateForDB(endOfToday) + "'";
-                }
-                cmd = new MySqlCommand(query, connection);
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-                List<Appointment> list = new List<Appointment>();
-                while (dataReader.Read())
+                connection.Open();
+                string query = "SELECT * FROM " + tableName + " WHERE 1 ";
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
-                    Appointment a = new Appointment();
-                    a.setId(dataReader.GetString("id"));
-                    a.setDentistId(dataReader.GetString("dentisti"));
-                    a.setEmriPacientit(dataReader.GetString("emri_pacientit"));
-                    a.setMosha(int.Parse(dataReader.GetString("mosha")));
-                    a.setEmail(dataReader.GetString("email"));
-                    a.setTelefoni(dataReader.GetString("telefoni"));
-                    a.setDataTakimit(utilities.convertDateFromDb(dataReader["data_takimit"].ToString()));
-                    a.setKohezgjatjaTakimit(int.Parse(dataReader.GetString("kohezgjatja_takimit")));
-                    a.setProblemi(dataReader.GetString("problemi"));
-                    a.setKomenti(dataReader.GetString("komenti"));
-                    list.Add(a);
+                    if (id != null)
+                    {
+                        query += "AND `id`='@Id' ";
+                        cmd.Parameters.AddWithValue("@Id", id);
+                    }
+                    if (dentistId != null) 
+                    {
+                        query += "AND `dentisti`='@Dentist' ";
+                        cmd.Parameters.AddWithValue("@Dentist", dentistId);
+                    }
+                    if (emriPacientit != null)
+                    {
+                        query += "AND `emri_pacientit`='@EmriPacientit' ";
+                        cmd.Parameters.AddWithValue("@EmriPacientit", emriPacientit);
+                    }
+                    if (mosha != 0)
+                    {
+                        query += "AND `mosha`='@Mosha' ";
+                        cmd.Parameters.AddWithValue("@Mosha", mosha);
+                    }
+                    if (email != null)
+                    {
+                        query += "AND `email`='@Email' ";
+                        cmd.Parameters.AddWithValue("@Email", email);
+                    }
+                    if (telefoni != null)
+                    {
+                        query += "AND `telefoni`='@Telefoni' ";
+                        cmd.Parameters.AddWithValue("@Telefoni", telefoni);
+                    }
+                    if (dataTakimit.HasValue)
+                    {
+                        query += "AND `data_takimit`='@DataTakimit' ";
+                        cmd.Parameters.AddWithValue("@DataTakimit", utilities.convertDateForDB(dataTakimit.Value));
+                    }
+                    if (kohezgjatjaTakimit != 0)
+                    {
+                        query += "AND `kohezgjatja_takimit`='@KohezgjatjaTakimit' ";
+                        cmd.Parameters.AddWithValue("@KohezgjatjaTakimit", kohezgjatjaTakimit);
+                    }
+                    if (problemi != null)
+                    {
+                        query += "AND `problemi`='@Problemi' ";
+                        cmd.Parameters.AddWithValue("@Problemi", problemi);
+                    }
+                    if (komenti != null)
+                    {
+                        query += "AND `komenti`='@Komenti' ";
+                        cmd.Parameters.AddWithValue("@Komenti", komenti);
+                    }
+                    if (forDashboard) 
+                    {
+                        DateTime today = DateTime.Now; 
+                        DateTime startOfToday = today.Date; 
+                        DateTime endOfToday = startOfToday.AddDays(1).AddTicks(-1);
+                        query += "AND `data_takimit` between '@StartOfToday' AND '@EndOfToday'";
+                        cmd.Parameters.AddWithValue("@StartOfToday", utilities.convertDateForDB(startOfToday));
+                        cmd.Parameters.AddWithValue("@EndOfToday", utilities.convertDateForDB(endOfToday));
+                    }
+                    using (MySqlDataReader dataReader = cmd.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            Appointment a = new Appointment();
+                            a.setId(dataReader.GetString("id"));
+                            a.setDentistId(dataReader.GetString("dentisti"));
+                            a.setEmriPacientit(dataReader.GetString("emri_pacientit"));
+                            a.setMosha(int.Parse(dataReader.GetString("mosha")));
+                            a.setEmail(dataReader.GetString("email"));
+                            a.setTelefoni(dataReader.GetString("telefoni"));
+                            a.setDataTakimit(utilities.convertDateFromDb(dataReader["data_takimit"].ToString()));
+                            a.setKohezgjatjaTakimit(int.Parse(dataReader.GetString("kohezgjatja_takimit")));
+                            a.setProblemi(dataReader.GetString("problemi"));
+                            a.setKomenti(dataReader.GetString("komenti"));
+                            appointmentList.Add(a);
+                        }
+                    }
                 }
-                dataReader.Close();
-                cmd.ExecuteNonQuery();
-                clean();
-                return list;
             }
-            return null;
+            catch (MySqlException MySqlEx)
+            {
+                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return appointmentList;
         }
 
         public List<DataColumn> getSchemaTable()
         {
-            if (OpenConnection())
-            {
-                query = "SELECT COLUMN_NAME as columns FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '" +
-                        this.database + "' AND TABLE_NAME = '" + tableName + "'";
-                cmd = new MySqlCommand(query, connection);
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-                List<DataColumn> columns = new List<DataColumn>();
-                while (dataReader.Read())
-                {
-                    DataColumn dc = new DataColumn();
-                    dc.ColumnName = utilities.toUpperFirstLetter(dataReader.GetString("columns"));
-                    columns.Add(dc);
-                }
-                clean();
-                return columns;
-            }
-            return null;
-        }
-
-        private void clean()
-        {
-            cmd.Dispose();
-            this.CloseConnection();
-            query = string.Empty;
+            return getSchemaTable(tableName);
         }
     }
 }

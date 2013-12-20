@@ -231,17 +231,24 @@ namespace DentalSoft
             if (print)
             {
                 string filePathAndName = Application.StartupPath + "\\" + path;
-                rtbRaport.SaveFile(filePathAndName);
-                Process printProcces = new Process();
-                printProcces.StartInfo.FileName = filePathAndName;
-                printProcces.StartInfo.Verb = "Print";
-                printProcces.StartInfo.CreateNoWindow = true;
-                printProcces.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                printProcces.Start();
-                printProcces.WaitForExit();
-                if (File.Exists(@filePathAndName))
+                try
                 {
-                    File.Delete(@filePathAndName);
+                    rtbRaport.SaveFile(filePathAndName);
+                    Process printProcces = new Process();
+                    printProcces.StartInfo.FileName = filePathAndName;
+                    printProcces.StartInfo.Verb = "Print";
+                    printProcces.StartInfo.CreateNoWindow = true;
+                    printProcces.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                    printProcces.Start();
+                    printProcces.WaitForExit();
+                    if (File.Exists(@filePathAndName))
+                    {
+                        File.Delete(@filePathAndName);
+                    }
+                }
+                catch (IOException ex)
+                {
+                    MessageBox.Show("Gabimi: " + ex.Message, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
