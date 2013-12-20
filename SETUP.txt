@@ -8,6 +8,8 @@ GRANT ALL PRIVILEGES ON *.* TO 'dentalsoft'@'localhost' WITH GRANT OPTION;
 --
 CREATE DATABASE dentalsoft CHARACTER SET utf8 COLLATE utf8_bin;
 
+USE dentalsoft;
+
 --
 -- Table structure for table `dentistet`
 --
@@ -144,6 +146,8 @@ ALTER TABLE  `raportet` MODIFY COLUMN `pagesa` DOUBLE(10, 2) NOT NULL;
 ALTER TABLE  `raportet` CHANGE  `data_krijimit`  `data_krijimit` TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
 
 ALTER TABLE  `raportet` CHANGE  `perserit_kontrollin`  `perserit_kontrollin` ENUM(  'Po',  'Jo',  'Pacaktuar' ) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+
+ALTER TABLE  `dentistet` CHANGE `qasja_fundit` DATETIME NOT NULL;
 
 ============================================================
 

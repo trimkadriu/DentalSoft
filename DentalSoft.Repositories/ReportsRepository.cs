@@ -11,7 +11,7 @@ namespace DentalSoft.Repositories
 {
     public class ReportsRepository : DBConnection
     {
-        private const string tableName = "`raportet`";
+        private const string tableName = "raportet";
         private Utilities utilities;
 
         public ReportsRepository()
@@ -40,9 +40,9 @@ namespace DentalSoft.Repositories
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (MySqlException MySqlEx)
+            catch (MySqlException ex)
             {
-                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                handleException(ex);
             }
             finally
             {
@@ -57,10 +57,10 @@ namespace DentalSoft.Repositories
                 connection.Open();
                 string takimiArdhshem;
                 if (report.getTakimiArdhshem() == null)
-                    takimiArdhshem = "`takimi_ardhshem`=NULL,";
+                    takimiArdhshem = "takimi_ardhshem=NULL,";
                 else
-                    takimiArdhshem = "`takimi_ardhshem`='" + report.getTakimiArdhshem() + "',";
-                string query = "UPDATE " + tableName + " SET " + takimiArdhshem + " `pagesa`='@Pagesa', `perserit_kontrollin`='@PerseritKontrollin' WHERE `id`='@Id'";
+                    takimiArdhshem = "takimi_ardhshem='" + report.getTakimiArdhshem() + "',";
+                string query = "UPDATE " + tableName + " SET " + takimiArdhshem + " pagesa='@Pagesa', perserit_kontrollin='@PerseritKontrollin' WHERE id='@Id'";
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Pagesa", report.getPagesa());
@@ -68,9 +68,9 @@ namespace DentalSoft.Repositories
                     cmd.Parameters.AddWithValue("@Id", report.getId());
                 }
             }
-            catch (MySqlException MySqlEx)
+            catch (MySqlException ex)
             {
-                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                handleException(ex);
             }
             finally
             {
@@ -83,16 +83,16 @@ namespace DentalSoft.Repositories
             try
             {
                 connection.Open();
-                string query = "DELETE FROM " + tableName + " WHERE `id`='@Id'";
+                string query = "DELETE FROM " + tableName + " WHERE id='@Id'";
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Id", report.getId());
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (MySqlException MySqlEx)
+            catch (MySqlException ex)
             {
-                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                handleException(ex);
             }
             finally
             {
@@ -112,32 +112,32 @@ namespace DentalSoft.Repositories
                 {
                     if (id != null)
                     {
-                        query += "AND `id`='@Id' ";
+                        query += "AND id='@Id' ";
                         cmd.Parameters.AddWithValue("@Id", id);
                     }
                     if (dentistId != null)
                     {
-                        query += "AND `dentisti`='@Dentisti' ";
+                        query += "AND dentisti='@Dentisti' ";
                         cmd.Parameters.AddWithValue("@Dentisti", dentistId);
                     }
                     if (takimiId != null)
                     {
-                        query += "AND `takimi`='@Takimi' ";
+                        query += "AND takimi='@Takimi' ";
                         cmd.Parameters.AddWithValue("@Takimi", takimiId);
                     }
                     if (takimiArdhshem != null)
                     {
-                        query += "AND `takimi_ardhshem`='@TakimiArdhshem' ";
+                        query += "AND takimi_ardhshem='@TakimiArdhshem' ";
                         cmd.Parameters.AddWithValue("@TakimiArdhshem", takimiArdhshem);
                     }
                     if (pagesa != null)
                     {
-                        query += "AND `pagesa`='@Pagesa' ";
+                        query += "AND pagesa='@Pagesa' ";
                         cmd.Parameters.AddWithValue("@Pagesa", pagesa);
                     }
                     if (perseritKontrollin != null)
                     {
-                        query += "AND `perserit_kontrollin`='@PerseritKontrollin' ";
+                        query += "AND perserit_kontrollin='@PerseritKontrollin' ";
                         cmd.Parameters.AddWithValue("@PerseritKontrollin", perseritKontrollin);
                     }
                     if (forDashboard)
@@ -145,7 +145,7 @@ namespace DentalSoft.Repositories
                         DateTime today = DateTime.Now;
                         DateTime startOfToday = today.Date;
                         DateTime endOfToday = startOfToday.AddDays(1).AddTicks(-1);
-                        query += "AND `data_krijimit` between '@StartOfToday' AND '@EndOfToday'";
+                        query += "AND data_krijimit between '@StartOfToday' AND '@EndOfToday'";
                         cmd.Parameters.AddWithValue("@StartOfToday", utilities.convertDateForDB(startOfToday));
                         cmd.Parameters.AddWithValue("@EndOfToday", utilities.convertDateForDB(endOfToday));
                     }
@@ -169,9 +169,9 @@ namespace DentalSoft.Repositories
                     }
                 }
             }
-            catch (MySqlException MySqlEx)
+            catch (MySqlException ex)
             {
-                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                handleException(ex);
             }
             finally
             {
@@ -186,8 +186,8 @@ namespace DentalSoft.Repositories
             try
             {
                 connection.Open();
-                string query = "SELECT SUM(`pagesa`) AS `pagesat_total` FROM " + tableName + " " +
-                               "WHERE `dentisti` = '@Dentist' AND `data_krijimit` between '@StartOfToday' AND '@EndOfToday'";
+                string query = "SELECT SUM(`pagesa`) AS pagesat_total FROM " + tableName + " " +
+                               "WHERE dentisti = '@Dentist' AND data_krijimit between '@StartOfToday' AND '@EndOfToday'";
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     DateTime today = DateTime.Now;
@@ -208,9 +208,9 @@ namespace DentalSoft.Repositories
                     }
                 }
             }
-            catch (MySqlException MySqlEx)
+            catch (MySqlException ex)
             {
-                MessageBox.Show("MySQL numri i gabimit: " + MySqlEx.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                handleException(ex);
             }
             finally
             {
