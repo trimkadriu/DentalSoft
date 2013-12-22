@@ -147,8 +147,6 @@ ALTER TABLE  `raportet` CHANGE  `data_krijimit`  `data_krijimit` TIMESTAMP ON UP
 
 ALTER TABLE  `raportet` CHANGE  `perserit_kontrollin`  `perserit_kontrollin` ENUM(  'Po',  'Jo',  'Pacaktuar' ) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
 
-ALTER TABLE  `dentistet` CHANGE `qasja_fundit` DATETIME NOT NULL;
-
 ============================================================
 
 

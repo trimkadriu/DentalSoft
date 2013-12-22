@@ -65,10 +65,10 @@
             this.pctHeader = new System.Windows.Forms.PictureBox();
             this.lblVerticalDivider = new System.Windows.Forms.Label();
             this.grbTakimet = new System.Windows.Forms.GroupBox();
+            this.btnFshij = new System.Windows.Forms.Button();
             this.btnNdryshoTakim = new System.Windows.Forms.Button();
             this.btnGjeneroRaport = new System.Windows.Forms.Button();
             this.grbDentistet = new System.Windows.Forms.GroupBox();
-            this.btnFshij = new System.Windows.Forms.Button();
             this.menuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctUserProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTakimetSot)).BeginInit();
@@ -443,6 +443,17 @@
             this.grbTakimet.TabStop = false;
             this.grbTakimet.Text = "Takimet per sot";
             // 
+            // btnFshij
+            // 
+            this.btnFshij.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnFshij.Location = new System.Drawing.Point(136, 161);
+            this.btnFshij.Name = "btnFshij";
+            this.btnFshij.Size = new System.Drawing.Size(117, 23);
+            this.btnFshij.TabIndex = 17;
+            this.btnFshij.Text = "Fshij";
+            this.btnFshij.UseVisualStyleBackColor = true;
+            this.btnFshij.Click += new System.EventHandler(this.btnFshij_Click);
+            // 
             // btnNdryshoTakim
             // 
             this.btnNdryshoTakim.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -476,17 +487,6 @@
             this.grbDentistet.TabIndex = 28;
             this.grbDentistet.TabStop = false;
             this.grbDentistet.Text = "Dentistet e fundit aktiv";
-            // 
-            // btnFshij
-            // 
-            this.btnFshij.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnFshij.Location = new System.Drawing.Point(136, 161);
-            this.btnFshij.Name = "btnFshij";
-            this.btnFshij.Size = new System.Drawing.Size(117, 23);
-            this.btnFshij.TabIndex = 17;
-            this.btnFshij.Text = "Fshij";
-            this.btnFshij.UseVisualStyleBackColor = true;
-            this.btnFshij.Click += new System.EventHandler(this.btnFshij_Click);
             // 
             // frmMain
             // 

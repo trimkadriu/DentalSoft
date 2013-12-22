@@ -24,8 +24,8 @@ namespace DentalSoft.Repositories
             try
             {
                 connection.Open();
-                string query = "INSERT INTO " + tableName + " (id, dentisti, takimi, takimi_ardhshem, pagesa, perserit_kontrollin) VALUES ('" +
-                               "'@Id', '@Dentisti', '@Takimi', '@TakimiArdhshem', '@Pagesa', '@PerseritKontrollin')";
+                string query = "INSERT INTO " + tableName + " (id, dentisti, takimi, takimi_ardhshem, pagesa, perserit_kontrollin) VALUES (" +
+                               "@Id, @Dentisti, @Takimi, @TakimiArdhshem, @Pagesa, @PerseritKontrollin)";
                 string takimiArdhshem = "NULL";
                 if (report.getTakimiArdhshem() != null)
                     takimiArdhshem = report.getTakimiArdhshem();
@@ -55,17 +55,16 @@ namespace DentalSoft.Repositories
             try
             {
                 connection.Open();
-                string takimiArdhshem;
-                if (report.getTakimiArdhshem() == null)
-                    takimiArdhshem = "takimi_ardhshem=NULL,";
-                else
-                    takimiArdhshem = "takimi_ardhshem='" + report.getTakimiArdhshem() + "',";
-                string query = "UPDATE " + tableName + " SET " + takimiArdhshem + " pagesa='@Pagesa', perserit_kontrollin='@PerseritKontrollin' WHERE id='@Id'";
+                string query = "UPDATE " + tableName + " SET takimi_ardhshem=@TakimiArdhshem, pagesa=@Pagesa, perserit_kontrollin=@PerseritKontrollin WHERE id=@Id";
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Pagesa", report.getPagesa());
                     cmd.Parameters.AddWithValue("@PerseritKontrollin", report.getTakimiArdhshemStatus());
                     cmd.Parameters.AddWithValue("@Id", report.getId());
+                    if (report.getTakimiArdhshem() == null)
+                        cmd.Parameters.AddWithValue("@TakimiArdhshem", null);
+                    else
+                        cmd.Parameters.AddWithValue("@TakimiArdhshem", report.getTakimiArdhshem());
                 }
             }
             catch (MySqlException ex)
@@ -83,7 +82,7 @@ namespace DentalSoft.Repositories
             try
             {
                 connection.Open();
-                string query = "DELETE FROM " + tableName + " WHERE id='@Id'";
+                string query = "DELETE FROM " + tableName + " WHERE id=@Id";
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Id", report.getId());
@@ -112,32 +111,32 @@ namespace DentalSoft.Repositories
                 {
                     if (id != null)
                     {
-                        query += "AND id='@Id' ";
+                        cmd.CommandText += "AND id=@Id ";
                         cmd.Parameters.AddWithValue("@Id", id);
                     }
                     if (dentistId != null)
                     {
-                        query += "AND dentisti='@Dentisti' ";
+                        cmd.CommandText += "AND dentisti=@Dentisti ";
                         cmd.Parameters.AddWithValue("@Dentisti", dentistId);
                     }
                     if (takimiId != null)
                     {
-                        query += "AND takimi='@Takimi' ";
+                        cmd.CommandText += "AND takimi=@Takimi ";
                         cmd.Parameters.AddWithValue("@Takimi", takimiId);
                     }
                     if (takimiArdhshem != null)
                     {
-                        query += "AND takimi_ardhshem='@TakimiArdhshem' ";
+                        cmd.CommandText += "AND takimi_ardhshem=@TakimiArdhshem ";
                         cmd.Parameters.AddWithValue("@TakimiArdhshem", takimiArdhshem);
                     }
                     if (pagesa != null)
                     {
-                        query += "AND pagesa='@Pagesa' ";
+                        cmd.CommandText += "AND pagesa=@Pagesa ";
                         cmd.Parameters.AddWithValue("@Pagesa", pagesa);
                     }
                     if (perseritKontrollin != null)
                     {
-                        query += "AND perserit_kontrollin='@PerseritKontrollin' ";
+                        cmd.CommandText += "AND perserit_kontrollin=@PerseritKontrollin ";
                         cmd.Parameters.AddWithValue("@PerseritKontrollin", perseritKontrollin);
                     }
                     if (forDashboard)
@@ -145,7 +144,7 @@ namespace DentalSoft.Repositories
                         DateTime today = DateTime.Now;
                         DateTime startOfToday = today.Date;
                         DateTime endOfToday = startOfToday.AddDays(1).AddTicks(-1);
-                        query += "AND data_krijimit between '@StartOfToday' AND '@EndOfToday'";
+                        cmd.CommandText += "AND data_krijimit between @StartOfToday AND @EndOfToday";
                         cmd.Parameters.AddWithValue("@StartOfToday", utilities.convertDateForDB(startOfToday));
                         cmd.Parameters.AddWithValue("@EndOfToday", utilities.convertDateForDB(endOfToday));
                     }
@@ -187,7 +186,7 @@ namespace DentalSoft.Repositories
             {
                 connection.Open();
                 string query = "SELECT SUM(`pagesa`) AS pagesat_total FROM " + tableName + " " +
-                               "WHERE dentisti = '@Dentist' AND data_krijimit between '@StartOfToday' AND '@EndOfToday'";
+                               "WHERE dentisti = @Dentist AND data_krijimit between @StartOfToday AND @EndOfToday";
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     DateTime today = DateTime.Now;

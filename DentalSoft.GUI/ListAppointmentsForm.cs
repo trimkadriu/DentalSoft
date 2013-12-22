@@ -63,7 +63,7 @@ namespace DentalSoft
                     string id = dgvTakimet.SelectedRows[0].Cells[0].Value.ToString();
                     Appointment appointment = new Appointment(id);
                     appointmentService.removeAppointment(appointment);
-                    this.DialogResult = DialogResult.OK;
+                    this.DialogResult = DialogResult.None;
                     Init();
                 }
             }
@@ -115,6 +115,7 @@ namespace DentalSoft
             }
             else
             {
+                btnFshijDatat.Enabled = true;
                 dtpDataETakimitPrej.CustomFormat = "dd/MMMM/yyyy hh:mm tt";
                 dtpDataETakimitDeri.CustomFormat = "dd/MMMM/yyyy hh:mm tt";
                 filterData = true;
@@ -141,7 +142,15 @@ namespace DentalSoft
                                         dtpDataETakimitPrej.Value,
                                         dtpDataETakimitDeri.Value);
             }
-            bindingSource.Filter = filter;
+            try
+            {
+                bindingSource.Filter = filter;
+            }
+            catch (SyntaxErrorException)
+            {
+                txtEmriPacientit.Text = string.Empty;
+                resetDates();
+            }
         }
 
         private void btnGjeneroRaport_Click(object sender, EventArgs e)
@@ -186,6 +195,7 @@ namespace DentalSoft
             dtpDataETakimitDeri.Value = DateTime.Now;
             resetDates();
             dataGridViewFilter();
+            btnFshijDatat.Enabled = false;
         }
     }
 }

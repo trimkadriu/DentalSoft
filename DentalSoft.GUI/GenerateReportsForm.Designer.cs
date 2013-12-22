@@ -124,7 +124,6 @@ namespace DentalSoft
             this.btnMbyll.TabIndex = 6;
             this.btnMbyll.Text = "Mbyll";
             this.btnMbyll.UseVisualStyleBackColor = true;
-            this.btnMbyll.Click += new System.EventHandler(this.btnMbyll_Click);
             // 
             // btnGjeneroRaport
             // 
@@ -340,6 +339,7 @@ namespace DentalSoft
             this.Name = "frmGenerateReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gjenero raport";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmGenerateReport_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.nudPagesa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKohezgjatja)).EndInit();
             this.outputReportStrip.ResumeLayout(false);

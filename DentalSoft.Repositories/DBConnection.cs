@@ -43,7 +43,7 @@ namespace Dentalsoft.Repositories
             try
             {
                 connection.Open();
-                string query = "SELECT COLUMN_NAME as columns FROM INFORMATION_SCHEMA.COLUMNS WHERE `TABLE_SCHEMA`= '@Database' AND `TABLE_NAME`='@TableName'";
+                string query = "SELECT COLUMN_NAME as `columns` FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = @Database AND TABLE_NAME=@TableName";
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Database", database);
