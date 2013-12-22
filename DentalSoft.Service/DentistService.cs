@@ -70,7 +70,7 @@ namespace DentalSoft.Service
 
         public List<Dentist> getDentistsForDashboard(Dentist dentist, int limit)
         {
-            List<Dentist> dentists = dentistsRepository.selectStatement(null, null, null, null, null, limit, "`qasja_fundit` DESC");
+            List<Dentist> dentists = dentistsRepository.selectStatement(null, null, null, null, null, limit, "qasja_fundit DESC");
             dentists.Remove(dentist);
             return dentists;
         }
@@ -89,6 +89,7 @@ namespace DentalSoft.Service
                 dentists = loadedDentists;
             else
                 dentists = getAllDentists();
+            List<DataColumn> dc = getSchemaTable();
             dataTable.Columns.AddRange(getSchemaTable().ToArray());
             dataTable.Columns["Qasja Fundit"].DataType = typeof(DateTime);
             foreach (Dentist dentist in dentists)

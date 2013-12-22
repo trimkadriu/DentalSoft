@@ -25,8 +25,8 @@ namespace DentalSoft.Repositories
             {
                 connection.Open();
                 string query = "INSERT INTO " + tableName + " (id, dentisti, emri_pacientit, mosha, email, telefoni, data_takimit, " + 
-                               "kohezgjatja_takimit, problemi, komenti) VALUES ('@Id', '@Dentisti', '@EmriPacientit', '@Mosha'," +
-                               "'@Email', '@Telefoni', '@DataTakimit', '@KohezgjatjaTakimit', '@Problemi', '@Komenti')";
+                               "kohezgjatja_takimit, problemi, komenti) VALUES (@Id, @Dentisti, @EmriPacientit, @Mosha," +
+                               "@Email, @Telefoni, @DataTakimit, @KohezgjatjaTakimit, @Problemi, @Komenti)";
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Id", appointment.getId());
@@ -57,9 +57,9 @@ namespace DentalSoft.Repositories
             try
             {
                 connection.Open();
-                string query = "UPDATE " + tableName + " SET emri_pacientit='@EmriPacientit', mosha='@Mosha', email='@Email', " +
-                               "telefoni='@Telefoni', data_takimit='@DataTakimit', kohezgjatja_takimit='@KohezgjatjaTakimit', " +
-                               "problemi='@Problemi', komenti='@Komenti' WHERE id='@Id'";
+                string query = "UPDATE " + tableName + " SET emri_pacientit=@EmriPacientit, mosha=@Mosha, email=@Email, " +
+                               "telefoni=@Telefoni, data_takimit=@DataTakimit, kohezgjatja_takimit=@KohezgjatjaTakimit, " +
+                               "problemi=@Problemi, komenti=@Komenti WHERE id=@Id";
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Id", appointment.getId());
@@ -97,7 +97,7 @@ namespace DentalSoft.Repositories
             try
             {
                 connection.Open();
-                string query = "DELETE FROM " + tableName + " WHERE id='@Id'";
+                string query = "DELETE FROM " + tableName + " WHERE id=@Id";
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Id", appointment.getId());
@@ -126,52 +126,52 @@ namespace DentalSoft.Repositories
                 {
                     if (id != null)
                     {
-                        query += "AND id='@Id' ";
+                        cmd.CommandText += "AND id=@Id ";
                         cmd.Parameters.AddWithValue("@Id", id);
                     }
                     if (dentistId != null) 
                     {
-                        query += "AND dentisti='@Dentist' ";
+                        cmd.CommandText += "AND dentisti=@Dentist ";
                         cmd.Parameters.AddWithValue("@Dentist", dentistId);
                     }
                     if (emriPacientit != null)
                     {
-                        query += "AND emri_pacientit='@EmriPacientit' ";
+                        cmd.CommandText += "AND emri_pacientit=@EmriPacientit ";
                         cmd.Parameters.AddWithValue("@EmriPacientit", emriPacientit);
                     }
                     if (mosha != 0)
                     {
-                        query += "AND mosha='@Mosha' ";
+                        cmd.CommandText += "AND mosha=@Mosha ";
                         cmd.Parameters.AddWithValue("@Mosha", mosha);
                     }
                     if (email != null)
                     {
-                        query += "AND email='@Email' ";
+                        cmd.CommandText += "AND email=@Email ";
                         cmd.Parameters.AddWithValue("@Email", email);
                     }
                     if (telefoni != null)
                     {
-                        query += "AND telefoni='@Telefoni' ";
+                        cmd.CommandText += "AND telefoni=@Telefoni ";
                         cmd.Parameters.AddWithValue("@Telefoni", telefoni);
                     }
                     if (dataTakimit.HasValue)
                     {
-                        query += "AND data_takimit='@DataTakimit' ";
+                        cmd.CommandText += "AND data_takimit=@DataTakimit ";
                         cmd.Parameters.AddWithValue("@DataTakimit", utilities.convertDateForDB(dataTakimit.Value));
                     }
                     if (kohezgjatjaTakimit != 0)
                     {
-                        query += "AND kohezgjatja_takimit='@KohezgjatjaTakimit' ";
+                        cmd.CommandText += "AND kohezgjatja_takimit=@KohezgjatjaTakimit ";
                         cmd.Parameters.AddWithValue("@KohezgjatjaTakimit", kohezgjatjaTakimit);
                     }
                     if (problemi != null)
                     {
-                        query += "AND problemi='@Problemi' ";
+                        cmd.CommandText += "AND problemi=@Problemi ";
                         cmd.Parameters.AddWithValue("@Problemi", problemi);
                     }
                     if (komenti != null)
                     {
-                        query += "AND komenti='@Komenti' ";
+                        cmd.CommandText += "AND komenti=@Komenti ";
                         cmd.Parameters.AddWithValue("@Komenti", komenti);
                     }
                     if (forDashboard) 
@@ -179,7 +179,7 @@ namespace DentalSoft.Repositories
                         DateTime today = DateTime.Now; 
                         DateTime startOfToday = today.Date; 
                         DateTime endOfToday = startOfToday.AddDays(1).AddTicks(-1);
-                        query += "AND data_takimit between '@StartOfToday' AND '@EndOfToday'";
+                        cmd.CommandText += "AND data_takimit between @StartOfToday AND @EndOfToday";
                         cmd.Parameters.AddWithValue("@StartOfToday", utilities.convertDateForDB(startOfToday));
                         cmd.Parameters.AddWithValue("@EndOfToday", utilities.convertDateForDB(endOfToday));
                     }

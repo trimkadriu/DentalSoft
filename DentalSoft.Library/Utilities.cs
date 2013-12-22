@@ -27,9 +27,9 @@ namespace DentalSoft.Library
         public string convertProfilePicForDB(byte[] profilePic)
         {
             if (profilePic == null)
-                return "null";
+                return null;
             else
-                return "'" + Convert.ToBase64String(profilePic) + "'";
+                return Convert.ToBase64String(profilePic);
         }
 
         public byte[] convertProfilePicFromDB(string base64)

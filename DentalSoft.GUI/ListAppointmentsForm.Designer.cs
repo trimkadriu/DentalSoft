@@ -70,6 +70,7 @@ namespace DentalSoft
             // 
             // btnMbylle
             // 
+            this.btnMbylle.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnMbylle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnMbylle.Location = new System.Drawing.Point(15, 541);
             this.btnMbylle.Name = "btnMbylle";
@@ -192,6 +193,7 @@ namespace DentalSoft
             // 
             // btnFshijDatat
             // 
+            this.btnFshijDatat.Enabled = false;
             this.btnFshijDatat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnFshijDatat.Location = new System.Drawing.Point(340, 91);
             this.btnFshijDatat.Name = "btnFshijDatat";

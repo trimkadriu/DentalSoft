@@ -281,9 +281,14 @@ namespace DentalSoft
             rtbRaport.ZoomFactor = 0.60f;
         }
 
-        private void btnMbyll_Click(object sender, EventArgs e)
+        private void setDialogResults()
         {
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void frmGenerateReport_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            setDialogResults();
         }
     }
 }

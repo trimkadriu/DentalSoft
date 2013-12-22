@@ -24,15 +24,15 @@ namespace DentalSoft.Repositories
             {
                 connection.Open();
                 string query = "INSERT INTO " + tableName + " (id, emri, email, perdoruesi, fjalekalimi, foto_profilit) VALUES (" +
-                               "'@Id', '@Emri', '@Email', '@Perdoruesi', '@Fjalekalimi', '@FotoProfilit')";
+                               "@Id, @Emri, @Email, @Perdoruesi, @Fjalekalimi, @FotoProfilit)";
                 using (MySqlCommand cmd = new MySqlCommand (query, connection))
                 {
-                    cmd.Parameters.AddWithValue("Id", dentist.getId());
-                    cmd.Parameters.AddWithValue("Emri", dentist.getEmri());
-                    cmd.Parameters.AddWithValue("Email", dentist.getEmail());
-                    cmd.Parameters.AddWithValue("Perdoruesi", dentist.getPerdoruesi());
-                    cmd.Parameters.AddWithValue("Fjalekalimi", dentist.getFjalekalimi());
-                    cmd.Parameters.AddWithValue("FotoProfilit", utilities.convertProfilePicForDB(dentist.getFotoProfilit()));
+                    cmd.Parameters.AddWithValue("@Id", dentist.getId());
+                    cmd.Parameters.AddWithValue("@Emri", dentist.getEmri());
+                    cmd.Parameters.AddWithValue("@Email", dentist.getEmail());
+                    cmd.Parameters.AddWithValue("@Perdoruesi", dentist.getPerdoruesi());
+                    cmd.Parameters.AddWithValue("@Fjalekalimi", dentist.getFjalekalimi());
+                    cmd.Parameters.AddWithValue("@FotoProfilit", utilities.convertProfilePicForDB(dentist.getFotoProfilit()));
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -51,8 +51,8 @@ namespace DentalSoft.Repositories
             try
             {
                 connection.Open();
-                string query = "UPDATE " + tableName + " SET emri='@Emri', email='@Email', perdoruesi='@Perdoruesi', fjalekalimi='@Fjalekalimi', " +
-                               "foto_profilit='@FotoProfilit', qasja_fundit='@QasjaFundit' WHERE id='@Id'";
+                string query = "UPDATE " + tableName + " SET emri=@Emri, email=@Email, perdoruesi=@Perdoruesi, fjalekalimi=@Fjalekalimi, " +
+                               "foto_profilit=@FotoProfilit, qasja_fundit=@QasjaFundit WHERE id=@Id";
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Id", dentist.getId());
@@ -80,7 +80,7 @@ namespace DentalSoft.Repositories
             try
             {
                 connection.Open();
-                string query = "DELETE FROM " + tableName + " WHERE id='@Id'";
+                string query = "DELETE FROM " + tableName + " WHERE id=@Id";
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Id", dentist.getId());
@@ -98,7 +98,7 @@ namespace DentalSoft.Repositories
         }
 
         public List<Dentist> selectStatement(string id = null, string emri = null, string email = null, string perdoruesi = null, string fjalekalimi = null, 
-                                            int limit = 0, string order = null)
+                                            int limit = 0, string forDashboard = null)
         {
             List<Dentist> dentistList = new List<Dentist>();
             try
@@ -132,15 +132,13 @@ namespace DentalSoft.Repositories
                         cmd.CommandText += "AND fjalekalimi=@Fjalekalimi ";
                         cmd.Parameters.AddWithValue("@Fjalekalimi", fjalekalimi);
                     }
-                    if (order != null)
+                    if (forDashboard != null)
                     {
-                        cmd.CommandText += "ORDER BY @Order ";
-                        cmd.Parameters.AddWithValue("@Order", order);
+                        cmd.CommandText += "AND qasja_fundit IS NOT NULL ORDER BY " + forDashboard + " ";
                     }
                     if (limit != 0)
                     {
-                        cmd.CommandText += "LIMIT @Limit";
-                        cmd.Parameters.AddWithValue("@Limit", limit);
+                        cmd.CommandText += "LIMIT " + limit;
                     }
                     using (MySqlDataReader dataReader = cmd.ExecuteReader())
                     {

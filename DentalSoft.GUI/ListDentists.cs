@@ -32,7 +32,14 @@ namespace DentalSoft
 
         private void txtKerkoEmriMbiemri_TextChanged(object sender, System.EventArgs e)
         {
-            bindingSource.Filter = "Emri like '%" + txtKerkoEmriMbiemri.Text + "%'";
+            try
+            {
+                bindingSource.Filter = "Emri like '%" + txtKerkoEmriMbiemri.Text + "%'";
+            }
+            catch (SyntaxErrorException)
+            {
+                txtKerkoEmriMbiemri.Text = string.Empty;
+            }
         }
 
         private void btnFshij_Click(object sender, System.EventArgs e)
@@ -48,15 +55,9 @@ namespace DentalSoft
                     Dentist dentist = new Dentist(id);
                     dentistService.removeDentist(dentist);
                     if (frmMain.loggedInDentist.Equals(dentist))
-                    {
                         this.DialogResult = DialogResult.Yes;
-                        this.Close();
-                    }
                     else
-                    {
-                        this.DialogResult = DialogResult.OK;
-                        this.Close();
-                    }
+                        this.DialogResult = DialogResult.None;
                     Init();
                 }
             }

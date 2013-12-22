@@ -101,10 +101,9 @@ namespace DentalSoft
         {
             frmListDentists listDentistsForm = new frmListDentists();
             listDentistsForm.ShowDialog();
-            if (listDentistsForm.DialogResult.Equals(DialogResult.OK))
-                Init();
-            else if (listDentistsForm.DialogResult.Equals(DialogResult.Yes))
+            if (listDentistsForm.DialogResult.Equals(DialogResult.Yes))
                 logout();
+            Init();
         }
 
         private void menaxhoDentistetToolStripMenuItem_Click(object sender, EventArgs e)
@@ -187,15 +186,9 @@ namespace DentalSoft
                 Report report = reportService.getReportByAppointmentId(id);
                 frmGenerateReport generateReportForm;
                 if (report != null)
-                {
-                    //Update report
                     generateReportForm = new frmGenerateReport(appointment, report);
-                }
                 else
-                {
-                    //Create new report
                     generateReportForm = new frmGenerateReport(appointment);
-                }
                 generateReportForm.ShowDialog();
                 if (generateReportForm.DialogResult.Equals(DialogResult.OK))
                     Init();
@@ -209,7 +202,8 @@ namespace DentalSoft
                 string id = dgvTakimetSot.SelectedRows[0].Cells[0].Value.ToString();
                 Appointment appointment = appointmentService.getAppointmentById(id);
                 frmAddAppointment editAppointmentForm = new frmAddAppointment(appointment);
-                if (editAppointmentForm.ShowDialog() == DialogResult.Yes)
+                editAppointmentForm.ShowDialog();
+                if (editAppointmentForm.DialogResult == DialogResult.Yes)
                     Init();
             }
         }
