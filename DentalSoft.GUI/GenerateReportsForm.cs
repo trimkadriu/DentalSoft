@@ -110,7 +110,6 @@ namespace DentalSoft
                 {
                     report.setPagesa(decimal.Parse(nudPagesa.Text));
                     report.setTakimiArdhshemStatus(getTakimiStatusFromComboBox(cmbTakimiTjeterStatus));
-                    //report.setTakimiId(appointment.getId());
                     nextAppointment = appointmentService.getAppointmentById(report.getTakimiArdhshem());
                     if (cmbTakimiTjeterStatus.SelectedItem.Equals(TakimiRiStatus.Po))
                     {

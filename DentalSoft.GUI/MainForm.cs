@@ -101,7 +101,7 @@ namespace DentalSoft
         {
             frmListDentists listDentistsForm = new frmListDentists();
             listDentistsForm.ShowDialog();
-            if (listDentistsForm.DialogResult.Equals(DialogResult.Yes))
+            if (listDentistsForm.DialogResult.Equals(DialogResult.OK))
                 logout();
             Init();
         }
@@ -203,7 +203,7 @@ namespace DentalSoft
                 Appointment appointment = appointmentService.getAppointmentById(id);
                 frmAddAppointment editAppointmentForm = new frmAddAppointment(appointment);
                 editAppointmentForm.ShowDialog();
-                if (editAppointmentForm.DialogResult == DialogResult.Yes)
+                if (editAppointmentForm.DialogResult == DialogResult.OK)
                     Init();
             }
         }
@@ -228,7 +228,6 @@ namespace DentalSoft
                     string id = dgvTakimetSot.SelectedRows[0].Cells[0].Value.ToString();
                     Appointment appointment = new Appointment(id);
                     appointmentService.removeAppointment(appointment);
-                    this.DialogResult = DialogResult.OK;
                     Init();
                 }
             }

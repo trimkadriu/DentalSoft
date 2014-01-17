@@ -20,6 +20,7 @@ namespace DentalSoft
         private bool refreshOnClose;
         private bool filterEmri;
         private bool filterData;
+        private bool lockDTP;
 
         public frmListAppointments()
         {
@@ -31,6 +32,7 @@ namespace DentalSoft
             refreshOnClose = false;
             filterEmri = false;
             filterData = false;
+            lockDTP = false;
             resetDates();
         }
 
@@ -63,6 +65,7 @@ namespace DentalSoft
                     string id = dgvTakimet.SelectedRows[0].Cells[0].Value.ToString();
                     Appointment appointment = new Appointment(id);
                     appointmentService.removeAppointment(appointment);
+                    refreshOnClose = true;
                     this.DialogResult = DialogResult.None;
                     Init();
                 }
@@ -76,7 +79,7 @@ namespace DentalSoft
                 string id = dgvTakimet.SelectedRows[0].Cells[0].Value.ToString();
                 Appointment appointment = appointmentService.getAppointmentById(id);
                 frmAddAppointment editAppointmentForm = new frmAddAppointment(appointment);
-                if (editAppointmentForm.ShowDialog() == DialogResult.Yes)
+                if (editAppointmentForm.ShowDialog() == DialogResult.OK)
                     Init();
                 refreshOnClose = true;
             }
@@ -102,14 +105,22 @@ namespace DentalSoft
             dtpDataETakimitPrej.CustomFormat = " ";
             dtpDataETakimitDeri.CustomFormat = " ";
             filterData = false;
+            lockDTP = false;
+            btnFshijDatat.Enabled = false;
+            filterData = false;
+            filterEmri = false;
+            dataGridViewFilter();
         }
 
         private void datesValuesChanged(object sender, EventArgs e)
         {
+            if (lockDTP)
+                return;
             if (dtpDataETakimitPrej.Value > dtpDataETakimitDeri.Value)
             {
+                lockDTP = true;
                 MessageBox.Show("Datat e perzgjedhura jane kontradiktore. Ju lutem zgjedhni datat perseri", "Gabim!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                dtpDataETakimitPrej.Value = DateTime.Now.AddDays(-3);
+                dtpDataETakimitPrej.Value = DateTime.Now.AddMilliseconds(-1);
                 dtpDataETakimitDeri.Value = DateTime.Now;
                 resetDates();
             }
@@ -127,21 +138,17 @@ namespace DentalSoft
         {
             string filter = string.Empty;
             if (filterEmri && !filterData)
-            {
                 filter = "[Emri pacientit] like '%" + txtEmriPacientit.Text + "%'";
-            }
             else if (filterData && !filterEmri)
-            {
-                filter = string.Format("[Data takimit] >= '{0}' AND [Data takimit] <= '{1}'", 
+                filter = string.Format("[Data takimit] >= '{0}' AND [Data takimit] <= '{1}'",
                                         dtpDataETakimitPrej.Value, dtpDataETakimitDeri.Value);
-            }
             else if (filterData && filterEmri)
-            {
                 filter = string.Format("[Emri pacientit] like '%{0}%' AND [Data takimit] >= '{1}' AND [Data takimit] <= '{2}'",
                                         txtEmriPacientit.Text,
                                         dtpDataETakimitPrej.Value,
                                         dtpDataETakimitDeri.Value);
-            }
+            else if (!filterData && !filterEmri)
+                filter = "";
             try
             {
                 bindingSource.Filter = filter;
@@ -172,8 +179,8 @@ namespace DentalSoft
                     generateReportForm = new frmGenerateReport(appointment);
                 }
                 generateReportForm.ShowDialog();
-                this.DialogResult = DialogResult.None;
                 refreshOnClose = true;
+                this.DialogResult = DialogResult.None;
                 Init();
             }
         }

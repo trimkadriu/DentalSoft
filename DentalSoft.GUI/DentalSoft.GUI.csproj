@@ -103,12 +103,6 @@
     <Compile Include="ListDentists.Designer.cs">
       <DependentUpon>ListDentists.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListReportsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ListReportsForm.Designer.cs">
-      <DependentUpon>ListReportsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,9 +135,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListDentists.resx">
       <DependentUpon>ListDentists.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ListReportsForm.resx">
-      <DependentUpon>ListReportsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

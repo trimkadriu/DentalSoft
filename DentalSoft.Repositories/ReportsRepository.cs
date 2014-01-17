@@ -26,7 +26,7 @@ namespace DentalSoft.Repositories
                 connection.Open();
                 string query = "INSERT INTO " + tableName + " (id, dentisti, takimi, takimi_ardhshem, pagesa, perserit_kontrollin) VALUES (" +
                                "@Id, @Dentisti, @Takimi, @TakimiArdhshem, @Pagesa, @PerseritKontrollin)";
-                string takimiArdhshem = "NULL";
+                string takimiArdhshem = null;
                 if (report.getTakimiArdhshem() != null)
                     takimiArdhshem = report.getTakimiArdhshem();
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
@@ -36,7 +36,7 @@ namespace DentalSoft.Repositories
                     cmd.Parameters.AddWithValue("@Takimi", report.getTakimiId());
                     cmd.Parameters.AddWithValue("@TakimiArdhshem", takimiArdhshem);
                     cmd.Parameters.AddWithValue("@Pagesa", report.getPagesa());
-                    cmd.Parameters.AddWithValue("@PerseritKontrollin", report.getTakimiArdhshemStatus());
+                    cmd.Parameters.AddWithValue("@PerseritKontrollin", report.getTakimiArdhshemStatus().ToString());
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -59,12 +59,13 @@ namespace DentalSoft.Repositories
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Pagesa", report.getPagesa());
-                    cmd.Parameters.AddWithValue("@PerseritKontrollin", report.getTakimiArdhshemStatus());
+                    cmd.Parameters.AddWithValue("@PerseritKontrollin", report.getTakimiArdhshemStatus().ToString());
                     cmd.Parameters.AddWithValue("@Id", report.getId());
                     if (report.getTakimiArdhshem() == null)
                         cmd.Parameters.AddWithValue("@TakimiArdhshem", null);
                     else
                         cmd.Parameters.AddWithValue("@TakimiArdhshem", report.getTakimiArdhshem());
+                    cmd.ExecuteNonQuery();
                 }
             }
             catch (MySqlException ex)
