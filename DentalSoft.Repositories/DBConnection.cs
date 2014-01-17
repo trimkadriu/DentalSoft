@@ -33,7 +33,8 @@ namespace Dentalsoft.Repositories
 
         protected void handleException(MySqlException ex)
         {
-            MessageBox.Show("MySQL numri i gabimit: " + ex.Number, "Gabim", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("MySQL numri i gabimit: " + ex.Number + "\n\nMySQL mesazhi i gabimit:\n" + ex.Message, 
+                            "Gabim ne bazen e te dhenave (MySQL)", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         protected List<DataColumn> getSchemaTable(string tableName)

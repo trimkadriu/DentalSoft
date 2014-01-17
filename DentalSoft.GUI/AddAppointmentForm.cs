@@ -69,7 +69,7 @@ namespace DentalSoft
                     appointment.setKomenti(txtKomenti.Text);
                     if (appointmentService.editAppointment(appointment))
                     {
-                        this.DialogResult = DialogResult.Yes;
+                        this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
                 }
@@ -80,7 +80,7 @@ namespace DentalSoft
                                                                  txtProblemi.Text, txtKomenti.Text);
                     if (appointmentService.insertAppointment(newAppointment))
                     {
-                        this.DialogResult = DialogResult.Yes;
+                        this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
                 }

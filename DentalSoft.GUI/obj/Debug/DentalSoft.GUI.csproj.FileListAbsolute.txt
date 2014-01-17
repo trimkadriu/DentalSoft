@@ -71,7 +71,6 @@ D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmAddDenti
 D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmGenerateReport.resources
 D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmListAppointments.resources
 D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmListDentists.resources
-D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmListReports.resources
 D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmLogin.resources
 D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmMain.resources
 D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.Properties.Resources.resources
