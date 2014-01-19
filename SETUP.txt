@@ -3,28 +3,34 @@ CREATE USER 'dentalsoft'@'localhost' IDENTIFIED BY PASSWORD '*9FD0F0F15AB2A466AE
 GRANT ALL PRIVILEGES ON *.* TO 'dentalsoft'@'localhost' WITH GRANT OPTION; 
 
 
---
--- Create database `dentistet`
---
-CREATE DATABASE dentalsoft CHARACTER SET utf8 COLLATE utf8_bin;
 
-USE dentalsoft;
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+SET time_zone = "+00:00";
+
+--
+-- Database: `dentalsoft`
+--
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `dentistet`
 --
 
 CREATE TABLE IF NOT EXISTS `dentistet` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` varchar(10) COLLATE utf8_bin NOT NULL,
   `emri` varchar(32) COLLATE utf8_bin NOT NULL,
   `email` varchar(64) COLLATE utf8_bin NOT NULL,
   `perdoruesi` varchar(32) COLLATE utf8_bin NOT NULL,
   `fjalekalimi` varchar(32) COLLATE utf8_bin NOT NULL,
   `foto_profilit` longblob,
+  `qasja_fundit` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `perdoruesi` (`perdoruesi`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -33,15 +39,22 @@ CREATE TABLE IF NOT EXISTS `dentistet` (
 --
 
 CREATE TABLE IF NOT EXISTS `raportet` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `emri_pacientit` varchar(32) COLLATE utf8_bin NOT NULL,
-  `mosha` int(2) unsigned NOT NULL,
-  `gjinia` enum('1','0') COLLATE utf8_bin NOT NULL,
-  `problemi` blob NOT NULL,
-  `pagesa` int(10) unsigned NOT NULL,
-  `perserit_kontrollin` enum('po','jo','pacaktuar') COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`id`)
-)  ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+  `id` varchar(10) COLLATE utf8_bin NOT NULL,
+  `dentisti` varchar(10) COLLATE utf8_bin NOT NULL,
+  `takimi` varchar(10) COLLATE utf8_bin NOT NULL,
+  `takimi_ardhshem` varchar(10) COLLATE utf8_bin DEFAULT NULL,
+  `pagesa` double(10,2) NOT NULL,
+  `perserit_kontrollin` enum('Po','Jo','Pacaktuar') COLLATE utf8_bin NOT NULL,
+  `data_krijimit` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`),
+  KEY `dentisti` (`dentisti`),
+  KEY `dentisti_2` (`dentisti`),
+  KEY `dentisti_3` (`dentisti`),
+  KEY `dentisti_4` (`dentisti`),
+  KEY `takimi` (`takimi`),
+  KEY `takimi_ardhshem` (`takimi_ardhshem`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -50,120 +63,52 @@ CREATE TABLE IF NOT EXISTS `raportet` (
 --
 
 CREATE TABLE IF NOT EXISTS `takimet` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` varchar(10) COLLATE utf8_bin NOT NULL,
+  `dentisti` varchar(10) COLLATE utf8_bin NOT NULL,
   `emri_pacientit` varchar(32) COLLATE utf8_bin NOT NULL,
   `mosha` int(2) unsigned NOT NULL,
-  `email` varchar(64) COLLATE utf8_bin NOT NULL,
+  `email` varchar(64) COLLATE utf8_bin DEFAULT NULL,
   `telefoni` varchar(32) COLLATE utf8_bin NOT NULL,
   `data_takimit` datetime NOT NULL,
   `kohezgjatja_takimit` int(5) unsigned NOT NULL,
   `problemi` blob NOT NULL,
   `komenti` blob,
-  PRIMARY KEY (`id`)
-)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`),
+  KEY `dentisti` (`dentisti`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `raportet`
+--
+ALTER TABLE `raportet`
+  ADD CONSTRAINT `raportet_ibfk_1` FOREIGN KEY (`dentisti`) REFERENCES `dentistet` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `raportet_ibfk_2` FOREIGN KEY (`takimi`) REFERENCES `takimet` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `takimet`
+--
+ALTER TABLE `takimet`
+  ADD CONSTRAINT `takimet_ibfk_1` FOREIGN KEY (`dentisti`) REFERENCES `dentistet` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+  
+  
+-- ============================================================
+-- INSERT STATEMENTS
+-- ============================================================
+INSERT INTO `dentistet` (`id`, `emri`, `email`, `perdoruesi`, `fjalekalimi`, `foto_profilit`, `qasja_fundit`) VALUES
+('U23104XASZ', 'Dentist Gashi', 'dentist@email.com', 'dentist', '0987c1f6e6828d62f554d07f8ba744a8', NULL, '2013-01-01 00:00:00')
 
 
 
+-- ============================================================
+-- TO DO
+-- ------------------------------
 
-
-
-INSERT INTO `dentistet` (`id`, `emri`, `email`, `perdoruesi`, `fjalekalimi`, `foto_profilit`) VALUES
-(1, 'Dentist', 'dentist@email.com', 'dentist', '0987c1f6e6828d62f554d07f8ba744a8', NULL);
-
-ALTER TABLE  `dentistet` ADD  `qasja_fundit` DATETIME NULL;
-
-ALTER TABLE  `dentistet` CHANGE  `foto_profilit`  `foto_profilit` LONGBLOB NULL;
-
-ALTER TABLE  `dentistet` CHANGE  `id`  `id` VARCHAR( 10 ) NOT NULL;
-
-ALTER TABLE  `raportet` CHANGE  `id`  `id` VARCHAR( 10 ) NOT NULL;
-
-ALTER TABLE  `takimet` CHANGE  `id`  `id` VARCHAR( 10 ) NOT NULL;
-
-ALTER TABLE  `takimet` ADD UNIQUE (`id`);
-
-ALTER TABLE  `raportet` ADD UNIQUE (`id`);
-
-ALTER TABLE  `dentistet` ADD UNIQUE (`id`);
-
-ALTER TABLE  `takimet` CHANGE  `email`  `email` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_bin NULL;
-
-
-
-
-
-
-
-
-
-============================================================
-== CHANGESET: Adding relations for multiple dentists
-============================================================
-
-ALTER TABLE  `takimet` ADD  `dentisti` VARCHAR( 10 ) NOT NULL AFTER  `id`;
-
-ALTER TABLE  `takimet` ADD INDEX (  `dentisti` );
-
-ALTER TABLE  `takimet` ADD FOREIGN KEY (  `dentisti` ) REFERENCES  `dentalsoft`.`dentistet` (
-`id`
-) ON DELETE CASCADE ON UPDATE CASCADE ;
-
-ALTER TABLE  `raportet` ADD  `dentisti` VARCHAR( 10 ) NOT NULL AFTER  `id`;
-
-ALTER TABLE  `raportet` ADD INDEX (  `dentisti` );
-
-ALTER TABLE  `raportet` ADD FOREIGN KEY (  `dentisti` ) REFERENCES  `dentalsoft`.`dentistet` (
-`id`
-) ON DELETE CASCADE ON UPDATE CASCADE ;
-
-============================================================
-
-============================================================
-== CHANGESET: Adding relations for reports and appointments
-============================================================
-
-ALTER TABLE  `raportet` ADD  `takimi` VARCHAR( 10 ) NOT NULL AFTER  `dentisti`;
-
-ALTER TABLE  `raportet` ADD INDEX (  `takimi` );
-
-ALTER TABLE  `raportet` ADD FOREIGN KEY (  `takimi` ) REFERENCES  `dentalsoft`.`takimet` (
-`id`
-) ON DELETE CASCADE ON UPDATE CASCADE ;
-
-ALTER TABLE  `raportet` DROP  `emri_pacientit` ,
-DROP  `mosha` ,
-DROP  `gjinia` ,
-DROP  `problemi` ;
-
-ALTER TABLE  `raportet` ADD  `takimi_ardhshem` VARCHAR( 10 ) NULL DEFAULT NULL AFTER  `takimi`;
-
-ALTER TABLE  `raportet` ADD INDEX (  `takimi_ardhshem` );
-
-ALTER TABLE  `raportet` ADD  `data_krijimit` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
-
-ALTER TABLE  `raportet` MODIFY COLUMN `pagesa` DOUBLE(10, 2) NOT NULL;
-
-ALTER TABLE  `raportet` CHANGE  `data_krijimit`  `data_krijimit` TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
-
-ALTER TABLE  `raportet` CHANGE  `perserit_kontrollin`  `perserit_kontrollin` ENUM(  'Po',  'Jo',  'Pacaktuar' ) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
-
-============================================================
-
-
-
-
-
-
-
-
-
-
-
-
-============================================================
-TO DO
-------------------------------
-
-- Sinkronizo kohen mes takimeve ose qite kohezgjatjen te raportet
-- Mundsisht bone databazen dinamike (qe munet mu ndryshu) ose perdor LightSQL
-============================================================
+-- Sinkronizo kohen mes takimeve ose qite kohezgjatjen te raportet
+-- Mundsisht bone databazen dinamike (qe munet mu ndryshu) ose perdor LightSQL
+-- ============================================================
