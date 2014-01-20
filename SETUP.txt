@@ -102,13 +102,3 @@ ALTER TABLE `takimet`
 -- ============================================================
 INSERT INTO `dentistet` (`id`, `emri`, `email`, `perdoruesi`, `fjalekalimi`, `foto_profilit`, `qasja_fundit`) VALUES
 ('U23104XASZ', 'Dentist Gashi', 'dentist@email.com', 'dentist', '0987c1f6e6828d62f554d07f8ba744a8', NULL, '2013-01-01 00:00:00')
-
-
-
--- ============================================================
--- TO DO
--- ------------------------------
-
--- Sinkronizo kohen mes takimeve ose qite kohezgjatjen te raportet
--- Mundsisht bone databazen dinamike (qe munet mu ndryshu) ose perdor LightSQL
--- ============================================================
