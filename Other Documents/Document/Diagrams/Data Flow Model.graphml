@@ -17,39 +17,16 @@
     <node id="n0">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.start2">
-          <y:Geometry height="18.0" width="36.0" x="503.0" y="6.453444480895939"/>
+          <y:Geometry height="18.0" width="36.0" x="503.0" y="-8.851414322853287"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="10.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="125.34765625" x="-44.673828125" y="-20.3505859375">HAPJA E SOFTUERIT<y:LabelModel>
-              <y:SmartNodeLabelModel distance="10.0"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="0.0" nodeRatioY="-0.5" offsetX="0.0" offsetY="-1.6494140625" upX="0.0" upY="-1.0"/>
-            </y:ModelParameter>
-          </y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
     <node id="n1">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.terminator">
-          <y:Geometry height="40.0" width="208.0" x="417.0" y="163.86265373229958"/>
-          <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
-          <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="132.015625" x="37.9921875" y="10.6494140625">FILLIMI (DASHBOARD)<y:LabelModel>
-              <y:SmartNodeLabelModel distance="4.0"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-            </y:ModelParameter>
-          </y:NodeLabel>
-        </y:GenericNode>
-      </data>
-    </node>
-    <node id="n2">
-      <data key="d6">
-        <y:GenericNode configuration="com.yworks.flowchart.terminator">
-          <y:Geometry height="40.0" width="114.0" x="464.0" y="71.15804910659776"/>
+          <y:Geometry height="40.0" width="114.0" x="464.0" y="55.85319030284853"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="80.001953125" x="16.9990234375" y="10.6494140625">AUTENTIKIMI<y:LabelModel>
@@ -62,55 +39,7 @@
         </y:GenericNode>
       </data>
     </node>
-    <node id="n3">
-      <data key="d6">
-        <y:GenericNode configuration="com.yworks.flowchart.terminator">
-          <y:Geometry height="40.0" width="114.0" x="287.0" y="256.3740568161008"/>
-          <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
-          <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="70.66796875" x="21.666015625" y="10.6494140625">DENTISTET<y:LabelModel>
-              <y:SmartNodeLabelModel distance="4.0"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-            </y:ModelParameter>
-          </y:NodeLabel>
-        </y:GenericNode>
-      </data>
-    </node>
-    <node id="n4">
-      <data key="d6">
-        <y:GenericNode configuration="com.yworks.flowchart.terminator">
-          <y:Geometry height="40.0" width="114.0" x="464.0" y="256.3740568161008"/>
-          <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
-          <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="56.001953125" x="28.9990234375" y="10.6494140625">TAKIMET<y:LabelModel>
-              <y:SmartNodeLabelModel distance="4.0"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-            </y:ModelParameter>
-          </y:NodeLabel>
-        </y:GenericNode>
-      </data>
-    </node>
-    <node id="n5">
-      <data key="d6">
-        <y:GenericNode configuration="com.yworks.flowchart.terminator">
-          <y:Geometry height="40.0" width="114.0" x="641.0" y="256.3740568161008"/>
-          <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
-          <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="69.337890625" x="22.3310546875" y="10.6494140625">RAPORTET<y:LabelModel>
-              <y:SmartNodeLabelModel distance="4.0"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-            </y:ModelParameter>
-          </y:NodeLabel>
-        </y:GenericNode>
-      </data>
-    </node>
-    <node id="n6">
+    <node id="n2">
       <data key="d6">
         <y:SVGNode>
           <y:Geometry height="78.38100051879883" width="53.25002670288086" x="494.37498664855957" y="480.8094997406007"/>
@@ -124,14 +53,13 @@
         </y:SVGNode>
       </data>
     </node>
-    <node id="n7">
+    <node id="n3">
       <data key="d6">
         <y:SVGNode>
-          <y:Geometry height="40.0" width="33.015403747558594" x="469.9845962524414" y="-57.37725543975836"/>
+          <y:Geometry height="40.0" width="33.015403747558594" x="504.4922981262207" y="-72.68211424350758"/>
           <y:Fill color="#CCCCFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="14.507701873779297" y="44.0">
-            <y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="83.34765625" x="-25.166126251220703" y="44.0">PËRDORUESI<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -145,34 +73,65 @@
         </y:SVGNode>
       </data>
     </node>
-    <node id="n8">
+    <node id="n4">
+      <data key="d5"/>
       <data key="d6">
-        <y:SVGNode>
-          <y:Geometry height="31.569995880126953" width="53.25002670288086" x="510.5019989013672" y="-48.94725131988531"/>
-          <y:Fill color="#CCCCFF" transparent="false"/>
+        <y:GenericNode configuration="com.yworks.flowchart.process">
+          <y:Geometry height="40.0" width="105.0" x="296.0" y="263.67891561985"/>
+          <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="24.62501335144043" y="35.56999588012695">
-            <y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="70.66796875" x="17.166015625" y="10.6494140625">DENTISTET<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="-0.5" nodeRatioX="0.0" nodeRatioY="0.5" offsetX="0.0" offsetY="4.0" upX="0.0" upY="-1.0"/>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:SVGNodeProperties usingVisualBounds="true"/>
-          <y:SVGModel svgBoundsPolicy="0">
-            <y:SVGContent refid="3"/>
-          </y:SVGModel>
-        </y:SVGNode>
+        </y:GenericNode>
       </data>
     </node>
-    <node id="n9">
+    <node id="n5">
+      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
-          <y:Geometry height="54.0" width="184.0" x="429.0" y="357.5917782783507"/>
+          <y:Geometry height="40.0" width="105.0" x="468.5" y="263.67891561985"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="140.72265625" x="21.638671875" y="10.298828125">OPERACIONI
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="56.001953125" x="24.4990234375" y="10.6494140625">TAKIMET<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n6">
+      <data key="d5"/>
+      <data key="d6">
+        <y:GenericNode configuration="com.yworks.flowchart.process">
+          <y:Geometry height="40.0" width="105.0" x="641.0" y="263.67891561985"/>
+          <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="69.337890625" x="17.8310546875" y="10.6494140625">RAPORTET<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n7">
+      <data key="d5"/>
+      <data key="d6">
+        <y:GenericNode configuration="com.yworks.flowchart.terminator">
+          <y:Geometry height="60.0" width="184.0" x="429.0" y="149.76605296134926"/>
+          <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="140.72265625" x="21.638671875" y="13.298828125">OPERACIONI
 (shto, ndrysho, fshij, lexo)<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -183,7 +142,26 @@
         </y:GenericNode>
       </data>
     </node>
-    <edge id="e0" source="n0" target="n2">
+    <node id="n8">
+      <data key="d5"/>
+      <data key="d6">
+        <y:GenericNode configuration="com.yworks.flowchart.terminator">
+          <y:Geometry height="60.0" width="184.0" x="429.0" y="362.2442076802254"/>
+          <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" modelName="custom" textColor="#000000" visible="true" width="144.0390625" x="19.98046875" y="5.9482421875">BËHET KËRKESA NË DB
+PËR OPERACIONIN 
+E KËRKUAR<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+        </y:GenericNode>
+      </data>
+    </node>
+    <edge id="e0" source="n0" target="n1">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -193,7 +171,8 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e1" source="n1" target="n4">
+    <edge id="e1" source="n1" target="n7">
+      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -203,31 +182,8 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e2" source="n1" target="n3">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="344.0" y="183.86265373229958"/>
-          </y:Path>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e3" source="n1" target="n5">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="698.0" y="183.86265373229958"/>
-          </y:Path>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e4" source="n4" target="n5">
+    <edge id="e2" source="n7" target="n5">
+      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -237,7 +193,33 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e5" source="n2" target="n1">
+    <edge id="e3" source="n7" target="n4">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="348.5" y="179.76605296134926"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="standard" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e4" source="n7" target="n6">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="693.5" y="179.76605296134926"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="standard" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e5" source="n5" target="n8">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -248,52 +230,39 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e6" source="n4" target="n9">
+    <edge id="e6" source="n6" target="n8">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="693.5" y="392.2442076802254"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="standard" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e7" source="n4" target="n8">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="348.5" y="392.2442076802254"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="standard" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e8" source="n8" target="n2">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e7" source="n3" target="n9">
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="344.0" y="384.5917782783507"/>
-          </y:Path>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="short" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e8" source="n5" target="n9">
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="698.0" y="384.5917782783507"/>
-          </y:Path>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="short" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e9" source="n9" target="n6">
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="521.0" y="471.5"/>
-          </y:Path>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="short" target="standard"/>
+          <y:Arrows source="standard" target="standard"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
@@ -516,62 +485,6 @@
 	&lt;path id="path5131_2_" fill="url(#path5131_1_)" stroke="#E55E03" d="M28.313,48.68h0.122l2.551,4.002
 		c0.517,0.953-1.204,1.797-1.453,2.549l-2.279-0.016c-0.243-0.76-2.257-1.365-1.476-2.584L28.313,48.68z"/&gt;
 &lt;/g&gt;
-&lt;/svg&gt;
-</y:Resource>
-      <y:Resource id="3">&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;!-- Generator: Adobe Illustrator 15.0.2, SVG Export Plug-In  --&gt;
-&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
-	&lt;!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/"&gt;
-]&gt;
-&lt;svg version="1.1"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-	 x="0px" y="0px" width="68px" height="46px" viewBox="-0.064 -0.075 68 46" enable-background="new -0.064 -0.075 68 46"
-	 xml:space="preserve"&gt;
-&lt;defs&gt;
-&lt;/defs&gt;
-&lt;radialGradient id="SVGID_1_" cx="478.8413" cy="1991.2729" r="21.6001" gradientTransform="matrix(1.15 0 0 1 -526.6598 -1982.4023)" gradientUnits="userSpaceOnUse"&gt;
-	&lt;stop  offset="0" style="stop-color:#F2F2F2"/&gt;
-	&lt;stop  offset="1" style="stop-color:#8D8D8D"/&gt;
-&lt;/radialGradient&gt;
-&lt;path fill="url(#SVGID_1_)" d="M10.263,1.903c0-0.987,0.807-1.794,1.794-1.794h43.279c0.986,0,1.795,0.807,1.795,1.794v26.978
-	c0,0.987-0.809,1.794-1.795,1.794h-43.28c-0.987,0-1.794-0.807-1.794-1.794L10.263,1.903L10.263,1.903z"/&gt;
-&lt;path display="none" fill="none" stroke="#3C89C9" stroke-width="0.2185" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
-	M10.263,1.903c0-0.987,0.807-1.794,1.794-1.794h43.279c0.986,0,1.795,0.807,1.795,1.794v26.978c0,0.987-0.809,1.794-1.795,1.794
-	h-43.28c-0.987,0-1.794-0.807-1.794-1.794L10.263,1.903L10.263,1.903z"/&gt;
-&lt;radialGradient id="SVGID_2_" cx="455.894" cy="1983.9624" r="47.8462" fx="493.5344" fy="1977.5143" gradientTransform="matrix(1.1935 0 0 1 -509.6731 -1982.4023)" gradientUnits="userSpaceOnUse"&gt;
-	&lt;stop  offset="0" style="stop-color:#4D4D4D"/&gt;
-	&lt;stop  offset="1" style="stop-color:#999999"/&gt;
-&lt;/radialGradient&gt;
-&lt;path fill="url(#SVGID_2_)" d="M11.18,2.819c0-0.987,0.807-1.794,1.794-1.794h41.649c0.986,0,1.795,0.807,1.795,1.794v24.943
-	c0,0.985-0.809,1.794-1.795,1.794H12.974c-0.987,0-1.794-0.809-1.794-1.794V2.819z"/&gt;
-&lt;radialGradient id="SVGID_3_" cx="456.8843" cy="1984.0386" r="30.6699" gradientTransform="matrix(1.1923 0 0 1 -510.1314 -1982.4023)" gradientUnits="userSpaceOnUse"&gt;
-	&lt;stop  offset="0" style="stop-color:#9CD7FF"/&gt;
-	&lt;stop  offset="1" style="stop-color:#3C89C9"/&gt;
-&lt;/radialGradient&gt;
-&lt;path fill="url(#SVGID_3_)" d="M11.689,3.228c0-0.987,0.807-1.794,1.794-1.794h40.633c0.986,0,1.795,0.807,1.795,1.794v24.126
-	c0,0.986-0.809,1.794-1.795,1.794H13.483c-0.987,0-1.794-0.809-1.794-1.794V3.228z"/&gt;
-&lt;path opacity="0.24" fill="#F2F2F2" d="M11.689,21.472V3.228c0-0.987,0.807-1.794,1.794-1.794h40.633
-	c0.986,0,1.795,0.807,1.795,1.794v9.454c0,0.987-10.518,5.21-18.256,6.795C29.917,21.062,11.689,21.472,11.689,21.472z"/&gt;
-&lt;linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="131.3501" y1="-212.2612" x2="131.3501" y2="-170.6274" gradientTransform="matrix(1 0 0 -1 -97.6001 -165.0498)"&gt;
-	&lt;stop  offset="0" style="stop-color:#4D4D4D"/&gt;
-	&lt;stop  offset="0.0667" style="stop-color:#717171"/&gt;
-	&lt;stop  offset="0.069" style="stop-color:#757575"/&gt;
-	&lt;stop  offset="0.0831" style="stop-color:#8C8C8C"/&gt;
-	&lt;stop  offset="0.0996" style="stop-color:#9E9E9E"/&gt;
-	&lt;stop  offset="0.1196" style="stop-color:#AAAAAA"/&gt;
-	&lt;stop  offset="0.1466" style="stop-color:#B1B1B1"/&gt;
-	&lt;stop  offset="0.2121" style="stop-color:#B3B3B3"/&gt;
-	&lt;stop  offset="1" style="stop-color:#C5C5C5"/&gt;
-&lt;/linearGradient&gt;
-&lt;path fill="url(#SVGID_4_)" d="M58.385,32.234c-0.689-0.856-2.154-1.559-3.254-1.559H12c-1.1,0-2.552,0.711-3.227,1.579
-	l-7.546,9.717C0,43.55,0.042,43.785,0,44.55v0.125c0.056,0.393,0.311,1.002,1.248,1.002h64.75c0.75,0.002,1.5-0.252,1.5-1.002V44.55
-	c0-0.813,0-0.813-1.254-2.559L58.385,32.234z"/&gt;
-&lt;path opacity="0.23" fill="#F2F2F2" enable-background="new    " d="M58.385,32.234c-0.689-0.856-2.154-1.559-3.254-1.559H12
-	c-1.1,0-2.552,0.711-3.227,1.579l-7.055,9.085l58.098-7.33L58.385,32.234z"/&gt;
-&lt;path fill="#6E6E6E" d="M59.75,37.205c0.344,0.431,0.172,0.783-0.377,0.783H8.249c-0.55,0-0.742-0.369-0.427-0.819l2.786-3.986
-	c0.315-0.45,1.023-0.819,1.573-0.819h42.729c0.551,0,1.279,0.354,1.623,0.783L59.75,37.205z"/&gt;
-&lt;path fill="#6E6E6E" d="M40.43,41.906c0.072,0.217-0.057,0.395-0.285,0.395H26.727c-0.229,0-0.364-0.18-0.3-0.398l0.822-2.826
-	c0.064-0.221,0.303-0.399,0.532-0.399h11.167c0.229,0,0.475,0.179,0.547,0.396L40.43,41.906z"/&gt;
 &lt;/svg&gt;
 </y:Resource>
     </y:Resources>
