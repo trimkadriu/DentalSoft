@@ -27,7 +27,6 @@ D:\Projects\Trim\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmAddDentist.re
 D:\Projects\Trim\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmGenerateReport.resources
 D:\Projects\Trim\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmListAppointments.resources
 D:\Projects\Trim\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmListDentists.resources
-D:\Projects\Trim\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmListReports.resources
 D:\Projects\Trim\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmLogin.resources
 D:\Projects\Trim\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmMain.resources
 D:\Projects\Trim\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.Properties.Resources.resources
@@ -45,7 +44,6 @@ D:\Projects\Trim\dentalsoft\DentalSoft.GUI\bin\Debug\DentalSoft.Service.dll
 D:\Projects\Trim\dentalsoft\DentalSoft.GUI\bin\Debug\DentalSoft.Repositories.dll
 D:\Projects\Trim\dentalsoft\DentalSoft.GUI\bin\Debug\DentalSoft.Library.dll
 D:\Projects\Trim\dentalsoft\DentalSoft.GUI\bin\Debug\DentalSoft.Domain.dll
-D:\Projects\Trim\dentalsoft\DentalSoft.GUI\bin\Debug\MySql.Data.dll
 D:\Projects\Trim\dentalsoft\DentalSoft.GUI\bin\Debug\DentalSoft.Service.pdb
 D:\Projects\Trim\dentalsoft\DentalSoft.GUI\bin\Debug\DentalSoft.Repositories.pdb
 D:\Projects\Trim\dentalsoft\DentalSoft.GUI\bin\Debug\DentalSoft.Library.pdb
@@ -75,3 +73,5 @@ D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmLogin.re
 D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.frmMain.resources
 D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.Properties.Resources.resources
 D:\My Documents\Trimi\dentalsoft\DentalSoft.GUI\obj\Debug\DentalSoft.GUI.csproj.GenerateResource.Cache
+D:\Projects\Trim\dentalsoft\DentalSoft.GUI\bin\Debug\System.Data.SQLite.dll
+D:\Projects\Trim\dentalsoft\DentalSoft.GUI\bin\Debug\System.Data.SQLite.pdb
