@@ -8,15 +8,17 @@ namespace DentalSoft.Library
     {
         public string convertDateForDB(DateTime dateTime)
         {
-            return dateTime.Year + "-" + dateTime.Month + "-" + dateTime.Day + " " + dateTime.Hour + "-" + dateTime.Minute + "-" + dateTime.Second;
+            return dateTime.ToString("dd/MM/yyyy hh:mm:ss tt");
         }
 
         public DateTime convertDateFromDb(string dateTime)
         {
+            DateTime result = DateTime.Now;
             if (string.IsNullOrEmpty(dateTime))
-                return DateTime.Now;
+                return result;
             else
-                return DateTime.Parse(dateTime);
+                DateTime.TryParseExact(dateTime, "dd/MM/yyyy hh:mm:ss tt", null, System.Globalization.DateTimeStyles.None, out result);
+            return result;
         }
 
         public string convertDateForBindingSource(DateTime dateTime)
@@ -34,10 +36,19 @@ namespace DentalSoft.Library
 
         public byte[] convertProfilePicFromDB(string base64)
         {
-            if (string.IsNullOrEmpty(base64))
+            if (string.IsNullOrEmpty(base64) || base64.ToLower() == "null")
                 return null;
             else
-                return Convert.FromBase64String(base64);
+            {
+                try 
+	            {	        
+                    return Convert.FromBase64String(base64);
+	            }
+	            catch (Exception)
+	            {
+                    return null;
+	            }
+            }
         }
 
         public Image convertByteToImage(byte[] imageBytes)

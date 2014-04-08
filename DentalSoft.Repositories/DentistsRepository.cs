@@ -1,9 +1,10 @@
 ﻿using Dentalsoft.Repositories;
 using DentalSoft.Domain;
 using DentalSoft.Library;
-using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SQLite;
 using System.Windows.Forms;
 
 namespace DentalSoft.Repositories
@@ -25,7 +26,7 @@ namespace DentalSoft.Repositories
                 connection.Open();
                 string query = "INSERT INTO " + tableName + " (id, emri, email, perdoruesi, fjalekalimi, foto_profilit) VALUES (" +
                                "@Id, @Emri, @Email, @Perdoruesi, @Fjalekalimi, @FotoProfilit)";
-                using (MySqlCommand cmd = new MySqlCommand (query, connection))
+                using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Id", dentist.getId());
                     cmd.Parameters.AddWithValue("@Emri", dentist.getEmri());
@@ -36,13 +37,13 @@ namespace DentalSoft.Repositories
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (MySqlException ex)
+            catch (SQLiteException ex)
             {
                 handleException(ex);
             }
             finally
             {
-                connection.Dispose();
+                connection.Close();
             }
         }
 
@@ -53,7 +54,7 @@ namespace DentalSoft.Repositories
                 connection.Open();
                 string query = "UPDATE " + tableName + " SET emri=@Emri, email=@Email, perdoruesi=@Perdoruesi, fjalekalimi=@Fjalekalimi, " +
                                "foto_profilit=@FotoProfilit, qasja_fundit=@QasjaFundit WHERE id=@Id";
-                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Id", dentist.getId());
                     cmd.Parameters.AddWithValue("@Emri", dentist.getEmri());
@@ -65,13 +66,13 @@ namespace DentalSoft.Repositories
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (MySqlException ex)
+            catch (SQLiteException ex)
             {
                 handleException(ex);
             }
             finally
             {
-                connection.Dispose();
+                connection.Close();
             }
         }
 
@@ -81,19 +82,19 @@ namespace DentalSoft.Repositories
             {
                 connection.Open();
                 string query = "DELETE FROM " + tableName + " WHERE id=@Id";
-                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Id", dentist.getId());
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (MySqlException ex)
+            catch (SQLiteException ex)
             {
                 handleException(ex);
             }
             finally
             {
-                connection.Dispose();
+                connection.Close();
             }
         }
 
@@ -104,8 +105,8 @@ namespace DentalSoft.Repositories
             try
             {
                 connection.Open();
-                string query = "SELECT * FROM " + tableName + " WHERE 1 ";
-                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                string query = "SELECT id, emri, email, perdoruesi, fjalekalimi, foto_profilit, datetime(qasja_fundit) as qasja_fundit FROM " + tableName + " WHERE 1 ";
+                using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
                 {
                     if (id != null)
                     {
@@ -140,18 +141,19 @@ namespace DentalSoft.Repositories
                     {
                         cmd.CommandText += "LIMIT " + limit;
                     }
-                    using (MySqlDataReader dataReader = cmd.ExecuteReader())
+                    using (SQLiteDataReader dataReader = cmd.ExecuteReader())
                     {
                         while (dataReader.Read())
                         {
                             Dentist d = new Dentist();
-                            d.setId(dataReader.GetString("id"));
-                            d.setEmri(dataReader.GetString("emri"));
-                            d.setEmail(dataReader.GetString("email"));
-                            d.setPerdoruesi(dataReader.GetString("perdoruesi"));
-                            d.setFjalekalimi(dataReader.GetString("fjalekalimi"));
+                            d.setId(dataReader["id"].ToString());
+                            d.setEmri(dataReader["emri"].ToString());
+                            d.setEmail(dataReader["email"].ToString());
+                            d.setPerdoruesi(dataReader["perdoruesi"].ToString());
+                            d.setFjalekalimi(dataReader["fjalekalimi"].ToString());
+                            string sa = dataReader["foto_profilit"].ToString();
                             if (!string.IsNullOrEmpty(dataReader["foto_profilit"].ToString()))
-                                d.setFotoProfilit(utilities.convertProfilePicFromDB(dataReader.GetString("foto_profilit")));
+                                d.setFotoProfilit(utilities.convertProfilePicFromDB(dataReader["foto_profilit"].ToString()));
                             else
                                 d.setFotoProfilit(null);
                             d.setQasjaFundit(utilities.convertDateFromDb(dataReader["qasja_fundit"].ToString()));
@@ -160,13 +162,13 @@ namespace DentalSoft.Repositories
                     }
                 }
             }
-            catch (MySqlException ex)
+            catch (SQLiteException ex)
             {
                 handleException(ex);
             }
             finally
             {
-                connection.Dispose();
+                connection.Close();
             }
             return dentistList;
         }
