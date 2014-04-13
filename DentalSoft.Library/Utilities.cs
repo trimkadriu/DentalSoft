@@ -6,9 +6,11 @@ namespace DentalSoft.Library
 {
     public class Utilities
     {
+        private const string SQLiteDateTimeFormat = "yyyy-MM-dd HH:mm:ss";
+
         public string convertDateForDB(DateTime dateTime)
         {
-            return dateTime.ToString("dd/MM/yyyy hh:mm:ss tt");
+            return dateTime.ToString(SQLiteDateTimeFormat);
         }
 
         public DateTime convertDateFromDb(string dateTime)
@@ -17,7 +19,7 @@ namespace DentalSoft.Library
             if (string.IsNullOrEmpty(dateTime))
                 return result;
             else
-                DateTime.TryParseExact(dateTime, "dd/MM/yyyy hh:mm:ss tt", null, System.Globalization.DateTimeStyles.None, out result);
+                DateTime.TryParseExact(dateTime, SQLiteDateTimeFormat, null, System.Globalization.DateTimeStyles.None, out result);
             return result;
         }
 

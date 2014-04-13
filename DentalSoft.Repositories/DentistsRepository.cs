@@ -105,7 +105,7 @@ namespace DentalSoft.Repositories
             try
             {
                 connection.Open();
-                string query = "SELECT id, emri, email, perdoruesi, fjalekalimi, foto_profilit, datetime(qasja_fundit) as qasja_fundit FROM " + tableName + " WHERE 1 ";
+                string query = "SELECT * FROM " + tableName + " WHERE 1 ";
                 using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
                 {
                     if (id != null)
@@ -135,7 +135,7 @@ namespace DentalSoft.Repositories
                     }
                     if (forDashboard != null)
                     {
-                        cmd.CommandText += "AND qasja_fundit IS NOT NULL ORDER BY " + forDashboard + " ";
+                        cmd.CommandText += "ORDER BY " + forDashboard + " ";
                     }
                     if (limit != 0)
                     {
@@ -156,6 +156,7 @@ namespace DentalSoft.Repositories
                                 d.setFotoProfilit(utilities.convertProfilePicFromDB(dataReader["foto_profilit"].ToString()));
                             else
                                 d.setFotoProfilit(null);
+                            string ad = dataReader["qasja_fundit"].ToString();
                             d.setQasjaFundit(utilities.convertDateFromDb(dataReader["qasja_fundit"].ToString()));
                             dentistList.Add(d);
                         }

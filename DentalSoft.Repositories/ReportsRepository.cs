@@ -145,9 +145,9 @@ namespace DentalSoft.Repositories
                         DateTime today = DateTime.Now;
                         DateTime startOfToday = today.Date;
                         DateTime endOfToday = startOfToday.AddDays(1).AddTicks(-1);
-                        cmd.CommandText += "AND data_krijimit between @StartOfToday AND @EndOfToday";
-                        cmd.Parameters.AddWithValue("@StartOfToday", utilities.convertDateForDB(startOfToday));
-                        cmd.Parameters.AddWithValue("@EndOfToday", utilities.convertDateForDB(endOfToday));
+                        cmd.CommandText += "AND DATETIME(data_krijimit) BETWEEN DATETIME('"
+                                             + utilities.convertDateForDB(startOfToday) +
+                                             "') AND DATETIME('" + utilities.convertDateForDB(endOfToday) + "')";
                     }
                     using(SQLiteDataReader dataReader = cmd.ExecuteReader())
                     {
