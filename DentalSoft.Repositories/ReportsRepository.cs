@@ -1,10 +1,10 @@
 ﻿using Dentalsoft.Repositories;
 using DentalSoft.Domain;
 using DentalSoft.Library;
-using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SQLite;
 using System.Windows.Forms;
 
 namespace DentalSoft.Repositories
@@ -29,7 +29,7 @@ namespace DentalSoft.Repositories
                 string takimiArdhshem = null;
                 if (report.getTakimiArdhshem() != null)
                     takimiArdhshem = report.getTakimiArdhshem();
-                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Id", report.getId());
                     cmd.Parameters.AddWithValue("@Dentisti", report.getDentistId());
@@ -40,13 +40,13 @@ namespace DentalSoft.Repositories
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (MySqlException ex)
+            catch (SQLiteException ex)
             {
                 handleException(ex);
             }
             finally
             {
-                connection.Dispose();
+                connection.Close();
             }
         }
 
@@ -56,7 +56,7 @@ namespace DentalSoft.Repositories
             {
                 connection.Open();
                 string query = "UPDATE " + tableName + " SET takimi_ardhshem=@TakimiArdhshem, pagesa=@Pagesa, perserit_kontrollin=@PerseritKontrollin WHERE id=@Id";
-                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Pagesa", report.getPagesa());
                     cmd.Parameters.AddWithValue("@PerseritKontrollin", report.getTakimiArdhshemStatus().ToString());
@@ -68,13 +68,13 @@ namespace DentalSoft.Repositories
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (MySqlException ex)
+            catch (SQLiteException ex)
             {
                 handleException(ex);
             }
             finally
             {
-                connection.Dispose();
+                connection.Close();
             }
         }
 
@@ -84,19 +84,19 @@ namespace DentalSoft.Repositories
             {
                 connection.Open();
                 string query = "DELETE FROM " + tableName + " WHERE id=@Id";
-                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Id", report.getId());
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (MySqlException ex)
+            catch (SQLiteException ex)
             {
                 handleException(ex);
             }
             finally
             {
-                connection.Dispose();
+                connection.Close();
             }
         }
 
@@ -108,7 +108,7 @@ namespace DentalSoft.Repositories
             {
                 connection.Open();
                 string query = "SELECT * FROM " + tableName + " WHERE 1 ";
-                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
                 {
                     if (id != null)
                     {
@@ -145,37 +145,37 @@ namespace DentalSoft.Repositories
                         DateTime today = DateTime.Now;
                         DateTime startOfToday = today.Date;
                         DateTime endOfToday = startOfToday.AddDays(1).AddTicks(-1);
-                        cmd.CommandText += "AND data_krijimit between @StartOfToday AND @EndOfToday";
-                        cmd.Parameters.AddWithValue("@StartOfToday", utilities.convertDateForDB(startOfToday));
-                        cmd.Parameters.AddWithValue("@EndOfToday", utilities.convertDateForDB(endOfToday));
+                        cmd.CommandText += "AND DATETIME(data_krijimit) BETWEEN DATETIME('"
+                                             + utilities.convertDateForDB(startOfToday) +
+                                             "') AND DATETIME('" + utilities.convertDateForDB(endOfToday) + "')";
                     }
-                    using(MySqlDataReader dataReader = cmd.ExecuteReader())
+                    using(SQLiteDataReader dataReader = cmd.ExecuteReader())
                     {
                         while (dataReader.Read())
                         {
                             Report r = new Report();
-                            r.setId(dataReader.GetString("id"));
-                            r.setDentistId(dataReader.GetString("dentisti"));
-                            r.setTakimiId(dataReader.GetString("takimi"));
+                            r.setId(dataReader["id"].ToString());
+                            r.setDentistId(dataReader["dentisti"].ToString());
+                            r.setTakimiId(dataReader["takimi"].ToString());
                             if(string.IsNullOrEmpty(dataReader["takimi_ardhshem"].ToString()))
                                 r.setTakimiArdhshem(null);
                             else
                                 r.setTakimiArdhshem(dataReader["takimi_ardhshem"].ToString());
-                            r.setPagesa(decimal.Parse(dataReader.GetString("pagesa")));
-                            r.setTakimiArdhshemStatus(dataReader.GetString("perserit_kontrollin"));
+                            r.setPagesa(decimal.Parse(dataReader["pagesa"].ToString()));
+                            r.setTakimiArdhshemStatus(dataReader["perserit_kontrollin"].ToString());
                             r.setDataKrijimit(utilities.convertDateFromDb(dataReader["data_krijimit"].ToString()));
                             reportList.Add(r);
                         }
                     }
                 }
             }
-            catch (MySqlException ex)
+            catch (SQLiteException ex)
             {
                 handleException(ex);
             }
             finally
             {
-                connection.Dispose();
+                connection.Close();
             }
             return reportList;
         }
@@ -188,7 +188,7 @@ namespace DentalSoft.Repositories
                 connection.Open();
                 string query = "SELECT SUM(`pagesa`) AS pagesat_total FROM " + tableName + " " +
                                "WHERE dentisti = @Dentist AND data_krijimit between @StartOfToday AND @EndOfToday";
-                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
                 {
                     DateTime today = DateTime.Now;
                     DateTime startOfToday = today.Date;
@@ -198,23 +198,23 @@ namespace DentalSoft.Repositories
                     cmd.Parameters.AddWithValue("@StartOfToday", utilities.convertDateForDB(startOfToday));
                     cmd.Parameters.AddWithValue("@EndOfToday", utilities.convertDateForDB(endOfToday));
 
-                    using(MySqlDataReader dataReader = cmd.ExecuteReader())
+                    using (SQLiteDataReader dataReader = cmd.ExecuteReader())
                     {
                         while (dataReader.Read())
                         {
                             if (!string.IsNullOrEmpty((dataReader["pagesat_total"].ToString())))
-                                sumPagesat = dataReader.GetString("pagesat_total");
+                                sumPagesat = dataReader["pagesat_total"].ToString();
                         }
                     }
                 }
             }
-            catch (MySqlException ex)
+            catch (SQLiteException ex)
             {
                 handleException(ex);
             }
             finally
             {
-                connection.Dispose();
+                connection.Close();
             }
             return sumPagesat;
         }

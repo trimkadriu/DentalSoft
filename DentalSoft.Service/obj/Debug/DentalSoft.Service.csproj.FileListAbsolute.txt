@@ -15,7 +15,6 @@ D:\Projects\Trim\dentalsoft\DentalSoft.Service\bin\Debug\DentalSoft.Service.pdb
 D:\Projects\Trim\dentalsoft\DentalSoft.Service\bin\Debug\DentalSoft.Domain.dll
 D:\Projects\Trim\dentalsoft\DentalSoft.Service\bin\Debug\DentalSoft.Library.dll
 D:\Projects\Trim\dentalsoft\DentalSoft.Service\bin\Debug\DentalSoft.Repositories.dll
-D:\Projects\Trim\dentalsoft\DentalSoft.Service\bin\Debug\MySql.Data.dll
 D:\Projects\Trim\dentalsoft\DentalSoft.Service\bin\Debug\DentalSoft.Domain.pdb
 D:\Projects\Trim\dentalsoft\DentalSoft.Service\bin\Debug\DentalSoft.Library.pdb
 D:\Projects\Trim\dentalsoft\DentalSoft.Service\bin\Debug\DentalSoft.Repositories.pdb
@@ -34,3 +33,7 @@ D:\My Documents\Trimi\dentalsoft\DentalSoft.Service\bin\Debug\DentalSoft.Reposit
 D:\My Documents\Trimi\dentalsoft\DentalSoft.Service\obj\Debug\DentalSoft.Service.csprojResolveAssemblyReference.cache
 D:\My Documents\Trimi\dentalsoft\DentalSoft.Service\obj\Debug\DentalSoft.Service.dll
 D:\My Documents\Trimi\dentalsoft\DentalSoft.Service\obj\Debug\DentalSoft.Service.pdb
+D:\Projects\Trim\dentalsoft\DentalSoft.Service\bin\Debug\System.Data.SQLite.dll
+D:\Projects\Trim\dentalsoft\DentalSoft.Service\bin\Debug\System.Data.SQLite.pdb
+D:\Projects\Trim\dentalsoft\DentalSoft.Service\bin\Debug\SQLite.Interop.dll
+D:\Projects\Trim\dentalsoft\DentalSoft.Service\bin\Debug\dentalsoft.db

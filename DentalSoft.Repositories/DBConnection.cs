@@ -1,20 +1,19 @@
 ﻿using DentalSoft.Library;
-using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SQLite;
 using System.Windows.Forms;
 
 namespace Dentalsoft.Repositories
 {
     public abstract class DBConnection
     {
-        protected MySqlConnection connection;
+        protected SQLiteConnection connection;
         protected string connectionString;
         protected string database;
 
-        private string server;
-        private string username;
-        private string password;
+        private string dbFile;
 
         public DBConnection()
         {
@@ -23,18 +22,16 @@ namespace Dentalsoft.Repositories
 
         private void Initialize()
         {
-            server = "localhost";
+            dbFile = Application.StartupPath + "\\dentalsoft.db";
             database = "dentalsoft";
-            username = "dentalsoft";
-            password = "dentalsoft";
-            connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + username + ";" + "PASSWORD=" + password + ";";
-            connection = new MySqlConnection(connectionString);
+            connectionString = String.Format("Data Source={0}", dbFile);
+            connection = new SQLiteConnection(connectionString);
         }
 
-        protected void handleException(MySqlException ex)
+        protected void handleException(SQLiteException ex)
         {
-            MessageBox.Show("MySQL numri i gabimit: " + ex.Number + "\n\nMySQL mesazhi i gabimit:\n" + ex.Message, 
-                            "Gabim ne bazen e te dhenave (MySQL)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Numri i gabimit: " + ex.ErrorCode + "\n\nMesazhi i gabimit:\n" + ex.Message, 
+                            "Gabim ne bazen e te dhenave", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         protected List<DataColumn> getSchemaTable(string tableName)
@@ -44,30 +41,27 @@ namespace Dentalsoft.Repositories
             try
             {
                 connection.Open();
-                string query = "SELECT COLUMN_NAME as `columns` FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = @Database AND TABLE_NAME=@TableName";
-                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                string query = "PRAGMA table_info(" + tableName + ")";
+                using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
                 {
-                    cmd.Parameters.AddWithValue("@Database", database);
-                    cmd.Parameters.AddWithValue("@TableName", tableName);
-
-                    using (MySqlDataReader dataReader = cmd.ExecuteReader())
+                    using (SQLiteDataReader dataReader = cmd.ExecuteReader())
                     {
                         while (dataReader.Read())
                         {
                             DataColumn dc = new DataColumn();
-                            dc.ColumnName = utilities.toUpperFirstLetter(dataReader.GetString("columns"));
+                            dc.ColumnName = utilities.toUpperFirstLetter(dataReader["name"].ToString());
                             dataColumnsList.Add(dc);
                         }
                     }
                 }
             }
-            catch (MySqlException ex)
+            catch (SQLiteException ex)
             {
                 handleException(ex);
             }
             finally
             {
-                connection.Dispose();
+                connection.Close();
             }
             return dataColumnsList;
         }
